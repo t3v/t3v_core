@@ -25,7 +25,7 @@ class BodyTagHelper extends AbstractHelper {
   public function __construct() {
     parent::__construct();
 
-    $this->pageService = GeneralUtility::makeInstance('T3V\T3vCore\Service\PageService');
+    $this->pageService = GeneralUtility::makeInstance('T3v\T3vCore\Service\PageService');
   }
 
   public function buildBodyTag($bodyClass) {
