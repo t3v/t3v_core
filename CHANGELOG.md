@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added `AbstractTagBasedViewHelper`
 * Added `AbstractViewHelper`
 
 1.1.0
