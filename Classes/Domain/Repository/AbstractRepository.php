@@ -33,10 +33,10 @@ abstract class AbstractRepository extends Repository {
    * Finder to query by multiple UIDs.
    *
    * @param array $uids The UIDs
-   * @param init $limit The limit
+   * @param int $limit The optional limit
    * @return array The found objects
    */
-  public function findByUids($uids) {
+  public function findByUids($uids, $limit = null) {
     $query = $this->createquery();
 
     // Adjust query settings
@@ -62,6 +62,43 @@ abstract class AbstractRepository extends Repository {
     }
 
     $query->setOrderings($this->orderByField('uid', $uids));
+
+    return $query->execute();
+  }
+
+  /**
+   * Finder to query by multiple PIDs.
+   *
+   * @param array $pids The PIDs
+   * @param int $limit The optional limit
+   * @return array The found objects
+   */
+  public function findByPids($pids, $limit = null) {
+    $query = $this->createquery();
+
+    // Adjust query settings
+    // $query->getQuerySettings()->setRespectStoragePage(false);
+    // $query->getQuerySettings()->setReturnRawQueryResult(true);
+
+    // Built up constraints
+    $constraints = array(
+      $query->equals('deleted', 0),
+      $query->equals('hidden', 0)
+    );
+
+    if (!empty($pids)) {
+      $constraints[] = $query->in('pid', $pids);
+    }
+
+    // Set constraints
+    $query->matching($query->logicalAnd($constraints));
+
+    // Set limit if available
+    if (!empty($limit)) {
+      $query->setLimit($limit);
+    }
+
+    $query->setOrderings($this->orderByField('pid', $pids));
 
     return $query->execute();
   }

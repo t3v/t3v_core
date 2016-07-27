@@ -1,6 +1,7 @@
 <?php
 namespace T3v\T3vCore\Service;
 
+use \TYPO3\CMS\Core\Database\QueryGenerator;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Frontend\Page\PageRepository;
 
@@ -15,6 +16,11 @@ class PageService extends AbstractService {
   const BACKEND_LAYOUT_PREFIX = 'pagets__';
 
   /**
+   * @var \TYPO3\CMS\Core\Database\QueryGenerator
+   */
+  protected $queryGenerator;
+
+  /**
    * @var \TYPO3\CMS\Frontend\Page\PageRepository
    */
   protected $pageRepository;
@@ -25,18 +31,18 @@ class PageService extends AbstractService {
   public function __construct() {
     parent::__construct();
 
+    $this->queryGenerator = GeneralUtility::makeInstance('TYPO3\CMS\Core\Database\QueryGenerator');
     $this->pageRepository = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\Page\PageRepository');
   }
 
   /**
    * Helper function to get the current page.
    *
-   * @return mixed
+   * @return mixed The row for the current page or null if no page was found
    */
   public function getCurrentPage() {
-    $page = $GLOBALS['TSFE']->page;
-    $uid  = $page['uid'];
-    $page = $this->getPage($uid);
+    $pid  = intval($GLOBALS['TSFE']->id);
+    $page = $this->getPage($pid);
 
     return $page;
   }
@@ -44,19 +50,66 @@ class PageService extends AbstractService {
   /**
    * Helper function to get a page.
    *
-   * @param int $uid The UID of the page.
-   * @return mixed
+   * @param int $pid The page ID of the page
+   * @return mixed The row for the page or null if no page was found
    */
-  public function getPage($uid) {
-    $page = $this->pageRepository->getPage($uid);
+  public function getPage($pid) {
+    $page = $this->pageRepository->getPage($pid);
 
     return $page;
   }
 
   /**
+   * Helper function to get the subpages.
+   *
+   * @param int $pid The page ID of the page to search from
+   * @param int $recursion The recursion, defaults to `1`
+   * @param boolean $exclude If the start page should be excluded, defaults to `true`
+   * @return array The subpages as rows
+   */
+  public function getSubpages($pid, $recursion = 1, $exclude = true) {
+    $subpages = [];
+
+    $subpagesPids = $this->getSubpagesPids($pid, $recursion, $exclude);
+
+    var_dump($subpagesPids);
+
+    foreach ($subpagesPids as $subpagePid) {
+      $subpage = $this->getPage($subpagePid);
+
+      if ($subpage) {
+        array_push($subpages, $subpage);
+      }
+    }
+
+    return $subpages;
+  }
+
+  /**
+   * Helper function to get the subpages PIDs.
+   *
+   * @param int $pid The page ID of the page to search from
+   * @param int $recursion The recursion, defaults to `1`
+   * @param boolean $exclude If the start page should be excluded, defaults to `true`
+   * @return array The subpages PIDs
+   */
+  public function getSubpagesPids($pid, $recursion = 1, $exclude = true) {
+    $subpagesPids = [];
+
+    $subpagesTreeList = $this->queryGenerator->getTreeList($pid, $recursion, 0, 1);
+    $subpagesPids     = GeneralUtility::intExplode(',', $subpagesTreeList, true);
+
+    if ($exclude) {
+      unset($subpagesPids[0]);
+    }
+
+    return $subpagesPids;
+  }
+
+  /**
    * Helper function to get the backend layout for a page.
    *
-   * @param int $uid The UID of the page.
+   * @param int $uid The UID of the page
    * @return mixed The name of the backend layout or null if no backend layout was found
    */
   public function getBackendLayoutForPage($uid) {
