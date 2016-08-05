@@ -2,7 +2,7 @@
 namespace T3v\T3vCore\ViewHelpers;
 
 /**
- * Class AbstractTagBasedViewHelper
+ * Abstract Tag Based View Helper Class
  *
  * @package T3v\T3vCore\ViewHelpers
  */

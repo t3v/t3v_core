@@ -5,7 +5,7 @@ use \TYPO3\CMS\Core\SingletonInterface;
 use \TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
- * Class AbstractService
+ * Abstract Service Class
  *
  * @package T3v\T3vCore\Service
  */

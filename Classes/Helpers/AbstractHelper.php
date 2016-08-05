@@ -4,7 +4,7 @@ namespace T3v\T3vCore\Helpers;
 use \TYPO3\CMS\Core\SingletonInterface;
 
 /**
- * Class AbstractHelper
+ * Abstract Helper Class
  *
  * @package T3v\T3vCore\Helpers
  */

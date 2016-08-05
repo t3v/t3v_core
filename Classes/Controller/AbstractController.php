@@ -5,7 +5,7 @@ use \TYPO3\CMS\Core\Messaging\AbstractMessage;
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
- * Class AbstractController
+ * Abstract Controller Class
  *
  * @package T3v\T3vCore\Controller
  */
@@ -33,7 +33,7 @@ abstract class AbstractController extends ActionController {
   }
 
   /**
-   * Override error flash message.
+   * Overrides error flash message getter.
    *
    * @return false
    */

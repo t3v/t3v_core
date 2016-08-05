@@ -8,7 +8,7 @@ use \TYPO3\CMS\Frontend\Page\PageRepository;
 use \T3v\T3vCore\Service\AbstractService;
 
 /**
- * Class PageService
+ * Page Service Class
  *
  * @package T3v\T3vCore\Service
  */

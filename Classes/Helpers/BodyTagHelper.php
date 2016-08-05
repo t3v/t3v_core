@@ -7,7 +7,7 @@ use \T3v\T3vCore\Helpers\AbstractHelper;
 use \T3v\T3vCore\Service\PageService;
 
 /**
- * Class BodyTagHelper
+ * Body Tag Helper Class
  *
  * @package T3v\T3vCore\Helpers
  */

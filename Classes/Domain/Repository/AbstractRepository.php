@@ -6,7 +6,7 @@ use \TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use \TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * Class AbstractRepository
+ * Abstract Repository Class
  *
  * @package T3v\T3vCore\Domain\Repository
  */
