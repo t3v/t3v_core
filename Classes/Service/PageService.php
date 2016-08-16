@@ -48,21 +48,65 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Helper function to get a page.
+   * Helper function to get a page by UID.
    *
-   * @param int $pid The page ID of the page
+   * @param int $uid The UID of the page
    * @return mixed The row for the page or null if no page was found
    */
-  public function getPage($pid) {
-    $page = $this->pageRepository->getPage($pid);
+  public function getPage($uid) {
+    $page = $this->pageRepository->getPage($uid);
 
     return $page;
   }
 
   /**
-   * Helper function to get the subpages.
+   * Alias for `getPage`.
    *
-   * @param int $pid The page ID of the page to search from
+   * @param int $uid The UID of the page
+   * @return mixed The row for the page or null if no page was found
+   */
+  public function getPageByUid($uid) {
+    return $this->getPage($uid);
+  }
+
+  /**
+   * Helper function to get pages by UIDs.
+   *
+   * @param mixed $uids The UIDs as array or as string, seperated by `,`
+   * @return array The pages as rows
+   */
+  public function getPages($uids) {
+    if (is_string($uids)) {
+      $uids = GeneralUtility::intExplode(',', $uids, true);
+    }
+
+    $pages = [];
+
+    foreach($uids as $uid) {
+      $page = $this->getPage($uid);
+
+      if ($page) {
+        array_push($pages, $page);
+      }
+    }
+
+    return $pages;
+  }
+
+  /**
+   * Alias for `getPages`.
+   *
+   * @param mixed $uids The UIDs as array or as string, seperated by `,`
+   * @return array The pages as rows
+   */
+  public function getPagesByUids($uids) {
+    return $this->getPages($uids);
+  }
+
+  /**
+   * Helper function to get the subpages of a page.
+   *
+   * @param int $pid The PID of the page to search from
    * @param int $recursion The recursion, defaults to `1`
    * @param boolean $exclude If the start page should be excluded, defaults to `true`
    * @return array The subpages as rows
@@ -70,10 +114,10 @@ class PageService extends AbstractService {
   public function getSubpages($pid, $recursion = 1, $exclude = true) {
     $subpages = [];
 
-    $subpagesPids = $this->getSubpagesPids($pid, $recursion, $exclude);
+    $subpagesUids = $this->getSubpagesUids($pid, $recursion, $exclude);
 
-    foreach ($subpagesPids as $subpagePid) {
-      $subpage = $this->getPage($subpagePid);
+    foreach ($subpagesUids as $subpageUid) {
+      $subpage = $this->getPage($subpageUid);
 
       if ($subpage) {
         array_push($subpages, $subpage);
@@ -84,24 +128,24 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Helper function to get the subpages PIDs.
+   * Helper function to get the UIDs of the subpages of a page.
    *
-   * @param int $pid The page ID of the page to search from
-   * @param int $recursion The recursion, defaults to `1`
+   * @param int $pid The PID of the page to search from
+   * @param int $recursion The recursion level, defaults to `1`
    * @param boolean $exclude If the start page should be excluded, defaults to `true`
-   * @return array The subpages PIDs
+   * @return array The subpages UIDs
    */
-  public function getSubpagesPids($pid, $recursion = 1, $exclude = true) {
-    $subpagesPids = [];
+  public function getSubpagesUids($pid, $recursion = 1, $exclude = true) {
+    $subpagesUids = [];
 
     $subpagesTreeList = $this->queryGenerator->getTreeList($pid, $recursion, 0, 1);
-    $subpagesPids     = GeneralUtility::intExplode(',', $subpagesTreeList, true);
+    $subpagesUids     = GeneralUtility::intExplode(',', $subpagesTreeList, true);
 
     if ($exclude) {
-      unset($subpagesPids[0]);
+      unset($subpagesUids[0]);
     }
 
-    return $subpagesPids;
+    return $subpagesUids;
   }
 
   /**

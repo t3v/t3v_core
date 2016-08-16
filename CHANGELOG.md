@@ -9,7 +9,7 @@ Unreleased
 * Added `DefaultViewHelper`
 * Added `findByPids` function to `AbstractRepository`
 * Improved `AbstractRepository`
-* Added `getSubpages` and `getSubpagesPids` function to `PageService`
+* Added `getSubpages` and `getSubpagesUids` function to `PageService`
 * Improved `PageService`
 * Added `AbstractTagBasedViewHelper`
 * Added `AbstractViewHelper`

@@ -67,9 +67,9 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Finder to query by page ID.
+   * Finder to query by PID.
    *
-   * @param int $pid The page ID
+   * @param int $pid The PID
    * @return mixed The found object or null if no object was found
    */
   public function findByPid($pid) {
@@ -81,9 +81,9 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Finder to query by multiple page IDs.
+   * Finder to query by multiple PIDs.
    *
-   * @param array $pids The page IDs
+   * @param array $pids The PIDs
    * @param int $limit The optional limit
    * @return \Extbase\Persistence\QueryResult The found objects
    */
@@ -118,7 +118,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Helper to get the orderings by field.
+   * Helper to get the orderings by a field.
    *
    * @param string $field The field
    * @param array $values The values
