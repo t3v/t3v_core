@@ -72,8 +72,6 @@ class PageService extends AbstractService {
 
     $subpagesPids = $this->getSubpagesPids($pid, $recursion, $exclude);
 
-    var_dump($subpagesPids);
-
     foreach ($subpagesPids as $subpagePid) {
       $subpage = $this->getPage($subpagePid);
 
