@@ -2,6 +2,7 @@
 namespace T3v\T3vCore\Service;
 
 use \TYPO3\CMS\Core\SingletonInterface;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
@@ -12,7 +13,6 @@ use \TYPO3\CMS\Extbase\Object\ObjectManager;
 abstract class AbstractService implements SingletonInterface {
   /**
    * @var \TYPO3\CMS\Extbase\Object\ObjectManager
-   * @inject
    */
   protected $objectManager;
 
@@ -20,6 +20,6 @@ abstract class AbstractService implements SingletonInterface {
    * The constructor function.
    */
   public function __construct() {
-    // ...
+    $this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
   }
 }
