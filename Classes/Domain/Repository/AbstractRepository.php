@@ -1,6 +1,8 @@
 <?php
 namespace T3v\T3vCore\Domain\Repository;
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 use \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use \TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use \TYPO3\CMS\Extbase\Persistence\Repository;
@@ -32,11 +34,15 @@ abstract class AbstractRepository extends Repository {
   /**
    * Finder to query by multiple UIDs.
    *
-   * @param array $uids The UIDs
+   * @param mixed $uids The UIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
    * @return \Extbase\Persistence\QueryResult The found objects
    */
   public function findByUids($uids, $limit = null) {
+    if (is_string($uids)) {
+      $uids = GeneralUtility::intExplode(',', $uids, true);
+    }
+
     $query = $this->createquery();
 
     // Adjust query settings
@@ -83,11 +89,15 @@ abstract class AbstractRepository extends Repository {
   /**
    * Finder to query by multiple PIDs.
    *
-   * @param array $pids The PIDs
+   * @param mixed $pids The PIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
    * @return \Extbase\Persistence\QueryResult The found objects
    */
   public function findByPids($pids, $limit = null) {
+    if (is_string($pids)) {
+      $pids = GeneralUtility::intExplode(',', $pids, true);
+    }
+
     $query = $this->createquery();
 
     // Adjust query settings

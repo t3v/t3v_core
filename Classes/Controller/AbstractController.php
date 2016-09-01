@@ -33,7 +33,7 @@ abstract class AbstractController extends ActionController {
   }
 
   /**
-   * Overrides error flash message getter.
+   * Overrides the error flash message getter.
    *
    * @return false
    */
