@@ -86,7 +86,7 @@ class PageService extends AbstractService {
       $page = $this->getPage($uid);
 
       if ($page) {
-        array_push($pages, $page);
+        $pages[] = $page;
       }
     }
 
@@ -120,7 +120,7 @@ class PageService extends AbstractService {
       $subpage = $this->getPage($subpageUid);
 
       if ($subpage) {
-        array_push($subpages, $subpage);
+        $subpages[] = $subpage;
       }
     }
 
