@@ -13,7 +13,7 @@ class DefaultViewHelper extends AbstractViewHelper {
    * The View Helper render function.
    *
    * @param string $value The value
-   * @param string $default The default, defaults to `-`
+   * @param string $default The default value, defaults to `-`
    * @return string The value if available, otherwise the default
    */
   public function render($value, $default = '-') {

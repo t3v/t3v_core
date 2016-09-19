@@ -6,7 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
-* Added `DefaultViewHelper`
+* Added `DefaultViewHelper` and `LanguageViewHelper`
 * Added `findByPids` function to `AbstractRepository`
 * Improved `AbstractRepository`
 * Added `getSubpages` and `getSubpagesUids` function to `PageService`

@@ -8,26 +8,28 @@ namespace T3v\T3vCore\ViewHelpers;
  */
 abstract class AbstractTagBasedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
   /**
-   * Helper to get the current sys language UID, defaults to `0`.
+   * Helper function to get the current system language UID.
    *
-   * @return int The current sys language UID
+   * @param int $default The default value, defaults to `0`
+   * @return int The current system language UID if available, otherwise the default
    */
-  protected function getSysLanguageUid() {
+  protected function getSysLanguageUid($default = 0) {
     if (TYPO3_MODE === 'FE') {
       if (isset($GLOBALS['TSFE']->sys_language_uid)) {
         return $GLOBALS['TSFE']->sys_language_uid;
       }
     }
 
-    return 0;
+    return $default;
   }
 
   /**
-   * Helper to get the current language, defaults to `en`.
+   * Helper function to get the current language.
    *
-   * @return string The current language
+   * @param string $default The default value, defaults to `en`
+   * @return string The current language if available, otherwise the default
    */
-  protected function getLanguage() {
+  protected function getLanguage($default = 'en') {
     if (TYPO3_MODE === 'FE') {
       if (isset($GLOBALS['TSFE']->config['config']['language'])) {
         return $GLOBALS['TSFE']->config['config']['language'];
@@ -36,6 +38,6 @@ abstract class AbstractTagBasedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelp
       return $GLOBALS['BE_USER']->uc['lang'];
     }
 
-    return 'en';
+    return $default;
   }
 }
