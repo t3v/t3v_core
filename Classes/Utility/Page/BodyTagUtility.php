@@ -1,17 +1,17 @@
 <?php
-namespace T3v\T3vCore\Helpers;
+namespace T3v\T3vCore\Utility\Page;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
-use \T3v\T3vCore\Helpers\AbstractHelper;
 use \T3v\T3vCore\Service\PageService;
+use \T3v\T3vCore\Utility\AbstractHelper;
 
 /**
- * Body Tag Helper Class
+ * Body Tag Utility Class
  *
- * @package T3v\T3vCore\Helpers
+ * @package T3v\T3vCore\Utility\Page
  */
-class BodyTagHelper extends AbstractHelper {
+class BodyTagUtility extends AbstractUtility {
   const DEFAULT_BODY_CLASS = 'document';
 
   /**
@@ -28,7 +28,13 @@ class BodyTagHelper extends AbstractHelper {
     $this->pageService = GeneralUtility::makeInstance('T3v\T3vCore\Service\PageService');
   }
 
-  public function buildBodyTag($bodyClass) {
+  /**
+   * Function to build the body tag.
+   *
+   * @param string $bodyClass The default CSS class of the body tag, defaults to `document`
+   * @return string The body tag
+   */
+  public function build($bodyClass) {
     $bodyClass = $bodyClass ?: self::DEFAULT_BODY_CLASS;
 
     $page          = $this->pageService->getCurrentPage();

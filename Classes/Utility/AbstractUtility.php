@@ -1,14 +1,14 @@
 <?php
-namespace T3v\T3vCore\Helpers;
+namespace T3v\T3vCore\Utility;
 
 use \TYPO3\CMS\Core\SingletonInterface;
 
 /**
- * Abstract Helper Class
+ * Abstract Utility Class
  *
- * @package T3v\T3vCore\Helpers
+ * @package T3v\T3vCore\Utility
  */
-abstract class AbstractHelper implements SingletonInterface {
+abstract class AbstractUtility implements SingletonInterface {
   /**
    * The constructor function.
    */
