@@ -36,18 +36,19 @@ abstract class AbstractRepository extends Repository {
    *
    * @param mixed $uids The UIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
+   * @param array $querySettings The optional query settings
    * @return \Extbase\Persistence\QueryResult The found objects
    */
-  public function findByUids($uids, $limit = null) {
+  public function findByUids($uids, $limit = null, $querySettings = []) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
 
+    // Create query
     $query = $this->createquery();
 
-    // Adjust query settings
-    // $query->getQuerySettings()->setRespectStoragePage(false);
-    // $query->getQuerySettings()->setReturnRawQueryResult(true);
+    // Apply query settings
+    $query = $this->applyQuerySettings($query, $querySettings);
 
     // Built up constraints
     $constraints = array(
@@ -76,10 +77,15 @@ abstract class AbstractRepository extends Repository {
    * Finder to query by PID.
    *
    * @param int $pid The PID
-   * @return mixed The found object or null if no object was found
+   * @param array $querySettings The optional query settings
+   * @return mixed The first found object or null if no object was found
    */
-  public function findByPid($pid) {
-    $query = $this->createQuery();
+  public function findByPid($pid, $querySettings = []) {
+    // Create query
+    $query = $this->createquery();
+
+    // Apply query settings
+    $query = $this->applyQuerySettings($query, $querySettings);
 
     $query->matching($query->equals('pid', $pid));
 
@@ -91,18 +97,19 @@ abstract class AbstractRepository extends Repository {
    *
    * @param mixed $pids The PIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
+   * @param array $querySettings The optional query settings
    * @return \Extbase\Persistence\QueryResult The found objects
    */
-  public function findByPids($pids, $limit = null) {
+  public function findByPids($pids, $limit = null, $querySettings = []) {
     if (is_string($pids)) {
       $pids = GeneralUtility::intExplode(',', $pids, true);
     }
 
+    // Create query
     $query = $this->createquery();
 
-    // Adjust query settings
-    // $query->getQuerySettings()->setRespectStoragePage(false);
-    // $query->getQuerySettings()->setReturnRawQueryResult(true);
+    // Apply query settings
+    $query = $this->applyQuerySettings($query, $querySettings);
 
     // Built up constraints
     $constraints = array(
@@ -125,6 +132,37 @@ abstract class AbstractRepository extends Repository {
     $query->setOrderings($this->orderByField('pid', $pids));
 
     return $query->execute();
+  }
+
+  /**
+   * Helper to apply settings on a query.
+   *
+   * @param object $query The query
+   * @param array $settings The settings to apply
+   * @return object The query with the applied settings
+   */
+  protected function applyQuerySettings($query, $settings) {
+    if (is_array($settings) && !empty($settings)) {
+      $respectStoragePage = $settings['respectStoragePage'];
+
+      if (is_bool($respectStoragePage)) {
+        $query->getQuerySettings()->setRespectStoragePage($respectStoragePage);
+      }
+
+      $respectSysLanguage = $settings['respectSysLanguage'];
+
+      if (is_bool($respectSysLanguage)) {
+        $query->getQuerySettings()->setRespectSysLanguage($respectSysLanguage);
+      }
+
+      $returnRawQueryResult = $settings['returnRawQueryResult'];
+
+      if (is_bool($returnRawQueryResult)) {
+        $query->getQuerySettings()->setReturnRawQueryResult($returnRawQueryResult);
+      }
+    }
+
+    return $query;
   }
 
   /**
