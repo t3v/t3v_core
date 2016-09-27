@@ -135,7 +135,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Helper to apply settings on a query.
+   * Helper function to apply settings on a query.
    *
    * @param object $query The query
    * @param array $settings The settings to apply
@@ -166,7 +166,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Helper to get the orderings by a field.
+   * Helper function to get the orderings by a field.
    *
    * @param string $field The field
    * @param array $values The values
