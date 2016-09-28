@@ -6,6 +6,7 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Frontend\Page\PageRepository;
 
 use \T3v\T3vCore\Service\AbstractService;
+use \T3v\T3vCore\Service\LanguageService;
 
 /**
  * Page Service Class
@@ -26,23 +27,30 @@ class PageService extends AbstractService {
   protected $pageRepository;
 
   /**
+   * @var \T3v\T3vCore\Service\LanguageService
+   */
+  protected $languageService;
+
+  /**
    * The constructor function.
    */
   public function __construct() {
     parent::__construct();
 
-    $this->queryGenerator = GeneralUtility::makeInstance('TYPO3\CMS\Core\Database\QueryGenerator');
-    $this->pageRepository = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\Page\PageRepository');
+    $this->queryGenerator  = GeneralUtility::makeInstance('TYPO3\CMS\Core\Database\QueryGenerator');
+    $this->pageRepository  = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\Page\PageRepository');
+    $this->languageService = GeneralUtility::makeInstance('T3v\T3vCore\Service\LanguageService');
   }
 
   /**
    * Helper function to get the current page.
    *
-   * @return mixed The row for the current page or null if no page was found
+   * @param boolean $overlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @return array The row for the current page or empty if no page was found
    */
-  public function getCurrentPage() {
+  public function getCurrentPage($overlay = true) {
     $pid  = intval($GLOBALS['TSFE']->id);
-    $page = $this->getPage($pid);
+    $page = $this->getPage($pid, $overlay);
 
     return $page;
   }
@@ -51,10 +59,17 @@ class PageService extends AbstractService {
    * Helper function to get a page by UID.
    *
    * @param int $uid The UID of the page
-   * @return mixed The row for the page or null if no page was found
+   * @param boolean $overlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @return array The row for the page or empty if no page was found
    */
-  public function getPage($uid) {
+  public function getPage($uid, $overlay = true) {
     $page = $this->pageRepository->getPage($uid);
+
+    if ($overlay) {
+      $sysLanguageUid = $this->languageService->getSysLanguageUid();
+
+      $page = $this->pageRepository->getPageOverlay($page, $sysLanguageUid);
+    }
 
     return $page;
   }
@@ -63,19 +78,21 @@ class PageService extends AbstractService {
    * Alias for `getPage`.
    *
    * @param int $uid The UID of the page
-   * @return mixed The row for the page or null if no page was found
+   * @param boolean $overlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @return array The row for the page or empty if no page was found
    */
-  public function getPageByUid($uid) {
-    return $this->getPage($uid);
+  public function getPageByUid($uid, $overlay = true) {
+    return $this->getPage($uid, $overlay);
   }
 
   /**
    * Helper function to get pages by UIDs.
    *
    * @param mixed $uids The UIDs as array or as string, seperated by `,`
-   * @return array The pages as rows
+   * @param boolean $overlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @return array The pages
    */
-  public function getPages($uids) {
+  public function getPages($uids, $overlay = true) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
@@ -83,7 +100,7 @@ class PageService extends AbstractService {
     $pages = [];
 
     foreach($uids as $uid) {
-      $page = $this->getPage($uid);
+      $page = $this->getPage($uid, $overlay);
 
       if ($page) {
         $pages[] = $page;
@@ -97,10 +114,11 @@ class PageService extends AbstractService {
    * Alias for `getPages`.
    *
    * @param mixed $uids The UIDs as array or as string, seperated by `,`
-   * @return array The pages as rows
+   * @param boolean $overlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @return array The pages
    */
-  public function getPagesByUids($uids) {
-    return $this->getPages($uids);
+  public function getPagesByUids($uids, $overlay) {
+    return $this->getPages($uids, $overlay);
   }
 
   /**
@@ -108,16 +126,17 @@ class PageService extends AbstractService {
    *
    * @param int $pid The PID of the page to search from
    * @param int $recursion The recursion, defaults to `1`
-   * @param boolean $exclude If the start page should be excluded, defaults to `true`
-   * @return array The subpages as rows
+   * @param boolean $exclude If set, the start page should be excluded, defaults to `true`
+   * @param boolean $overlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @return array The subpages
    */
-  public function getSubpages($pid, $recursion = 1, $exclude = true) {
+  public function getSubpages($pid, $recursion = 1, $exclude = true, $overlay = true) {
     $subpages = [];
 
     $subpagesUids = $this->getSubpagesUids($pid, $recursion, $exclude);
 
     foreach ($subpagesUids as $subpageUid) {
-      $subpage = $this->getPage($subpageUid);
+      $subpage = $this->getPage($subpageUid, $overlay);
 
       if ($subpage) {
         $subpages[] = $subpage;
@@ -132,7 +151,7 @@ class PageService extends AbstractService {
    *
    * @param int $pid The PID of the page to search from
    * @param int $recursion The recursion level, defaults to `1`
-   * @param boolean $exclude If the start page should be excluded, defaults to `true`
+   * @param boolean $exclude If set, the start page should be excluded, defaults to `true`
    * @return array The subpages UIDs
    */
   public function getSubpagesUids($pid, $recursion = 1, $exclude = true) {
