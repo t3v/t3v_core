@@ -4,7 +4,6 @@ namespace T3v\T3vCore\Service;
 use \TYPO3\CMS\Core\Messaging\FlashMessage;
 use \TYPO3\CMS\Core\Messaging\FlashMessageQueue;
 use \TYPO3\CMS\Core\Messaging\FlashMessageService;
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 use \T3v\T3vCore\Service\AbstractService;
 
@@ -30,19 +29,19 @@ class FlashMessageService extends AbstractService {
   public function __construct() {
     parent::__construct();
 
-    $this->flashMessageService = GeneralUtility::makeInstance('TYPO3\CMS\Core\Messaging\FlashMessageService');
+    $this->flashMessageService = $this->objectManager->get('TYPO3\CMS\Core\Messaging\FlashMessageService');
     $this->flashMessageQueue   = $this->flashMessageService->getMessageQueueByIdentifier();
   }
 
   /**
-   * Helper function to add a flash message.
+   * Adds a message to the flash message queue.
    *
    * @param string $message The message
    * @param \TYPO3\CMS\Core\Messaging\FlashMessage $severity The severity
    * @return mixed
    */
   public function addFlashMessage($message, $severity) {
-    if ($this->checkDuplicateFlashMessage($message, $severity)) {
+    if ($this->isInFlashMessageQueue($message, $severity)) {
       return;
     }
 
@@ -64,7 +63,7 @@ class FlashMessageService extends AbstractService {
         break;
     }
 
-    $flashMessage = GeneralUtility::makeInstance('TYPO3\CMS\Core\Messaging\FlashMessage', htmlspecialchars($message), '', $severity);
+    $flashMessage = $this->objectManager->get('TYPO3\CMS\Core\Messaging\FlashMessage', htmlspecialchars($message), '', $severity);
 
     $this->flashMessageQueue->enqueue($flashMessage);
   }
@@ -79,13 +78,13 @@ class FlashMessageService extends AbstractService {
   }
 
   /**
-   * Helper function to check for duplicate flash message.
+   * Helper function to check if a message is already in the flash message queue.
    *
    * @param string $message The message
    * @param \TYPO3\CMS\Core\Messaging\FlashMessage $severity The severity
-   * @return boolean
+   * @return boolean If the flash message is already in the flash message queue
    */
-  protected function checkDuplicateFlashMessage($message, $severity) {
+  protected function isInFlashMessageQueue($message, $severity) {
     foreach($this->flashMessageQueue as $flashMessage) {
       if ($flashMessage->getMessage() == $message) {
         return true;
