@@ -1,8 +1,6 @@
 <?php
 namespace T3v\T3vCore\Utility\Page;
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-
 use \T3v\T3vCore\Service\PageService;
 use \T3v\T3vCore\Utility\AbstractHelper;
 
@@ -25,7 +23,7 @@ class BodyTagUtility extends AbstractUtility {
   public function __construct() {
     parent::__construct();
 
-    $this->pageService = GeneralUtility::makeInstance('T3v\T3vCore\Service\PageService');
+    $this->pageService = $this->objectManager->get('T3v\T3vCore\Service\PageService');
   }
 
   /**
