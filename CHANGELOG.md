@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added `FileService`
 * Added `DefaultViewHelper` and `LanguageViewHelper`
 * Added `findByPids` function to `AbstractRepository`
 * Improved `AbstractRepository`
