@@ -1,7 +1,7 @@
 [T3v Core]
 ==========
 
-**The [TYPO3voila (“UH LÁLÁ, TYPO3!”)] Core extension.**
+**The [TYPO3voila] Core extension.**
 
 Installation
 ------------
@@ -40,4 +40,4 @@ immediately yanked and / or a new version should be immediately released that re
 [Composer]: https://getcomposer.org "Dependency Manager for PHP"
 [here]: https://bitbucket.org/t3v/t3v_core/issues "Bitbucket Issue Tracker"
 [Semantic Versioning 2.0.0]: http://semver.org "Semantic Versioning 2.0.0"
-[TYPO3voila (“UH LÁLÁ, TYPO3!”)]: https://bitbucket.org/t3v "TYPO3voila (“UH LÁLÁ, TYPO3!”)"
+[TYPO3voila]: https://bitbucket.org/t3v "“UH LÁLÁ, TYPO3!”"
