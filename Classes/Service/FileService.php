@@ -32,23 +32,22 @@ class FileService extends AbstractService {
    *
    * @param array $file The file object
    * @param string $uploadsFolderPath The uploads folder path
-   * @return mixed The filename of the saved file or null if the file could not be saved
+   * @return mixed The file name of the saved file or null if the file could not be saved
    */
   public function saveFile($file, $uploadsFolderPath) {
-    if (is_array($file) && !empty($uploadsFolderPath)) {
-      $filename = $file['name'];
+    if (is_array($file) && !empty($file) && !empty($uploadsFolderPath)) {
+      $fileName          = $file['name'];
+      $temporaryFileName = $file['tmp_name'];
+      $uploadsFolderPath = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
+      $newFileName       = $this->basicFileUtility->getUniqueName($fileName, $uploadsFolderPath);
+      $fileCouldBeMoved  = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
 
-      if (!empty($filename)) {
-        $temporaryFilename = $file['tmp_name'];
-        $path              = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
-        $newFilename       = $this->basicFileUtility->getUniqueName($filename, $path);
-        $fileCouldBeMoved  = GeneralUtility::upload_copy_move($temporaryFilename, $newFilename);
-
-        if ($fileCouldBeMoved) {
-          return $newFilename;
-        }
+      if ($fileCouldBeMoved) {
+        return $newFileName;
       }
     }
+
+    return null;
   }
 
   /**

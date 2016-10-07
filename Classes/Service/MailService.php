@@ -23,8 +23,8 @@ class MailService extends AbstractService {
    * Sends a mail.
    *
    * @param array $from The sender
-   * @param array $to The recipients
-   * @param array $cc The recipients who will be copied in on the message
+   * @param array $to The recipient(s)
+   * @param array $cc The recipient(s) who will be copied in on the message
    * @param string $subject The subject
    * @param string $message The message
    * @param string $format The optional format either `text/plain` or `text/html`, defaults to `text/plain`
@@ -32,6 +32,8 @@ class MailService extends AbstractService {
    */
   public function send($from, $to, $cc, $subject, $message, $format = 'text/plain') {
     $mail = $this->objectManager->get('TYPO3\CMS\Core\Mail\MailMessage');
+
+    // === Built `to` ===
 
     if ($from) {
       $name    = trim($from['name']);
@@ -48,7 +50,8 @@ class MailService extends AbstractService {
       }
     }
 
-    // Built up `to` recipients
+    // === Built `to` ===
+
     $recipients = array();
 
     if (is_array($to)) {
@@ -72,7 +75,8 @@ class MailService extends AbstractService {
       return false;
     }
 
-    // Built up `cc` recipients
+    // === Built `cc` ===
+
     $recipients = array();
 
     if (is_array($cc)) {
@@ -94,17 +98,23 @@ class MailService extends AbstractService {
       $mail->setCc($recipients);
     }
 
+    // === Built `subject` ===
+
     if (!empty($subject)) {
       $mail->setSubject($subject);
     } else {
       return false;
     }
 
+    // === Built `message` ===
+
     if (!empty($message)) {
       $mail->setBody($message, $format);
     } else {
       return false;
     }
+
+    // === Nail shipping ===
 
     $mail->send();
 
