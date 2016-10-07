@@ -1,7 +1,7 @@
 {
   "name": "t3v/t3v_core",
   "type": "typo3-cms-extension",
-  "description": "The TYPO3voila Core extension.",
+  "description": "The TYPO3voila (“UH LÁLÁ, TYPO3!”) Core extension.",
   "authors": [
     {
       "name": "Maik Kempe",
@@ -9,7 +9,14 @@
       "homepage": "https://bitaculous.com"
     }
   ],
-  "keywords": ["T3v", "TYPO3voila", "Core", "TYPO3", "CMS"],
+  "keywords": [
+    "CMS"
+    "Core",
+    "T3v",
+    "TYPO3",
+    "TYPO3voila",
+    "UH LÁLÁ"
+  ],
   "homepage": "https://bitbucket.org/t3v/t3v_core",
   "version": "1.2.0",
   "require": {

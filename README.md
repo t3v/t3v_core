@@ -1,7 +1,7 @@
-[TYPO3voila Core]
+[T3v Core]
 =================
 
-**The [TYPO3voila] Core extension.**
+**The [T3v] Core extension.**
 
 Installation
 ------------
@@ -20,7 +20,7 @@ Installation
     }
     ```
 
-2. Run `composer update` to install all dependencies with Composer
+2. Run `composer install` or `composer update` to install all dependencies with Composer
 
 3. Include the TypoScript for `t3v_core` in the main TypoScript template
 
@@ -40,5 +40,5 @@ immediately yanked and / or a new version should be immediately released that re
 [Composer]: https://getcomposer.org "Dependency Manager for PHP"
 [here]: https://bitbucket.org/t3v/t3v_core/issues "Bitbucket Issue Tracker"
 [Semantic Versioning 2.0.0]: http://semver.org "Semantic Versioning 2.0.0"
-[TYPO3voila Core]: https://bitbucket.org/t3v/t3v_core "The TYPO3voila Core extension."
-[TYPO3voila]: # "UH LÁLÁ, TYPO3!"
+[T3v Core]: https://bitbucket.org/t3v/t3v_core "The T3v Core extension."
+[T3v]: https://bitbucket.org/t3v "T3v (“UH LÁLÁ, TYPO3!”)"
