@@ -1,7 +1,7 @@
 <?php
 $EM_CONF[$_EXTKEY] = array(
-  'title' => 'TYPO3voila Core',
-  'description' => 'The TYPO3voila Core extension.',
+  'title' => 'T3v Core',
+  'description' => 'The TYPO3voila (“UH LÁLÁ, TYPO3!”) Core extension.',
   'author' => 'Maik Kempe',
   'author_email' => 'mkempe@bitaculous.com',
   'author_company' => 'Bitaculous - It\'s all about the bits, baby!',
