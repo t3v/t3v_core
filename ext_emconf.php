@@ -1,5 +1,5 @@
 <?php
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
   'title' => 'T3v Core',
   'description' => 'The TYPO3voila Core extension.',
   'author' => 'Maik Kempe',
@@ -13,11 +13,11 @@ $EM_CONF[$_EXTKEY] = array(
   'uploadfolder' => false,
   'modify_tables' => '',
   'clearCacheOnLoad' => true,
-  'constraints' => array(
-    'depends' => array(
+  'constraints' => [
+    'depends' => [
       'typo3' => '7.6.0-8.1.99'
-    ),
-    'conflicts' => array(),
-    'suggests'  => array()
-  )
-);
+    ],
+    'conflicts' => [],
+    'suggests' => []
+  ]
+];
