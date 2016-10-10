@@ -3,10 +3,11 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+1.2.1
+-----
 
 * Improved `FileService` and `MailService`
+* Minor changes
 
 1.2.0
 -----
