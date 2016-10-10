@@ -1,7 +1,7 @@
 {
   "name": "t3v/t3v_core",
   "type": "typo3-cms-extension",
-  "description": "The TYPO3voila (“UH LÁLÁ, TYPO3!”) Core extension.",
+  "description": "The TYPO3voila Core extension.",
   "authors": [
     {
       "name": "Maik Kempe",
