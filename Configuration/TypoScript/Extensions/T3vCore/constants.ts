@@ -1,4 +1,4 @@
-# === Plugin Constants ===
+# === T3v Core Constants ===
 
 plugin {
   tx_t3vcore {

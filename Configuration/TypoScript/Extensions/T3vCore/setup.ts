@@ -1,4 +1,4 @@
-# === Plugin Configuration ===
+# === T3v Core Configuration ===
 
 plugin {
   tx_t3vcore {
