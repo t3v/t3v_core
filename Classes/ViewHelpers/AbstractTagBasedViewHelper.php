@@ -26,12 +26,22 @@ abstract class AbstractTagBasedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelp
   }
 
   /**
-   * Helper function to get the current system language UID.
+   * Helper function to get the current language UID.
+   *
+   * @param int $default The default value, defaults to `0`
+   * @return int The current language UID if available, otherwise the default
+   */
+  protected function getLanguageUid($default = 0) {
+    return $this->languageService->getLanguageUid($default);
+  }
+
+  /**
+   * Alias for `getLanguageUid`.
    *
    * @param int $default The default value, defaults to `0`
    * @return int The current system language UID if available, otherwise the default
    */
   protected function getSysLanguageUid($default = 0) {
-    return $this->languageService->getSysLanguageUid($default);
+    return $this->getLanguageUid($default);
   }
 }

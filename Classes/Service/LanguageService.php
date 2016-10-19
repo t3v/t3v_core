@@ -35,12 +35,12 @@ class LanguageService extends AbstractService {
   }
 
   /**
-   * Helper function to get the current system language UID.
+   * Helper function to get the current language UID.
    *
    * @param int $default The default value, defaults to `0`
-   * @return int The current system language UID if available, otherwise the default
+   * @return int The current language UID if available, otherwise the default
    */
-  public function getSysLanguageUid($default = 0) {
+  public function getLanguageUid($default = 0) {
     if (TYPO3_MODE === 'FE') {
       if (isset($GLOBALS['TSFE']->sys_language_uid)) {
         return $GLOBALS['TSFE']->sys_language_uid;
@@ -48,5 +48,15 @@ class LanguageService extends AbstractService {
     }
 
     return $default;
+  }
+
+  /**
+   * Alias for `getLanguageUid`.
+   *
+   * @param int $default The default value, defaults to `0`
+   * @return int The current system language UID if available, otherwise the default
+   */
+  public function getSysLanguageUid($default = 0) {
+    return $this->getLanguageUid($default);
   }
 }
