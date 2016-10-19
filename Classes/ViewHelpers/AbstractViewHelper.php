@@ -16,16 +16,6 @@ abstract class AbstractViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
   protected $languageService;
 
   /**
-   * Helper function to get the current system language UID.
-   *
-   * @param int $default The default value, defaults to `0`
-   * @return int The current system language UID if available, otherwise the default
-   */
-  protected function getSysLanguageUid($default = 0) {
-    return $this->languageService->getSysLanguageUid($default);
-  }
-
-  /**
    * Helper function to get the current language.
    *
    * @param string $default The default value, defaults to `en`
@@ -33,5 +23,15 @@ abstract class AbstractViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
    */
   protected function getLanguage($default = 'en') {
     return $this->languageService->getLanguage($default);
+  }
+
+  /**
+   * Helper function to get the current system language UID.
+   *
+   * @param int $default The default value, defaults to `0`
+   * @return int The current system language UID if available, otherwise the default
+   */
+  protected function getSysLanguageUid($default = 0) {
+    return $this->languageService->getSysLanguageUid($default);
   }
 }
