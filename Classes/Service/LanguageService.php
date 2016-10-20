@@ -19,19 +19,27 @@ class LanguageService extends AbstractService {
   /**
    * Helper function to get the current language.
    *
-   * @param string $default The default value, defaults to `en`
+   * @param string $default The default value, defaults to `default`
    * @return string The current language if available, otherwise the default
    */
-  public function getLanguage($default = 'en') {
+  public function getLanguage($default = 'default') {
+    $language = $default;
+
     if (TYPO3_MODE === 'FE') {
-      if (isset($GLOBALS['TSFE']->config['config']['language'])) {
-        return $GLOBALS['TSFE']->config['config']['language'];
-      }
-    } elseif (strlen($GLOBALS['BE_USER']->uc['lang']) > 0) {
-      return $GLOBALS['BE_USER']->uc['lang'];
+      $language = $GLOBALS['TSFE']->lang;
+    } elseif (true === is_object($GLOBALS['LANG'])) {
+      $language = $GLOBALS['LANG']->lang;
     }
 
-    return $default;
+    // if (TYPO3_MODE === 'FE') {
+    //   if (isset($GLOBALS['TSFE']->config['config']['language'])) {
+    //     $language = $GLOBALS['TSFE']->config['config']['language'];
+    //   }
+    // } elseif (strlen($GLOBALS['BE_USER']->uc['lang']) > 0) {
+    //   $language = $GLOBALS['BE_USER']->uc['lang'];
+    // }
+
+    return $language;
   }
 
   /**
@@ -41,13 +49,21 @@ class LanguageService extends AbstractService {
    * @return int The current language UID if available, otherwise the default
    */
   public function getLanguageUid($default = 0) {
+    $languageUid = $default;
+
     if (TYPO3_MODE === 'FE') {
-      if (isset($GLOBALS['TSFE']->sys_language_uid)) {
-        return $GLOBALS['TSFE']->sys_language_uid;
-      }
+      $languageUid = $GLOBALS['TSFE']->sys_language_uid;
+    } elseif (true === is_object($GLOBALS['LANG'])) {
+      $languageUid = $GLOBALS['LANG']->sys_language_uid;
     }
 
-    return $default;
+    // if (TYPO3_MODE === 'FE') {
+    //    if (isset($GLOBALS['TSFE']->sys_language_uid)) {
+    //     $languageUid = $GLOBALS['TSFE']->sys_language_uid;
+    //   }
+    // }
+
+    return $languageUid;
   }
 
   /**

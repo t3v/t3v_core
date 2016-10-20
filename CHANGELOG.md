@@ -6,6 +6,8 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `LanguageService`
+* Added `ArrayViewHelper`
 * Added `LocalizationUtility` (Draft)
 * Added `SysLanguageUidViewHelper`
 * Moved `LanguageViewHelper` under `Page` namespace
