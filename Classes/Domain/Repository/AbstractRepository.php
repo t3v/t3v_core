@@ -7,19 +7,34 @@ use \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use \TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use \TYPO3\CMS\Extbase\Persistence\Repository;
 
+use \T3v\T3vCore\Service\LanguageService;
+
 /**
  * Abstract Repository Class
  *
  * @package T3v\T3vCore\Domain\Repository
  */
 abstract class AbstractRepository extends Repository {
+  /**
+   * Language Service
+   *
+   * @var \T3v\T3vCore\Service\LanguageService
+   * @inject
+   */
+  protected $languageService;
+
+  /**
+   * The default orderings.
+   *
+   * @var array
+   */
   protected $defaultOrderings = [
     'crdate' => QueryInterface::ORDER_DESCENDING,
     'uid'    => QueryInterface::ORDER_DESCENDING
   ];
 
   /**
-   * Life cycle method.
+   * The life cycle method.
    *
    * @return void
    */
