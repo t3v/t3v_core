@@ -33,7 +33,7 @@ class MailService extends AbstractService {
   public function send($from, $to, $cc, $subject, $message, $format = 'text/plain') {
     $mail = $this->objectManager->get('TYPO3\CMS\Core\Mail\MailMessage');
 
-    // === Built `to` ===
+    // === Built `from` ===
 
     if ($from) {
       $name    = trim($from['name']);
@@ -114,7 +114,7 @@ class MailService extends AbstractService {
       return false;
     }
 
-    // === Nail shipping ===
+    // === Mail shipping ===
 
     $mail->send();
 

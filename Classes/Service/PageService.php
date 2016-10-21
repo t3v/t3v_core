@@ -117,7 +117,7 @@ class PageService extends AbstractService {
    * @param boolean $overlay If set, the language record (overlay) will be applied, defaults to `true`
    * @return array The pages
    */
-  public function getPagesByUids($uids, $overlay) {
+  public function getPagesByUids($uids, $overlay = true) {
     return $this->getPages($uids, $overlay);
   }
 
