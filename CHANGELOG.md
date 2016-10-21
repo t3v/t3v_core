@@ -3,14 +3,14 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+1.3.0
+-----
 
 * Inject `LanguageService` into `AbstractRepository`
 * Improved `LanguageService`
 * Added `ArrayViewHelper`
 * Added `LocalizationUtility` (Draft)
-* Added `SysLanguageUidViewHelper`
+* Added `LanguageUidViewHelper`
 * Moved `LanguageViewHelper` under `Page` namespace
 
 1.2.1

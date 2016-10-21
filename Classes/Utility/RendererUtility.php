@@ -31,10 +31,8 @@ class RendererUtility extends AbstractUtility {
    */
   public function getFluidRendererForTemplate($template, $format = 'html') {
     $configurationManager = $this->objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
-
-    $configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-
-    $templateRootPath = GeneralUtility::getFileAbsFileName($configuration['view']['templateRootPath']);
+    $configuration        = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+    $templateRootPath     = GeneralUtility::getFileAbsFileName($configuration['view']['templateRootPath']);
 
     $renderer = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
     $renderer->setTemplatePathAndFilename($templateRootPath . $template);
