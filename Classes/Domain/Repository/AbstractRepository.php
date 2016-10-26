@@ -47,6 +47,27 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
+   * Finder to query by UID.
+   *
+   * @param int $uid The UID
+   * @param array $querySettings The optional query settings
+   * @return mixed The first found object or null if no object was found
+   */
+  public function findByUid($uid, $querySettings = []) {
+    $uid = intval($uid);
+
+    // Create query
+    $query = $this->createquery();
+
+    // Apply query settings
+    $query = $this->applyQuerySettings($query, $querySettings);
+
+    $query->matching($query->equals('uid', $uid));
+
+    return $query->execute()->getFirst();
+  }
+
+  /**
    * Finder to query by multiple UIDs.
    *
    * @param mixed $uids The UIDs as array or as string, seperated by `,`
@@ -96,6 +117,8 @@ abstract class AbstractRepository extends Repository {
    * @return mixed The first found object or null if no object was found
    */
   public function findByPid($pid, $querySettings = []) {
+    $pid = intval($pid);
+
     // Create query
     $query = $this->createquery();
 

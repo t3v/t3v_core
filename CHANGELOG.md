@@ -3,6 +3,11 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Implemented custom `findByUid` finder in `AbstractRepository`
+
 1.3.0
 -----
 
