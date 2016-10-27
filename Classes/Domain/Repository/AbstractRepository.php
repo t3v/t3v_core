@@ -47,7 +47,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Finder to query by UID.
+   * Custom finder to query by UID, overrides the default one.
    *
    * @param int $uid The UID
    * @param array $querySettings The optional query settings
