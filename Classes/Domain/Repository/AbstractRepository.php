@@ -53,7 +53,7 @@ abstract class AbstractRepository extends Repository {
    * @param array $querySettings The optional query settings
    * @return mixed The first found object or null if no object was found
    */
-  public function findByUid($uid, $querySettings = []) {
+  public function findByUid($uid, $querySettings = ['respectSysLanguage' => false]) {
     $uid = intval($uid);
 
     // Create query
@@ -75,7 +75,7 @@ abstract class AbstractRepository extends Repository {
    * @param array $querySettings The optional query settings
    * @return \Extbase\Persistence\QueryResult The found objects
    */
-  public function findByUids($uids, $limit = null, $querySettings = []) {
+  public function findByUids($uids, $limit = null, $querySettings = ['respectSysLanguage' => false]) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
