@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Implemented `StringUtility`
 * Implemented custom `findByUid` finder in `AbstractRepository`
 
 1.3.0
