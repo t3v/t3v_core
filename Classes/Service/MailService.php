@@ -33,7 +33,7 @@ class MailService extends AbstractService {
   public function send($from, $to, $cc, $subject, $message, $format = 'text/plain') {
     $mail = $this->objectManager->get('TYPO3\CMS\Core\Mail\MailMessage');
 
-    // === Built `from` ===
+    // === From ===
 
     if ($from) {
       $name    = trim($from['name']);
@@ -50,55 +50,72 @@ class MailService extends AbstractService {
       }
     }
 
-    // === Built `to` ===
+    // === To / Cc ===
 
-    $recipients = array();
+    $toRecipients = [];
+    $ccRecipients = [];
 
     if (is_array($to)) {
-      foreach ($to as $pair) {
-        $name    = trim($pair['name']);
-        $address = trim($pair['address']);
+      $recipients = [];
+
+      foreach ($to as $recipient) {
+        $name    = trim($recipient['name']);
+        $address = trim($recipient['address']);
 
         if ($address && GeneralUtility::validEmail($address)) {
+          $recipients[] = $recipient;
+        }
+      }
+
+      for ($i = 0; $i < count($recipients); $i++) {
+        $recipient = $recipients[$i];
+        $name      = trim($recipient['name']);
+        $address   = trim($recipient['address']);
+
+        if ($i == 0) { // First recipient
+          // Add first recipient to `To`
           if (!empty($name)) {
-            $recipients[$address] = $name;
+            $toRecipients[$address] = $name;
           } else {
-            $recipients[] = $address;
+            $toRecipients[] = $address;
+          }
+        } else { // Other recipients
+          // Add other recipients to `Cc`
+          if (!empty($name)) {
+            $ccRecipients[$address] = $name;
+          } else {
+            $ccRecipients[] = $address;
           }
         }
       }
     }
 
-    if (count($recipients)) {
-      $mail->setTo($recipients);
+    if (count($toRecipients)) {
+      $mail->setTo($toRecipients);
     } else {
       return false;
     }
 
-    // === Built `cc` ===
-
-    $recipients = array();
-
     if (is_array($cc)) {
-      foreach ($cc as $pair) {
-        $name    = trim($pair['name']);
-        $address = trim($pair['address']);
+      foreach ($cc as $recipient) {
+        $name    = trim($recipient['name']);
+        $address = trim($recipient['address']);
 
         if ($address && GeneralUtility::validEmail($address)) {
           if (!empty($name)) {
-            $recipients[$address] = $name;
+            $ccRecipients[$address] = $name;
           } else {
-            $recipients[] = $address;
+            $ccRecipients[] = $address;
           }
         }
       }
     }
 
-    if (count($recipients)) {
-      $mail->setCc($recipients);
+    if (count($ccRecipients)) {
+      $mail->setCc($ccRecipients);
     }
 
-    // === Built `subject` ===
+    // === Subject ===
 
     if (!empty($subject)) {
       $mail->setSubject($subject);
@@ -106,7 +123,7 @@ class MailService extends AbstractService {
       return false;
     }
 
-    // === Built `message` ===
+    // === Message ===
 
     if (!empty($message)) {
       $mail->setBody($message, $format);
