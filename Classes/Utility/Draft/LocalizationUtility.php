@@ -25,7 +25,7 @@ class LocalizationUtility extends \TYPO3\CMS\Extbase\Utility\LocalizationUtility
   public static function initializeLocalization($extensionName, $enforcedLanguage = NULL) {
     if (!is_null($enforcedLanguage)) {
       // Clear language contents as we load another language
-      self::$LOCAL_LANG = array();
+      self::$LOCAL_LANG = [];
     } else if (isset(self::$LOCAL_LANG[$extensionName])) {
       return;
     }
@@ -58,7 +58,7 @@ class LocalizationUtility extends \TYPO3\CMS\Extbase\Utility\LocalizationUtility
    * @return void
    */
   protected static function setLanguageKeys() {
-    self::$alternativeLanguageKeys = array();
+    self::$alternativeLanguageKeys = [];
 
     if (is_null($enforcedLanguage)) {
       self::$languageKey = 'default';
