@@ -15,7 +15,7 @@ class StringUtility extends AbstractUtility {
    * @param string $input The input
    * @param string $separator The optional separator, defaults to `_`
    * @param boolean $capitalizeFirstCharacter If the first character should be capitalized, defaults to `false`
-   * @return string The camelize input
+   * @return string The camelized output
    */
   public static function camelize($input, $separator = '_', $capitalizeFirstCharacter = false) {
     $output = strtolower($input);
