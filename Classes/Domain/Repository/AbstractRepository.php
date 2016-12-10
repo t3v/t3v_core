@@ -62,7 +62,18 @@ abstract class AbstractRepository extends Repository {
     // Apply query settings
     $query = $this->applyQuerySettings($query, $querySettings);
 
-    $query->matching($query->equals('uid', $uid));
+    // Built up constraints
+    $constraints = array(
+      $query->equals('deleted', 0),
+      $query->equals('hidden', 0)
+    );
+
+    if (!empty($uid)) {
+      $constraints[] = $query->equals('uid', $uid);
+    }
+
+    // Set constraints
+    $query->matching($query->logicalAnd($constraints));
 
     return $query->execute()->getFirst();
   }
@@ -125,7 +136,18 @@ abstract class AbstractRepository extends Repository {
     // Apply query settings
     $query = $this->applyQuerySettings($query, $querySettings);
 
-    $query->matching($query->equals('pid', $pid));
+    // Built up constraints
+    $constraints = array(
+      $query->equals('deleted', 0),
+      $query->equals('hidden', 0)
+    );
+
+    if (!empty($pid)) {
+      $constraints[] = $query->equals('pid', $pid);
+    }
+
+    // Set constraints
+    $query->matching($query->logicalAnd($constraints));
 
     return $query->execute()->getFirst();
   }
@@ -170,6 +192,53 @@ abstract class AbstractRepository extends Repository {
     $query->setOrderings($this->orderByField('pid', $pids));
 
     return $query->execute();
+  }
+
+  /**
+   * Get the raw attribute of a passed in model.
+   *
+   * @param object $model The passed in model
+   * @param string $attribute The name of the attribute
+   * @param int $languageUid The language UID, defaults to `0`
+   * @param boolean $respectSysLanguage Respect the system language, defaults to `false`
+   * @return mixed The raw attribute
+   */
+  public function getRawAttribute($model, $attribute, $languageUid = 0, $respectSysLanguage = false) {
+    $result = null;
+
+    if (is_object($model)) {
+      $uid       = intval($model->getUid());
+      $attribute = (string)$attribute;
+
+      if ($uid && $attribute) {
+        // Create query
+        $query = $this->createquery();
+
+        // Apply query settings
+        $settings = $query->getQuerySettings();
+        $settings->setLanguageUid($languageUid);
+        $settings->setRespectSysLanguage($respectSysLanguage);
+
+        // Built up constraints
+        $constraints = array(
+          $query->equals('deleted', 0),
+          $query->equals('hidden', 0)
+        );
+
+        if (!empty($uid)) {
+          $constraints[] = $query->equals('uid', $uid);
+        }
+
+        // Set constraints
+        $query->matching($query->logicalAnd($constraints));
+
+        $rawModel           = $query->execute(true);
+        $rawModelAttributes = $rawModel[0];
+        $result             = $rawModelAttributes[$attribute];
+      }
+    }
+
+    return $result;
   }
 
   /**
