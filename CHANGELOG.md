@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Renamed `getRawAttribute` to `getRawModelByUid`
 * Added `getRawAttribute` function to `AbstractRepository`
 * Improved constraints in `AbstractRepository`
 * Added `UrlUtility`
