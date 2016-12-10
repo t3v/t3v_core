@@ -6,6 +6,8 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added `getRawAttribute` function to `AbstractRepository`
+* Improved constraints in `AbstractRepository`
 * Added `UrlUtility`
 
 1.4.0
