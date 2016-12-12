@@ -40,6 +40,7 @@ class FileService extends AbstractService {
       $temporaryFileName = $file['tmp_name'];
       $uploadsFolderPath = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
       $newFileName       = $this->basicFileUtility->getUniqueName($fileName, $uploadsFolderPath);
+      $newFileName       = strtolower($newFileName);
       $fileCouldBeMoved  = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
 
       if ($fileCouldBeMoved) {

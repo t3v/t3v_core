@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Lowercase file name when saving a file (`FileService`)
 * Improved `ArrayViewHelper`
 * Improved `AbstractRepository`
 
