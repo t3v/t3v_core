@@ -3,6 +3,12 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Improved `ArrayViewHelper`
+* Improved `AbstractRepository`
+
 1.5.0
 -----
 
