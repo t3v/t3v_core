@@ -75,7 +75,10 @@ abstract class AbstractRepository extends Repository {
     // Set constraints
     $query->matching($query->logicalAnd($constraints));
 
-    return $query->execute()->getFirst();
+    // Execute query
+    $result = $query->execute()->getFirst();
+
+    return $result;
   }
 
   /**
@@ -117,7 +120,10 @@ abstract class AbstractRepository extends Repository {
 
     $query->setOrderings($this->orderByField('uid', $uids));
 
-    return $query->execute();
+    // Execute query
+    $result = $query->execute();
+
+    return $result;
   }
 
   /**
@@ -149,7 +155,10 @@ abstract class AbstractRepository extends Repository {
     // Set constraints
     $query->matching($query->logicalAnd($constraints));
 
-    return $query->execute()->getFirst();
+    // Execute query
+    $result = $query->execute()->getFirst();
+
+    return $result;
   }
 
   /**
@@ -191,7 +200,10 @@ abstract class AbstractRepository extends Repository {
 
     $query->setOrderings($this->orderByField('pid', $pids));
 
-    return $query->execute();
+    // Execute query
+    $result = $query->execute();
+
+    return $result;
   }
 
   /**
@@ -227,6 +239,7 @@ abstract class AbstractRepository extends Repository {
       // Set constraints
       $query->matching($query->logicalAnd($constraints));
 
+      // Execute query
       $result = $query->execute(true);
 
       $model = $result[0];
