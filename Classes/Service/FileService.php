@@ -30,7 +30,7 @@ class FileService extends AbstractService {
   /**
    * Saves a file.
    *
-   * @param array $file The file object
+   * @param object $file The file object
    * @param string $uploadsFolderPath The uploads folder path
    * @return mixed The file name of the saved file or null if the file could not be saved
    */
@@ -39,8 +39,7 @@ class FileService extends AbstractService {
       $fileName          = $file['name'];
       $temporaryFileName = $file['tmp_name'];
       $uploadsFolderPath = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
-      $newFileName       = $this->basicFileUtility->getUniqueName($fileName, $uploadsFolderPath);
-      $newFileName       = strtolower($newFileName);
+      $newFileName       = $this->basicFileUtility->getUniqueName(strtolower($fileName), $uploadsFolderPath);
       $fileCouldBeMoved  = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
 
       if ($fileCouldBeMoved) {
@@ -54,7 +53,7 @@ class FileService extends AbstractService {
   /**
    * Deletes a file.
    *
-   * @param string $file The file
+   * @param object $file The file object
    * @return void
    */
   protected function deleteFile($file) {
