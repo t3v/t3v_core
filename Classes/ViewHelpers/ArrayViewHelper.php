@@ -17,7 +17,7 @@ class ArrayViewHelper extends AbstractViewHelper {
    * @return mixed The value
    */
   public function render($array, $key) {
-    if (is_array($array)) {
+    if (is_array($array) && $key) {
       return $array[$key];
     }
   }
