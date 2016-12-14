@@ -69,8 +69,8 @@ class FileService extends AbstractService {
   protected function normalizeFileName($fileName) {
     $fileName = strtolower($fileName);
 
-    $search   = ['ä', 'ö', 'ü', 'ß'];
-    $replace  = ['ae', 'oe', 'ue', 'ss'];
+    $search   = ['ä', 'ö', 'ü', 'ß', ' '];
+    $replace  = ['ae', 'oe', 'ue', 'ss', '_'];
     $fileName = str_replace($search, $replace, $fileName);
 
     return $fileName;
