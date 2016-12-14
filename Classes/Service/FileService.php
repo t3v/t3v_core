@@ -39,7 +39,7 @@ class FileService extends AbstractService {
       $fileName          = $file['name'];
       $temporaryFileName = $file['tmp_name'];
       $uploadsFolderPath = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
-      $newFileName       = $this->basicFileUtility->getUniqueName(strtolower($fileName), $uploadsFolderPath);
+      $newFileName       = $this->basicFileUtility->getUniqueName($this->normalizeFileName($fileName), $uploadsFolderPath);
       $fileCouldBeMoved  = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
 
       if ($fileCouldBeMoved) {
@@ -58,5 +58,21 @@ class FileService extends AbstractService {
    */
   protected function deleteFile($file) {
     unlink($file);
+  }
+
+  /**
+   * Helper function to normalize a file name.
+   *
+   * @param string $fileName The file name
+   * @return string The normalized file name
+   */
+  protected function normalizeFileName($fileName) {
+    $fileName = strtolower($fileName);
+
+    $search   = ['ä', 'ö', 'ü', 'ß'];
+    $replace  = ['ae', 'oe', 'ue', 'ss'];
+    $fileName = str_replace($search, $replace, $fileName);
+
+    return $fileName;
   }
 }
