@@ -3,10 +3,11 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+1.5.1
+-----
 
-* Lowercase file name when saving a file (`FileService`)
+* Improved `FileService`
+  * Lowercase and normalize file name when saving a file
 * Improved `ArrayViewHelper`
 * Improved `AbstractRepository`
 
