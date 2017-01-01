@@ -6,22 +6,8 @@
 Installation
 ------------
 
-1. Add `t3v_core` to the [Composer] configuration (`composer.json`):
-
-    ```json
-    {
-      "repositories": [
-        { "type": "vcs", "url": "https://github.com/t3v/t3v_core" }
-      ],
-
-      "require": {
-        "t3v/t3v_core": "~1.6.0"
-      }
-    }
-    ```
-
+1. Add `t3v_core` to the [Composer] configuration (`composer.json`)
 2. Run `composer install` or `composer update` to install all dependencies with Composer
-
 3. Include the TypoScript for `t3v_core` in the main TypoScript template
 
 Bug Reports
