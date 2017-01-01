@@ -1,7 +1,6 @@
 <?php
 namespace T3v\T3vCore\Service;
 
-use \TYPO3\CMS\Core\SingletonInterface;
 use \TYPO3\CMS\Core\Utility\File\BasicFileUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
