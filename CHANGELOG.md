@@ -3,6 +3,12 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Switched to GitHub
+* Released under the MIT License
+
 1.5.1
 -----
 

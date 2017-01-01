@@ -17,7 +17,8 @@
     "TYPO3voila",
     "UH LÁLÁ"
   ],
-  "homepage": "https://bitbucket.org/t3v/t3v_core",
+  "homepage": "https://github.com/t3v/t3v_core",
+  "license": "MIT",
   "version": "1.5.1",
   "require": {
     "php": ">= 5.6",
