@@ -22,6 +22,36 @@ class QueryResultService extends AbstractService {
   }
 
   /**
+   * Filters a query result by language presets.
+   *
+   * @param array $queryResult The query result
+   * @param array $presets The language presets
+   * @return array The filtered query result
+   */
+  public function filterByLanguagePresets($queryResult, $presets) {
+    $result = $queryResult;
+
+    if (is_array($presets) && !empty($presets)) {
+      $sysLanguageUid = $this->languageService->getSysLanguageUid();
+      $preset         = intval($presets[$sysLanguageUid]);
+
+      if (isset($preset)) {
+        $result = [];
+
+        foreach ($queryResult as $object) {
+          $uid = $object->getSysLanguageUid();
+
+          if (isset($uid) && $uid == $preset) {
+            $result[] = $object;
+          }
+        }
+      }
+    }
+
+    return $result;
+  }
+
+  /**
    * Filters a query result by system language.
    *
    * @param array $queryResult The query result
@@ -29,11 +59,12 @@ class QueryResultService extends AbstractService {
    * @return array The filtered query result
    */
   public function filterBySysLanguage($queryResult, $exceptions = []) {
+    $result = $queryResult;
+
     if (is_string($exceptions)) {
       $exceptions = GeneralUtility::intExplode(',', $exceptions, true);
     }
 
-    $result         = $queryResult;
     $sysLanguageUid = $this->languageService->getSysLanguageUid();
 
     if (!in_array($sysLanguageUid, $exceptions, true)) {
@@ -42,7 +73,7 @@ class QueryResultService extends AbstractService {
       foreach ($queryResult as $object) {
         $uid = $object->getSysLanguageUid();
 
-        if ($uid && $uid == $sysLanguageUid) {
+        if (isset($uid) && $uid == $sysLanguageUid) {
           $result[] = $object;
         }
       }
