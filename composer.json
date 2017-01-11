@@ -19,7 +19,7 @@
   ],
   "homepage": "https://t3v.github.io/t3v_core/",
   "license": "MIT",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "require": {
     "php": ">= 5.6",
     "typo3/cms-core": ">= 7.6.0, < 8.1.0"
