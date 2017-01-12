@@ -3,6 +3,12 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Updated `PageService` and `LanguageUidViewHelper`
+* Added `Page/GetViewHelper`
+
 1.7.1
 -----
 
