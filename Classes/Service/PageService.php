@@ -63,6 +63,7 @@ class PageService extends AbstractService {
    * @return array The row for the page or empty if no page was found
    */
   public function getPage($uid, $overlay = true) {
+    $uid  = intval($uid);
     $page = $this->pageRepository->getPage($uid);
 
     if ($overlay) {
@@ -82,6 +83,8 @@ class PageService extends AbstractService {
    * @return array The row for the page or empty if no page was found
    */
   public function getPageByUid($uid, $overlay = true) {
+    $uid  = intval($uid);
+
     return $this->getPage($uid, $overlay);
   }
 
@@ -174,6 +177,7 @@ class PageService extends AbstractService {
    * @return mixed The name of the backend layout or null if no backend layout was found
    */
   public function getBackendLayoutForPage($uid) {
+    $uid      = intval($uid);
     $rootLine = $this->pageRepository->getRootLine($uid);
 
     $index = -1;
