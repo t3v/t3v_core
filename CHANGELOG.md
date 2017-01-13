@@ -6,12 +6,12 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
-* Cleaned up services
+* Added `PageViewHelper`
 * Updated `PageService` and `LanguageUidViewHelper`
-* Added `Page/GetViewHelper`
+* Cleaned up services
 * Updated Composer configuration
 * Updated `ext_emconf.php`
-* Updated `phpunit/phpunit` dependency
+* Updated `phpunit` dependency
 
 1.7.1
 -----

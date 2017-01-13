@@ -1,14 +1,14 @@
 <?php
-namespace T3v\T3vCore\ViewHelpers\Page;
+namespace T3v\T3vCore\ViewHelpers;
 
 use \T3v\T3vCore\ViewHelpers\AbstractViewHelper;
 
 /**
- * Get View Helper Class
+ * Page View Helper Class
  *
- * @package T3v\T3vCore\ViewHelpers\Page
+ * @package T3v\T3vCore\ViewHelpers
  */
-class GetViewHelper extends AbstractViewHelper {
+class PageViewHelper extends AbstractViewHelper {
   /**
    * @var \T3v\T3vCore\Service\PageService
    * @inject
