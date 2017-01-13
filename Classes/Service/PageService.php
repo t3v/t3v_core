@@ -55,8 +55,9 @@ class PageService extends AbstractService {
    * @return array The row for the current page or empty if no page was found
    */
   public function getCurrentPage($overlay = true) {
-    $pid  = intval($GLOBALS['TSFE']->id);
-    $page = $this->getPage($pid, $overlay);
+    $uid     = intval($GLOBALS['TSFE']->id);
+    $overlay = (boolean) $overlay;
+    $page    = $this->getPage($uid, $overlay);
 
     return $page;
   }
@@ -69,8 +70,9 @@ class PageService extends AbstractService {
    * @return array The row for the page or empty if no page was found
    */
   public function getPage($uid, $overlay = true) {
-    $uid  = intval($uid);
-    $page = $this->pageRepository->getPage($uid);
+    $uid     = intval($uid);
+    $overlay = (boolean) $overlay;
+    $page    = $this->pageRepository->getPage($uid);
 
     if ($overlay) {
       $sysLanguageUid = $this->languageService->getSysLanguageUid();
@@ -89,7 +91,8 @@ class PageService extends AbstractService {
    * @return array The row for the page or empty if no page was found
    */
   public function getPageByUid($uid, $overlay = true) {
-    $uid = intval($uid);
+    $uid     = intval($uid);
+    $overlay = (boolean) $overlay;
 
     return $this->getPage($uid, $overlay);
   }
@@ -106,7 +109,8 @@ class PageService extends AbstractService {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
 
-    $pages = [];
+    $overlay = (boolean) $overlay;
+    $pages   = [];
 
     foreach($uids as $uid) {
       $page = $this->getPage($uid, $overlay);
@@ -127,6 +131,12 @@ class PageService extends AbstractService {
    * @return array The pages
    */
   public function getPagesByUids($uids, $overlay = true) {
+    if (is_string($uids)) {
+      $uids = GeneralUtility::intExplode(',', $uids, true);
+    }
+
+    $overlay = (boolean) $overlay;
+
     return $this->getPages($uids, $overlay);
   }
 
@@ -140,8 +150,11 @@ class PageService extends AbstractService {
    * @return array The subpages
    */
   public function getSubpages($pid, $recursion = 1, $exclude = true, $overlay = true) {
-    $subpages = [];
-
+    $pid          = intval($pid);
+    $recursion    = intval($recursion);
+    $exclude      = (boolean) $exclude;
+    $overlay      = (boolean) $overlay;
+    $subpages     = [];
     $subpagesUids = $this->getSubpagesUids($pid, $recursion, $exclude);
 
     foreach ($subpagesUids as $subpageUid) {
@@ -164,6 +177,9 @@ class PageService extends AbstractService {
    * @return array The subpages UIDs
    */
   public function getSubpagesUids($pid, $recursion = 1, $exclude = true) {
+    $pid          = intval($pid);
+    $recursion    = intval($recursion);
+    $exclude      = (boolean) $exclude;
     $subpagesUids = [];
 
     $subpagesTreeList = $this->queryGenerator->getTreeList($pid, $recursion, 0, 1);
