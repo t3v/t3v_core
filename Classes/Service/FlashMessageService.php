@@ -14,11 +14,15 @@ use \T3v\T3vCore\Service\AbstractService;
  */
 class FlashMessageService extends AbstractService {
   /**
+   * The flash message service
+   *
    * @var \TYPO3\CMS\Core\Messaging\FlashMessageService
    */
   protected $flashMessageService;
 
   /**
+   * The flash message queue
+   *
    * @var \TYPO3\CMS\Core\Messaging\FlashMessageQueue
    */
   protected $flashMessageQueue;

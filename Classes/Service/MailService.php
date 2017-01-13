@@ -13,13 +13,6 @@ use \T3v\T3vCore\Service\AbstractService;
  */
 class MailService extends AbstractService {
   /**
-   * The constructor function.
-   */
-  public function __construct() {
-    parent::__construct();
-  }
-
-  /**
    * Sends a mail.
    *
    * @param array $from The sender

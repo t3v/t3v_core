@@ -12,6 +12,8 @@ use \TYPO3\CMS\Extbase\Object\ObjectManager;
  */
 abstract class AbstractService implements SingletonInterface {
   /**
+   * The object manager
+   *
    * @var \TYPO3\CMS\Extbase\Object\ObjectManager
    */
   protected $objectManager;

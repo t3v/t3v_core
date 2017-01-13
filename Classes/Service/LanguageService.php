@@ -10,13 +10,6 @@ use \T3v\T3vCore\Service\AbstractService;
  */
 class LanguageService extends AbstractService {
   /**
-   * The constructor function.
-   */
-  public function __construct() {
-    parent::__construct();
-  }
-
-  /**
    * Helper function to get the current language.
    *
    * @param string $default The default value, defaults to `default`
