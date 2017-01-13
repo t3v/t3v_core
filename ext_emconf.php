@@ -8,16 +8,24 @@ $EM_CONF[$_EXTKEY] = [
   'category' => 'be',
   'state' => 'stable',
   'version' => '1.7.1',
-  'shy' => false,
   'createDirs' => '',
   'uploadfolder' => false,
-  'modify_tables' => '',
-  'clearCacheOnLoad' => true,
+  'clearCacheOnLoad' => false,
   'constraints' => [
     'depends' => [
       'typo3' => '7.6.0-8.1.99'
     ],
     'conflicts' => [],
     'suggests' => []
+  ],
+  'autoload' => [
+    'psr-4' => [
+      'T3v\\T3vCore\\' => 'Classes'
+    ]
+  ],
+  'autoload-dev' => [
+    'psr-4' => [
+      'T3v\\T3vCore\\Tests\\' => 'Tests'
+    ]
   ]
 ];
