@@ -89,7 +89,7 @@ class PageService extends AbstractService {
    * @return array The row for the page or empty if no page was found
    */
   public function getPageByUid($uid, $overlay = true) {
-    $uid  = intval($uid);
+    $uid = intval($uid);
 
     return $this->getPage($uid, $overlay);
   }
