@@ -22,6 +22,8 @@ abstract class AbstractTagBasedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelp
    * @return string The current language if available, otherwise the default
    */
   protected function getLanguage($default = 'en') {
+    $default = (string) $default;
+
     return $this->languageService->getLanguage($default);
   }
 
@@ -32,6 +34,8 @@ abstract class AbstractTagBasedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelp
    * @return int The current language UID if available, otherwise the default
    */
   protected function getLanguageUid($default = 0) {
+    $default = intval($default);
+
     return $this->languageService->getLanguageUid($default);
   }
 
@@ -42,6 +46,8 @@ abstract class AbstractTagBasedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelp
    * @return int The current system language UID if available, otherwise the default
    */
   protected function getSysLanguageUid($default = 0) {
+    $default = intval($default);
+
     return $this->getLanguageUid($default);
   }
 }

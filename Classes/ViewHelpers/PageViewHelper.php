@@ -18,11 +18,14 @@ class PageViewHelper extends AbstractViewHelper {
   /**
    * The View Helper render function.
    *
-   * @param string $uid The UID of the page
-   * @param boolean $overlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @param int $uid The UID of the page
+   * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
    * @return object The page object
    */
-  public function render($uid, $overlay = true) {
-    return $this->pageService->getPageByUid($uid, $overlay);
+  public function render($uid, $languageOverlay = true) {
+    $uid             = intval($uid);
+    $languageOverlay = (boolean) $languageOverlay;
+
+    return $this->pageService->getPageByUid($uid, $languageOverlay);
   }
 }
