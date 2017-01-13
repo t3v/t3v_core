@@ -6,8 +6,10 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Cleaned up services
 * Updated `PageService` and `LanguageUidViewHelper`
 * Added `Page/GetViewHelper`
+* Updated `phpunit/phpunit` dependency
 
 1.7.1
 -----
