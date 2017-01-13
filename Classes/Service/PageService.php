@@ -49,33 +49,39 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Helper function to get the current page.
+   * Get the current page.
    *
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The row for the current page or empty if no page was found
    */
-  public function getCurrentPage($languageOverlay = true) {
+  public function getCurrentPage($languageOverlay = true, $sysLanguageUid = -1) {
     $uid             = intval($GLOBALS['TSFE']->id);
     $languageOverlay = (boolean) $languageOverlay;
-    $page            = $this->getPage($uid, $languageOverlay);
+    $sysLanguageUid  = intval($sysLanguageUid);
+    $page            = $this->getPage($uid, $languageOverlay, $sysLanguageUid);
 
     return $page;
   }
 
   /**
-   * Helper function to get a page by UID.
+   * Get a page by UID.
    *
    * @param int $uid The UID of the page
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The row for the page or empty if no page was found
    */
-  public function getPage($uid, $languageOverlay = true) {
+  public function getPage($uid, $languageOverlay = true, $sysLanguageUid = -1) {
     $uid             = intval($uid);
     $languageOverlay = (boolean) $languageOverlay;
+    $sysLanguageUid  = intval($sysLanguageUid);
     $page            = $this->pageRepository->getPage($uid);
 
     if ($languageOverlay) {
-      $sysLanguageUid = $this->languageService->getSysLanguageUid();
+      if ($sysLanguageUid < 0) {
+        $sysLanguageUid = $this->languageService->getSysLanguageUid();
+      }
 
       $page = $this->pageRepository->getPageOverlay($page, $sysLanguageUid);
     }
@@ -88,32 +94,36 @@ class PageService extends AbstractService {
    *
    * @param int $uid The UID of the page
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The row for the page or empty if no page was found
    */
-  public function getPageByUid($uid, $languageOverlay = true) {
+  public function getPageByUid($uid, $languageOverlay = true, $sysLanguageUid = -1) {
     $uid             = intval($uid);
     $languageOverlay = (boolean) $languageOverlay;
+    $sysLanguageUid  = intval($sysLanguageUid);
 
-    return $this->getPage($uid, $languageOverlay);
+    return $this->getPage($uid, $languageOverlay, $sysLanguageUid);
   }
 
   /**
-   * Helper function to get pages by UIDs.
+   * Get pages by UIDs.
    *
    * @param mixed $uids The UIDs as array or as string, seperated by `,`
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The pages
    */
-  public function getPages($uids, $languageOverlay = true) {
+  public function getPages($uids, $languageOverlay = true, $sysLanguageUid = -1) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
 
     $languageOverlay = (boolean) $languageOverlay;
+    $sysLanguageUid  = intval($sysLanguageUid);
     $pages           = [];
 
     foreach($uids as $uid) {
-      $page = $this->getPage($uid, $languageOverlay);
+      $page = $this->getPage($uid, $languageOverlay, $sysLanguageUid);
 
       if ($page) {
         $pages[] = $page;
@@ -128,37 +138,41 @@ class PageService extends AbstractService {
    *
    * @param mixed $uids The UIDs as array or as string, seperated by `,`
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The pages
    */
-  public function getPagesByUids($uids, $languageOverlay = true) {
+  public function getPagesByUids($uids, $languageOverlay = true, $sysLanguageUid = -1) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
 
     $languageOverlay = (boolean) $languageOverlay;
+    $sysLanguageUid  = intval($sysLanguageUid);
 
-    return $this->getPages($uids, $languageOverlay);
+    return $this->getPages($uids, $languageOverlay, $sysLanguageUid);
   }
 
   /**
-   * Helper function to get the subpages of a page.
+   * Get the subpages of a page.
    *
    * @param int $pid The PID of the page to search from
    * @param int $recursion The recursion, defaults to `1`
    * @param boolean $exclude If set, the start page should be excluded, defaults to `true`
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
+   * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The subpages
    */
-  public function getSubpages($pid, $recursion = 1, $exclude = true, $languageOverlay = true) {
+  public function getSubpages($pid, $recursion = 1, $exclude = true, $languageOverlay = true, $sysLanguageUid = -1) {
     $pid             = intval($pid);
     $recursion       = intval($recursion);
     $exclude         = (boolean) $exclude;
     $languageOverlay = (boolean) $languageOverlay;
+    $sysLanguageUid  = intval($sysLanguageUid);
     $subpages        = [];
     $subpagesUids    = $this->getSubpagesUids($pid, $recursion, $exclude);
 
     foreach ($subpagesUids as $subpageUid) {
-      $subpage = $this->getPage($subpageUid, $languageOverlay);
+      $subpage = $this->getPage($subpageUid, $languageOverlay, $sysLanguageUid);
 
       if ($subpage) {
         $subpages[] = $subpage;
@@ -169,7 +183,7 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Helper function to get the UIDs of the subpages of a page.
+   * Get the UIDs of the subpages of a page.
    *
    * @param int $pid The PID of the page to search from
    * @param int $recursion The recursion level, defaults to `1`
