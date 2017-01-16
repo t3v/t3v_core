@@ -28,6 +28,11 @@ abstract class AbstractCommandController extends CommandController {
 
           break;
 
+        case ($color === 'error' || $color === 'red'):
+          echo $colorize($message)->red() . PHP_EOL;
+
+          break;
+
         case ($color === 'warning' || $color === 'yellow'):
           echo $colorize($message)->yellow() . PHP_EOL;
 
