@@ -3,10 +3,16 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Added `AbstractCommandController`
+
 1.7.3
 -----
 
 * Improved `PageService` and `PageViewHelper`
+* Cleaned up
 
 1.7.2
 -----
