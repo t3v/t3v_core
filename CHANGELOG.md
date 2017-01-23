@@ -9,6 +9,7 @@ Unreleased
 * Colorized logging in `AbstractCommandController`
 * Added `kevinlebrun/colors.php` as Composer dependency
 * Added `AbstractCommandController`
+* Updated Composer dependencies
 
 1.7.3
 -----
