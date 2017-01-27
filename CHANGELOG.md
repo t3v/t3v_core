@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Set `LayoutRootPath` and `PartialRootPath` (`RendererUtility`)
 * Colorized logging in `AbstractCommandController`
 * Added `kevinlebrun/colors.php` as Composer dependency
 * Added `AbstractCommandController`
@@ -66,7 +67,7 @@ Unreleased
 
 * Improved `MailService`
 * Implemented `StringUtility`
-* Implemented custom `findByUid` finder in `AbstractRepository`
+* Implemented `findByUid` method in `AbstractRepository`
 * Minor changes
 
 1.3.0
