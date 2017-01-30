@@ -3,10 +3,10 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+1.8.0
+-----
 
-* Set `LayoutRootPath` and `PartialRootPath` (`RendererUtility`)
+* Set `LayoutRootPath` and `PartialRootPath` in `RendererUtility`
 * Colorized logging in `AbstractCommandController`
 * Added `kevinlebrun/colors.php` as Composer dependency
 * Added `AbstractCommandController`
