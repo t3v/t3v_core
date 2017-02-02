@@ -42,7 +42,7 @@ class FlashMessageService extends AbstractService {
    *
    * @param string $message The message
    * @param \TYPO3\CMS\Core\Messaging\FlashMessage $severity The severity
-   * @return mixed
+   * @return void
    */
   public function addFlashMessage($message, $severity) {
     if ($this->isInFlashMessageQueue($message, $severity)) {
@@ -52,18 +52,23 @@ class FlashMessageService extends AbstractService {
     switch ($severity) {
       case 'notice':
         $severity = FlashMessage::NOTICE;
+
         break;
       case 'info':
         $severity = FlashMessage::INFO;
+
         break;
       case 'ok':
         $severity = FlashMessage::OK;
+
         break;
       case 'error':
         $severity = FlashMessage::ERROR;
+
         break;
       default:
         $severity = FlashMessage::WARNING;
+
         break;
     }
 

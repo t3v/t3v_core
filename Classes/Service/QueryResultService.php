@@ -55,7 +55,7 @@ class QueryResultService extends AbstractService {
    * Filters a query result by system language.
    *
    * @param array $queryResult The query result
-   * @param mixed $exceptions The optional UIDs which are ignored, as array or as string, seperated by `,`
+   * @param array|string $exceptions The optional UIDs which are ignored, as array or as string, seperated by `,`
    * @return array The filtered query result
    */
   public function filterBySysLanguage($queryResult, $exceptions = []) {

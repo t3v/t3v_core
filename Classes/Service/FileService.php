@@ -33,7 +33,7 @@ class FileService extends AbstractService {
    *
    * @param object $file The file object
    * @param string $uploadsFolderPath The uploads folder path
-   * @return mixed The file name of the saved file or null if the file could not be saved
+   * @return string|null The file name of the saved file or null if the file could not be saved
    */
   public function saveFile($file, $uploadsFolderPath) {
     if (is_array($file) && !empty($file) && !empty($uploadsFolderPath)) {

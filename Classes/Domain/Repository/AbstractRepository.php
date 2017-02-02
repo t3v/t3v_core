@@ -51,7 +51,7 @@ abstract class AbstractRepository extends Repository {
    *
    * @param int $uid The UID
    * @param array $querySettings The optional query settings
-   * @return mixed The first found object or null if no object was found
+   * @return object|null The first found object or null if no object was found
    */
   public function findByUid($uid, $querySettings = ['respectSysLanguage' => false]) {
     $uid = intval($uid);
@@ -84,7 +84,7 @@ abstract class AbstractRepository extends Repository {
   /**
    * Finder to query by multiple UIDs.
    *
-   * @param mixed $uids The UIDs as array or as string, seperated by `,`
+   * @param array|string $uids The UIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
    * @param array $querySettings The optional query settings
    * @return \Extbase\Persistence\QueryResult The found objects
@@ -131,7 +131,7 @@ abstract class AbstractRepository extends Repository {
    *
    * @param int $pid The PID
    * @param array $querySettings The optional query settings
-   * @return mixed The first found object or null if no object was found
+   * @return object|null The first found object or null if no object was found
    */
   public function findByPid($pid, $querySettings = []) {
     $pid = intval($pid);
@@ -164,7 +164,7 @@ abstract class AbstractRepository extends Repository {
   /**
    * Finder to query by multiple PIDs.
    *
-   * @param mixed $pids The PIDs as array or as string, seperated by `,`
+   * @param array|string $pids The PIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
    * @param array $querySettings The optional query settings
    * @return \Extbase\Persistence\QueryResult The found objects

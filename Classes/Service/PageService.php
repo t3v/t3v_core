@@ -108,7 +108,7 @@ class PageService extends AbstractService {
   /**
    * Get pages by UIDs.
    *
-   * @param mixed $uids The UIDs as array or as string, seperated by `,`
+   * @param array|string $uids The UIDs as array or as string, seperated by `,`
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The pages
@@ -136,7 +136,7 @@ class PageService extends AbstractService {
   /**
    * Alias for `getPages`.
    *
-   * @param mixed $uids The UIDs as array or as string, seperated by `,`
+   * @param array|string $uids The UIDs as array or as string, seperated by `,`
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The pages
@@ -210,7 +210,7 @@ class PageService extends AbstractService {
    * Helper function to get the backend layout for a page.
    *
    * @param int $uid The UID of the page
-   * @return mixed The name of the backend layout or null if no backend layout was found
+   * @return string|null The name of the backend layout or null if no backend layout was found
    */
   public function getBackendLayoutForPage($uid) {
     $uid      = intval($uid);

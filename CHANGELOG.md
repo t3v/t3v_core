@@ -6,8 +6,10 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `ArrayViewHelper`
 * Added `crdate` to `AbstractEntity`
 * Use `call_user_func` in `ext_localconf.php` and `ext_tables.php`
+* Updated comments
 
 1.8.0
 -----
