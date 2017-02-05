@@ -47,11 +47,11 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Custom finder to query by UID, overrides the default one.
+   * Finder to query by UID, overrides the default one.
    *
    * @param int $uid The UID
    * @param array $querySettings The optional query settings
-   * @return object|null The first found object or null if no object was found
+   * @return object|null The found object or null if no object was found
    */
   public function findByUid($uid, $querySettings = ['respectSysLanguage' => false]) {
     $uid = intval($uid);
@@ -115,6 +115,8 @@ abstract class AbstractRepository extends Repository {
 
     // Set limit if available
     if (!empty($limit)) {
+      $limit = intval($limit);
+
       $query->setLimit($limit);
     }
 
@@ -131,10 +133,11 @@ abstract class AbstractRepository extends Repository {
    * Finder to query by PID.
    *
    * @param int $pid The PID
+   * @param int $limit The optional limit
    * @param array $querySettings The optional query settings
-   * @return object|null The first found object or null if no object was found
+   * @return \Extbase\Persistence\QueryResult The found objects
    */
-  public function findByPid($pid, $querySettings = []) {
+  public function findByPid($pid, $limit = null, $querySettings = ['respectSysLanguage' => false]) {
     $pid = intval($pid);
 
     // Create query
@@ -156,8 +159,15 @@ abstract class AbstractRepository extends Repository {
     // Set constraints
     $query->matching($query->logicalAnd($constraints));
 
+    // Set limit if available
+    if (!empty($limit)) {
+      $limit = intval($limit);
+
+      $query->setLimit($limit);
+    }
+
     // Execute query
-    $result = $query->execute()->getFirst();
+    $result = $query->execute();
 
     return $result;
   }
@@ -170,7 +180,7 @@ abstract class AbstractRepository extends Repository {
    * @param array $querySettings The optional query settings
    * @return \Extbase\Persistence\QueryResult The found objects
    */
-  public function findByPids($pids, $limit = null, $querySettings = []) {
+  public function findByPids($pids, $limit = null, $querySettings = ['respectSysLanguage' => false]) {
     if (is_string($pids)) {
       $pids = GeneralUtility::intExplode(',', $pids, true);
     }
@@ -196,6 +206,8 @@ abstract class AbstractRepository extends Repository {
 
     // Set limit if available
     if (!empty($limit)) {
+      $limit = intval($limit);
+
       $query->setLimit($limit);
     }
 
@@ -213,20 +225,23 @@ abstract class AbstractRepository extends Repository {
    *
    * @param int $uid The UID
    * @param int $languageUid The language UID, defaults to `0`
-   * @param boolean $respectSysLanguage Respect the system language, defaults to `false`
+   * @param array $querySettings The optional query settings
    * @return object|null The raw model or null if no object was found
    */
-  public function getRawModelByUid($uid, $languageUid = 0, $respectSysLanguage = false) {
-    $uid = intval($uid);
+  public function getRawModelByUid($uid, $languageUid = 0, $querySettings = ['respectSysLanguage' => false]) {
+    $uid         = intval($uid);
+    $languageUid = intval($languageUid);
 
     if ($uid) {
       // Create query
       $query = $this->createquery();
 
-      // Apply query settings
+      // Set language UID
       $settings = $query->getQuerySettings();
       $settings->setLanguageUid($languageUid);
-      $settings->setRespectSysLanguage($respectSysLanguage);
+
+      // Apply query settings
+      $query = $this->applyQuerySettings($query, $querySettings);
 
       // Built up constraints
       $constraints = [
@@ -241,7 +256,7 @@ abstract class AbstractRepository extends Repository {
       // Set constraints
       $query->matching($query->logicalAnd($constraints));
 
-      // Execute query
+      // Execute query and return raw result
       $result = $query->execute(true);
 
       $model = $result[0];
