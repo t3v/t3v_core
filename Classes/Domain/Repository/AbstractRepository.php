@@ -63,10 +63,10 @@ abstract class AbstractRepository extends Repository {
     $query = $this->applyQuerySettings($query, $querySettings);
 
     // Built up constraints
-    $constraints = array(
+    $constraints = [
       $query->equals('deleted', 0),
       $query->equals('hidden', 0)
-    );
+    ];
 
     if ($uid) {
       $constraints[] = $query->equals('uid', $uid);
@@ -101,10 +101,10 @@ abstract class AbstractRepository extends Repository {
     $query = $this->applyQuerySettings($query, $querySettings);
 
     // Built up constraints
-    $constraints = array(
+    $constraints = [
       $query->equals('deleted', 0),
       $query->equals('hidden', 0)
-    );
+    ];
 
     if (!empty($uids)) {
       $constraints[] = $query->in('uid', $uids);
@@ -118,6 +118,7 @@ abstract class AbstractRepository extends Repository {
       $query->setLimit($limit);
     }
 
+    // Set orderings
     $query->setOrderings($this->orderByField('uid', $uids));
 
     // Execute query
@@ -143,10 +144,10 @@ abstract class AbstractRepository extends Repository {
     $query = $this->applyQuerySettings($query, $querySettings);
 
     // Built up constraints
-    $constraints = array(
+    $constraints = [
       $query->equals('deleted', 0),
       $query->equals('hidden', 0)
-    );
+    ];
 
     if ($pid) {
       $constraints[] = $query->equals('pid', $pid);
@@ -181,10 +182,10 @@ abstract class AbstractRepository extends Repository {
     $query = $this->applyQuerySettings($query, $querySettings);
 
     // Built up constraints
-    $constraints = array(
+    $constraints = [
       $query->equals('deleted', 0),
       $query->equals('hidden', 0)
-    );
+    ];
 
     if (!empty($pids)) {
       $constraints[] = $query->in('pid', $pids);
@@ -198,6 +199,7 @@ abstract class AbstractRepository extends Repository {
       $query->setLimit($limit);
     }
 
+    // Set orderings
     $query->setOrderings($this->orderByField('pid', $pids));
 
     // Execute query
@@ -212,7 +214,7 @@ abstract class AbstractRepository extends Repository {
    * @param int $uid The UID
    * @param int $languageUid The language UID, defaults to `0`
    * @param boolean $respectSysLanguage Respect the system language, defaults to `false`
-   * @return object The raw model
+   * @return object|null The raw model or null if no object was found
    */
   public function getRawModelByUid($uid, $languageUid = 0, $respectSysLanguage = false) {
     $uid = intval($uid);
@@ -227,10 +229,10 @@ abstract class AbstractRepository extends Repository {
       $settings->setRespectSysLanguage($respectSysLanguage);
 
       // Built up constraints
-      $constraints = array(
+      $constraints = [
         $query->equals('deleted', 0),
         $query->equals('hidden', 0)
-      );
+      ];
 
       if ($uid) {
         $constraints[] = $query->equals('uid', $uid);
