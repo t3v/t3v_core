@@ -130,97 +130,6 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Finder to query by PID.
-   *
-   * @param int $pid The PID
-   * @param int $limit The optional limit
-   * @param array $querySettings The optional query settings
-   * @return \Extbase\Persistence\QueryResult The found objects
-   */
-  public function findByPid($pid, $limit = null, $querySettings = ['respectSysLanguage' => false]) {
-    $pid = intval($pid);
-
-    // Create query
-    $query = $this->createquery();
-
-    // Apply query settings
-    $query = $this->applyQuerySettings($query, $querySettings);
-
-    // Built up constraints
-    $constraints = [
-      $query->equals('deleted', 0),
-      $query->equals('hidden', 0)
-    ];
-
-    if ($pid) {
-      $constraints[] = $query->equals('pid', $pid);
-    }
-
-    // Set constraints
-    $query->matching($query->logicalAnd($constraints));
-
-    // Set limit if available
-    if (!empty($limit)) {
-      $limit = intval($limit);
-
-      $query->setLimit($limit);
-    }
-
-    // Execute query
-    $result = $query->execute();
-
-    return $result;
-  }
-
-  /**
-   * Finder to query by multiple PIDs.
-   *
-   * @param array|string $pids The PIDs as array or as string, seperated by `,`
-   * @param int $limit The optional limit
-   * @param array $querySettings The optional query settings
-   * @return \Extbase\Persistence\QueryResult The found objects
-   */
-  public function findByPids($pids, $limit = null, $querySettings = ['respectSysLanguage' => false]) {
-    if (is_string($pids)) {
-      $pids = GeneralUtility::intExplode(',', $pids, true);
-    }
-
-    // Create query
-    $query = $this->createquery();
-
-    // Apply query settings
-    $query = $this->applyQuerySettings($query, $querySettings);
-
-    // Built up constraints
-    $constraints = [
-      $query->equals('deleted', 0),
-      $query->equals('hidden', 0)
-    ];
-
-    if (!empty($pids)) {
-      $constraints[] = $query->in('pid', $pids);
-    }
-
-    // Set constraints
-    $query->matching($query->logicalAnd($constraints));
-
-    // Set limit if available
-    if (!empty($limit)) {
-      $limit = intval($limit);
-
-      $query->setLimit($limit);
-    }
-
-    // Set orderings
-    $query->setOrderings($this->orderByField('pid', $pids));
-
-    // Execute query
-    $result = $query->execute();
-
-    return $result;
-  }
-
-  /**
    * Get a raw model by the UID.
    *
    * @param int $uid The UID
@@ -263,6 +172,97 @@ abstract class AbstractRepository extends Repository {
     }
 
     return $model;
+  }
+
+  /**
+   * Finder to query by PID.
+   *
+   * @param int $pid The PID
+   * @param int $limit The optional limit
+   * @param array $querySettings The optional query settings
+   * @return \Extbase\Persistence\QueryResult The found objects
+   */
+  public function findByPid($pid, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
+    $pid = intval($pid);
+
+    // Create query
+    $query = $this->createquery();
+
+    // Apply query settings
+    $query = $this->applyQuerySettings($query, $querySettings);
+
+    // Built up constraints
+    $constraints = [
+      $query->equals('deleted', 0),
+      $query->equals('hidden', 0)
+    ];
+
+    if ($pid) {
+      $constraints[] = $query->equals('pid', $pid);
+    }
+
+    // Set constraints
+    $query->matching($query->logicalAnd($constraints));
+
+    // Set limit if available
+    if (!empty($limit)) {
+      $limit = intval($limit);
+
+      $query->setLimit($limit);
+    }
+
+    // Execute query
+    $result = $query->execute();
+
+    return $result;
+  }
+
+  /**
+   * Finder to query by multiple PIDs.
+   *
+   * @param array|string $pids The PIDs as array or as string, seperated by `,`
+   * @param int $limit The optional limit
+   * @param array $querySettings The optional query settings
+   * @return \Extbase\Persistence\QueryResult The found objects
+   */
+  public function findByPids($pids, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
+    if (is_string($pids)) {
+      $pids = GeneralUtility::intExplode(',', $pids, true);
+    }
+
+    // Create query
+    $query = $this->createquery();
+
+    // Apply query settings
+    $query = $this->applyQuerySettings($query, $querySettings);
+
+    // Built up constraints
+    $constraints = [
+      $query->equals('deleted', 0),
+      $query->equals('hidden', 0)
+    ];
+
+    if (!empty($pids)) {
+      $constraints[] = $query->in('pid', $pids);
+    }
+
+    // Set constraints
+    $query->matching($query->logicalAnd($constraints));
+
+    // Set limit if available
+    if (!empty($limit)) {
+      $limit = intval($limit);
+
+      $query->setLimit($limit);
+    }
+
+    // Set orderings
+    $query->setOrderings($this->orderByField('pid', $pids));
+
+    // Execute query
+    $result = $query->execute();
+
+    return $result;
   }
 
   /**
