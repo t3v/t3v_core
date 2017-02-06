@@ -68,6 +68,7 @@ class FileService extends AbstractService {
    * @return string The normalized file name
    */
   protected function normalizeFileName($fileName) {
+    $fileName = (string) $fileName;
     $fileName = strtolower($fileName);
 
     $search   = ['ä', 'ö', 'ü', 'ß', ' '];

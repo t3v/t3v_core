@@ -19,6 +19,9 @@ abstract class AbstractCommandController extends CommandController {
    * @return void
    */
   protected function log($message, $color = 'white') {
+    $message = (string) $message;
+    $color   = (string) $color;
+
     if ($message) {
       $colorize = new Color();
 

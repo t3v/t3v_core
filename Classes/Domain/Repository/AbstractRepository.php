@@ -16,7 +16,7 @@ use \T3v\T3vCore\Service\LanguageService;
  */
 abstract class AbstractRepository extends Repository {
   /**
-   * Language Service
+   * The language service.
    *
    * @var \T3v\T3vCore\Service\LanguageService
    * @inject

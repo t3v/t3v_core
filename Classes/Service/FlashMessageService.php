@@ -45,6 +45,8 @@ class FlashMessageService extends AbstractService {
    * @return void
    */
   public function addFlashMessage($message, $severity) {
+    $message = (string) $message;
+
     if ($this->isInFlashMessageQueue($message, $severity)) {
       return;
     }
@@ -94,6 +96,8 @@ class FlashMessageService extends AbstractService {
    * @return boolean If the flash message is already in the flash message queue
    */
   protected function isInFlashMessageQueue($message, $severity) {
+    $message = (string) $message;
+
     foreach($this->flashMessageQueue as $flashMessage) {
       if ($flashMessage->getMessage() == $message) {
         return true;

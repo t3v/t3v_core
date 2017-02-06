@@ -16,6 +16,7 @@ class LanguageService extends AbstractService {
    * @return string The current language if available, otherwise the default
    */
   public function getLanguage($default = 'default') {
+    $default  = (string) $default;
     $language = $default;
 
     if (TYPO3_MODE === 'FE') {
@@ -42,6 +43,7 @@ class LanguageService extends AbstractService {
    * @return int The current language UID if available, otherwise the default
    */
   public function getLanguageUid($default = 0) {
+    $default     = intval($default);
     $languageUid = $default;
 
     if (TYPO3_MODE === 'FE') {
@@ -66,6 +68,8 @@ class LanguageService extends AbstractService {
    * @return int The current system language UID if available, otherwise the default
    */
   public function getSysLanguageUid($default = 0) {
+    $default = intval($default);
+
     return $this->getLanguageUid($default);
   }
 }
