@@ -37,9 +37,9 @@ Unreleased
 
 * Added `PageViewHelper`
 * Updated `PageService` and `LanguageUidViewHelper`
-* Cleaned up services
 * Updated Composer configuration
 * Updated `ext_emconf.php`
+* Cleaned up
 
 1.7.1
 -----
