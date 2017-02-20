@@ -52,6 +52,23 @@ class FileService extends AbstractService {
   }
 
   /**
+   * Normalizes a file name.
+   *
+   * @param string $fileName The file name
+   * @return string The normalized file name
+   */
+  public static function normalizeFileName($fileName) {
+    $fileName = (string) $fileName;
+    $fileName = mb_strtolower($fileName);
+
+    $search   = ['ä', 'ö', 'ü', 'ß', ' '];
+    $replace  = ['ae', 'oe', 'ue', 'ss', '_'];
+    $fileName = str_replace($search, $replace, $fileName);
+
+    return $fileName;
+  }
+
+  /**
    * Deletes a file.
    *
    * @param object $file The file object
@@ -59,22 +76,5 @@ class FileService extends AbstractService {
    */
   protected function deleteFile($file) {
     unlink($file);
-  }
-
-  /**
-   * Helper function to normalize a file name.
-   *
-   * @param string $fileName The file name
-   * @return string The normalized file name
-   */
-  protected function normalizeFileName($fileName) {
-    $fileName = (string) $fileName;
-    $fileName = strtolower($fileName);
-
-    $search   = ['ä', 'ö', 'ü', 'ß', ' '];
-    $replace  = ['ae', 'oe', 'ue', 'ss', '_'];
-    $fileName = str_replace($search, $replace, $fileName);
-
-    return $fileName;
   }
 }

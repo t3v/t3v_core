@@ -18,11 +18,15 @@ class StringUtility extends AbstractUtility {
    * @return string The camelized output
    */
   public static function camelize($input, $separator = '_', $capitalizeFirstCharacter = false) {
-    $output = strtolower($input);
+    $input                    = (string) $input;
+    $separator                = (string) $separator;
+    $capitalizeFirstCharacter = (boolean) $capitalizeFirstCharacter;
+
+    $output = mb_strtolower($input);
     $output = str_replace(' ', '', ucwords(str_replace($separator, ' ', $output)));
 
     if (!$capitalizeFirstCharacter) {
-      $output[0] = strtolower($output[0]);
+      $output[0] = mb_strtolower($output[0]);
     }
 
     return $output;
