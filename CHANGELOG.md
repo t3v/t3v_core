@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `FileService` and `StringUtility`
 * Improved `AbstractRepository`
   * `findByPid` returns now a query result instead of only the first object
 * Improved `ArrayViewHelper`
