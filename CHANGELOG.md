@@ -7,11 +7,12 @@ Unreleased
 ----------
 
 * Improved `AbstractRepository`
-  * `findByPid` returns a query result instead of the first object
+  * `findByPid` returns now a query result instead of only the first object
 * Improved `ArrayViewHelper`
 * Added `crdate` property to `AbstractEntity`
 * Use `call_user_func` in `ext_localconf.php` and `ext_tables.php`
 * Updated comments
+* Updated claim
 * Cleaned up
 
 1.8.0
