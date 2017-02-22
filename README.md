@@ -9,6 +9,7 @@ Dependencies
 ------------
 
 * TYPO3 CMS 7.6 or greater
+* Colors (`kevinlebrun/colors.php`)
 
 Installation
 ------------
