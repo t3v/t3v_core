@@ -3,8 +3,8 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+1.9.0
+-----
 
 * Improved `FileService` and `StringUtility`
 * Improved `AbstractRepository`
