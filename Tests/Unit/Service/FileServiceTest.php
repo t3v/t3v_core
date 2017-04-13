@@ -12,8 +12,9 @@ class FileServiceTest extends UnitTestCase {
    * @test
    */
   public function fileNameGetsNormalized() {
-    $this->assertEquals(FileService::normalizeFileName('preview.pdf'),   'preview.pdf');
-    $this->assertEquals(FileService::normalizeFileName('preview x.pdf'), 'preview_x.pdf');
-    $this->assertEquals(FileService::normalizeFileName('ä-ö-ü-ß.pdf'),   'ae-oe-ue-ss.pdf');
+    $this->assertEquals(FileService::normalizeFileName('file.pdf'),         'file.pdf');
+    $this->assertEquals(FileService::normalizeFileName('file x.pdf'),       'file_x.pdf');
+    $this->assertEquals(FileService::normalizeFileName('file,x.pdf'),       'file-x.pdf');
+    $this->assertEquals(FileService::normalizeFileName('file-ä-ö-ü-ß.pdf'), 'file-ae-oe-ue-ss.pdf');
   }
 }

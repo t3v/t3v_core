@@ -61,8 +61,8 @@ class FileService extends AbstractService {
     $fileName = (string) $fileName;
     $fileName = mb_strtolower($fileName);
 
-    $search   = ['ä', 'ö', 'ü', 'ß', ' '];
-    $replace  = ['ae', 'oe', 'ue', 'ss', '_'];
+    $search   = ['ä', 'ö', 'ü', 'ß', ',', ' '];
+    $replace  = ['ae', 'oe', 'ue', 'ss', '-', '_'];
     $fileName = str_replace($search, $replace, $fileName);
 
     return $fileName;
