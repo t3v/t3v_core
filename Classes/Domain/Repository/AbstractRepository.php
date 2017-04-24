@@ -56,29 +56,21 @@ abstract class AbstractRepository extends Repository {
   public function findByUid($uid, $querySettings = ['respectSysLanguage' => false]) {
     $uid = intval($uid);
 
-    // Create query
-    $query = $this->createquery();
+    if ($uid && $uid > 0) {
+      // Create query
+      $query = $this->createquery();
 
-    // Apply query settings
-    $query = $this->applyQuerySettings($query, $querySettings);
+      // Apply query settings
+      $query = $this->applyQuerySettings($query, $querySettings);
 
-    // Built up constraints
-    $constraints = [
-      $query->equals('deleted', 0),
-      $query->equals('hidden', 0)
-    ];
+      // Set constraints
+      $query->matching($query->equals('uid', $uid));
 
-    if ($uid) {
-      $constraints[] = $query->equals('uid', $uid);
+      // Execute query and get first object
+      $result = $query->execute()->getFirst();
+
+      return $result;
     }
-
-    // Set constraints
-    $query->matching($query->logicalAnd($constraints));
-
-    // Execute query
-    $result = $query->execute()->getFirst();
-
-    return $result;
   }
 
   /**
@@ -87,91 +79,86 @@ abstract class AbstractRepository extends Repository {
    * @param array|string $uids The UIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
    * @param array $querySettings The optional query settings
-   * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult The found objects
+   * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
   public function findByUids($uids, $limit = null, $querySettings = ['respectSysLanguage' => false]) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
 
-    // Create query
-    $query = $this->createquery();
-
-    // Apply query settings
-    $query = $this->applyQuerySettings($query, $querySettings);
-
-    // Built up constraints
-    $constraints = [
-      $query->equals('deleted', 0),
-      $query->equals('hidden', 0)
-    ];
-
     if (!empty($uids)) {
-      $constraints[] = $query->in('uid', $uids);
+      // Create query
+      $query = $this->createquery();
+
+      // Apply query settings
+      $query = $this->applyQuerySettings($query, $querySettings);
+
+      // Set constraints
+      $query->matching($query->in('uid', $uids));
+
+      // Set limit if available
+      if (!empty($limit)) {
+        $limit = intval($limit);
+
+        $query->setLimit($limit);
+      }
+
+      // Set orderings
+      $query->setOrderings($this->orderByField('uid', $uids));
+
+      // Execute query
+      $result = $query->execute();
+
+      return $result;
     }
-
-    // Set constraints
-    $query->matching($query->logicalAnd($constraints));
-
-    // Set limit if available
-    if (!empty($limit)) {
-      $limit = intval($limit);
-
-      $query->setLimit($limit);
-    }
-
-    // Set orderings
-    $query->setOrderings($this->orderByField('uid', $uids));
-
-    // Execute query
-    $result = $query->execute();
-
-    return $result;
   }
 
   /**
-   * Get a raw model by the UID.
+   * Get a raw object by the UID.
    *
    * @param int $uid The UID
    * @param int $languageUid The language UID, defaults to `0`
    * @param array $querySettings The optional query settings
-   * @return object|null The raw model or null if no object was found
+   * @return object|null The raw object or null if no object was found
    */
-  public function getRawModelByUid($uid, $languageUid = 0, $querySettings = ['respectSysLanguage' => false]) {
+  public function getRawObjectByUid($uid, $languageUid = 0, $querySettings = ['respectSysLanguage' => false]) {
     $uid         = intval($uid);
     $languageUid = intval($languageUid);
 
-    if ($uid) {
+    if ($uid && $uid > 0) {
       // Create query
       $query = $this->createquery();
+
+      // Apply query settings
+      $query = $this->applyQuerySettings($query, $querySettings);
 
       // Set language UID
       $settings = $query->getQuerySettings();
       $settings->setLanguageUid($languageUid);
 
-      // Apply query settings
-      $query = $this->applyQuerySettings($query, $querySettings);
-
-      // Built up constraints
-      $constraints = [
-        $query->equals('deleted', 0),
-        $query->equals('hidden', 0)
-      ];
-
-      if ($uid) {
-        $constraints[] = $query->equals('uid', $uid);
-      }
-
       // Set constraints
-      $query->matching($query->logicalAnd($constraints));
+      $query->matching($query->equals('uid', $uid));
 
-      // Execute query and return raw result
+      // Execute query and get raw object
       $result = $query->execute(true);
 
-      $model = $result[0];
+      return $result[0];
     }
+  }
 
-    return $model;
+  /**
+   * Alias for `getRawObjectByUid`.
+   *
+   * @param int $uid The UID
+   * @param int $languageUid The language UID, defaults to `0`
+   * @param array $querySettings The optional query settings
+   * @return object|null The raw model or null if no model was found
+   */
+  public function getRawModelByUid($uid, $languageUid = 0, $querySettings = ['respectSysLanguage' => false]) {
+    $uid         = intval($uid);
+    $languageUid = intval($languageUid);
+
+    return $this->getRawObjectByUid($uid, $languageUid, $querySettings);
   }
 
   /**
@@ -185,36 +172,28 @@ abstract class AbstractRepository extends Repository {
   public function findByPid($pid, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
     $pid = intval($pid);
 
-    // Create query
-    $query = $this->createquery();
+    if ($pid && $pid > 0) {
+      // Create query
+      $query = $this->createquery();
 
-    // Apply query settings
-    $query = $this->applyQuerySettings($query, $querySettings);
+      // Apply query settings
+      $query = $this->applyQuerySettings($query, $querySettings);
 
-    // Built up constraints
-    $constraints = [
-      $query->equals('deleted', 0),
-      $query->equals('hidden', 0)
-    ];
+      // Set constraints
+      $query->matching($query->equals('pid', $pid));
 
-    if ($pid) {
-      $constraints[] = $query->equals('pid', $pid);
+      // Set limit if available
+      if (!empty($limit)) {
+        $limit = intval($limit);
+
+        $query->setLimit($limit);
+      }
+
+      // Execute query
+      $result = $query->execute();
+
+      return $result;
     }
-
-    // Set constraints
-    $query->matching($query->logicalAnd($constraints));
-
-    // Set limit if available
-    if (!empty($limit)) {
-      $limit = intval($limit);
-
-      $query->setLimit($limit);
-    }
-
-    // Execute query
-    $result = $query->execute();
-
-    return $result;
   }
 
   /**
@@ -230,39 +209,31 @@ abstract class AbstractRepository extends Repository {
       $pids = GeneralUtility::intExplode(',', $pids, true);
     }
 
-    // Create query
-    $query = $this->createquery();
-
-    // Apply query settings
-    $query = $this->applyQuerySettings($query, $querySettings);
-
-    // Built up constraints
-    $constraints = [
-      $query->equals('deleted', 0),
-      $query->equals('hidden', 0)
-    ];
-
     if (!empty($pids)) {
-      $constraints[] = $query->in('pid', $pids);
+      // Create query
+      $query = $this->createquery();
+
+      // Apply query settings
+      $query = $this->applyQuerySettings($query, $querySettings);
+
+      // Set constraints
+      $query->matching($query->in('pid', $pids));
+
+      // Set limit if available
+      if (!empty($limit)) {
+        $limit = intval($limit);
+
+        $query->setLimit($limit);
+      }
+
+      // Set orderings
+      $query->setOrderings($this->orderByField('pid', $pids));
+
+      // Execute query
+      $result = $query->execute();
+
+      return $result;
     }
-
-    // Set constraints
-    $query->matching($query->logicalAnd($constraints));
-
-    // Set limit if available
-    if (!empty($limit)) {
-      $limit = intval($limit);
-
-      $query->setLimit($limit);
-    }
-
-    // Set orderings
-    $query->setOrderings($this->orderByField('pid', $pids));
-
-    // Execute query
-    $result = $query->execute();
-
-    return $result;
   }
 
   /**
