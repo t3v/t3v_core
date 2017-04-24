@@ -8,6 +8,7 @@ Unreleased
 
 * Improved `AbstractRepository`
 * Improved `FileService`
+* Cleaned up
 
 1.9.1
 -----
