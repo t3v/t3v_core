@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `AbstractRepository`
 * Improved `FileService`
 
 1.9.1
