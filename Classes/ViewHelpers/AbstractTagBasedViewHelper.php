@@ -10,6 +10,8 @@ use \T3v\T3vCore\Service\LanguageService;
  */
 abstract class AbstractTagBasedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
   /**
+   * The language service.
+   *
    * @var \T3v\T3vCore\Service\LanguageService
    * @inject
    */

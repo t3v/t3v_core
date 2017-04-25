@@ -17,21 +17,21 @@ class PageService extends AbstractService {
   const BACKEND_LAYOUT_PREFIX = 'pagets__';
 
   /**
-   * The query generator
+   * The query generator.
    *
    * @var \TYPO3\CMS\Core\Database\QueryGenerator
    */
   protected $queryGenerator;
 
   /**
-   * The page repository
+   * The page repository.
    *
    * @var \TYPO3\CMS\Frontend\Page\PageRepository
    */
   protected $pageRepository;
 
   /**
-   * The language service
+   * The language service.
    *
    * @var \T3v\T3vCore\Service\LanguageService
    */

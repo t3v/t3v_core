@@ -13,7 +13,7 @@ use \T3v\T3vCore\Service\AbstractService;
  */
 class FileService extends AbstractService {
   /**
-   * The basic file utility
+   * The basic file utility.
    *
    * @var \TYPO3\CMS\Core\Utility\File\BasicFileUtility
    */

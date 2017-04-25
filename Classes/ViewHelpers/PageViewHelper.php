@@ -10,6 +10,8 @@ use \T3v\T3vCore\ViewHelpers\AbstractViewHelper;
  */
 class PageViewHelper extends AbstractViewHelper {
   /**
+   * The page service.
+   *
    * @var \T3v\T3vCore\Service\PageService
    * @inject
    */

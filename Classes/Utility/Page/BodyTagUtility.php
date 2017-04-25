@@ -13,6 +13,8 @@ class BodyTagUtility extends AbstractUtility {
   const DEFAULT_BODY_CLASS = 'document';
 
   /**
+   * The page service.
+   *
    * @var \T3v\T3vCore\Service\PageService
    */
   protected $pageService;

@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\Validation\Validator;
 
-use \TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+use \TYPO3\CMS\Extbase\Object\ObjectManager;
 use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -11,8 +11,9 @@ use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 abstract class AbstractValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator {
   /**
-   * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-   * @inject
+   * The object manager.
+   *
+   * @var \TYPO3\CMS\Extbase\Object\ObjectManager
    */
   protected $objectManager;
 

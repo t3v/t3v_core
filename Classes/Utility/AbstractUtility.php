@@ -11,6 +11,8 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 abstract class AbstractUtility implements SingletonInterface {
   /**
+   * The object manager.
+   *
    * @var \TYPO3\CMS\Extbase\Object\ObjectManager
    */
   protected $objectManager;
