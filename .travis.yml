@@ -13,8 +13,6 @@ before_script:
   - export VENDOR_PATH="$BUILD_PATH/vendor"
   - export TYPO3_PATH_WEB="$BUILD_PATH/Web"
   - export TESTING_FRAMEWORK_PATH="$VENDOR_PATH/nimut/testing-framework/res/Configuration";
-  - export SCRIPTS_PATH="$PWD/Scripts"
-  - export PATH="$PATH:$BIN_PATH:$SCRIPTS_PATH"
 
 branches:
   except:
@@ -55,7 +53,7 @@ script:
   - >
     echo;
     echo "Running unit tests...";
-    $BIN_PATH/phpunit --colors -c $TESTING_FRAMEWORK_PATH/UnitTests.xml Tests/Unit/
+    $BIN_PATH/phpunit --colors -c $TESTING_FRAMEWORK_PATH/UnitTests.xml Tests/Unit
 
   # - >
   #   echo;
