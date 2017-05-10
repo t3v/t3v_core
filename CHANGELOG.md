@@ -3,9 +3,12 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+2.0.0
+-----
 
+* Compatibility for TYPO3 8.7
+* Added configuration for AppVeyor
+* Use `nimut/testing-framework`
 * Improved `AbstractRepository`
 * Improved `FileService`
 * Cleaned up
@@ -102,7 +105,7 @@ Unreleased
 1.3.0
 -----
 
-* Inject `LanguageService` into `AbstractRepository`
+* Inject `LanguageService` by default into `AbstractRepository`
 * Improved `LanguageService`
 * Added `ArrayViewHelper`
 * Added `LocalizationUtility` (Draft)
