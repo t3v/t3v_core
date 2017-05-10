@@ -9,12 +9,12 @@ Dependencies
 ------------
 
 * TYPO3 CMS 7.6 or greater
-* Colors (`kevinlebrun/colors.php`)
+* Colors library
 
 Installation
 ------------
 
-1. Add T3v Core (`t3v_core`) as dependency to the [Composer] configuration (`composer.json`)
+1. Add T3v Core as dependency to the [Composer] configuration
 2. Run `composer install` or `composer update` to install all dependencies with Composer
 3. Include the TypoScript for T3v Core
 
