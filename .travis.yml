@@ -4,6 +4,7 @@ addons:
       - parallel
 
 before_install:
+  - echo $TRAVIS_PHP_VERSION
   - if php -i | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
 
 before_script:
@@ -32,13 +33,13 @@ matrix:
     - php: 7.0
       env: TYPO3_VERSION="^8.7"
     - php: 7.0
-      env: TYPO3_VERSION="dev-master"
+      env: TYPO3_VERSION="dev-master as 8.7"
     - php: 7.1
       env: TYPO3_VERSION="^8.7"
     - php: 7.1
-      env: TYPO3_VERSION="dev-master"
+      env: TYPO3_VERSION="dev-master as 8.7"
   allow_failures:
-    - env: TYPO3_VERSION="dev-master"
+    - env: TYPO3_VERSION="dev-master as 8.7"
 
 notifications:
   email:
