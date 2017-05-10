@@ -5,6 +5,11 @@ use \TYPO3\CMS\Core\Tests\UnitTestCase;
 
 use \T3v\T3vCore\Utility\StringUtility;
 
+/**
+ * String Utility Test Class
+ *
+ * @package T3v\T3vCore\Tests\Unit\Utility
+ */
 class StringUtilityTest extends UnitTestCase {
   /**
    * Test if the input gets camelized.

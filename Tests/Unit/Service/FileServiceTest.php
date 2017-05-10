@@ -5,6 +5,11 @@ use \TYPO3\CMS\Core\Tests\UnitTestCase;
 
 use \T3v\T3vCore\Service\FileService;
 
+/**
+ * File Service Test Class
+ *
+ * @package T3v\T3vCore\Tests\Unit\Service
+ */
 class FileServiceTest extends UnitTestCase {
   /**
    * Test if the file name gets normalized.

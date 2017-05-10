@@ -11,11 +11,11 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 2.0.0
 -----
 
-* Compatibility for TYPO3 8.7
-* Added configuration for AppVeyor
-* Use `nimut/testing-framework`
 * Improved `AbstractRepository`
 * Improved `FileService`
+* Compatibility for TYPO3 8.7
+* Added configuration for AppVeyor
+* Use `nimut/testing-framework` as testing framework
 * Cleaned up
 
 1.9.1

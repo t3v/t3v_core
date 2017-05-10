@@ -8,6 +8,8 @@ use \Nimut\TestingFramework\TestCase\FunctionalTestCase;
 
 /**
  * Rendering Test Class
+ *
+ * @package T3v\T3vCore\Tests\Functional
  */
 class RenderingTest extends FunctionalTestCase {
   /**
