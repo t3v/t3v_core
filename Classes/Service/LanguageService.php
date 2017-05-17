@@ -21,7 +21,7 @@ class LanguageService extends AbstractService {
 
     if (TYPO3_MODE === 'FE') {
       $language = $GLOBALS['TSFE']->lang;
-    } elseif (true === is_object($GLOBALS['LANG'])) {
+    } elseif (is_object($GLOBALS['LANG']) === true) {
       $language = $GLOBALS['LANG']->lang;
     }
 
@@ -48,7 +48,7 @@ class LanguageService extends AbstractService {
 
     if (TYPO3_MODE === 'FE') {
       $languageUid = $GLOBALS['TSFE']->sys_language_uid;
-    } elseif (true === is_object($GLOBALS['LANG'])) {
+    } elseif (is_object($GLOBALS['LANG']) === true) {
       $languageUid = $GLOBALS['LANG']->sys_language_uid;
     }
 
