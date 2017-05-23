@@ -1,12 +1,14 @@
 <?php
 namespace T3v\T3vCore\Domain\Model;
 
+use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity as AbstractEntityExtbase;
+
 /**
  * Abstract Entity Class
  *
  * @package T3v\T3vCore\Domain\Model
  */
-abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+abstract class AbstractEntity extends AbstractEntityExtbase {
   /**
    * The entitie's creation date.
    *

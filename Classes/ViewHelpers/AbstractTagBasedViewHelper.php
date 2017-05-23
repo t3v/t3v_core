@@ -1,6 +1,8 @@
 <?php
 namespace T3v\T3vCore\ViewHelpers;
 
+use \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper as AbstractTagBasedViewHelperFluid;
+
 use \T3v\T3vCore\Service\LanguageService;
 
 /**
@@ -8,7 +10,7 @@ use \T3v\T3vCore\Service\LanguageService;
  *
  * @package T3v\T3vCore\ViewHelpers
  */
-abstract class AbstractTagBasedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
+abstract class AbstractTagBasedViewHelper extends AbstractTagBasedViewHelperFluid {
   /**
    * The language service.
    *

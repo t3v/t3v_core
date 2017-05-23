@@ -9,6 +9,7 @@ Unreleased
 * Fixed `AbstractValidator`
 * Improved `LanguageService`
 * Updated scripts
+* Cleaned up
 
 2.0.2
 -----

@@ -1,6 +1,8 @@
 <?php
 namespace T3v\T3vCore\ViewHelpers;
 
+use \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper as AbstractViewHelperFluid;
+
 use \T3v\T3vCore\Service\LanguageService;
 
 /**
@@ -8,7 +10,7 @@ use \T3v\T3vCore\Service\LanguageService;
  *
  * @package T3v\T3vCore\ViewHelpers
  */
-abstract class AbstractViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+abstract class AbstractViewHelper extends AbstractViewHelperFluid {
   /**
    * The language service.
    *
