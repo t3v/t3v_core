@@ -6,7 +6,9 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Fixed `AbstractValidator`
 * Improved `LanguageService`
+* Updated scripts
 
 2.0.2
 -----

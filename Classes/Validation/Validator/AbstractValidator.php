@@ -3,17 +3,19 @@ namespace T3v\T3vCore\Validation\Validator;
 
 use \TYPO3\CMS\Extbase\Object\ObjectManager;
 use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator as AbstractValidatorExtbase;
 
 /**
  * Abstract Validator Class
  *
  * @package T3v\T3vCore\Validation\Validator
  */
-abstract class AbstractValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator {
+abstract class AbstractValidator extends AbstractValidatorExtbase {
   /**
    * The object manager.
    *
    * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+   * @inject
    */
   protected $objectManager;
 
