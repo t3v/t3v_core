@@ -6,7 +6,7 @@ TYPO3_VERSION="^8.7"
 
 # === Commands ===
 
-# Remove Composer Lock File if available
+# Remove Composer lock file if available
 if [ -f composer.lock ]; then
   rm composer.lock
 fi
