@@ -10,7 +10,7 @@ use \T3v\T3vCore\Utility\AbstractHelper;
  */
 class StringUtility extends AbstractUtility {
   /**
-   * Function to camelize a input.
+   * Camelizes an input.
    *
    * @param string $input The input
    * @param string $separator The optional separator, defaults to `_`

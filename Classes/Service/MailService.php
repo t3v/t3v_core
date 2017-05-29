@@ -24,6 +24,10 @@ class MailService extends AbstractService {
    * @return boolean If the mail was sent
    */
   public function send($from, $to, $cc, $subject, $message, $format = 'text/plain') {
+    $subject = (string) $subject;
+    $message = (string) $message;
+    $format  = (string) $format;
+
     $mail = $this->objectManager->get('TYPO3\CMS\Core\Mail\MailMessage');
 
     // === From ===

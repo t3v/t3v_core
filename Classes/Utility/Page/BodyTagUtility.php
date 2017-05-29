@@ -31,7 +31,7 @@ class BodyTagUtility extends AbstractUtility {
   }
 
   /**
-   * Function to build the body tag.
+   * Builds a body tag.
    *
    * @param string $bodyClass The default CSS class of the body tag, defaults to `document`
    * @return string The body tag

@@ -24,13 +24,16 @@ class RendererUtility extends AbstractUtility {
   }
 
   /**
-   * Helper method to get a Fluid renderer for a template.
+   * Gets a Fluid renderer for a template.
    *
    * @param string $template The template
    * @param string $format The optional format, `html` is used as default
    * @return object The renderer for the template
    */
   public function getFluidRendererForTemplate($template, $format = 'html') {
+    $template = (string) $template;
+    $format   = (string) $format;
+
     $configurationManager = $this->objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
     $configuration        = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
     $layoutRootPath       = GeneralUtility::getFileAbsFileName($configuration['view']['layoutRootPath']);
