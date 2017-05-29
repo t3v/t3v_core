@@ -29,6 +29,8 @@ class FlashMessageService extends AbstractService {
 
   /**
    * The constructor function.
+   *
+   * @return void
    */
   public function __construct() {
     parent::__construct();

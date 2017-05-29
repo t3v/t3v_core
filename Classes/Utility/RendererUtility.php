@@ -16,6 +16,8 @@ use \T3v\T3vCore\Utility\AbstractHelper;
 class RendererUtility extends AbstractUtility {
   /**
    * The constructor function.
+   *
+   * @return void
    */
   public function __construct() {
     parent::__construct();

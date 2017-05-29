@@ -14,6 +14,8 @@ use \T3v\T3vCore\Service\LanguageService;
 class QueryResultService extends AbstractService {
   /**
    * The constructor function.
+   *
+   * @return void
    */
   public function __construct() {
     parent::__construct();

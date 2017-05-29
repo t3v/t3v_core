@@ -21,6 +21,8 @@ class BodyTagUtility extends AbstractUtility {
 
   /**
    * The constructor function.
+   *
+   * @return void
    */
   public function __construct() {
     parent::__construct();

@@ -19,6 +19,8 @@ abstract class AbstractUtility implements SingletonInterface {
 
   /**
    * The constructor function.
+   *
+   * @return void
    */
   public function __construct() {
     $this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
