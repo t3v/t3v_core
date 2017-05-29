@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Updated extension icon
 * Defined namespace in `ext_localconf` and `ext_tables`
 * Added `AbstractConditionViewHelper`
 * Updated code comments
