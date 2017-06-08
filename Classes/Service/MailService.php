@@ -28,7 +28,7 @@ class MailService extends AbstractService {
     $message = (string) $message;
     $format  = (string) $format;
 
-    $mail = $this->objectManager->get('TYPO3\CMS\Core\Mail\MailMessage');
+    $mail = $this->objectManager->get(MailMessage::class);
 
     // === From ===
 

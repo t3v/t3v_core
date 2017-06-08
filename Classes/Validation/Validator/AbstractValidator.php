@@ -3,6 +3,7 @@ namespace T3v\T3vCore\Validation\Validator;
 
 use \TYPO3\CMS\Extbase\Object\ObjectManager;
 use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use \TYPO3\CMS\Extbase\Validation\Error;
 use \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator as AbstractValidatorExtbase;
 
 /**
@@ -29,7 +30,7 @@ abstract class AbstractValidator extends AbstractValidatorExtbase {
    */
   protected function addErrorToProperty($property, $key, $extensionName) {
     $errorMessage = LocalizationUtility::translate($key, $extensionName);
-    $error        = $this->objectManager->get('TYPO3\CMS\Extbase\Validation\Error', $errorMessage, time());
+    $error        = $this->objectManager->get(Error::class, $errorMessage, time());
 
     $this->result->forProperty($property)->addError($error);
   }

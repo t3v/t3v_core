@@ -27,7 +27,7 @@ class BodyTagUtility extends AbstractUtility {
   public function __construct() {
     parent::__construct();
 
-    $this->pageService = $this->objectManager->get('T3v\T3vCore\Service\PageService');
+    $this->pageService = $this->objectManager->get(PageService::class);
   }
 
   /**

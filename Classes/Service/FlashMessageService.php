@@ -35,7 +35,7 @@ class FlashMessageService extends AbstractService {
   public function __construct() {
     parent::__construct();
 
-    $this->flashMessageService = $this->objectManager->get('TYPO3\CMS\Core\Messaging\FlashMessageService');
+    $this->flashMessageService = $this->objectManager->get(FlashMessageService::class);
     $this->flashMessageQueue   = $this->flashMessageService->getMessageQueueByIdentifier();
   }
 
@@ -76,7 +76,7 @@ class FlashMessageService extends AbstractService {
         break;
     }
 
-    $flashMessage = $this->objectManager->get('TYPO3\CMS\Core\Messaging\FlashMessage', htmlspecialchars($message), '', $severity);
+    $flashMessage = $this->objectManager->get(FlashMessage::class, htmlspecialchars($message), '', $severity);
 
     $this->flashMessageQueue->enqueue($flashMessage);
   }

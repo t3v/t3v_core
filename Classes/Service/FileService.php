@@ -28,7 +28,7 @@ class FileService extends AbstractService {
   public function __construct() {
     parent::__construct();
 
-    $this->basicFileUtility = $this->objectManager->get('TYPO3\CMS\Core\Utility\File\BasicFileUtility');
+    $this->basicFileUtility = $this->objectManager->get(BasicFileUtility::class);
   }
 
   /**

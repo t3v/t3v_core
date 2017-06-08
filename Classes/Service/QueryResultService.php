@@ -20,7 +20,7 @@ class QueryResultService extends AbstractService {
   public function __construct() {
     parent::__construct();
 
-    $this->languageService = $this->objectManager->get('T3v\T3vCore\Service\LanguageService');
+    $this->languageService = $this->objectManager->get(LanguageService::class);
   }
 
   /**

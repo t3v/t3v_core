@@ -45,9 +45,9 @@ class PageService extends AbstractService {
   public function __construct() {
     parent::__construct();
 
-    $this->queryGenerator  = $this->objectManager->get('TYPO3\CMS\Core\Database\QueryGenerator');
-    $this->pageRepository  = $this->objectManager->get('TYPO3\CMS\Frontend\Page\PageRepository');
-    $this->languageService = $this->objectManager->get('T3v\T3vCore\Service\LanguageService');
+    $this->queryGenerator  = $this->objectManager->get(QueryGenerator::class);
+    $this->pageRepository  = $this->objectManager->get(PageRepository::class);
+    $this->languageService = $this->objectManager->get(LanguageService::class);
   }
 
   /**

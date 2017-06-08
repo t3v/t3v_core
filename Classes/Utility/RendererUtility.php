@@ -34,13 +34,13 @@ class RendererUtility extends AbstractUtility {
     $template = (string) $template;
     $format   = (string) $format;
 
-    $configurationManager = $this->objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
+    $configurationManager = $this->objectManager->get(ConfigurationManagerInterface::class);
     $configuration        = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
     $layoutRootPath       = GeneralUtility::getFileAbsFileName($configuration['view']['layoutRootPath']);
     $templateRootPath     = GeneralUtility::getFileAbsFileName($configuration['view']['templateRootPath']);
     $partialRootPath      = GeneralUtility::getFileAbsFileName($configuration['view']['partialRootPath']);
 
-    $renderer = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
+    $renderer = $this->objectManager->get(StandaloneView::class);
     $renderer->setLayoutRootPath($layoutRootPath);
     $renderer->setPartialRootPath($partialRootPath);
     $renderer->setTemplatePathAndFilename($templateRootPath . $template);
