@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `FileService`
 * Update Travis CI and AppVeyor configuration
 
 2.2.0

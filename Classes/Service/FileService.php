@@ -1,6 +1,7 @@
 <?php
 namespace T3v\T3vCore\Service;
 
+use \TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException;
 use \TYPO3\CMS\Core\Utility\File\BasicFileUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -36,17 +37,23 @@ class FileService extends AbstractService {
    * @param object $file The file object
    * @param string $uploadsFolderPath The uploads folder path
    * @return string|null The file name of the saved file or null if the file could not be saved
+   * @throws \TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException
    */
   public function saveFile($file, $uploadsFolderPath) {
     if (is_array($file) && !empty($file) && !empty($uploadsFolderPath)) {
-      $fileName          = $file['name'];
-      $temporaryFileName = $file['tmp_name'];
-      $uploadsFolderPath = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
-      $newFileName       = $this->basicFileUtility->getUniqueName($this->normalizeFileName($fileName), $uploadsFolderPath);
-      $fileCouldBeMoved  = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
+      $fileName = $file['name'];
 
-      if ($fileCouldBeMoved) {
-        return $newFileName;
+      if (GeneralUtility::verifyFilenameAgainstDenyPattern($fileName) {
+        $temporaryFileName = $file['tmp_name'];
+        $uploadsFolderPath = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
+        $newFileName       = $this->basicFileUtility->getUniqueName($this->normalizeFileName($fileName), $uploadsFolderPath);
+        $fileCouldBeMoved  = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
+
+        if ($fileCouldBeMoved) {
+          return $newFileName;
+        }
+      } else {
+        throw new InvalidFileNameException('File name could not be verified against deny pattern.', 1496958715);
       }
     }
 
