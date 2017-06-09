@@ -43,7 +43,7 @@ class FileService extends AbstractService {
     if (is_array($file) && !empty($file) && !empty($uploadsFolderPath)) {
       $fileName = $file['name'];
 
-      if (GeneralUtility::verifyFilenameAgainstDenyPattern($fileName) {
+      if (GeneralUtility::verifyFilenameAgainstDenyPattern($fileName)) {
         $temporaryFileName = $file['tmp_name'];
         $uploadsFolderPath = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
         $newFileName       = $this->basicFileUtility->getUniqueName($this->normalizeFileName($fileName), $uploadsFolderPath);
