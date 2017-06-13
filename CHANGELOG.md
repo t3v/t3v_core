@@ -7,6 +7,7 @@ Unreleased
 ----------
 
 * Improved `FileService`
+* Updated dependencies
 * Update Travis CI and AppVeyor configuration
 * Cleaned up
 
