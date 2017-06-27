@@ -61,6 +61,16 @@ class FileService extends AbstractService {
   }
 
   /**
+   * Deletes a file.
+   *
+   * @param object $file The file object
+   * @return void
+   */
+  public static function deleteFile($file) {
+    unlink($file);
+  }
+
+  /**
    * Normalizes a file name.
    *
    * @param string $fileName The file name
@@ -75,15 +85,5 @@ class FileService extends AbstractService {
     $fileName = str_replace($search, $replace, $fileName);
 
     return $fileName;
-  }
-
-  /**
-   * Deletes a file.
-   *
-   * @param object $file The file object
-   * @return void
-   */
-  protected function deleteFile($file) {
-    unlink($file);
   }
 }
