@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\Command;
 
-use \TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
+use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 
 use Colors\Color;
 

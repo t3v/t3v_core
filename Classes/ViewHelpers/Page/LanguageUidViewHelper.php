@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\ViewHelpers\Page;
 
-use \T3v\T3vCore\ViewHelpers\AbstractViewHelper;
+use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
 
 /**
  * Language UID View Helper Class

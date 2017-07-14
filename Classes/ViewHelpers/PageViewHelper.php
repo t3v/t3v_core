@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\ViewHelpers;
 
-use \T3v\T3vCore\ViewHelpers\AbstractViewHelper;
+use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
 
 /**
  * Page View Helper Class
@@ -12,7 +12,7 @@ class PageViewHelper extends AbstractViewHelper {
   /**
    * The page service.
    *
-   * @var \T3v\T3vCore\Service\PageService
+   * @var T3v\T3vCore\Service\PageService
    * @inject
    */
   protected $pageService;

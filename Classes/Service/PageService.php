@@ -1,12 +1,12 @@
 <?php
 namespace T3v\T3vCore\Service;
 
-use \TYPO3\CMS\Core\Database\QueryGenerator;
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Frontend\Page\PageRepository;
+use TYPO3\CMS\Core\Database\QueryGenerator;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Page\PageRepository;
 
-use \T3v\T3vCore\Service\AbstractService;
-use \T3v\T3vCore\Service\LanguageService;
+use T3v\T3vCore\Service\AbstractService;
+use T3v\T3vCore\Service\LanguageService;
 
 /**
  * Page Service Class
@@ -19,21 +19,21 @@ class PageService extends AbstractService {
   /**
    * The query generator.
    *
-   * @var \TYPO3\CMS\Core\Database\QueryGenerator
+   * @var TYPO3\CMS\Core\Database\QueryGenerator
    */
   protected $queryGenerator;
 
   /**
    * The page repository.
    *
-   * @var \TYPO3\CMS\Frontend\Page\PageRepository
+   * @var TYPO3\CMS\Frontend\Page\PageRepository
    */
   protected $pageRepository;
 
   /**
    * The language service.
    *
-   * @var \T3v\T3vCore\Service\LanguageService
+   * @var T3v\T3vCore\Service\LanguageService
    */
   protected $languageService;
 

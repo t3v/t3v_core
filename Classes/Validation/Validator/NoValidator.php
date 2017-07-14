@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\Validation\Validator;
 
-use \T3v\T3vCore\Validation\Validator\AbstractValidator;
+use T3v\T3vCore\Validation\Validator\AbstractValidator;
 
 /**
  * No Validator Class

@@ -7,6 +7,7 @@ Unreleased
 ----------
 
 * Improved `FileService`
+* Reformatted code and cleanup
 
 2.3.0
 -----

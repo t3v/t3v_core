@@ -1,13 +1,13 @@
 <?php
 namespace T3v\T3vCore\Domain\Repository;
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
-use \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
-use \TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use \TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
-use \T3v\T3vCore\Service\LanguageService;
+use T3v\T3vCore\Service\LanguageService;
 
 /**
  * Abstract Repository Class
@@ -18,7 +18,7 @@ abstract class AbstractRepository extends Repository {
   /**
    * The language service.
    *
-   * @var \T3v\T3vCore\Service\LanguageService
+   * @var T3v\T3vCore\Service\LanguageService
    * @inject
    */
   protected $languageService;
@@ -79,7 +79,7 @@ abstract class AbstractRepository extends Repository {
    * @param array|string $uids The UIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
    * @param array $querySettings The optional query settings
-   * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
+   * @return TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
   public function findByUids($uids, $limit = null, $querySettings = ['respectSysLanguage' => false]) {
     if (is_string($uids)) {
@@ -167,7 +167,7 @@ abstract class AbstractRepository extends Repository {
    * @param int $pid The PID
    * @param int $limit The optional limit
    * @param array $querySettings The optional query settings
-   * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult The found objects
+   * @return TYPO3\CMS\Extbase\Persistence\Generic\QueryResult The found objects
    */
   public function findByPid($pid, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
     $pid = intval($pid);
@@ -202,7 +202,7 @@ abstract class AbstractRepository extends Repository {
    * @param array|string $pids The PIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
    * @param array $querySettings The optional query settings
-   * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult The found objects
+   * @return TYPO3\CMS\Extbase\Persistence\Generic\QueryResult The found objects
    */
   public function findByPids($pids, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
     if (is_string($pids)) {

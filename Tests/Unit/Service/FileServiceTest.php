@@ -1,9 +1,9 @@
 <?php
 namespace T3v\T3vCore\Tests\Unit\Service;
 
-use \Nimut\TestingFramework\TestCase\UnitTestCase;
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-use \T3v\T3vCore\Service\FileService;
+use T3v\T3vCore\Service\FileService;
 
 /**
  * File Service Test Class

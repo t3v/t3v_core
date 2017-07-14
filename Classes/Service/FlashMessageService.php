@@ -1,11 +1,11 @@
 <?php
 namespace T3v\T3vCore\Service;
 
-use \TYPO3\CMS\Core\Messaging\FlashMessage;
-use \TYPO3\CMS\Core\Messaging\FlashMessageQueue;
-use \TYPO3\CMS\Core\Messaging\FlashMessageService;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Messaging\FlashMessageQueue;
+use TYPO3\CMS\Core\Messaging\FlashMessageService;
 
-use \T3v\T3vCore\Service\AbstractService;
+use T3v\T3vCore\Service\AbstractService;
 
 /**
  * Flash Message Service Class
@@ -16,14 +16,14 @@ class FlashMessageService extends AbstractService {
   /**
    * The flash message service.
    *
-   * @var \TYPO3\CMS\Core\Messaging\FlashMessageService
+   * @var TYPO3\CMS\Core\Messaging\FlashMessageService
    */
   protected $flashMessageService;
 
   /**
    * The flash message queue.
    *
-   * @var \TYPO3\CMS\Core\Messaging\FlashMessageQueue
+   * @var TYPO3\CMS\Core\Messaging\FlashMessageQueue
    */
   protected $flashMessageQueue;
 
@@ -43,7 +43,7 @@ class FlashMessageService extends AbstractService {
    * Adds a message to the flash message queue.
    *
    * @param string $message The message
-   * @param \TYPO3\CMS\Core\Messaging\FlashMessage $severity The severity
+   * @param TYPO3\CMS\Core\Messaging\FlashMessage $severity The severity
    * @return void
    */
   public function addFlashMessage($message, $severity) {
@@ -84,7 +84,7 @@ class FlashMessageService extends AbstractService {
   /**
    * Helper function to get the flash message queue.
    *
-   * @return \TYPO3\CMS\Core\Messaging\FlashMessageQueue
+   * @return TYPO3\CMS\Core\Messaging\FlashMessageQueue
    */
   public function getFlashMessageQueue() {
     return $this->flashMessageQueue;
@@ -94,7 +94,7 @@ class FlashMessageService extends AbstractService {
    * Helper function to check if a message is already in the flash message queue.
    *
    * @param string $message The message
-   * @param \TYPO3\CMS\Core\Messaging\FlashMessage $severity The severity
+   * @param TYPO3\CMS\Core\Messaging\FlashMessage $severity The severity
    * @return boolean If the flash message is already in the flash message queue
    */
   protected function isInFlashMessageQueue($message, $severity) {

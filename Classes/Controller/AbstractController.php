@@ -1,8 +1,8 @@
 <?php
 namespace T3v\T3vCore\Controller;
 
-use \TYPO3\CMS\Core\Messaging\AbstractMessage;
-use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Abstract Controller Class

@@ -1,10 +1,10 @@
 <?php
 namespace T3v\T3vCore\Service;
 
-use \TYPO3\CMS\Core\Mail\MailMessage;
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Mail\MailMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-use \T3v\T3vCore\Service\AbstractService;
+use T3v\T3vCore\Service\AbstractService;
 
 /**
  * Mail Service Class

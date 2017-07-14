@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\Domain\Model;
 
-use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity as AbstractEntityExtbase;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity as AbstractEntityExtbase;
 
 /**
  * Abstract Entity Class

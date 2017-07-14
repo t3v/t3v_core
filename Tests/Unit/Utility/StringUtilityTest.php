@@ -1,9 +1,9 @@
 <?php
 namespace T3v\T3vCore\Tests\Unit\Utility;
 
-use \Nimut\TestingFramework\TestCase\UnitTestCase;
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-use \T3v\T3vCore\Utility\StringUtility;
+use T3v\T3vCore\Utility\StringUtility;
 
 /**
  * String Utility Test Class

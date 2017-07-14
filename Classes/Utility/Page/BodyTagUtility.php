@@ -1,8 +1,8 @@
 <?php
 namespace T3v\T3vCore\Utility\Page;
 
-use \T3v\T3vCore\Service\PageService;
-use \T3v\T3vCore\Utility\AbstractHelper;
+use T3v\T3vCore\Service\PageService;
+use T3v\T3vCore\Utility\AbstractHelper;
 
 /**
  * Body Tag Utility Class
@@ -15,7 +15,7 @@ class BodyTagUtility extends AbstractUtility {
   /**
    * The page service.
    *
-   * @var \T3v\T3vCore\Service\PageService
+   * @var T3v\T3vCore\Service\PageService
    */
   protected $pageService;
 

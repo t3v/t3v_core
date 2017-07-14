@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\Service;
 
-use \T3v\T3vCore\Service\AbstractService;
+use T3v\T3vCore\Service\AbstractService;
 
 /**
  * Language Service Class

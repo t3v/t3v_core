@@ -1,11 +1,11 @@
 <?php
 namespace T3v\T3vCore\Service;
 
-use \TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException;
-use \TYPO3\CMS\Core\Utility\File\BasicFileUtility;
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException;
+use TYPO3\CMS\Core\Utility\File\BasicFileUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-use \T3v\T3vCore\Service\AbstractService;
+use T3v\T3vCore\Service\AbstractService;
 
 /**
  * File Service Class
@@ -16,7 +16,7 @@ class FileService extends AbstractService {
   /**
    * The basic file utility.
    *
-   * @var \TYPO3\CMS\Core\Utility\File\BasicFileUtility
+   * @var TYPO3\CMS\Core\Utility\File\BasicFileUtility
    */
   protected $basicFileUtility;
 

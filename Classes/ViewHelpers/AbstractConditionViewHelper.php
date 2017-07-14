@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\ViewHelpers;
 
-use \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper as AbstractConditionViewHelperFluid;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper as AbstractConditionViewHelperFluid;
 
 /**
  * Abstract Condition View Helper Class

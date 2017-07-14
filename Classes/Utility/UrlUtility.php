@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\Utility;
 
-use \T3v\T3vCore\Utility\AbstractHelper;
+use T3v\T3vCore\Utility\AbstractHelper;
 
 /**
  * Url Utility Class

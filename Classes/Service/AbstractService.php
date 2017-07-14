@@ -1,9 +1,9 @@
 <?php
 namespace T3v\T3vCore\Service;
 
-use \TYPO3\CMS\Core\SingletonInterface;
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * Abstract Service Class
@@ -14,7 +14,7 @@ abstract class AbstractService implements SingletonInterface {
   /**
    * The object manager.
    *
-   * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+   * @var TYPO3\CMS\Extbase\Object\ObjectManager
    */
   protected $objectManager;
 
