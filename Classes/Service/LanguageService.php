@@ -20,9 +20,13 @@ class LanguageService extends AbstractService {
     $language = $default;
 
     if (TYPO3_MODE === 'FE') {
-      $language = $GLOBALS['TSFE']->lang;
-    } elseif (is_object($GLOBALS['LANG']) === true) {
-      $language = $GLOBALS['LANG']->lang;
+      if (isset($GLOBALS['TSFE']->lang)) {
+        $language = $GLOBALS['TSFE']->lang;
+      }
+    } elseif (is_object($GLOBALS['LANG'])) {
+      if (isset($GLOBALS['LANG']->lang)) {
+        $language = $GLOBALS['LANG']->lang;
+      }
     }
 
     // if (TYPO3_MODE === 'FE') {
@@ -47,16 +51,14 @@ class LanguageService extends AbstractService {
     $languageUid = $default;
 
     if (TYPO3_MODE === 'FE') {
-      $languageUid = $GLOBALS['TSFE']->sys_language_uid;
-    } elseif (is_object($GLOBALS['LANG']) === true) {
-      $languageUid = $GLOBALS['LANG']->sys_language_uid;
+      if (isset($GLOBALS['TSFE']->sys_language_uid)) {
+        $languageUid = $GLOBALS['TSFE']->sys_language_uid;
+      }
+    } elseif (is_object($GLOBALS['LANG'])) {
+      if (isset($GLOBALS['LANG']->sys_language_uid)) {
+        $languageUid = $GLOBALS['LANG']->sys_language_uid;
+      }
     }
-
-    // if (TYPO3_MODE === 'FE') {
-    //    if (isset($GLOBALS['TSFE']->sys_language_uid)) {
-    //     $languageUid = $GLOBALS['TSFE']->sys_language_uid;
-    //   }
-    // }
 
     return $languageUid;
   }

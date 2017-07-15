@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Cleaned up `LanguageService`
 * Formatted code and cleanup
 
 2.3.1
