@@ -15,7 +15,7 @@ abstract class AbstractValidator extends AbstractValidatorExtbase {
   /**
    * The object manager.
    *
-   * @var TYPO3\CMS\Extbase\Object\ObjectManager
+   * @var \TYPO3\CMS\Extbase\Object\ObjectManager
    * @inject
    */
   protected $objectManager;

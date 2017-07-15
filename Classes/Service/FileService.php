@@ -16,7 +16,7 @@ class FileService extends AbstractService {
   /**
    * The basic file utility.
    *
-   * @var TYPO3\CMS\Core\Utility\File\BasicFileUtility
+   * @var \TYPO3\CMS\Core\Utility\File\BasicFileUtility
    */
   protected $basicFileUtility;
 

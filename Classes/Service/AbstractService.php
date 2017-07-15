@@ -14,7 +14,7 @@ abstract class AbstractService implements SingletonInterface {
   /**
    * The object manager.
    *
-   * @var TYPO3\CMS\Extbase\Object\ObjectManager
+   * @var \TYPO3\CMS\Extbase\Object\ObjectManager
    */
   protected $objectManager;
 

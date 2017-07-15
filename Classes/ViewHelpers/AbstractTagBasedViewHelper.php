@@ -14,7 +14,7 @@ abstract class AbstractTagBasedViewHelper extends AbstractTagBasedViewHelperFlui
   /**
    * The language service.
    *
-   * @var T3v\T3vCore\Service\LanguageService
+   * @var \T3v\T3vCore\Service\LanguageService
    * @inject
    */
   protected $languageService;

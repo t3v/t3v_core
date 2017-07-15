@@ -15,7 +15,7 @@ class BodyTagUtility extends AbstractUtility {
   /**
    * The page service.
    *
-   * @var T3v\T3vCore\Service\PageService
+   * @var \T3v\T3vCore\Service\PageService
    */
   protected $pageService;
 

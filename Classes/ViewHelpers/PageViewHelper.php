@@ -12,7 +12,7 @@ class PageViewHelper extends AbstractViewHelper {
   /**
    * The page service.
    *
-   * @var T3v\T3vCore\Service\PageService
+   * @var \T3v\T3vCore\Service\PageService
    * @inject
    */
   protected $pageService;
