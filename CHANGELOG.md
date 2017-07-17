@@ -7,6 +7,7 @@ Unreleased
 ----------
 
 * Cleaned up `LanguageService`
+* Updated AppVeyor configuration
 * Formatted code and cleanup
 
 2.3.1
