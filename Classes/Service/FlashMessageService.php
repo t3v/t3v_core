@@ -84,7 +84,7 @@ class FlashMessageService extends AbstractService {
   /**
    * Helper function to get the flash message queue.
    *
-   * @return \TYPO3\CMS\Core\Messaging\FlashMessageQueue
+   * @return \TYPO3\CMS\Core\Messaging\FlashMessageQueue The flash message queue
    */
   public function getFlashMessageQueue() {
     return $this->flashMessageQueue;
