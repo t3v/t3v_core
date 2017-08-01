@@ -7,8 +7,9 @@ Unreleased
 ----------
 
 * Cleaned up `LanguageService`
-* Updated AppVeyor configuration
 * Formatted code and cleanup
+* Updated Composer configuration
+* Updated AppVeyor configuration
 
 2.3.1
 -----
