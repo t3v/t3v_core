@@ -4,7 +4,8 @@
       "name": "t3v_core",
       "path": "./",
       "folder_exclude_patterns": [
-        ".Build"
+        ".Build",
+        ".idea"
       ],
       "file_exclude_patterns": [
         ".keep",
