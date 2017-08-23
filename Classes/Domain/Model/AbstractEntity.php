@@ -12,7 +12,7 @@ abstract class AbstractEntity extends AbstractEntityExtbase {
   /**
    * The entitie's creation date.
    *
-   * @var DateTime
+   * @var \DateTime
    */
   protected $crdate;
 
@@ -26,7 +26,7 @@ abstract class AbstractEntity extends AbstractEntityExtbase {
   /**
    * Returns the entitie's creation date.
    *
-   * @return DateTime The entitie's creation date
+   * @return \DateTime The entitie's creation date
    */
   public function getCrdate() {
     return $this->crdate;

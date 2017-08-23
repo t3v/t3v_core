@@ -3,7 +3,6 @@ namespace T3v\T3vCore\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 use T3v\T3vCore\Utility\AbstractHelper;
@@ -16,8 +15,6 @@ use T3v\T3vCore\Utility\AbstractHelper;
 class RendererUtility extends AbstractUtility {
   /**
    * The constructor function.
-   *
-   * @return void
    */
   public function __construct() {
     parent::__construct();

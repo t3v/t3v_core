@@ -71,6 +71,8 @@ abstract class AbstractRepository extends Repository {
 
       return $result;
     }
+
+    return null;
   }
 
   /**
@@ -111,6 +113,8 @@ abstract class AbstractRepository extends Repository {
 
       return $result;
     }
+
+    return null;
   }
 
   /**
@@ -144,6 +148,8 @@ abstract class AbstractRepository extends Repository {
 
       return $result[0];
     }
+
+    return null;
   }
 
   /**
@@ -167,7 +173,7 @@ abstract class AbstractRepository extends Repository {
    * @param int $pid The PID
    * @param int $limit The optional limit
    * @param array $querySettings The optional query settings
-   * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult The found objects
+   * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
   public function findByPid($pid, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
     $pid = intval($pid);
@@ -194,6 +200,8 @@ abstract class AbstractRepository extends Repository {
 
       return $result;
     }
+
+    return null;
   }
 
   /**
@@ -202,7 +210,7 @@ abstract class AbstractRepository extends Repository {
    * @param array|string $pids The PIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
    * @param array $querySettings The optional query settings
-   * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult The found objects
+   * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
   public function findByPids($pids, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
     if (is_string($pids)) {
@@ -234,6 +242,8 @@ abstract class AbstractRepository extends Repository {
 
       return $result;
     }
+
+    return null;
   }
 
   /**

@@ -3,7 +3,7 @@ namespace T3v\T3vCore\Service;
 
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageQueue;
-use TYPO3\CMS\Core\Messaging\FlashMessageService;
+use TYPO3\CMS\Core\Messaging\FlashMessageService as FlashMessageServiceCore;
 
 use T3v\T3vCore\Service\AbstractService;
 
@@ -29,13 +29,11 @@ class FlashMessageService extends AbstractService {
 
   /**
    * The constructor function.
-   *
-   * @return void
    */
   public function __construct() {
     parent::__construct();
 
-    $this->flashMessageService = $this->objectManager->get(FlashMessageService::class);
+    $this->flashMessageService = $this->objectManager->get(FlashMessageServiceCore::class);
     $this->flashMessageQueue   = $this->flashMessageService->getMessageQueueByIdentifier();
   }
 
@@ -43,11 +41,12 @@ class FlashMessageService extends AbstractService {
    * Adds a message to the flash message queue.
    *
    * @param string $message The message
-   * @param \TYPO3\CMS\Core\Messaging\FlashMessage $severity The severity
+   * @param string $severity The severity
    * @return void
    */
   public function addFlashMessage($message, $severity) {
-    $message = (string) $message;
+    $message  = (string) $message;
+    $severity = (string) $severity;
 
     if ($this->isInFlashMessageQueue($message, $severity)) {
       return;

@@ -23,31 +23,31 @@ abstract class AbstractCommandController extends CommandController {
     $color   = (string) $color;
 
     if ($message) {
-      $colorize = new Color();
+      $message = new Color($message);
 
       switch(true) {
         case ($color === 'info' || $color === 'blue'):
-          echo $colorize($message)->blue() . PHP_EOL;
+          echo $message->blue . PHP_EOL;
 
           break;
 
         case ($color === 'error' || $color === 'red'):
-          echo $colorize($message)->red() . PHP_EOL;
+          echo $message->red . PHP_EOL;
 
           break;
 
         case ($color === 'warning' || $color === 'yellow'):
-          echo $colorize($message)->yellow() . PHP_EOL;
+          echo $message->yellow . PHP_EOL;
 
           break;
 
         case ($color === 'ok' || $color === 'green'):
-          echo $colorize($message)->green() . PHP_EOL;
+          echo $message->green . PHP_EOL;
 
           break;
 
         default:
-          echo $colorize($message)->white() . PHP_EOL;
+          echo $message->white . PHP_EOL;
       }
     }
   }

@@ -2,7 +2,7 @@
 namespace T3v\T3vCore\Utility\Page;
 
 use T3v\T3vCore\Service\PageService;
-use T3v\T3vCore\Utility\AbstractHelper;
+use T3v\T3vCore\Utility\AbstractUtility;
 
 /**
  * Body Tag Utility Class

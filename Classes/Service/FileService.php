@@ -21,9 +21,7 @@ class FileService extends AbstractService {
   protected $basicFileUtility;
 
   /**
-   * The constructor function.
-   *
-   * @return void
+   * The constructor.
    */
   public function __construct() {
     parent::__construct();
@@ -44,12 +42,13 @@ class FileService extends AbstractService {
       $fileName = $file['name'];
 
       if (GeneralUtility::verifyFilenameAgainstDenyPattern($fileName)) {
-        $temporaryFileName = $file['tmp_name'];
-        $uploadsFolderPath = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
-        $newFileName       = $this->basicFileUtility->getUniqueName($this->normalizeFileName($fileName), $uploadsFolderPath);
-        $fileCouldBeMoved  = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
+        $temporaryFileName   = $file['tmp_name'];
+        $fileName            = $this->cleanFileName($fileName);
+        $uploadsFolderPath   = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
+        $newFileName         = $this->getUniqueFileName($fileName, $uploadsFolderPath);
+        $fileCouldBeUploaded = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
 
-        if ($fileCouldBeMoved) {
+        if ($fileCouldBeUploaded) {
           return $newFileName;
         }
       } else {
@@ -66,24 +65,45 @@ class FileService extends AbstractService {
    * @param object $file The file object
    * @return void
    */
-  public static function deleteFile($file) {
+  public function deleteFile($file) {
     unlink($file);
   }
 
   /**
-   * Normalizes a file name.
+   * Get an unique file name.
+   *
+   * @param string $fileName The file name to check
+   * @param string $directory The directory for which to return a unique file name for `$fileName`, MUST be a valid directory, should be absolute.
+   * @return string The unique file name
+   */
+  public function getUniqueFileName($fileName, $directory) {
+    $fileName  = (string) $fileName;
+    $directory = (string) $directory;
+
+    return $this->basicFileUtility->getUniqueName($fileName, $directory);
+  }
+
+  /**
+   * Cleans a file name.
+   *
+   * @param string $fileName The file name
+   * @return string The cleaned file name
+   */
+  public function cleanFileName($fileName) {
+    $fileName = (string) $fileName;
+
+    return $this->basicFileUtility->cleanFileName($fileName);
+  }
+
+  /**
+   * Alias for `cleanFileName`.
    *
    * @param string $fileName The file name
    * @return string The normalized file name
    */
-  public static function normalizeFileName($fileName) {
+  public function normalizeFileName($fileName) {
     $fileName = (string) $fileName;
-    $fileName = mb_strtolower($fileName);
 
-    $search   = ['ä', 'ö', 'ü', 'ß', ',', ' '];
-    $replace  = ['ae', 'oe', 'ue', 'ss', '-', '_'];
-    $fileName = str_replace($search, $replace, $fileName);
-
-    return $fileName;
+    return $this->cleanFileName($fileName);
   }
 }
