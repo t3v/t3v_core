@@ -7,6 +7,7 @@ Unreleased
 ----------
 
 * Improved code
+* Updated database fixtures
 * Updated AppVeyor configuration
 
 2.4.0
