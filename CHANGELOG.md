@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Fixed `AbstractRepository`
 * Improved code
 * Updated database fixtures
 * Updated AppVeyor configuration

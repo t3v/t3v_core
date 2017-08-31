@@ -106,7 +106,7 @@ abstract class AbstractRepository extends Repository {
       }
 
       // Set orderings
-      $query->setOrderings($this->orderByField('uid', $uids));
+      $query->setOrderings(['uid' => QueryInterface::ORDER_ASCENDING]);
 
       // Execute query
       $result = $query->execute();
@@ -235,7 +235,7 @@ abstract class AbstractRepository extends Repository {
       }
 
       // Set orderings
-      $query->setOrderings($this->orderByField('pid', $pids));
+      $query->setOrderings(['pid' => QueryInterface::ORDER_ASCENDING]);
 
       // Execute query
       $result = $query->execute();
