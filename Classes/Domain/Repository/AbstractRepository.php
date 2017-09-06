@@ -50,7 +50,7 @@ abstract class AbstractRepository extends Repository {
    * Finder to query by UID, overrides the default one.
    *
    * @param int $uid The UID
-   * @param array $querySettings The optional query settings
+   * @param array $querySettings The optional query settings to apply
    * @return object|null The found object or null if no object was found
    */
   public function findByUid($uid, $querySettings = ['respectSysLanguage' => false]) {
@@ -80,10 +80,11 @@ abstract class AbstractRepository extends Repository {
    *
    * @param array|string $uids The UIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
-   * @param array $querySettings The optional query settings
+   * @param boolean $sort The optional sort, sort objects by UID, defaults to `false`
+   * @param array $querySettings The optional query settings to apply
    * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
-  public function findByUids($uids, $limit = null, $querySettings = ['respectSysLanguage' => false]) {
+  public function findByUids($uids, $limit = null, $sort = false, $querySettings = ['respectSysLanguage' => false]) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
@@ -106,7 +107,11 @@ abstract class AbstractRepository extends Repository {
       }
 
       // Set orderings
-      $query->setOrderings(['uid' => QueryInterface::ORDER_ASCENDING]);
+      $sort = (boolean) $sort;
+
+      if ($sort) {
+        $query->setOrderings(['uid' => QueryInterface::ORDER_ASCENDING]);
+      }
 
       // Execute query
       $result = $query->execute();
@@ -122,7 +127,7 @@ abstract class AbstractRepository extends Repository {
    *
    * @param int $uid The UID
    * @param int $languageUid The language UID, defaults to `0`
-   * @param array $querySettings The optional query settings
+   * @param array $querySettings The optional query settings to apply
    * @return object|null The raw object or null if no object was found
    */
   public function getRawObjectByUid($uid, $languageUid = 0, $querySettings = ['respectSysLanguage' => false]) {
@@ -157,7 +162,7 @@ abstract class AbstractRepository extends Repository {
    *
    * @param int $uid The UID
    * @param int $languageUid The language UID, defaults to `0`
-   * @param array $querySettings The optional query settings
+   * @param array $querySettings The optional query settings to apply
    * @return object|null The raw model or null if no model was found
    */
   public function getRawModelByUid($uid, $languageUid = 0, $querySettings = ['respectSysLanguage' => false]) {
@@ -172,7 +177,7 @@ abstract class AbstractRepository extends Repository {
    *
    * @param int $pid The PID
    * @param int $limit The optional limit
-   * @param array $querySettings The optional query settings
+   * @param array $querySettings The optional query settings to apply
    * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
   public function findByPid($pid, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
@@ -209,10 +214,11 @@ abstract class AbstractRepository extends Repository {
    *
    * @param array|string $pids The PIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
+   * @param boolean $sort The optional sort, sort objects by PID, defaults to `false`
    * @param array $querySettings The optional query settings
    * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
-  public function findByPids($pids, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
+  public function findByPids($pids, $limit = null, $sort = false, $querySettings = ['respectSysLanguage' => true]) {
     if (is_string($pids)) {
       $pids = GeneralUtility::intExplode(',', $pids, true);
     }
@@ -235,7 +241,11 @@ abstract class AbstractRepository extends Repository {
       }
 
       // Set orderings
-      $query->setOrderings(['pid' => QueryInterface::ORDER_ASCENDING]);
+      $sort = (boolean) $sort;
+
+      if ($sort) {
+        $query->setOrderings(['pid' => QueryInterface::ORDER_ASCENDING]);
+      }
 
       // Execute query
       $result = $query->execute();
