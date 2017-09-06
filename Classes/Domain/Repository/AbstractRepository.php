@@ -98,7 +98,7 @@ abstract class AbstractRepository extends Repository {
       // Set constraints
       $query->matching($query->in('uid', $uids));
 
-      // Set orderings
+      // Set orderings and maintain the list order
       if (version_compare(VersionNumberUtility::getCurrentTypo3Version(), '8.0.0', '<')) {
         $orderings = $this->getOrderingsByField('uid', $uids);
 
@@ -231,7 +231,7 @@ abstract class AbstractRepository extends Repository {
         $query->setLimit($limit);
       }
 
-      // Set orderings
+      // Set orderings and maintain the list order
       if (version_compare(VersionNumberUtility::getCurrentTypo3Version(), '8.0.0', '<')) {
         $orderings = $this->getOrderingsByField('pid', $pids);
 
