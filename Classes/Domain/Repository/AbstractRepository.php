@@ -79,12 +79,11 @@ abstract class AbstractRepository extends Repository {
    * Finder to query by multiple UIDs.
    *
    * @param array|string $uids The UIDs as array or as string, seperated by `,`
-   * @param int $limit The optional limit
    * @param boolean $sort The optional sort, sort objects by UID, defaults to `false`
    * @param array $querySettings The optional query settings to apply
    * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
-  public function findByUids($uids, $limit = null, $sort = false, $querySettings = ['respectSysLanguage' => false]) {
+  public function findByUids($uids, $sort = false, $querySettings = ['respectSysLanguage' => false]) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
@@ -98,13 +97,6 @@ abstract class AbstractRepository extends Repository {
 
       // Set constraints
       $query->matching($query->in('uid', $uids));
-
-      // Set limit if available
-      if (!empty($limit)) {
-        $limit = intval($limit);
-
-        $query->setLimit($limit);
-      }
 
       // Set orderings
       $sort = (boolean) $sort;
