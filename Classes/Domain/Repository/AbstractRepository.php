@@ -2,6 +2,7 @@
 namespace T3v\T3vCore\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -79,11 +80,10 @@ abstract class AbstractRepository extends Repository {
    * Finder to query by multiple UIDs.
    *
    * @param array|string $uids The UIDs as array or as string, seperated by `,`
-   * @param boolean $sort The optional sort, sort objects by UID, defaults to `false`
    * @param array $querySettings The optional query settings to apply
    * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
-  public function findByUids($uids, $sort = false, $querySettings = ['respectSysLanguage' => false]) {
+  public function findByUids($uids, $querySettings = ['respectSysLanguage' => false]) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
@@ -99,10 +99,10 @@ abstract class AbstractRepository extends Repository {
       $query->matching($query->in('uid', $uids));
 
       // Set orderings
-      $sort = (boolean) $sort;
+      if (version_compare(VersionNumberUtility::getCurrentTypo3Version(), '8.0.0', '<')) {
+        $orderings = $this->getOrderingsByField('uid', $uids);
 
-      if ($sort) {
-        $query->setOrderings(['uid' => QueryInterface::ORDER_ASCENDING]);
+        $query->setOrderings($orderings);
       }
 
       // Execute query
@@ -206,11 +206,10 @@ abstract class AbstractRepository extends Repository {
    *
    * @param array|string $pids The PIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
-   * @param boolean $sort The optional sort, sort objects by PID, defaults to `false`
    * @param array $querySettings The optional query settings
    * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
    */
-  public function findByPids($pids, $limit = null, $sort = false, $querySettings = ['respectSysLanguage' => true]) {
+  public function findByPids($pids, $limit = null, $querySettings = ['respectSysLanguage' => true]) {
     if (is_string($pids)) {
       $pids = GeneralUtility::intExplode(',', $pids, true);
     }
@@ -233,10 +232,10 @@ abstract class AbstractRepository extends Repository {
       }
 
       // Set orderings
-      $sort = (boolean) $sort;
+      if (version_compare(VersionNumberUtility::getCurrentTypo3Version(), '8.0.0', '<')) {
+        $orderings = $this->getOrderingsByField('pid', $pids);
 
-      if ($sort) {
-        $query->setOrderings(['pid' => QueryInterface::ORDER_ASCENDING]);
+        $query->setOrderings($orderings);
       }
 
       // Execute query
@@ -284,13 +283,14 @@ abstract class AbstractRepository extends Repository {
    *
    * @param string $field The field
    * @param array $values The values
+   * @param string $order The optional order, defaults to `QueryInterface::ORDER_DESCENDING`
    * @return array The orderings
    */
-  protected function orderByField($field, $values) {
+  protected function getOrderingsByField($field, $values, $order = QueryInterface::ORDER_DESCENDING) {
     $orderings = [];
 
     foreach ($values as $value) {
-      $orderings["$field={$value}"] = QueryInterface::ORDER_DESCENDING;
+      $orderings["$field={$value}"] = $order;
     }
 
     return $orderings;
