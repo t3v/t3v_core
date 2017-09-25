@@ -2,6 +2,7 @@
 namespace T3v\T3vCore\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
@@ -38,8 +39,15 @@ class RendererUtility extends AbstractUtility {
     $partialRootPath      = GeneralUtility::getFileAbsFileName($configuration['view']['partialRootPath']);
 
     $renderer = $this->objectManager->get(StandaloneView::class);
-    $renderer->setLayoutRootPath($layoutRootPath);
-    $renderer->setPartialRootPath($partialRootPath);
+
+    if (version_compare(VersionNumberUtility::getCurrentTypo3Version(), '8.0.0', '<')) {
+      $renderer->setLayoutRootPath($layoutRootPath);
+      $renderer->setPartialRootPath($partialRootPath);
+    } else {
+      $renderer->setLayoutRootPaths([$layoutRootPath]);
+      $renderer->setPartialRootPaths([$partialRootPath]);
+    }
+
     $renderer->setTemplatePathAndFilename($templateRootPath . $template);
     $renderer->setFormat($format);
 
