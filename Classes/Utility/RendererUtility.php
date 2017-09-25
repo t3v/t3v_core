@@ -38,8 +38,8 @@ class RendererUtility extends AbstractUtility {
     $partialRootPath      = GeneralUtility::getFileAbsFileName($configuration['view']['partialRootPath']);
 
     $renderer = $this->objectManager->get(StandaloneView::class);
-    $renderer->setLayoutRootPath($layoutRootPath);
-    $renderer->setPartialRootPath($partialRootPath);
+    $renderer->setLayoutRootPaths([$layoutRootPath]);
+    $renderer->setPartialRootPaths([$partialRootPath]);
     $renderer->setTemplatePathAndFilename($templateRootPath . $template);
     $renderer->setFormat($format);
 
