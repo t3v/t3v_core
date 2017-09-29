@@ -3,8 +3,8 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+2.6.0
+-----
 
 * Fixed imports
 * Improved compatibility for TYPO3 8.7 (`RendererUtility)`
