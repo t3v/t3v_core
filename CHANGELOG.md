@@ -7,6 +7,8 @@ Unreleased
 ----------
 
 * Merged Extensions and Vendor TypoScript
+* Updated dependencies
+* Updated AppVeyor configuration
 
 2.6.0
 -----
