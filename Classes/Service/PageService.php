@@ -155,9 +155,9 @@ class PageService extends AbstractService {
   /**
    * Get the subpages of a page.
    *
-   * @param int $pid The PID of the page to search from
+   * @param int $pid The PID of the entry page to search from
    * @param int $recursion The recursion, defaults to `1`
-   * @param boolean $exclude If set, the start page should be excluded, defaults to `true`
+   * @param boolean $exclude If set, the entry page should be excluded, defaults to `true`
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The subpages
@@ -185,9 +185,9 @@ class PageService extends AbstractService {
   /**
    * Get the UIDs of the subpages of a page.
    *
-   * @param int $pid The PID of the page to search from
+   * @param int $pid The PID of the entry page to search from
    * @param int $recursion The recursion level, defaults to `1`
-   * @param boolean $exclude If set, the start page should be excluded, defaults to `true`
+   * @param boolean $exclude If set, the entry page should be excluded, defaults to `true`
    * @return array The subpages UIDs
    */
   public function getSubpagesUids($pid, $recursion = 1, $exclude = true) {
