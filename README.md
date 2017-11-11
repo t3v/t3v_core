@@ -9,7 +9,8 @@ Dependencies
 ------------
 
 * TYPO3 CMS 7.6 or greater
-* Colors library
+* Cocur/Slugify library
+* Kevinlebrun/Colors library
 
 Installation
 ------------
