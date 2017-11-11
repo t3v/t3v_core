@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added `Slug` View Helper
 * Added `Cocur/Slugify` as dependency
 * Refactored TypoScript
 * Updated constants and configuration
