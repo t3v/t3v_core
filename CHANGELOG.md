@@ -6,10 +6,12 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added `Cocur/Slugify` as dependency
+* Refactored TypoScript
 * Updated constants and configuration
-* Merged Extensions and Vendor TypoScript
-* Updated dependencies
 * Updated AppVeyor configuration
+* Updated dependencies
+* Dropped support for PHP 5.x
 
 2.6.0
 -----
