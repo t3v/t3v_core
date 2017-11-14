@@ -226,10 +226,10 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 1.0.0
 -----
 
+* First release
 * Added `BodyTagHelper` and `PageService`
 * Added `AbstractService` and `FlashMessageService`
 * Added `AbstractController`
-* First implementation
 * Added common files
 
 [Semantic Versioning]: http://semver.org "Semantic Versioning"
