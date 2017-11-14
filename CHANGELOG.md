@@ -3,8 +3,8 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+3.0.0
+-----
 
 * Added `Slug` View Helper
 * Added `Cocur/Slugify` as dependency
