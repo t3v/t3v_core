@@ -33,9 +33,30 @@ class RendererUtility extends AbstractUtility {
 
     $configurationManager = $this->objectManager->get(ConfigurationManagerInterface::class);
     $configuration        = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-    $layoutRootPath       = GeneralUtility::getFileAbsFileName($configuration['view']['layoutRootPath']);
-    $templateRootPath     = GeneralUtility::getFileAbsFileName($configuration['view']['templateRootPath']);
-    $partialRootPath      = GeneralUtility::getFileAbsFileName($configuration['view']['partialRootPath']);
+
+    $layoutRootPath = GeneralUtility::getFileAbsFileName($configuration['view']['layoutRootPath']);
+
+    if (empty($layoutRootPath)) {
+      $firstLayoutRootPath = reset($configuration['view']['layoutRootPaths']);
+
+      $layoutRootPath = GeneralUtility::getFileAbsFileName($firstLayoutRootPath);
+    }
+
+    $templateRootPath = GeneralUtility::getFileAbsFileName($configuration['view']['templateRootPath']);
+
+    if (empty($templateRootPath)) {
+      $firstTemplateRootPath = reset($configuration['view']['templateRootPaths']);
+
+      $templateRootPath = GeneralUtility::getFileAbsFileName($firstTemplateRootPath);
+    }
+
+    $partialRootPath = GeneralUtility::getFileAbsFileName($configuration['view']['partialRootPath']);
+
+    if (empty($partialRootPath)) {
+      $firstPartialRootPath = reset($configuration['view']['partialRootPaths']);
+
+      $partialRootPath = GeneralUtility::getFileAbsFileName($firstPartialRootPath);
+    }
 
     $renderer = $this->objectManager->get(StandaloneView::class);
     $renderer->setLayoutRootPaths([$layoutRootPath]);
