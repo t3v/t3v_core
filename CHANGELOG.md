@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `MailService`, added `replyTo` as parameter (breaking change)
 * Improved `RendererUtility`
 * Updated TypoScript
 * Fixed functional tests
