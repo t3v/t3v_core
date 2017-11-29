@@ -6,10 +6,11 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
-* Improved `MailService`, added `replyTo` as parameter (breaking change)
+* Improved `MailService`, added `replyTo` parameter (breaking change)
 * Improved `RendererUtility`
 * Updated TypoScript
 * Fixed functional tests
+* Updated AppVeyor configuration
 
 3.0.0
 -----
