@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Removed `FlashMessageService` (breaking change)
 * Improved `MailService`, added `replyTo` parameter (breaking change)
 * Improved `RendererUtility`
 * Updated TypoScript
