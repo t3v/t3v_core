@@ -4,11 +4,11 @@ namespace T3v\T3vCore\Domain\Model\Traits;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 
 /**
- * Localisation Trait
+ * Localization Trait
  *
  * @package T3v\T3vCore\Domain\Model\Traits
  */
-trait LocalisationTrait {
+trait LocalizationTrait {
   /**
    * Helper function to get the localizations.
    *
