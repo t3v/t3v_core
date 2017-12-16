@@ -3,11 +3,11 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+5.0.0
+-----
 
 * Added translations for tabs
-* Renamed `LocalisationTrait` to `LocalisationTrait`
+* Renamed `LocalisationTrait` to `LocalisationTrait` (breaking change)
 
 4.1.0
 -----
