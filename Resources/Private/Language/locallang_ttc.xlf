@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+  <file product-name="t3v_core" source-language="en" datatype="plaintext" original="messages">
+    <header />
+
+    <body>
+      <!-- === Tabs === -->
+
+      <trans-unit id="tabs.access">
+        <source>Access</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.accessibility">
+        <source>Accessibility</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.appearance">
+        <source>Appearance</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.behaviour">
+        <source>Behaviour</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.categories">
+        <source>Categories</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.extended">
+        <source>Extended</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.general">
+        <source>General</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.images">
+        <source>Images</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.language">
+        <source>Language</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.metadata">
+        <source>Metadata</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.resources">
+        <source>Resources</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

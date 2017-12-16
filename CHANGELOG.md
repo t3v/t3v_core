@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added translations for tabs
 * Renamed `LocalisationTrait` to `LocalisationTrait`
 
 4.1.0
