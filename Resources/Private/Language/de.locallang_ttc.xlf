@@ -60,6 +60,43 @@
         <source>Resources</source>
         <target>Ressourcen</target>
       </trans-unit>
+
+      <!-- === TCEFORM === -->
+
+      <trans-unit id="tceform.tt.content.header.layout.altLabels.0.label">
+        <source>Default</source>
+        <target>Standard</target>
+      </trans-unit>
+
+      <trans-unit id="tceform.tt.content.header.layout.altLabels.1.label">
+        <source>Layout 1 (H1)</source>
+        <target>Layout 1 (H1)</target>
+      </trans-unit>
+
+      <trans-unit id="tceform.tt.content.header.layout.altLabels.2.label">
+        <source>Layout 2 (H2)</source>
+        <target>Layout 2 (H2)</target>
+      </trans-unit>
+
+      <trans-unit id="tceform.tt.content.header.layout.altLabels.3.label">
+        <source>Layout 3 (H3)</source>
+        <target>Layout 3 (H3)</target>
+      </trans-unit>
+
+      <trans-unit id="tceform.tt.content.header.layout.altLabels.4.label">
+        <source>Layout 4 (H4)</source>
+        <target>Layout 4 (H4)</target>
+      </trans-unit>
+
+      <trans-unit id="tceform.tt.content.header.layout.altLabels.5.label">
+        <source>Layout 5 (H5)</source>
+        <target>Layout 5 (H5)</target>
+      </trans-unit>
+
+      <trans-unit id="tceform.tt.content.header.layout.altLabels.100.label">
+        <source>Hidden</source>
+        <target>Verborgen</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
