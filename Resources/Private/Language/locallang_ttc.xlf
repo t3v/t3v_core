@@ -52,6 +52,26 @@
 
       <!-- === TCEFORM === -->
 
+      <!-- +++ Layout +++ -->
+
+      <trans-unit id="tceform.tt.content.layout.altLabels.0.label">
+        <source>Default</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.tt.content.layout.altLabels.1.label">
+        <source>Layout 1</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.tt.content.layout.altLabels.2.label">
+        <source>Layout 2</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.tt.content.layout.altLabels.3.label">
+        <source>Layout 3</source>
+      </trans-unit>
+
+      <!-- +++ Header +++ -->
+
       <trans-unit id="tceform.tt.content.header.layout.altLabels.0.label">
         <source>Default</source>
       </trans-unit>
