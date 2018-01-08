@@ -56,22 +56,18 @@ notifications:
 
 script:
   # - >
-  #   echo;
   #   echo "Running PHP linter...";
   #   find . -name \*.php ! -path "$BUILD_PATH/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
 
   - >
-    echo;
     echo "Running unit tests...";
     $BIN_PATH/phpunit --colors --configuration $TESTING_FRAMEWORK_PATH/UnitTests.xml Tests/Unit
 
   # - >
-  #   echo;
   #   echo "Running unit tests in parallel...";
   #   find "Tests/Unit" -wholename "*Test.php" | parallel --gnu "$BIN_PATH/phpunit --colors --configuration $TESTING_FRAMEWORK_PATH/UnitTests.xml {}"
 
   - >
-    echo;
     echo "Running functional tests...";
     export typo3DatabaseHost="localhost";
     export typo3DatabaseUsername="root";
@@ -80,7 +76,6 @@ script:
     $BIN_PATH/phpunit --colors --configuration $TESTING_FRAMEWORK_PATH/FunctionalTests.xml Tests/Functional
 
   # - >
-  #   echo;
   #   echo "Running functional tests in parallel...";
   #   export typo3DatabaseHost="localhost";
   #   export typo3DatabaseUsername="root";
