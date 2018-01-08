@@ -7,6 +7,8 @@ Unreleased
 ----------
 
 * Added TCEFORM translations
+* Updated Travis CI and AppVeyor configuration
+* Updated dependencies
 
 5.0.0
 -----
