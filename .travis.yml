@@ -55,11 +55,6 @@ notifications:
 #   - 7.2
 
 script:
-  - >
-    echo;
-    echo "Running unit tests...";
-    $BIN_PATH/phpunit --colors -c $TESTING_FRAMEWORK_PATH/UnitTests.xml Tests/Unit
-
   # - >
   #   echo;
   #   echo "Running PHP linter...";
@@ -67,10 +62,30 @@ script:
 
   - >
     echo;
+    echo "Running unit tests...";
+    $BIN_PATH/phpunit --colors --configuration $TESTING_FRAMEWORK_PATH/UnitTests.xml Tests/Unit
+
+  # - >
+  #   echo;
+  #   echo "Running unit tests in parallel...";
+  #   find "Tests/Unit" -wholename "*Test.php" | parallel --gnu "$BIN_PATH/phpunit --colors --configuration $TESTING_FRAMEWORK_PATH/UnitTests.xml {}"
+
+  - >
+    echo;
+    echo "Running functional tests...";
     export typo3DatabaseHost="localhost";
     export typo3DatabaseUsername="root";
     export typo3DatabasePassword="";
-    export typo3DatabaseName="typo3";
-    find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite ({})..."; $BIN_PATH/phpunit --colors -c $TESTING_FRAMEWORK_PATH/FunctionalTests.xml {}'
+    export typo3DatabaseName="t3v_core";
+    $BIN_PATH/phpunit --colors --configuration $TESTING_FRAMEWORK_PATH/FunctionalTests.xml Tests/Functional
+
+  # - >
+  #   echo;
+  #   echo "Running functional tests in parallel...";
+  #   export typo3DatabaseHost="localhost";
+  #   export typo3DatabaseUsername="root";
+  #   export typo3DatabasePassword="";
+  #   export typo3DatabaseName="t3v_core";
+  #   find "Tests/Functional" -wholename "*Test.php" | parallel --gnu "$BIN_PATH/phpunit --colors --configuration $TESTING_FRAMEWORK_PATH/FunctionalTests.xml {}"
 
 sudo: false
