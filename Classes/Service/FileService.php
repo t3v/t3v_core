@@ -70,7 +70,7 @@ class FileService extends AbstractService {
   }
 
   /**
-   * Get an unique file name.
+   * Gets an unique file name.
    *
    * @param string $fileName The file name to check
    * @param string $directory The directory for which to return a unique file name for `$fileName`, MUST be a valid directory, should be absolute.
@@ -91,6 +91,7 @@ class FileService extends AbstractService {
    */
   public function cleanFileName($fileName) {
     $fileName = (string) $fileName;
+    $fileName = mb_strtolower($fileName);
 
     return $this->basicFileUtility->cleanFileName($fileName);
   }

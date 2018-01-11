@@ -30,12 +30,22 @@ class FileServiceTest extends FunctionalTestCase {
   }
 
   /**
+   * Tear down after running tests.
+   *
+   * @return void
+   */
+  protected function tearDown() {
+    $this->subject = null;
+  }
+
+  /**
    * Test if the file name gets cleaned.
    *
    * @test
    */
   public function fileNameGetsCleaned() {
     $this->assertEquals($this->subject->cleanFileName('file.pdf'),         'file.pdf');
+    $this->assertEquals($this->subject->cleanFileName('FILE.PDF'),         'file.pdf');
     $this->assertEquals($this->subject->cleanFileName('file x.pdf'),       'file_x.pdf');
     $this->assertEquals($this->subject->cleanFileName('file_x.pdf'),       'file_x.pdf');
     $this->assertEquals($this->subject->cleanFileName('file-x.pdf'),       'file-x.pdf');
