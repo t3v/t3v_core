@@ -3,11 +3,12 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+5.1.0
+-----
 
 * Improved `FileService`
 * Added TCEFORM translations
+* Updated Composer configuration and scripts
 * Updated Travis CI and AppVeyor configuration
 * Updated dependencies
 
