@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Updated translations (breaking change)
 * Updated dependencies
 
 5.1.0

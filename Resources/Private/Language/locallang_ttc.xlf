@@ -54,49 +54,57 @@
 
       <!-- +++ Layout +++ -->
 
-      <trans-unit id="tceform.tt.content.layout.altLabels.0.label">
+      <trans-unit id="tceform.ttContent.layout.altLabels.0.label">
         <source>Default</source>
       </trans-unit>
 
-      <trans-unit id="tceform.tt.content.layout.altLabels.1.label">
+      <trans-unit id="tceform.ttContent.layout.altLabels.1.label">
         <source>Layout 1</source>
       </trans-unit>
 
-      <trans-unit id="tceform.tt.content.layout.altLabels.2.label">
+      <trans-unit id="tceform.ttContent.layout.altLabels.2.label">
         <source>Layout 2</source>
       </trans-unit>
 
-      <trans-unit id="tceform.tt.content.layout.altLabels.3.label">
+      <trans-unit id="tceform.ttContent.layout.altLabels.3.label">
         <source>Layout 3</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.ttContent.layout.altLabels.4.label">
+        <source>Layout 4</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.ttContent.layout.altLabels.5.label">
+        <source>Layout 5</source>
       </trans-unit>
 
       <!-- +++ Header +++ -->
 
-      <trans-unit id="tceform.tt.content.header.layout.altLabels.0.label">
+      <trans-unit id="tceform.ttContent.header.layout.altLabels.0.label">
         <source>Default</source>
       </trans-unit>
 
-      <trans-unit id="tceform.tt.content.header.layout.altLabels.1.label">
+      <trans-unit id="tceform.ttContent.header.layout.altLabels.1.label">
         <source>Layout 1 (H1)</source>
       </trans-unit>
 
-      <trans-unit id="tceform.tt.content.header.layout.altLabels.2.label">
+      <trans-unit id="tceform.ttContent.header.layout.altLabels.2.label">
         <source>Layout 2 (H2)</source>
       </trans-unit>
 
-      <trans-unit id="tceform.tt.content.header.layout.altLabels.3.label">
+      <trans-unit id="tceform.ttContent.header.layout.altLabels.3.label">
         <source>Layout 3 (H3)</source>
       </trans-unit>
 
-      <trans-unit id="tceform.tt.content.header.layout.altLabels.4.label">
+      <trans-unit id="tceform.ttContent.header.layout.altLabels.4.label">
         <source>Layout 4 (H4)</source>
       </trans-unit>
 
-      <trans-unit id="tceform.tt.content.header.layout.altLabels.5.label">
+      <trans-unit id="tceform.ttContent.header.layout.altLabels.5.label">
         <source>Layout 5 (H5)</source>
       </trans-unit>
 
-      <trans-unit id="tceform.tt.content.header.layout.altLabels.100.label">
+      <trans-unit id="tceform.ttContent.header.layout.altLabels.100.label">
         <source>Hidden</source>
       </trans-unit>
     </body>
