@@ -150,6 +150,8 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
+   * Get a raw model by UID.
+   *
    * Alias for `getRawObjectByUid`.
    *
    * @param int $uid The UID
