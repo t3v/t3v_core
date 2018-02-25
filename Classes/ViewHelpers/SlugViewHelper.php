@@ -10,7 +10,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use Cocur\Slugify\Slugify;
 
 /**
- * Slug View Helper Class
+ * The slug view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
  */

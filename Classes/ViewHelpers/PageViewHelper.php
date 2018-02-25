@@ -4,7 +4,7 @@ namespace T3v\T3vCore\ViewHelpers;
 use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
 
 /**
- * Page View Helper Class
+ * The page view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
  */

@@ -4,7 +4,7 @@ namespace T3v\T3vCore\ViewHelpers\Page;
 use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
 
 /**
- * Language UID View Helper Class
+ * The language UID view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers\Page
  */

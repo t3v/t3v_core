@@ -4,7 +4,7 @@ namespace T3v\T3vCore\ViewHelpers;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper as AbstractConditionViewHelperFluid;
 
 /**
- * Abstract Condition View Helper Class
+ * The abstract condition view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
  */

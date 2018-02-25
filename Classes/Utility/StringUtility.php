@@ -4,7 +4,7 @@ namespace T3v\T3vCore\Utility;
 use T3v\T3vCore\Utility\AbstractUtility;
 
 /**
- * String Utility Class
+ * The string utility class.
  *
  * @package T3v\T3vCore\Utility
  */

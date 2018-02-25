@@ -8,7 +8,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use T3v\T3vCore\Service\AbstractService;
 
 /**
- * File Service Class
+ * The file service class.
  *
  * @package T3v\T3vCore\Service
  */

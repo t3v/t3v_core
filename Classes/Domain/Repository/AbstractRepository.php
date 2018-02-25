@@ -11,7 +11,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use T3v\T3vCore\Service\LanguageService;
 
 /**
- * Abstract Repository Class
+ * The abstract repository class.
  *
  * @package T3v\T3vCore\Domain\Repository
  */

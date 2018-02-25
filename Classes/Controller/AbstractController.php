@@ -5,13 +5,13 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
- * Abstract Controller Class
+ * The abstract controller class.
  *
  * @package T3v\T3vCore\Controller
  */
 abstract class AbstractController extends ActionController {
   /**
-   * Pattern after which the view object name is built if no Fluid template is found.
+   * The pattern after which the view object name is built if no Fluid template is found.
    *
    * @var string
    */

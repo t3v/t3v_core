@@ -6,7 +6,7 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper as AbstractTagBas
 use T3v\T3vCore\Service\LanguageService;
 
 /**
- * Abstract Tag Based View Helper Class
+ * The abstract tag based view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
  */
@@ -20,7 +20,7 @@ abstract class AbstractTagBasedViewHelper extends AbstractTagBasedViewHelperFlui
   protected $languageService;
 
   /**
-   * Helper function to get the current language.
+   * Gets the current language.
    *
    * @param string $default The default value, defaults to `en`
    * @return string The current language if available, otherwise the default
@@ -32,7 +32,7 @@ abstract class AbstractTagBasedViewHelper extends AbstractTagBasedViewHelperFlui
   }
 
   /**
-   * Helper function to get the current language UID.
+   * Gets the current language UID.
    *
    * @param int $default The default value, defaults to `0`
    * @return int The current language UID if available, otherwise the default

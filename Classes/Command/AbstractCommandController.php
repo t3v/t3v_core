@@ -6,13 +6,13 @@ use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 use Colors\Color;
 
 /**
- * Abstract Command Controller Class
+ * The abstract command controller class.
  *
  * @package T3v\T3vCore\Command
  */
 abstract class AbstractCommandController extends CommandController {
   /**
-   * Helper function to log a message.
+   * Logs a message.
    *
    * @param string $message The message
    * @param string $color The optional color or status, defaults to `white`

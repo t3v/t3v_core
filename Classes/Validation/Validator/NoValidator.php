@@ -4,7 +4,7 @@ namespace T3v\T3vCore\Validation\Validator;
 use T3v\T3vCore\Validation\Validator\AbstractValidator;
 
 /**
- * No Validator Class
+ * The no validator class.
  *
  * @package T3v\T3vCore\Validation\Validator
  */

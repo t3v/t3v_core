@@ -7,7 +7,7 @@ use TYPO3\CMS\Extbase\Validation\Error;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator as AbstractValidatorExtbase;
 
 /**
- * Abstract Validator Class
+ * The abstract validator class.
  *
  * @package T3v\T3vCore\Validation\Validator
  */
@@ -21,7 +21,7 @@ abstract class AbstractValidator extends AbstractValidatorExtbase {
   protected $objectManager;
 
   /**
-   * Helper function to add an error to a property.
+   * Adds an error to a property.
    *
    * @param string $property The property
    * @param string $key The key to reference the error

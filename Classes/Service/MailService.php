@@ -8,7 +8,7 @@ use TYPO3\CMS\Core\Utility\MailUtility;
 use T3v\T3vCore\Service\AbstractService;
 
 /**
- * Mail Service Class
+ * The mail service class.
  *
  * @package T3v\T3vCore\Service
  */

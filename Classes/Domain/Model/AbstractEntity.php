@@ -4,7 +4,7 @@ namespace T3v\T3vCore\Domain\Model;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity as AbstractEntityExtbase;
 
 /**
- * Abstract Entity Class
+ * The abstract entity class.
  *
  * @package T3v\T3vCore\Domain\Model
  */

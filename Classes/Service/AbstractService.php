@@ -6,7 +6,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
- * Abstract Service Class
+ * The abstract service class.
  *
  * @package T3v\T3vCore\Service
  */

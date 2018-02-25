@@ -7,13 +7,13 @@ use T3v\T3vCore\Service\AbstractService;
 use T3v\T3vCore\Service\LanguageService;
 
 /**
- * Query Result Service Class
+ * The query result service class.
  *
  * @package T3v\T3vCore\Service
  */
 class QueryResultService extends AbstractService {
   /**
-   * The language service
+   * The language service.
    *
    * @var \T3v\T3vCore\Service\LanguageService;
    */

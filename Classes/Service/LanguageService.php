@@ -4,16 +4,16 @@ namespace T3v\T3vCore\Service;
 use T3v\T3vCore\Service\AbstractService;
 
 /**
- * Language Service Class
+ * The language service class.
  *
  * @package T3v\T3vCore\Service
  */
 class LanguageService extends AbstractService {
   /**
-   * Helper function to get the current language.
+   * Gets the current language.
    *
    * @param string $default The default value, defaults to `default`
-   * @return string The current language if available, otherwise the default
+   * @return string The current language if available, otherwise the default one
    */
   public function getLanguage($default = 'default') {
     $default  = (string) $default;
@@ -41,10 +41,10 @@ class LanguageService extends AbstractService {
   }
 
   /**
-   * Helper function to get the current language UID.
+   * Gets the current language UID.
    *
    * @param int $default The default value, defaults to `0`
-   * @return int The current language UID if available, otherwise the default
+   * @return int The current language UID if available, otherwise the default one
    */
   public function getLanguageUid($default = 0) {
     $default     = intval($default);

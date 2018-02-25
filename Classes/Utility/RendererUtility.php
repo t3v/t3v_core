@@ -8,7 +8,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 use T3v\T3vCore\Utility\AbstractUtility;
 
 /**
- * Renderer Utility Class
+ * The renderer utility class.
  *
  * @package T3v\T3vCore\Utility
  */

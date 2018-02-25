@@ -9,7 +9,7 @@ use T3v\T3vCore\Service\AbstractService;
 use T3v\T3vCore\Service\LanguageService;
 
 /**
- * Page Service Class
+ * The page service class.
  *
  * @package T3v\T3vCore\Service
  */
@@ -49,7 +49,7 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Get the current page.
+   * Gets the current page.
    *
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
@@ -65,7 +65,7 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Get a page by UID.
+   * Gets a page by UID.
    *
    * @param int $uid The UID of the page
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
@@ -106,7 +106,7 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Get pages by UIDs.
+   * Gets pages by UIDs.
    *
    * @param array|string $uids The UIDs as array or as string, seperated by `,`
    * @param boolean $languageOverlay If set, the language record (overlay) will be applied, defaults to `true`
@@ -153,7 +153,7 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Get the subpages of a page.
+   * Gets the subpages of a page.
    *
    * @param int $pid The PID of the entry page to search from
    * @param int $recursion The recursion, defaults to `1`
@@ -183,7 +183,7 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Get the UIDs of the subpages of a page.
+   * Gets the UIDs of the subpages of a page.
    *
    * @param int $pid The PID of the entry page to search from
    * @param int $recursion The recursion level, defaults to `1`
@@ -207,10 +207,10 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Helper function to get the backend layout for a page.
+   * Gets the backend layout for a page.
    *
    * @param int $uid The UID of the page
-   * @return string|null The name of the backend layout or null if no backend layout was found
+   * @return string|null The backend layout or null if no backend layout was found
    */
   public function getBackendLayoutForPage($uid) {
     $uid      = intval($uid);

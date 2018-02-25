@@ -5,7 +5,7 @@ use T3v\T3vCore\Service\PageService;
 use T3v\T3vCore\Utility\AbstractUtility;
 
 /**
- * Body Tag Utility Class
+ * The body tag utility class.
  *
  * @package T3v\T3vCore\Utility\Page
  */
