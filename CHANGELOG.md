@@ -7,6 +7,7 @@ Unreleased
 ----------
 
 * Updated translations (breaking change)
+* Updated Travis CI and AppVeyor configuration
 * Updated dependencies
 
 5.1.0
