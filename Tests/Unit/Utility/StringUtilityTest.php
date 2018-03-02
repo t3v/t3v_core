@@ -6,7 +6,7 @@ use Nimut\TestingFramework\TestCase\UnitTestCase;
 use T3v\T3vCore\Utility\StringUtility;
 
 /**
- * String Utility Test Class
+ * The string utility test class.
  *
  * @package T3v\T3vCore\Tests\Unit\Utility
  */

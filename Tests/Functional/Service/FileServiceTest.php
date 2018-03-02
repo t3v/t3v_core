@@ -6,7 +6,7 @@ use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use T3v\T3vCore\Service\FileService;
 
 /**
- * File Service Test Class
+ * The file service test class.
  *
  * @package T3v\T3vCore\Tests\Functional\Service
  */
