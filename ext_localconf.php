@@ -1,11 +1,13 @@
 <?php
-defined('TYPO3_MODE') or die('Access denied.');
+defined('TYPO3_MODE') or die();
 
-call_user_func(function($namespace, $extkey) {
-  $extensionSignature = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($namespace . '.' . $extkey);
+// === Variables ===
 
-  // === TCA Configuration ===
+$namespace          = 't3v';
+$extensionKey       = $_EXTKEY;
+$extensionSignature = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($namespace . '.' . $extensionKey);
 
-  // Add `backend_layout` and `backend_layout_next_level` field to the root line.
-  $GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',backend_layout,backend_layout_next_level';
-}, 't3v', $_EXTKEY);
+// === Front-end Configuration ===
+
+// Add `backend_layout` and `backend_layout_next_level` field to the root line.
+$GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',backend_layout,backend_layout_next_level';
