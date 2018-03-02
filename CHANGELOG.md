@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* TCA Migrations
 * Updated constraints to TYPO3 7.6
 
 5.2.0
