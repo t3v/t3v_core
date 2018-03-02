@@ -92,11 +92,9 @@ class RenderingTest extends FunctionalTestCase {
       'ntfRoot'      => __DIR__ . '/../../.build/vendor/nimut/testing-framework/'
     ]);
 
-    $php = DefaultPhpProcess::factory();
-
+    $php      = DefaultPhpProcess::factory();
     $response = $php->runJob($template->render());
-
-    $result = json_decode($response['stdout'], true);
+    $result   = json_decode($response['stdout'], true);
 
     if ($result === null) {
       $this->fail('Frontend Response is empty:' . LF . 'Error: ' . LF . $response['stderr']);
