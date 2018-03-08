@@ -3,8 +3,9 @@ defined('TYPO3_MODE') or die();
 
 // === Variables ===
 
-$extensionKey = 't3v_core';
+$extensionKey   = 't3v_core';
+$extensionTitle = 'T3v Core';
 
 // === TypoScript ===
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($extensionKey, 'Configuration/TypoScript', 'T3v Core');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($extensionKey, 'Configuration/TypoScript', $extensionTitle);
