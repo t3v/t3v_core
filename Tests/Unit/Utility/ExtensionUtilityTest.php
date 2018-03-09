@@ -19,6 +19,8 @@ class ExtensionUtilityTest extends UnitTestCase {
   public function extensionIdentifier() {
     $this->assertEquals(ExtensionUtility::extensionIdentifier('t3v_core'),      't3vcore');
     $this->assertEquals(ExtensionUtility::extensionIdentifier('t3v_dummy_ext'), 't3vdummyext');
+    $this->assertEquals(ExtensionUtility::extensionIdentifier('T3vCore'),       't3vcore');
+    $this->assertEquals(ExtensionUtility::extensionIdentifier('T3v Core'),      't3vcore');
   }
 
   /**

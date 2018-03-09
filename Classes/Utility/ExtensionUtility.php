@@ -16,8 +16,7 @@ class ExtensionUtility {
    * @return string The extension identifier
    */
   public static function extensionIdentifier($extensionKey) {
-    $extensionKey = (string) $extensionKey;
-
+    $extensionKey        = (string) $extensionKey;
     $extensionIdentifier = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
     $extensionIdentifier = mb_strtolower($extensionIdentifier);
 
