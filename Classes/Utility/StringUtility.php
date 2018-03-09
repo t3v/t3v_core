@@ -1,14 +1,12 @@
 <?php
 namespace T3v\T3vCore\Utility;
 
-use T3v\T3vCore\Utility\AbstractUtility;
-
 /**
  * The string utility class.
  *
  * @package T3v\T3vCore\Utility
  */
-class StringUtility extends AbstractUtility {
+class StringUtility {
   /**
    * Camelizes an input.
    *

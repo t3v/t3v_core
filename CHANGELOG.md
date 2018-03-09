@@ -6,6 +6,8 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added `ExtensionUtility`
+* Updated `StringUtility` and `UrlUtility`
 * TCA Migrations
 * Updated Tests
 * Updated Travis CI and AppVeyor configuration
