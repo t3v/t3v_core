@@ -3,12 +3,13 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+6.0.0
+-----
 
 * Added `ExtensionUtility`
 * Updated `StringUtility` and `UrlUtility`
 * TCA Migrations
+* Cleaned up
 * Updated Tests
 * Updated Travis CI and AppVeyor configuration
 * Updated dependencies
