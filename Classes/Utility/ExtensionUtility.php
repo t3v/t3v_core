@@ -152,6 +152,36 @@ class ExtensionUtility {
   }
 
   /**
+   * Gets the locallang folder from an extension key.
+   *
+   * Alias for `languageFolder` with `LLL:EXT:` as prefix.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `LLL:EXT:`
+   * @return string The locallang folder
+   */
+  public static function locallangFolder($extensionKey, $prefix = 'LLL:EXT:') {
+    $extensionKey  = (string) $extensionKey;
+    $prefix        = (string) $prefix;
+
+    return self::languageFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Alias for `locallangFolder`.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `LLL:EXT:`
+   * @return string The locallang folder
+   */
+  public static function lllFolder($extensionKey, $prefix = 'LLL:EXT:') {
+    $extensionKey  = (string) $extensionKey;
+    $prefix        = (string) $prefix;
+
+    return self::locallangFolder($extensionKey, $prefix);
+  }
+
+  /**
    * Gets the public folder from an extension key.
    *
    * @param string $extensionKey The extension key
@@ -167,6 +197,21 @@ class ExtensionUtility {
   }
 
   /**
+   * Gets the assets folder from an extension key.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The assets folder
+   */
+  public static function assetsFolder($extensionKey, $prefix = 'EXT:') {
+    $extensionKey = (string) $extensionKey;
+    $prefix       = (string) $prefix;
+    $publicFolder = self::publicFolder($extensionKey, $prefix);
+
+    return "${publicFolder}/Assets";
+  }
+
+  /**
    * Gets the icons folder from an extension key.
    *
    * @param string $extensionKey The extension key
@@ -179,5 +224,35 @@ class ExtensionUtility {
     $publicFolder = self::publicFolder($extensionKey, $prefix);
 
     return "${publicFolder}/Icons";
+  }
+
+  /**
+   * Gets the placeholders folder from an extension key.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The placeholders folder
+   */
+  public static function placeholdersFolder($extensionKey, $prefix = 'EXT:') {
+    $extensionKey = (string) $extensionKey;
+    $prefix       = (string) $prefix;
+    $publicFolder = self::publicFolder($extensionKey, $prefix);
+
+    return "${publicFolder}/Placeholders";
+  }
+
+  /**
+   * Gets the samples folder from an extension key.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The samples folder
+   */
+  public static function samplesFolder($extensionKey, $prefix = 'EXT:') {
+    $extensionKey = (string) $extensionKey;
+    $prefix       = (string) $prefix;
+    $publicFolder = self::publicFolder($extensionKey, $prefix);
+
+    return "${publicFolder}/Samples";
   }
 }
