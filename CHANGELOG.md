@@ -3,12 +3,14 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+5.3.0
+-----
 
 * Added `ExtensionUtility`
 * Updated `StringUtility` and `UrlUtility`
 * TCA Migrations
+* Updated Travis CI and AppVeyor configuration
+* Updated dependencies
 * Updated constraints to TYPO3 7.6
 
 5.2.0
