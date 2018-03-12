@@ -59,6 +59,36 @@ class ExtensionUtilityTest extends UnitTestCase {
       ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf', 'EXT:', '|'),
       'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf|'
     );
+
+    $this->assertEquals(
+      ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf', 'LLL:EXT:', null),
+      'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf'
+    );
+
+    $this->assertEquals(
+      ExtensionUtility::lll('t3v_core'),
+      'LLL:EXT:t3v_core/Resources/Private/Language/locallang.xlf:'
+    );
+
+    $this->assertEquals(
+      ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf'),
+      'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:'
+    );
+
+    $this->assertEquals(
+      ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf', 'EXT:'),
+      'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:'
+    );
+
+    $this->assertEquals(
+      ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf', 'EXT:', '|'),
+      'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf|'
+    );
+
+    $this->assertEquals(
+      ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf', 'LLL:EXT:', null),
+      'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf'
+    );
   }
 
   /**
@@ -112,6 +142,19 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
+   * Test the locallang folder function.
+   *
+   * @test
+   */
+  public function locallangFolder() {
+    $this->assertEquals(ExtensionUtility::locallangFolder('t3v_core'),              'LLL:EXT:t3v_core/Resources/Private/Language');
+    $this->assertEquals(ExtensionUtility::locallangFolder('t3v_core', 'FILE:EXT:'), 'FILE:EXT:t3v_core/Resources/Private/Language');
+
+    $this->assertEquals(ExtensionUtility::lllFolder('t3v_core'),              'LLL:EXT:t3v_core/Resources/Private/Language');
+    $this->assertEquals(ExtensionUtility::lllFolder('t3v_core', 'FILE:EXT:'), 'FILE:EXT:t3v_core/Resources/Private/Language');
+  }
+
+  /**
    * Test the public folder function.
    *
    * @test
@@ -122,6 +165,16 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
+   * Test the assets folder function.
+   *
+   * @test
+   */
+  public function assetsFolder() {
+    $this->assertEquals(ExtensionUtility::assetsFolder('t3v_core'),              'EXT:t3v_core/Resources/Public/Assets');
+    $this->assertEquals(ExtensionUtility::assetsFolder('t3v_core', 'FILE:EXT:'), 'FILE:EXT:t3v_core/Resources/Public/Assets');
+  }
+
+  /**
    * Test the icons folder function.
    *
    * @test
@@ -129,5 +182,25 @@ class ExtensionUtilityTest extends UnitTestCase {
   public function iconsFolder() {
     $this->assertEquals(ExtensionUtility::iconsFolder('t3v_core'),              'EXT:t3v_core/Resources/Public/Icons');
     $this->assertEquals(ExtensionUtility::iconsFolder('t3v_core', 'FILE:EXT:'), 'FILE:EXT:t3v_core/Resources/Public/Icons');
+  }
+
+  /**
+   * Test the placeholders folder function.
+   *
+   * @test
+   */
+  public function placeholdersFolder() {
+    $this->assertEquals(ExtensionUtility::placeholdersFolder('t3v_core'),              'EXT:t3v_core/Resources/Public/Placeholders');
+    $this->assertEquals(ExtensionUtility::placeholdersFolder('t3v_core', 'FILE:EXT:'), 'FILE:EXT:t3v_core/Resources/Public/Placeholders');
+  }
+
+  /**
+   * Test the samples folder function.
+   *
+   * @test
+   */
+  public function samplesFolder() {
+    $this->assertEquals(ExtensionUtility::samplesFolder('t3v_core'),              'EXT:t3v_core/Resources/Public/Samples');
+    $this->assertEquals(ExtensionUtility::samplesFolder('t3v_core', 'FILE:EXT:'), 'FILE:EXT:t3v_core/Resources/Public/Samples');
   }
 }
