@@ -15,7 +15,6 @@ class UrlUtility {
    */
   public static function encodeUrl($url) {
     $url = (string) $url;
-
     $url = urlencode($url);
 
     return $url;
@@ -29,7 +28,6 @@ class UrlUtility {
    */
   public static function decodeUrl($url) {
     $url = (string) $url;
-
     $url = urldecode($url);
 
     return $url;
