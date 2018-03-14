@@ -16,8 +16,8 @@ class StringUtility {
    * @return string The camelized output
    */
   public static function camelize($input, $separator = '_', $capitalizeFirstCharacter = false) {
-    $output                   = (string) $input;
-    $separator                = (string) $separator;
+    $output                   = (string)  $input;
+    $separator                = (string)  $separator;
     $capitalizeFirstCharacter = (boolean) $capitalizeFirstCharacter;
 
     if (strpos($output, $separator) || strpos($output, ' ')) {

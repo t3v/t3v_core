@@ -32,8 +32,8 @@ abstract class AbstractCommandController extends CommandController {
 
           break;
 
-        case ($color === 'error' || $color === 'red'):
-          echo $message->red . PHP_EOL;
+        case ($color === 'ok' || $color === 'green'):
+          echo $message->green . PHP_EOL;
 
           break;
 
@@ -42,8 +42,8 @@ abstract class AbstractCommandController extends CommandController {
 
           break;
 
-        case ($color === 'ok' || $color === 'green'):
-          echo $message->green . PHP_EOL;
+        case ($color === 'error' || $color === 'red'):
+          echo $message->red . PHP_EOL;
 
           break;
 
