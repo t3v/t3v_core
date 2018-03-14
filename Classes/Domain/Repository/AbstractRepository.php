@@ -36,8 +36,6 @@ abstract class AbstractRepository extends Repository {
 
   /**
    * The life cycle method.
-   *
-   * @return void
    */
   public function initializeObject() {
     $querySettings = $this->objectManager->get(Typo3QuerySettings::class);

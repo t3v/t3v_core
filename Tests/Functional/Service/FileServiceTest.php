@@ -20,8 +20,6 @@ class FileServiceTest extends FunctionalTestCase {
 
   /**
    * Setup before running tests.
-   *
-   * @return void
    */
   protected function setUp() {
     parent::setUp();
@@ -31,8 +29,6 @@ class FileServiceTest extends FunctionalTestCase {
 
   /**
    * Tear down after running tests.
-   *
-   * @return void
    */
   protected function tearDown() {
     $this->subject = null;

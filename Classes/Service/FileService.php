@@ -63,7 +63,6 @@ class FileService extends AbstractService {
    * Deletes a file.
    *
    * @param object $file The file object
-   * @return void
    */
   public function deleteFile($file) {
     unlink($file);

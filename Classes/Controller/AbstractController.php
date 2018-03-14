@@ -19,8 +19,6 @@ abstract class AbstractController extends ActionController {
 
   /**
    * Helper to recover and assign the arguments from the original request.
-   *
-   * @return void
    */
   protected function assignOriginalArguments() {
     $originalRequest = $this->request->getOriginalRequest();

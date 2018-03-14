@@ -3,6 +3,12 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Improved `AbstractCommandController`
+* Cleaned up
+
 6.1.0
 -----
 
