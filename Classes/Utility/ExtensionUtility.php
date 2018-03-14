@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ExtensionUtility {
   /**
-   * Gets the extension identifier from an extension key.
+   * Gets an extension identifier from an extension key.
    *
    * @param string $extensionKey The extension key
    * @return string The extension identifier
@@ -24,7 +24,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the extension signature from a namespace and extension key.
+   * Gets an extension signature from a namespace and extension key.
    *
    * @param string $namespace The namespace
    * @param string $extensionKey The extension key
@@ -42,7 +42,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the locallang file from an extension key.
+   * Gets a locallang file from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional file name of the locallang file, defaults to `locallang.xlf`
@@ -79,7 +79,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the configuration folder from an extension key.
+   * Gets a configuration folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
@@ -93,7 +93,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the FlexForms folder from an extension key.
+   * Gets a FlexForms folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
@@ -108,7 +108,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the resources folder from an extension key.
+   * Gets a resources folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -122,7 +122,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the private folder from an extension key.
+   * Gets a private folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -137,7 +137,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the language folder from an extension key.
+   * Gets a language folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -152,7 +152,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the locallang folder from an extension key.
+   * Gets a locallang folder from an extension key.
    *
    * Alias for `languageFolder` with `LLL:EXT:` as prefix.
    *
@@ -182,7 +182,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the public folder from an extension key.
+   * Gets a public folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -197,7 +197,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the assets folder from an extension key.
+   * Gets an assets folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -212,7 +212,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the icons folder from an extension key.
+   * Gets an icons folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -227,7 +227,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the placeholders folder from an extension key.
+   * Gets a placeholders folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -242,7 +242,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets the samples folder from an extension key.
+   * Gets a samples folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`

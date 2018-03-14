@@ -10,7 +10,7 @@ use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
  */
 class LanguageViewHelper extends AbstractViewHelper {
   /**
-   * The View Helper render function.
+   * The view helper render function.
    *
    * @param string $default The default value, defaults to `en`
    * @return string The current language of the page if available, otherwise the default

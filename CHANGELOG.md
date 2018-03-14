@@ -3,6 +3,13 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Improved `StringUtility`
+* Improved `AbstractCommandController`
+* Cleaned up
+
 5.4.0
 -----
 

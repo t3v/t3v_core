@@ -12,7 +12,7 @@ use Cocur\Slugify\Slugify;
  */
 class IconUtility {
   /**
-   * Gets the icon identifier from an icon key.
+   * Gets an icon identifier from an icon key.
    *
    * @param string $iconKey The icon key
    * @param string $separator The optional separator, defaults to `_`
@@ -20,6 +20,7 @@ class IconUtility {
    */
   public static function iconIdentifier($iconKey, $separator = '_') {
     $iconKey        = (string) $iconKey;
+    $separator      = (string) $separator;
     $slugify        = GeneralUtility::makeInstance(Slugify::class);
     $iconIdentifier = $slugify->slugify($iconKey, $separator);
 
@@ -27,7 +28,7 @@ class IconUtility {
   }
 
   /**
-   * Gets the icon signature from an extension key and icon identifier.
+   * Gets an icon signature from an extension key and icon identifier.
    *
    * @param string $extensionKey The extension key
    * @param string $iconIdentifier The icon identifier

@@ -21,8 +21,6 @@ class BodyTagUtility extends AbstractUtility {
 
   /**
    * The constructor function.
-   *
-   * @return void
    */
   public function __construct() {
     parent::__construct();
@@ -37,8 +35,7 @@ class BodyTagUtility extends AbstractUtility {
    * @return string The body tag
    */
   public function build($bodyClass) {
-    $bodyClass = $bodyClass ?: self::DEFAULT_BODY_CLASS;
-
+    $bodyClass     = $bodyClass ?: self::DEFAULT_BODY_CLASS;
     $page          = $this->pageService->getCurrentPage();
     $uid           = $page['uid'];
     $backendLayout = $this->pageService->getBackendLayoutForPage($uid);

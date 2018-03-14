@@ -10,7 +10,7 @@ use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
  */
 class LanguageUidViewHelper extends AbstractViewHelper {
   /**
-   * The View Helper render function.
+   * The view helper render function.
    *
    * @param int $default The default value, defaults to `0`
    * @return int The current language UID of the page if available, otherwise the default

@@ -16,9 +16,13 @@ class StringUtility {
    * @return string The camelized output
    */
   public static function camelize($input, $separator = '_', $capitalizeFirstCharacter = false) {
-    $output                   = (string) $input;
-    $separator                = (string) $separator;
+    $output                   = (string)  $input;
+    $separator                = (string)  $separator;
     $capitalizeFirstCharacter = (boolean) $capitalizeFirstCharacter;
+
+    if (ctype_upper($output)) {
+      $output = mb_strtolower($output);
+    }
 
     if (strpos($output, $separator) || strpos($output, ' ')) {
       $output = mb_strtolower($input);

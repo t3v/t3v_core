@@ -16,7 +16,7 @@ use Cocur\Slugify\Slugify;
  */
 class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
   /**
-   * The View Helper render function.
+   * The view helper render function.
    *
    * @param string $value The value to generate a slug from
    * @param string $separator The optional separator, defaults to `-`
