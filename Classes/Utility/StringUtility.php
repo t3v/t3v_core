@@ -20,6 +20,10 @@ class StringUtility {
     $separator                = (string)  $separator;
     $capitalizeFirstCharacter = (boolean) $capitalizeFirstCharacter;
 
+    if (ctype_upper($output)) {
+      $output = mb_strtolower($output);
+    }
+
     if (strpos($output, $separator) || strpos($output, ' ')) {
       $output = mb_strtolower($input);
       $output = str_replace(' ', '', ucwords(str_replace($separator, ' ', $output)));
