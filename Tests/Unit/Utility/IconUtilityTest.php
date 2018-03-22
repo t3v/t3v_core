@@ -18,8 +18,8 @@ class IconUtilityTest extends UnitTestCase {
    */
   public function iconIdentifier() {
     $this->assertEquals(IconUtility::iconIdentifier('Spacer Content Element'),      'spacer_content_element');
+    $this->assertEquals(IconUtility::iconIdentifier('spacer content element'),      'spacer_content_element');
     $this->assertEquals(IconUtility::iconIdentifier('Spacer Content element'),      'spacer_content_element');
-    $this->assertEquals(IconUtility::iconIdentifier('Spacer Content Element'),      'spacer_content_element');
     $this->assertEquals(IconUtility::iconIdentifier('Spacer Content Element', '-'), 'spacer-content-element');
   }
 

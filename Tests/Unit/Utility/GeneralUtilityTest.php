@@ -18,8 +18,8 @@ class GeneralUtilityTest extends UnitTestCase {
    */
   public function getIdentifier() {
     $this->assertEquals(GeneralUtility::getIdentifier('Spacer Content Element'),      'spacer_content_element');
+    $this->assertEquals(GeneralUtility::getIdentifier('spacer content element'),      'spacer_content_element');
     $this->assertEquals(GeneralUtility::getIdentifier('Spacer Content element'),      'spacer_content_element');
-    $this->assertEquals(GeneralUtility::getIdentifier('Spacer Content Element'),      'spacer_content_element');
     $this->assertEquals(GeneralUtility::getIdentifier('Spacer Content Element', '-'), 'spacer-content-element');
   }
 }
