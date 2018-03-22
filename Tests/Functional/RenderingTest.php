@@ -57,7 +57,7 @@ class RenderingTest extends FunctionalTestCase {
   }
 
   /**
-   * Helper function to fetch the Frontend response.
+   * Fetches the Frontend response.
    *
    * @param array $requestArguments The request arguments
    * @param boolean $failOnFailure Fail on failure, defaults to `true`

@@ -10,7 +10,7 @@ use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
  */
 class DefaultViewHelper extends AbstractViewHelper {
   /**
-   * The View Helper render function.
+   * The view helper render function.
    *
    * @param string $value The value
    * @param string $default The default value, defaults to `-`

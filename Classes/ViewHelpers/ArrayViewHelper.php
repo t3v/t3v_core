@@ -10,7 +10,7 @@ use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
  */
 class ArrayViewHelper extends AbstractViewHelper {
   /**
-   * The View Helper render function.
+   * The view helper render function.
    *
    * @param array $array The array
    * @param string $key The key

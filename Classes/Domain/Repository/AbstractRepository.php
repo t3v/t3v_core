@@ -46,7 +46,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Finder to query by UID, overrides the default one.
+   * Finds objects by UID, overrides the default one.
    *
    * @param int $uid The UID
    * @param array $querySettings The optional query settings to apply
@@ -75,7 +75,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Finder to query by multiple UIDs.
+   * Finds objects by multiple UIDs.
    *
    * @param array|string $uids The UIDs as array or as string, seperated by `,`
    * @param array $querySettings The optional query settings to apply
@@ -158,7 +158,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Finder to query by PID.
+   * Finds objects by PID.
    *
    * @param int $pid The PID
    * @param int $limit The optional limit
@@ -195,7 +195,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Finder to query by multiple PIDs.
+   * Finds objects by multiple PIDs.
    *
    * @param array|string $pids The PIDs as array or as string, seperated by `,`
    * @param int $limit The optional limit
@@ -234,7 +234,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Helper function to apply settings on a query.
+   * Applies settings on a query.
    *
    * @param object $query The query
    * @param array $settings The settings to apply
@@ -265,7 +265,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Helper function to get the orderings by a field.
+   * Gets the orderings by a field.
    *
    * @param string $field The field
    * @param array $values The values
