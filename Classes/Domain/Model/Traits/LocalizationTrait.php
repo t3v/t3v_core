@@ -25,11 +25,11 @@ trait LocalizationTrait {
   }
 
   /**
-   * Gets the translated labels by a specific language key.
+   * Gets the labels by a language key or the default ones.
    *
    * @param array $localizations The localizations
    * @param string $languageKey The language key
-   * @return array The labels by language key or the default ones
+   * @return array The labels
    */
   protected function getLabelsByLanguageKey($localizations, $languageKey) {
     $labels = [];
@@ -44,15 +44,17 @@ trait LocalizationTrait {
   }
 
   /**
-   * Simplifies labels by just taking the value from the target.
+   * Gets the labels from a target.
+   *
+   * It simplifies the labels by just taking the value from the target.
    *
    * @param array $labels The labels
-   * @return array The simplified labels
+   * @return array The labels
    */
   protected function getLabelsFromTarget($labels) {
     if (is_array($labels)) {
-      foreach ($labels as $labelKey => $label) {
-        $labels[$labelKey] = $label[0]['target'];
+      foreach ($labels as $key => $label) {
+        $labels[$key] = $label[0]['target'];
       }
     }
 
