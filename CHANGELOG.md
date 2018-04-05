@@ -10,6 +10,7 @@ Unreleased
 * Added `GeneralUtility`
 * Improved `StringUtility`
 * Improved `AbstractCommandController`
+* Updated tests
 * Cleaned up
 
 6.1.0
