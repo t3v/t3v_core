@@ -6,9 +6,11 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `LocalizationTrait`
 * Added `GeneralUtility`
 * Improved `StringUtility`
 * Improved `AbstractCommandController`
+* Updated tests
 * Cleaned up
 
 5.4.0
