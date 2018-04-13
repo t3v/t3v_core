@@ -10,12 +10,13 @@ use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
  */
 trait LocalizationTrait {
   /**
-   * Gets the localizations.
+   * Gets localizations.
    *
    * @param string $languageKey The optional language key, defaults to `default`
    * @return array The localizations
    */
   protected function getLocalizations($languageKey = 'default') {
+    $languageKey   = (string) $languageKey;
     $loc‌​allang     = ExtensionManagementUtility::extPath(self::EXTENSION_KEY, 'Resources/Private/Language/locallang.xlf');
     $localizations = $this->localizationFactory->getParsedData($loc‌​allang, $languageKey);
     $localizations = $this->getLabelsByLanguageKey($localizations, $languageKey);
@@ -32,6 +33,8 @@ trait LocalizationTrait {
    * @return array The labels
    */
   protected function getLabelsByLanguageKey($localizations, $languageKey) {
+    $languageKey = (string) $languageKey;
+
     $labels = [];
 
     if (!empty($localizations[$languageKey])) {

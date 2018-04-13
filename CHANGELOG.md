@@ -6,6 +6,9 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added `FileReferenceTrait`
+* Improved `LocalizationTrait`
+* Improved `AbstractEntity`
 * Updated TypoScript structure
 
 6.2.1
