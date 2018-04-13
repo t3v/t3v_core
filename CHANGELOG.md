@@ -3,9 +3,10 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+6.3.1
+-----
 
+* Updated TypoScript (Tests)
 * Fixed `LocalizationTrait`
 
 6.3.0
