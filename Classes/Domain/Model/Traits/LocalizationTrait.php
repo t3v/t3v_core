@@ -1,7 +1,7 @@
 <?php
 namespace T3v\T3vCore\Domain\Model\Traits;
 
-use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /**
  * The localization trait.
