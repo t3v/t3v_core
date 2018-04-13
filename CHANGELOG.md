@@ -3,9 +3,11 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+5.6.0
+-----
 
+* Added `FileReferenceTrait`
+* Improved `LocalizationTrait`
 * Improved `AbstractEntity`
 
 5.5.1
