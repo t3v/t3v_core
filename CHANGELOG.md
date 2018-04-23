@@ -3,6 +3,14 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Improved FileService (breaking change)
+* Improved tests
+* Refactoring and Type Hinting
+* Cleaned up
+
 5.6.1
 -----
 
@@ -88,7 +96,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 3.0.0
 -----
 
-* Added `Slug` View Helper
+* Added `SlugViewHelper`
 * Added `Cocur/Slugify` as dependency
 * Refactored TypoScript
 * Updated constants and configuration

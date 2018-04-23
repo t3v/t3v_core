@@ -1,8 +1,6 @@
 <?php
 namespace T3v\T3vCore\Utility;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 use Cocur\Slugify\Slugify;
 
 /**
@@ -12,33 +10,28 @@ use Cocur\Slugify\Slugify;
  */
 class IconUtility {
   /**
-   * Gets an icon identifier from an icon key.
+   * Gets icon identifier from an icon key.
    *
    * @param string $iconKey The icon key
    * @param string $separator The optional separator, defaults to `_`
    * @return string The icon identifier
    */
-  public static function iconIdentifier($iconKey, $separator = '_') {
-    $iconKey        = (string) $iconKey;
-    $separator      = (string) $separator;
-    $slugify        = GeneralUtility::makeInstance(Slugify::class);
-    $iconIdentifier = $slugify->slugify($iconKey, $separator);
+  public static function iconIdentifier(string $iconKey, string $separator = '_'): string {
+    $slugify        = new Slugify(['separator' => $separator]);
+    $iconIdentifier = $slugify->slugify($iconKey);
 
     return $iconIdentifier;
   }
 
   /**
-   * Gets an icon signature from an extension key and icon identifier.
+   * Gets icon signature from an extension key and icon identifier.
    *
    * @param string $extensionKey The extension key
    * @param string $iconIdentifier The icon identifier
    * @param string $separator The optional separator, defaults to `-`
    * @return string The icon signature
    */
-  public static function iconSignature($extensionKey, $iconIdentifier, $separator = '-') {
-    $extensionKey   = (string) $extensionKey;
-    $iconIdentifier = (string) $iconIdentifier;
-    $separator      = (string) $separator;
+  public static function iconSignature(string $extensionKey, string $iconIdentifier, string $separator = '-'): string {
     $iconSignature  = mb_strtolower("${extensionKey}${separator}${iconIdentifier}");
 
     return $iconSignature;

@@ -16,9 +16,7 @@ class ArrayViewHelper extends AbstractViewHelper {
    * @param string $key The key
    * @return object|null The value for the key or null if the key does not exist
    */
-  public function render($array, $key) {
-    $key = (string) $key;
-
+  public function render(array $array, string $key) {
     $result = null;
 
     if (is_array($array) && $key) {

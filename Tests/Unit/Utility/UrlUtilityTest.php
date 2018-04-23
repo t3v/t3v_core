@@ -17,7 +17,7 @@ class UrlUtilityTest extends UnitTestCase {
    * @test
    */
   public function urlGetsEncoded() {
-    $this->assertEquals(UrlUtility::encodeUrl('http://www.t3v.com'), 'http%3A%2F%2Fwww.t3v.com');
+    $this->assertEquals('https%3A%2F%2Fwww.t3v.com', UrlUtility::encodeUrl('https://www.t3v.com'));
   }
 
   /**
@@ -26,6 +26,6 @@ class UrlUtilityTest extends UnitTestCase {
    * @test
    */
   public function urlGetsDecoded() {
-    $this->assertEquals(UrlUtility::decodeUrl('http%3A%2F%2Fwww.t3v.com'), 'http://www.t3v.com');
+    $this->assertEquals('https://www.t3v.com', UrlUtility::decodeUrl('https%3A%2F%2Fwww.t3v.com'));
   }
 }

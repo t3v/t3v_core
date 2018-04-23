@@ -8,17 +8,15 @@ namespace T3v\T3vCore\Utility;
  */
 class StringUtility {
   /**
-   * Camelizes an input.
+   * Camelizes input.
    *
    * @param string $input The input
    * @param string $separator The optional separator, defaults to `_`
-   * @param boolean $capitalizeFirstCharacter If the first character should be capitalized, defaults to `false`
-   * @return string The camelized output
+   * @param bool $capitalizeFirstCharacter If the first character should be capitalized, defaults to `false`
+   * @return string The camelized input
    */
-  public static function camelize($input, $separator = '_', $capitalizeFirstCharacter = false) {
-    $output                   = (string)  $input;
-    $separator                = (string)  $separator;
-    $capitalizeFirstCharacter = (boolean) $capitalizeFirstCharacter;
+  public static function camelize(string $input, string $separator = '_', bool $capitalizeFirstCharacter = false): string {
+    $output = $input;
 
     if (ctype_upper($output)) {
       $output = mb_strtolower($output);

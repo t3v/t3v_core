@@ -4,6 +4,7 @@ namespace T3v\T3vCore\ViewHelpers;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper as AbstractTagBasedViewHelperFluid;
 
 use T3v\T3vCore\Service\LanguageService;
+use T3v\T3vCore\ViewHelpers\Traits\LanguageTrait;
 
 /**
  * The abstract tag based view helper class.
@@ -20,38 +21,7 @@ abstract class AbstractTagBasedViewHelper extends AbstractTagBasedViewHelperFlui
   protected $languageService;
 
   /**
-   * Gets the current language.
-   *
-   * @param string $default The default value, defaults to `en`
-   * @return string The current language if available, otherwise the default
+   * Use the language trait, requires a language service.
    */
-  protected function getLanguage($default = 'en') {
-    $default = (string) $default;
-
-    return $this->languageService->getLanguage($default);
-  }
-
-  /**
-   * Gets the current language UID.
-   *
-   * @param int $default The default value, defaults to `0`
-   * @return int The current language UID if available, otherwise the default
-   */
-  protected function getLanguageUid($default = 0) {
-    $default = intval($default);
-
-    return $this->languageService->getLanguageUid($default);
-  }
-
-  /**
-   * Alias for `getLanguageUid`.
-   *
-   * @param int $default The default value, defaults to `0`
-   * @return int The current system language UID if available, otherwise the default
-   */
-  protected function getSysLanguageUid($default = 0) {
-    $default = intval($default);
-
-    return $this->getLanguageUid($default);
-  }
+  use LanguageTrait;
 }

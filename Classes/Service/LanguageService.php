@@ -10,14 +10,13 @@ use T3v\T3vCore\Service\AbstractService;
  */
 class LanguageService extends AbstractService {
   /**
-   * Gets the current language.
+   * Gets current language.
    *
-   * @param string $default The default value, defaults to `default`
+   * @param string $default The default language, defaults to `en`
    * @return string The current language if available, otherwise the default one
    */
-  public function getLanguage($default = 'default') {
-    $default  = (string) $default;
-    $language = $default;
+  public function getLanguage(string $default = null): string {
+    $language = $default ?: 'en';
 
     if (TYPO3_MODE === 'FE') {
       if (isset($GLOBALS['TSFE']->lang)) {
@@ -41,14 +40,13 @@ class LanguageService extends AbstractService {
   }
 
   /**
-   * Gets the current language UID.
+   * Gets current language UID.
    *
-   * @param int $default The default value, defaults to `0`
+   * @param int $default The default language UID, defaults to `0`
    * @return int The current language UID if available, otherwise the default one
    */
-  public function getLanguageUid($default = 0) {
-    $default     = intval($default);
-    $languageUid = $default;
+  public function getLanguageUid(int $default = null): int {
+    $languageUid = $default ?: 0;
 
     if (TYPO3_MODE === 'FE') {
       if (isset($GLOBALS['TSFE']->sys_language_uid)) {
@@ -66,12 +64,12 @@ class LanguageService extends AbstractService {
   /**
    * Alias for `getLanguageUid`.
    *
-   * @param int $default The default value, defaults to `0`
+   * @param int $default The default system language UID, defaults to `0`
    * @return int The current system language UID if available, otherwise the default
    */
-  public function getSysLanguageUid($default = 0) {
-    $default = intval($default);
+  public function getSysLanguageUid(int $default = null): int {
+    $systemLanguageUid = $default ?: 0;
 
-    return $this->getLanguageUid($default);
+    return $this->getLanguageUid($systemLanguageUid);
   }
 }

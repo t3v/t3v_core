@@ -17,10 +17,10 @@ class IconUtilityTest extends UnitTestCase {
    * @test
    */
   public function iconIdentifier() {
-    $this->assertEquals(IconUtility::iconIdentifier('Spacer Content Element'),      'spacer_content_element');
-    $this->assertEquals(IconUtility::iconIdentifier('Spacer Content element'),      'spacer_content_element');
-    $this->assertEquals(IconUtility::iconIdentifier('Spacer Content Element'),      'spacer_content_element');
-    $this->assertEquals(IconUtility::iconIdentifier('Spacer Content Element', '-'), 'spacer-content-element');
+    $this->assertEquals('spacer_content_element', IconUtility::iconIdentifier('Spacer Content Element'));
+    $this->assertEquals('spacer_content_element', IconUtility::iconIdentifier('spacer content element'));
+    $this->assertEquals('spacer_content_element', IconUtility::iconIdentifier('Spacer Content element'));
+    $this->assertEquals('spacer-content-element', IconUtility::iconIdentifier('Spacer Content Element', '-'));
   }
 
   /**
@@ -30,13 +30,13 @@ class IconUtilityTest extends UnitTestCase {
    */
   public function iconSignature() {
     $this->assertEquals(
-      IconUtility::iconSignature('t3v_core', 'spacer_content_element'),
-      't3v_core-spacer_content_element'
+      't3v_core-spacer_content_element',
+      IconUtility::iconSignature('t3v_core', 'spacer_content_element')
     );
 
     $this->assertEquals(
-      IconUtility::iconSignature('t3v_core', 'spacer_content_element', '_'),
-      't3v_core_spacer_content_element'
+      't3v_core_spacer_content_element',
+      IconUtility::iconSignature('t3v_core', 'spacer_content_element', '_')
     );
   }
 }

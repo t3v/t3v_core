@@ -23,13 +23,9 @@ class MailService extends AbstractService {
    * @param string $subject The subject
    * @param string $message The message
    * @param string $format The optional format either `text/html` or `text/plain`, defaults to `text/html`
-   * @return boolean If the mail was sent
+   * @return bool If the mail was sent
    */
-  public function send($from, $to, $cc, $replyTo, $subject, $message, $format = 'text/html') {
-    $subject = (string) $subject;
-    $message = (string) $message;
-    $format  = (string) $format;
-
+  public function send(array $from, array $to, array $cc, array $replyTo, string $subject, string $message, string $format = 'text/html'): bool {
     $mail = $this->objectManager->get(MailMessage::class);
 
     // === From ===

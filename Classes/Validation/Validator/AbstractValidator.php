@@ -27,7 +27,7 @@ abstract class AbstractValidator extends AbstractValidatorExtbase {
    * @param string $key The key to reference the error
    * @param string $extensionName The extension name
    */
-  protected function addErrorToProperty($property, $key, $extensionName) {
+  protected function addErrorToProperty(string $property, string $key, string $extensionName) {
     $errorMessage = LocalizationUtility::translate($key, $extensionName);
     $error        = $this->objectManager->get(Error::class, $errorMessage, time());
 
