@@ -10,6 +10,9 @@ use T3v\T3vCore\Utility\AbstractUtility;
  * @package T3v\T3vCore\Utility\Page
  */
 class BodyTagUtility extends AbstractUtility {
+  /**
+   * The default body class constant.
+   */
   const DEFAULT_BODY_CLASS = 'document';
 
   /**
@@ -31,11 +34,10 @@ class BodyTagUtility extends AbstractUtility {
   /**
    * Builds a body tag.
    *
-   * @param string $bodyClass The default CSS class of the body tag, defaults to `document`
+   * @param string $bodyClass The CSS class of the body tag, defaults to `BodyTagUtility::DEFAULT_BODY_CLASS`
    * @return string The body tag
    */
-  public function build($bodyClass) {
-    $bodyClass     = $bodyClass ?: self::DEFAULT_BODY_CLASS;
+  public function build(string $bodyClass = self::DEFAULT_BODY_CLASS) {
     $page          = $this->pageService->getCurrentPage();
     $uid           = $page['uid'];
     $backendLayout = $this->pageService->getBackendLayoutForPage($uid);

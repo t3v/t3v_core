@@ -16,14 +16,11 @@ trait FileReferenceTrait {
    * @param string $field The field
    * @return array|null The localized file reference or null if no localized file reference was found
    */
-  protected function getLocalizedFileReference($table, $field) {
-    $table = (string) $table;
-    $field = (string) $field;
-
+  protected function getLocalizedFileReference(string $table, string $field) {
     if ($this->getSysLanguageUid() > 0) {
       $localizedFileReferences = $this->getLocalizedFileReferences($table, $field);
 
-      if ($localizedFileReferences) {
+      if (!empty($localizedFileReferences)) {
         $localizedFileObject = $localizedFileReferences[0]->toArray();
 
         if ($localizedFileObject) {
@@ -31,9 +28,9 @@ trait FileReferenceTrait {
           $uid = (int) $localizedFileObject['uid'];
 
           $fileReference = new FileReference();
-          $fileReference->pid = $pid;
-          $fileReference->uid = $uid;
-          $fileReference->_languageUid = 0;
+          $fileReference->pid           = $pid;
+          $fileReference->uid           = $uid;
+          $fileReference->_languageUid  = 0;
           $fileReference->_localizedUid = $uid;
           $fileReference->_versionedUid = $uid;
 
@@ -52,10 +49,7 @@ trait FileReferenceTrait {
    * @param string $field The field
    * @return array|null The localized file references or null if no localized file references were found
    */
-  protected function getLocalizedFileReferences($table, $field) {
-    $table = (string) $table;
-    $field = (string) $field;
-
+  protected function getLocalizedFileReferences(string $table, string $field) {
     if ($this->getSysLanguageUid() > 0) {
       return $this->fileRepository->findByRelation($table, $field, $this->getLocalizedUid());
     }

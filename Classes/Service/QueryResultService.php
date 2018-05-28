@@ -19,7 +19,6 @@ class QueryResultService extends AbstractService {
    */
   protected $languageService;
 
-
   /**
    * The constructor function.
    */
@@ -36,7 +35,7 @@ class QueryResultService extends AbstractService {
    * @param array $presets The language presets
    * @return array The filtered query result
    */
-  public function filterByLanguagePresets($queryResult, $presets) {
+  public function filterByLanguagePresets(array $queryResult, array $presets) {
     $result = $queryResult;
 
     if (is_array($presets) && !empty($presets)) {
@@ -66,7 +65,7 @@ class QueryResultService extends AbstractService {
    * @param array|string $exceptions The optional UIDs which are ignored, as array or as string, seperated by `,`
    * @return array The filtered query result
    */
-  public function filterBySysLanguage($queryResult, $exceptions = []) {
+  public function filterBySysLanguage(array $queryResult, $exceptions = []) {
     $result = $queryResult;
 
     if (is_string($exceptions)) {

@@ -6,9 +6,8 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
-* Cleaned up `AbstractCommandController`
 * Improved `FileService` (breaking change)
-* Cleaned up `SlugViewHelper`
+* Cleaned up (`AbstractCommandController`, `SlugViewHelper`, etc.)
 
 6.3.1
 -----

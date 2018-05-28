@@ -18,7 +18,7 @@ abstract class AbstractController extends ActionController {
   protected $viewObjectNamePattern = '@vendor\@extension\View\@controller\@action@format';
 
   /**
-   * Helper to recover and assign the arguments from the original request.
+   * Assigns the arguments from the original request.
    */
   protected function assignOriginalArguments() {
     $originalRequest = $this->request->getOriginalRequest();
@@ -31,7 +31,7 @@ abstract class AbstractController extends ActionController {
   }
 
   /**
-   * Overrides the error flash message getter.
+   * Overrides the default error flash message getter.
    *
    * @return false
    */

@@ -10,13 +10,12 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  */
 trait LocalizationTrait {
   /**
-   * Gets localizations.
+   * Gets localizations from the standard translation file (`~Resources/Private/Language/locallang.xlf`).
    *
    * @param string $languageKey The optional language key, defaults to `default`
    * @return array The localizations
    */
-  protected function getLocalizations($languageKey = 'default') {
-    $languageKey   = (string) $languageKey;
+  protected function getLocalizations(string $languageKey = 'default') {
     $loc‌​allang     = ExtensionManagementUtility::extPath(self::EXTENSION_KEY, 'Resources/Private/Language/locallang.xlf');
     $localizations = $this->localizationFactory->getParsedData($loc‌​allang, $languageKey);
     $localizations = $this->getLabelsByLanguageKey($localizations, $languageKey);
@@ -26,15 +25,13 @@ trait LocalizationTrait {
   }
 
   /**
-   * Gets the labels by a language key or the default ones.
+   * Gets labels by a language key or the default ones.
    *
    * @param array $localizations The localizations
    * @param string $languageKey The language key
    * @return array The labels
    */
-  protected function getLabelsByLanguageKey($localizations, $languageKey) {
-    $languageKey = (string) $languageKey;
-
+  protected function getLabelsByLanguageKey(array $localizations, string $languageKey) {
     $labels = [];
 
     if (!empty($localizations[$languageKey])) {
@@ -47,15 +44,15 @@ trait LocalizationTrait {
   }
 
   /**
-   * Gets the labels from a target.
+   * Gets labels from a target.
    *
    * It simplifies the labels by just taking the value from the target.
    *
    * @param array $labels The labels
    * @return array The labels
    */
-  protected function getLabelsFromTarget($labels) {
-    if (is_array($labels)) {
+  protected function getLabelsFromTarget(array $labels) {
+    if (!empty($labels)) {
       foreach ($labels as $key => $label) {
         $labels[$key] = $label[0]['target'];
       }

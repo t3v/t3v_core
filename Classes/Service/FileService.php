@@ -41,7 +41,7 @@ class FileService extends AbstractService {
   ];
 
   /**
-   * Saves a file.
+   * Saves a file to an uploads folder.
    *
    * @param object $file The file object
    * @param string $uploadsFolderPath The uploads folder path

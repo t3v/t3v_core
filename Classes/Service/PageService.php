@@ -14,6 +14,9 @@ use T3v\T3vCore\Service\LanguageService;
  * @package T3v\T3vCore\Service
  */
 class PageService extends AbstractService {
+  /**
+   * The backend layout prefix constant.
+   */
   const BACKEND_LAYOUT_PREFIX = 'pagets__';
 
   /**
@@ -55,11 +58,9 @@ class PageService extends AbstractService {
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The row for the current page or empty if no page was found
    */
-  public function getCurrentPage($languageOverlay = true, $sysLanguageUid = -1) {
-    $uid             = intval($GLOBALS['TSFE']->id);
-    $languageOverlay = (boolean) $languageOverlay;
-    $sysLanguageUid  = intval($sysLanguageUid);
-    $page            = $this->getPage($uid, $languageOverlay, $sysLanguageUid);
+  public function getCurrentPage(boolean $languageOverlay = true, int $sysLanguageUid = -1) {
+    $uid  = intval($GLOBALS['TSFE']->id);
+    $page = $this->getPage($uid, $languageOverlay, $sysLanguageUid);
 
     return $page;
   }
@@ -72,11 +73,8 @@ class PageService extends AbstractService {
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The row for the page or empty if no page was found
    */
-  public function getPage($uid, $languageOverlay = true, $sysLanguageUid = -1) {
-    $uid             = intval($uid);
-    $languageOverlay = (boolean) $languageOverlay;
-    $sysLanguageUid  = intval($sysLanguageUid);
-    $page            = $this->pageRepository->getPage($uid);
+  public function getPage(int $uid, boolean $languageOverlay = true, int $sysLanguageUid = -1) {
+    $page = $this->pageRepository->getPage($uid);
 
     if ($languageOverlay) {
       if ($sysLanguageUid < 0) {
@@ -97,11 +95,7 @@ class PageService extends AbstractService {
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The row for the page or empty if no page was found
    */
-  public function getPageByUid($uid, $languageOverlay = true, $sysLanguageUid = -1) {
-    $uid             = intval($uid);
-    $languageOverlay = (boolean) $languageOverlay;
-    $sysLanguageUid  = intval($sysLanguageUid);
-
+  public function getPageByUid(int $uid, boolean $languageOverlay = true, int $sysLanguageUid = -1) {
     return $this->getPage($uid, $languageOverlay, $sysLanguageUid);
   }
 
@@ -113,14 +107,12 @@ class PageService extends AbstractService {
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The pages
    */
-  public function getPages($uids, $languageOverlay = true, $sysLanguageUid = -1) {
+  public function getPages($uids, boolean $languageOverlay = true, int $sysLanguageUid = -1) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
 
-    $languageOverlay = (boolean) $languageOverlay;
-    $sysLanguageUid  = intval($sysLanguageUid);
-    $pages           = [];
+    $pages = [];
 
     foreach($uids as $uid) {
       $page = $this->getPage($uid, $languageOverlay, $sysLanguageUid);
@@ -141,13 +133,10 @@ class PageService extends AbstractService {
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The pages
    */
-  public function getPagesByUids($uids, $languageOverlay = true, $sysLanguageUid = -1) {
+  public function getPagesByUids($uids, boolean $languageOverlay = true, int $sysLanguageUid = -1) {
     if (is_string($uids)) {
       $uids = GeneralUtility::intExplode(',', $uids, true);
     }
-
-    $languageOverlay = (boolean) $languageOverlay;
-    $sysLanguageUid  = intval($sysLanguageUid);
 
     return $this->getPages($uids, $languageOverlay, $sysLanguageUid);
   }
@@ -162,14 +151,9 @@ class PageService extends AbstractService {
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The subpages
    */
-  public function getSubpages($pid, $recursion = 1, $exclude = true, $languageOverlay = true, $sysLanguageUid = -1) {
-    $pid             = intval($pid);
-    $recursion       = intval($recursion);
-    $exclude         = (boolean) $exclude;
-    $languageOverlay = (boolean) $languageOverlay;
-    $sysLanguageUid  = intval($sysLanguageUid);
-    $subpages        = [];
-    $subpagesUids    = $this->getSubpagesUids($pid, $recursion, $exclude);
+  public function getSubpages(int $pid, int $recursion = 1, boolean $exclude = true, boolean $languageOverlay = true, int $sysLanguageUid = -1) {
+    $subpages     = [];
+    $subpagesUids = $this->getSubpagesUids($pid, $recursion, $exclude);
 
     foreach ($subpagesUids as $subpageUid) {
       $subpage = $this->getPage($subpageUid, $languageOverlay, $sysLanguageUid);
@@ -190,12 +174,8 @@ class PageService extends AbstractService {
    * @param boolean $exclude If set, the entry page should be excluded, defaults to `true`
    * @return array The subpages UIDs
    */
-  public function getSubpagesUids($pid, $recursion = 1, $exclude = true) {
-    $pid          = intval($pid);
-    $recursion    = intval($recursion);
-    $exclude      = (boolean) $exclude;
-    $subpagesUids = [];
-
+  public function getSubpagesUids(int $pid, int $recursion = 1, boolean $exclude = true) {
+    $subpagesUids     = [];
     $subpagesTreeList = $this->queryGenerator->getTreeList($pid, $recursion, 0, 1);
     $subpagesUids     = GeneralUtility::intExplode(',', $subpagesTreeList, true);
 
@@ -212,11 +192,9 @@ class PageService extends AbstractService {
    * @param int $uid The UID of the page
    * @return string|null The backend layout or null if no backend layout was found
    */
-  public function getBackendLayoutForPage($uid) {
-    $uid      = intval($uid);
+  public function getBackendLayoutForPage(int $uid) {
     $rootLine = $this->pageRepository->getRootLine($uid);
-
-    $index = -1;
+    $index    = -1;
 
     foreach($rootLine as $page) {
       $index++;

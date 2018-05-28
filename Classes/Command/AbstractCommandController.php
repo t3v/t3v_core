@@ -12,7 +12,7 @@ use Colors\Color;
  */
 abstract class AbstractCommandController extends CommandController {
   /**
-   * Logs a message.
+   * Logs / echos a message.
    *
    * @param string $message The message
    * @param string $color The optional color or status, defaults to `white`
