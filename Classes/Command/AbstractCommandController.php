@@ -18,11 +18,7 @@ abstract class AbstractCommandController extends CommandController {
    * @param string $color The optional color or status, defaults to `white`
    * @param boolean $verbose The optional verbosity, defaults to `false`
    */
-  protected function log($message, $color = 'white', $verbose = false) {
-    $message = (string)  $message;
-    $color   = (string)  $color;
-    $verbose = (boolean) $verbose;
-
+  protected function log(string $message, string $color = 'white', boolean $verbose = false) {
     if ($message && $verbose) {
       $message = new Color($message);
 
