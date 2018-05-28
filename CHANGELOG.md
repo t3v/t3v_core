@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `FileService` (breaking change)
 * Cleaned up `SlugViewHelper`
 
 6.3.1

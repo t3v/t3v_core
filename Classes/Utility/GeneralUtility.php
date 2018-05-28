@@ -1,8 +1,6 @@
 <?php
 namespace T3v\T3vCore\Utility;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility as CoreGeneralUtility;
-
 use Cocur\Slugify\Slugify;
 
 /**
@@ -21,8 +19,8 @@ class GeneralUtility {
   public static function getIdentifier($name, $separator = '_') {
     $name       = (string) $name;
     $separator  = (string) $separator;
-    $slugify    = CoreGeneralUtility::makeInstance(Slugify::class);
-    $identifier = $slugify->slugify($name, $separator);
+    $slugify    = new Slugify(['separator' => $separator]);
+    $identifier = $slugify->slugify($name);
 
     return $identifier;
   }

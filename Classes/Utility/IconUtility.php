@@ -1,8 +1,6 @@
 <?php
 namespace T3v\T3vCore\Utility;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 use Cocur\Slugify\Slugify;
 
 /**
@@ -21,8 +19,8 @@ class IconUtility {
   public static function iconIdentifier($iconKey, $separator = '_') {
     $iconKey        = (string) $iconKey;
     $separator      = (string) $separator;
-    $slugify        = GeneralUtility::makeInstance(Slugify::class);
-    $iconIdentifier = $slugify->slugify($iconKey, $separator);
+    $slugify        = new Slugify(['separator' => $separator]);
+    $iconIdentifier = $slugify->slugify($iconKey);
 
     return $iconIdentifier;
   }
