@@ -24,10 +24,10 @@ trait FileReferenceTrait {
         $localizedFileObject = $localizedFileReferences[0]->toArray();
 
         if ($localizedFileObject) {
-          $pid = (int) $localizedFileObject['pid'];
-          $uid = (int) $localizedFileObject['uid'];
+          $pid = intval($localizedFileObject['pid']);
+          $uid = intval($localizedFileObject['uid']);
 
-          $fileReference = new FileReference();
+          $fileReference                = new FileReference();
           $fileReference->pid           = $pid;
           $fileReference->uid           = $uid;
           $fileReference->_languageUid  = 0;

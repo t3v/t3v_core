@@ -35,10 +35,10 @@ class QueryResultService extends AbstractService {
    * @param array $presets The language presets
    * @return array The filtered query result
    */
-  public function filterByLanguagePresets(array $queryResult, array $presets) {
+  public function filterByLanguagePresets(array $queryResult, array $presets): array {
     $result = $queryResult;
 
-    if (is_array($presets) && !empty($presets)) {
+    if (!empty($presets)) {
       $sysLanguageUid = $this->languageService->getSysLanguageUid();
       $preset         = intval($presets[$sysLanguageUid]);
 
@@ -62,10 +62,10 @@ class QueryResultService extends AbstractService {
    * Filters a query result by system language.
    *
    * @param array $queryResult The query result
-   * @param array|string $exceptions The optional UIDs which are ignored, as array or as string, seperated by `,`
+   * @param array|string $exceptions The optional UIDs which are ignored as array or as string, seperated by `,`
    * @return array The filtered query result
    */
-  public function filterBySysLanguage(array $queryResult, $exceptions = []) {
+  public function filterBySysLanguage(array $queryResult, $exceptions = []): array {
     $result = $queryResult;
 
     if (is_string($exceptions)) {

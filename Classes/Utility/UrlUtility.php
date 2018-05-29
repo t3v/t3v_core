@@ -8,28 +8,22 @@ namespace T3v\T3vCore\Utility;
  */
 class UrlUtility {
   /**
-   * Encodes an URL.
+   * Encodes URL.
    *
    * @param string $url The URL
    * @return string The encoded URL
    */
-  public static function encodeUrl($url) {
-    $url = (string) $url;
-    $url = urlencode($url);
-
-    return $url;
+  public static function encodeUrl(string $url): string {
+    return urlencode($url);
   }
 
   /**
-   * Decodes an URL.
+   * Decodes URL.
    *
    * @param string $url The URL
    * @return string The decoded URL
    */
-  public static function decodeUrl($url) {
-    $url = (string) $url;
-    $url = urldecode($url);
-
-    return $url;
+  public static function decodeUrl(string $url): string {
+    return urldecode($url);
   }
 }

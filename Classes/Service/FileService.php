@@ -55,12 +55,12 @@ class FileService extends AbstractService {
    */
   public static function saveFile($file, string $uploadsFolderPath) {
     if (!empty($file) && is_array($file) && !empty($uploadsFolderPath)) {
-      $fileName = $file['name'];
+      $fileName          = $file['name'];
+      $temporaryFileName = $file['tmp_name'];
 
       if (GeneralUtility::verifyFilenameAgainstDenyPattern($fileName)) {
-        $temporaryFileName   = $file['tmp_name'];
-        $fileName            = self::cleanFileName($fileName);
         $uploadsFolderPath   = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
+        $fileName            = self::cleanFileName($fileName);
         $newFileName         = self::getUniqueFileName($fileName, $uploadsFolderPath);
         $fileCouldBeUploaded = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
 
@@ -76,12 +76,12 @@ class FileService extends AbstractService {
   }
 
   /**
-   * Deletes a file.
+   * Deletes a file, similar to the Unix C `unlink` function.
    *
    * @param string $fileName The file name
    * @return true|false True on success or false on failure
    */
-  public static function deleteFile(string $fileName) {
+  public static function deleteFile(string $fileName): bool {
     return unlink($fileName);
   }
 
@@ -93,7 +93,7 @@ class FileService extends AbstractService {
    * @param string $separator The optional separator, defaults to `-`
    * @return string The cleaned file name
    */
-  public static function cleanFileName(string $fileName, array $rulesets = self::FILE_NAME_RULESETS, string $separator = '-') {
+  public static function cleanFileName(string $fileName, array $rulesets = self::FILE_NAME_RULESETS, string $separator = '-'): string {
     $slugify   = new Slugify(['rulesets' => $rulesets, 'separator' => $separator]);
     $name      = $slugify->slugify(pathinfo($fileName, PATHINFO_FILENAME));
     $extension = pathinfo($fileName, PATHINFO_EXTENSION);
@@ -113,18 +113,18 @@ class FileService extends AbstractService {
    * @param string $separator The optional separator, defaults to `-`
    * @return string The normalized file name
    */
-  public static function normalizeFileName(string $fileName, array $rulesets = self::FILE_NAME_RULESETS, string $separator = '-') {
+  public static function normalizeFileName(string $fileName, array $rulesets = self::FILE_NAME_RULESETS, string $separator = '-'): string {
     return self::cleanFileName($fileName, $rulesets, $separator);
   }
 
   /**
    * Gets an unique file name.
    *
-   * @param string $fileName The file name to check
-   * @param string $directory The directory for which to return a unique file name for `$fileName`, MUST be a valid directory and should be absolute
+   * @param string $fileName The file name
+   * @param string $directory The directory for which to return a unique file name for, MUST be a valid directory and should be absolute
    * @return string The unique file name
    */
-  public static function getUniqueFileName(string $fileName, string $directory) {
+  public static function getUniqueFileName(string $fileName, string $directory): string {
     $basicFileUtility = GeneralUtility::makeInstance(BasicFileUtility::class);
 
     return $basicFileUtility->getUniqueName($fileName, $directory);

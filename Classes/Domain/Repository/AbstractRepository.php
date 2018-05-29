@@ -258,7 +258,7 @@ abstract class AbstractRepository extends Repository {
    * @param string $order The optional order, defaults to `QueryInterface::ORDER_DESCENDING`
    * @return array The orderings
    */
-  protected function getOrderingsByField(string $field, array $values, string $order = QueryInterface::ORDER_DESCENDING) {
+  protected function getOrderingsByField(string $field, array $values, string $order = QueryInterface::ORDER_DESCENDING): array {
     $orderings = [];
 
     if (!empty($values)) {

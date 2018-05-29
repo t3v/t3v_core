@@ -33,7 +33,7 @@ abstract class AbstractController extends ActionController {
   /**
    * Overrides the default error flash message getter.
    *
-   * @return false
+   * @return bool|string
    */
   protected function getErrorFlashMessage() {
     return false;

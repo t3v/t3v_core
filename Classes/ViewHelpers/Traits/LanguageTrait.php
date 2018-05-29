@@ -8,22 +8,22 @@ namespace T3v\T3vCore\ViewHelpers\Traits;
  */
 trait LanguageTrait {
   /**
-   * Gets the language.
+   * Gets language.
    *
    * @param string $default The default language, defaults to `en`
    * @return string The language if available, otherwise the default one
    */
-  protected function getLanguage(string $default = 'en') {
+  protected function getLanguage(string $default = 'en'): string {
     return $this->languageService->getLanguage($default);
   }
 
   /**
-   * Gets the language UID.
+   * Gets language UID.
    *
    * @param int $default The default language UID, defaults to `0`
    * @return int The language UID if available, otherwise the default one
    */
-  protected function getLanguageUid(int $default = 0) {
+  protected function getLanguageUid(int $default = 0): int {
     return $this->languageService->getLanguageUid($default);
   }
 
@@ -33,7 +33,7 @@ trait LanguageTrait {
    * @param int $default The default system language UID, defaults to `0`
    * @return int The system language UID if available, otherwise the default one
    */
-  protected function getSysLanguageUid(int $default = 0) {
+  protected function getSysLanguageUid(int $default = 0): int {
     return $this->getLanguageUid($default);
   }
 }

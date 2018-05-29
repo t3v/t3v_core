@@ -17,15 +17,15 @@ class StringUtilityTest extends UnitTestCase {
    * @test
    */
   public function inputGetsCamelized() {
-    $this->assertEquals(StringUtility::camelize('foobar'),             'foobar');
-    $this->assertEquals(StringUtility::camelize('fooBar'),             'fooBar');
-    $this->assertEquals(StringUtility::camelize('FOOBAR'),             'foobar');
-    $this->assertEquals(StringUtility::camelize('foo bar'),            'fooBar');
-    $this->assertEquals(StringUtility::camelize('foo Bar'),            'fooBar');
-    $this->assertEquals(StringUtility::camelize('Foo Bar'),            'fooBar');
-    $this->assertEquals(StringUtility::camelize('foo bar', ' '),       'fooBar');
-    $this->assertEquals(StringUtility::camelize('foo bar', ' ', true), 'FooBar');
-    $this->assertEquals(StringUtility::camelize('foo-bar', '-'),       'fooBar');
-    $this->assertEquals(StringUtility::camelize('foo-bar', '-', true), 'FooBar');
+    $this->assertEquals('foobar', StringUtility::camelize('foobar'));
+    $this->assertEquals('fooBar', StringUtility::camelize('fooBar'));
+    $this->assertEquals('foobar', StringUtility::camelize('FOOBAR'));
+    $this->assertEquals('fooBar', StringUtility::camelize('foo bar'));
+    $this->assertEquals('fooBar', StringUtility::camelize('foo Bar'));
+    $this->assertEquals('fooBar', StringUtility::camelize('Foo Bar'));
+    $this->assertEquals('fooBar', StringUtility::camelize('foo bar', ' '));
+    $this->assertEquals('FooBar', StringUtility::camelize('foo bar', ' ', true));
+    $this->assertEquals('fooBar', StringUtility::camelize('foo-bar', '-'));
+    $this->assertEquals('FooBar', StringUtility::camelize('foo-bar', '-', true));
   }
 }

@@ -15,7 +15,7 @@ class LanguageViewHelper extends AbstractViewHelper {
    * @param string $default The default language, defaults to `en`
    * @return string The current language of the page if available, otherwise the default one
    */
-  public function render(string $default = 'en') {
+  public function render(string $default = 'en'): string {
     $language = $this->getLanguage(null);
 
     return $language ?: $default;

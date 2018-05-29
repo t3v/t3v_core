@@ -15,7 +15,7 @@ trait LocalizationTrait {
    * @param string $languageKey The optional language key, defaults to `default`
    * @return array The localizations
    */
-  protected function getLocalizations(string $languageKey = 'default') {
+  protected function getLocalizations(string $languageKey = 'default'): array {
     $loc‌​allang     = ExtensionManagementUtility::extPath(self::EXTENSION_KEY, 'Resources/Private/Language/locallang.xlf');
     $localizations = $this->localizationFactory->getParsedData($loc‌​allang, $languageKey);
     $localizations = $this->getLabelsByLanguageKey($localizations, $languageKey);
@@ -31,7 +31,7 @@ trait LocalizationTrait {
    * @param string $languageKey The language key
    * @return array The labels
    */
-  protected function getLabelsByLanguageKey(array $localizations, string $languageKey) {
+  protected function getLabelsByLanguageKey(array $localizations, string $languageKey): array {
     $labels = [];
 
     if (!empty($localizations[$languageKey])) {
@@ -51,7 +51,7 @@ trait LocalizationTrait {
    * @param array $labels The labels
    * @return array The labels
    */
-  protected function getLabelsFromTarget(array $labels) {
+  protected function getLabelsFromTarget(array $labels): array {
     if (!empty($labels)) {
       foreach ($labels as $key => $label) {
         $labels[$key] = $label[0]['target'];

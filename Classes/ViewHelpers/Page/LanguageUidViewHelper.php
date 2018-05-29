@@ -15,7 +15,7 @@ class LanguageUidViewHelper extends AbstractViewHelper {
    * @param int $default The default language UID, defaults to `0`
    * @return int The current language UID of the page if available, otherwise the default one
    */
-  public function render(int $default = 0) {
+  public function render(int $default = 0): int {
     $languageUid = $this->getLanguageUid(null);
 
     return $languageUid ?: $default;

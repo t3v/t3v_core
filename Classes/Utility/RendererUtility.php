@@ -21,20 +21,16 @@ class RendererUtility extends AbstractUtility {
   }
 
   /**
-   * Gets a Fluid renderer for a template.
+   * Gets Fluid renderer for a template.
    *
    * @param string $template The template
    * @param string $format The optional format, `html` is used as default
    * @return object The renderer for the template
    */
-  public function getFluidRendererForTemplate($template, $format = 'html') {
-    $template = (string) $template;
-    $format   = (string) $format;
-
+  public function getFluidRendererForTemplate(string $template, string $format = 'html') {
     $configurationManager = $this->objectManager->get(ConfigurationManagerInterface::class);
     $configuration        = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-
-    $layoutRootPath = $configuration['view']['layoutRootPath'];
+    $layoutRootPath       = $configuration['view']['layoutRootPath'];
 
     if (empty($layoutRootPath)) {
       $firstLayoutRootPath = reset($configuration['view']['layoutRootPaths']);

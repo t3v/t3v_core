@@ -14,7 +14,7 @@ use Cocur\Slugify\Slugify;
  */
 class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
   /**
-   * The slug rulesets constant.
+   * The slug rulesets.
    */
   const SLUG_RULESETS = [
     'default',
@@ -45,7 +45,7 @@ class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
    * @param string $separator The optional separator, defaults to `-`
    * @return string The rendered output
    */
-  public function render(string $input, string $separator = '-') {
+  public function render(string $input, string $separator = '-'): string {
     return static::renderStatic(
       [
         'input'     => $input,
@@ -64,7 +64,7 @@ class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
    * @param RenderingContextInterface $renderingContext The rendering context
    * @return string The rendered output
    */
-  public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext) {
+  public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string {
     $input     = $arguments['input'];
     $separator = $arguments['separator'];
     $output    = '';
@@ -77,14 +77,14 @@ class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
   }
 
   /**
-   * Creates a slug from a input.
+   * Creates slug from a input.
    *
    * @param string $input The input to generate a slug from
    * @param array $rulesets The optional rulesets, defaults to `SlugViewHelper::SLUG_RULESETS`
    * @param string $separator The optional separator, defaults to `-`
    * @return string The slug
    */
-  protected static function createSlug(string $input, array $rulesets = self::SLUG_RULESETS, string $separator = '-') {
+  protected static function createSlug(string $input, array $rulesets = self::SLUG_RULESETS, string $separator = '-'): string {
     $slugify = new Slugify(['rulesets' => $rulesets, 'separator' => $separator]);
     $slug    = $slugify->slugify($input);
 

@@ -7,7 +7,9 @@ Unreleased
 ----------
 
 * Improved `FileService` (breaking change)
-* Cleaned up (`AbstractCommandController`, `SlugViewHelper`, etc.)
+* Improved tests
+* Refactoring and Type Hinting
+* Cleaned up
 
 6.3.1
 -----
