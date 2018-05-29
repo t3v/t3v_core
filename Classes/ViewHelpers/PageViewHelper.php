@@ -25,11 +25,7 @@ class PageViewHelper extends AbstractViewHelper {
    * @param int $sysLanguageUid The optional system language UID, defaults to the current system language UID
    * @return array The page object
    */
-  public function render($uid, $languageOverlay = true, $sysLanguageUid = -1) {
-    $uid             = intval($uid);
-    $languageOverlay = (boolean) $languageOverlay;
-    $sysLanguageUid  = intval($sysLanguageUid);
-
+  public function render(int $uid, boolean $languageOverlay = true, int $sysLanguageUid = -1) {
     return $this->pageService->getPageByUid($uid, $languageOverlay, $sysLanguageUid);
   }
 }

@@ -17,19 +17,20 @@ class FileServiceTest extends UnitTestCase {
    * @test
    */
   public function cleanFileName() {
-    $this->assertEquals(FileService::cleanFileName('foo.pdf'),         'foo.pdf');
-    $this->assertEquals(FileService::cleanFileName('FOO.PDF'),         'foo.pdf');
-    $this->assertEquals(FileService::cleanFileName('foo x.pdf'),       'foo-x.pdf');
-    $this->assertEquals(FileService::cleanFileName('foo_x.pdf'),       'foo-x.pdf');
-    $this->assertEquals(FileService::cleanFileName('foo-x.pdf'),       'foo-x.pdf');
-    $this->assertEquals(FileService::cleanFileName('foo,x.pdf'),       'foo-x.pdf');
-    $this->assertEquals(FileService::cleanFileName('foo.pdf.pdf'),     'foo-pdf.pdf');
-    $this->assertEquals(FileService::cleanFileName('foo ä ö ü ß.pdf'), 'foo-ae-oe-ue-ss.pdf');
-    $this->assertEquals(FileService::cleanFileName('foo_ä_ö_ü_ß.pdf'), 'foo-ae-oe-ue-ss.pdf');
-    $this->assertEquals(FileService::cleanFileName('foo-ä-ö-ü-ß.pdf'), 'foo-ae-oe-ue-ss.pdf');
-    $this->assertEquals(FileService::cleanFileName('Español.pdf'),     'espanol.pdf');
-    $this->assertEquals(FileService::cleanFileName('Français.pdf'),    'francais.pdf');
-    $this->assertEquals(FileService::cleanFileName('Čeština.pdf'),     'cestina.pdf');
-    $this->assertEquals(FileService::cleanFileName('活动日起.pdf'),     'huodongriqi.pdf');
+    $this->assertEquals('foo.pdf',             FileService::cleanFileName('foo.pdf'));
+    $this->assertEquals('foo.pdf',             FileService::cleanFileName('FOO.PDF'));
+    $this->assertEquals('foo-x.pdf',           FileService::cleanFileName('foo x.pdf'));
+    $this->assertEquals('foo-x.pdf',           FileService::cleanFileName('foo_x.pdf'));
+    $this->assertEquals('foo-x.pdf',           FileService::cleanFileName('foo-x.pdf'));
+    $this->assertEquals('foo-x.pdf',           FileService::cleanFileName('foo,x.pdf'));
+    $this->assertEquals('foo-pdf.pdf',         FileService::cleanFileName('foo.pdf.pdf'));
+    $this->assertEquals('foo-ae-oe-ue-ss.pdf', FileService::cleanFileName('foo ä ö ü ß.pdf'));
+    $this->assertEquals('foo-ae-oe-ue-ss.pdf', FileService::cleanFileName('foo_ä_ö_ü_ß.pdf'));
+    $this->assertEquals('foo-ae-oe-ue-ss.pdf', FileService::cleanFileName('foo-ä-ö-ü-ß.pdf'));
+    $this->assertEquals('espanol.pdf',         FileService::cleanFileName('Español.pdf'));
+    $this->assertEquals('francais.pdf',        FileService::cleanFileName('Français.pdf'));
+    $this->assertEquals('cestina.pdf',         FileService::cleanFileName('Čeština.pdf'));
+    $this->assertEquals('huodongriqi.pdf',     FileService::cleanFileName('活动日起.pdf'));
+    $this->assertRegExp('/upload-/i',          FileService::cleanFileName('대한민국.pdf'));
   }
 }

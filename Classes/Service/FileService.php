@@ -16,7 +16,12 @@ use T3v\T3vCore\Service\AbstractService;
  */
 class FileService extends AbstractService {
   /**
-   * The file name rulesets constant.
+   * The empty file name prefix.
+   */
+  const EMPTY_FILE_NAME_PREFIX = 'upload-';
+
+  /**
+   * The file name rulesets.
    */
   const FILE_NAME_RULESETS = [
     'default',
@@ -90,12 +95,14 @@ class FileService extends AbstractService {
    */
   public static function cleanFileName(string $fileName, array $rulesets = self::FILE_NAME_RULESETS, string $separator = '-') {
     $slugify   = new Slugify(['rulesets' => $rulesets, 'separator' => $separator]);
-    $fileName  = mb_strtolower($fileName);
-    $name      = pathinfo($fileName, PATHINFO_FILENAME);
-    $name      = $slugify->slugify($name);
+    $name      = $slugify->slugify(pathinfo($fileName, PATHINFO_FILENAME));
     $extension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-    return $name . '.' . $extension;
+    if (empty($name)) {
+      $name = uniqid(self::EMPTY_FILE_NAME_PREFIX, true);
+    }
+
+    return mb_strtolower($name . '.' . $extension);
   }
 
   /**
