@@ -3,12 +3,11 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+7.0.0
+-----
 
 * Improved `FileService` (breaking change)
-* Improved tests
-* Refactoring and Type Hinting
+* Refactoring and Type Hinting and improved tests
 * Cleaned up
 
 6.3.1
