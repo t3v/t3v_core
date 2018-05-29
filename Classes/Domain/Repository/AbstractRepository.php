@@ -52,7 +52,7 @@ abstract class AbstractRepository extends Repository {
    * @param array $querySettings The optional query settings to apply
    * @return object|null The found object or null if no object was found
    */
-  public function findByUid(int $uid, array $querySettings = ['respectSysLanguage' => false]) {
+  public function findByUid($uid, array $querySettings = ['respectSysLanguage' => false]) {
     if ($uid && $uid > 0) {
       // Create query
       $query = $this->createquery();
