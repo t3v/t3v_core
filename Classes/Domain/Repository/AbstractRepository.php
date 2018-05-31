@@ -104,7 +104,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Get a raw object by the UID.
+   * Gets a raw object by UID.
    *
    * @param int $uid The UID
    * @param int $languageUid The language UID, defaults to `0`
@@ -136,7 +136,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Get a raw model by UID.
+   * Gets a raw model by UID.
    *
    * Alias for `getRawObjectByUid`.
    *
