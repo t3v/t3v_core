@@ -10,7 +10,7 @@ use \TYPO3\CMS\Extbase\Domain\Model\FileReference;
  */
 trait FileReferenceTrait {
   /**
-   * Gets localized file reference.
+   * Gets a localized file reference.
    *
    * @param string $table The table
    * @param string $field The field

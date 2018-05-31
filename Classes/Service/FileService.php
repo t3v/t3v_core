@@ -106,6 +106,8 @@ class FileService extends AbstractService {
   }
 
   /**
+   * Normalizes a file name.
+   *
    * Alias for `cleanFileName`.
    *
    * @param string $fileName The file name
