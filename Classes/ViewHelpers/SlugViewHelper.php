@@ -77,9 +77,9 @@ class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
   }
 
   /**
-   * Creates slug from a input.
+   * Creates a slug from an input.
    *
-   * @param string $input The input to generate a slug from
+   * @param string $input The input to create a slug from
    * @param array $rulesets The optional rulesets, defaults to `SlugViewHelper::SLUG_RULESETS`
    * @param string $separator The optional separator, defaults to `-`
    * @return string The slug
