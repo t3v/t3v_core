@@ -3,6 +3,11 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+7.0.1
+-----
+
+* Cleaned up
+
 7.0.0
 -----
 
