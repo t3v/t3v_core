@@ -45,7 +45,7 @@ class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
    * @param string $separator The optional separator, defaults to `-`
    * @return string The rendered output
    */
-  public function render(string $input, string $separator = '-'): string {
+  public function render(string $input, string $separator = '-') {
     return static::renderStatic(
       [
         'input'     => $input,
