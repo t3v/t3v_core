@@ -43,9 +43,9 @@ class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
    *
    * @param string $input The input to generate a slug from
    * @param string $separator The optional separator, defaults to `-`
-   * @return string The rendered output
+   * @return string The slug
    */
-  public function render(string $input, string $separator = '-') {
+  public function render(string $input, string $separator = '-'): string {
     return static::renderStatic(
       [
         'input'     => $input,
@@ -62,7 +62,7 @@ class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
    * @param array $arguments The arguments
    * @param callable $renderChildrenClosure The render children closure
    * @param RenderingContextInterface $renderingContext The rendering context
-   * @return string The rendered output
+   * @return string The slug
    */
   public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string {
     $input     = $arguments['input'];
