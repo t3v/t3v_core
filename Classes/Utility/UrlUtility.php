@@ -8,7 +8,7 @@ namespace T3v\T3vCore\Utility;
  */
 class UrlUtility {
   /**
-   * Encodes URL.
+   * Encodes an URL.
    *
    * @param string $url The URL
    * @return string The encoded URL
@@ -18,7 +18,7 @@ class UrlUtility {
   }
 
   /**
-   * Decodes URL.
+   * Decodes an URL.
    *
    * @param string $url The URL
    * @return string The decoded URL

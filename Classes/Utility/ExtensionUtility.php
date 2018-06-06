@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ExtensionUtility {
   /**
-   * Gets extension identifier from an extension key.
+   * Gets an extension identifier from an extension key.
    *
    * @param string $extensionKey The extension key
    * @return string The extension identifier
@@ -23,7 +23,17 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets extension signature from a namespace and extension key.
+   * Alias for the `extensionIdentifier` function.
+   *
+   * @param string $extensionKey The extension key
+   * @return string The extension identifier
+   */
+  public static function getExtensionIdentifier(string $extensionKey): string {
+    return self::extensionIdentifier($extensionKey);
+  }
+
+  /**
+   * Gets an extension signature from a namespace and extension key.
    *
    * @param string $namespace The namespace
    * @param string $extensionKey The extension key
@@ -38,7 +48,19 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets locallang file from an extension key.
+   * Alias for the `extensionSignature` function.
+   *
+   * @param string $namespace The namespace
+   * @param string $extensionKey The extension key
+   * @param string $separator The optional separator, defaults to `.`
+   * @return string The extension signature
+   */
+  public static function getExtensionSignature(string $namespace, string $extensionKey, string $separator = '.'): string {
+    return self::extensionSignature($namespace, $extensionKey, $separator);
+  }
+
+  /**
+   * Gets the locallang file from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional file name of the locallang file, defaults to `locallang.xlf`
@@ -53,7 +75,20 @@ class ExtensionUtility {
   }
 
   /**
-   * Alias for `locallang`.
+   * Alias for the `locallang` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional file name of the locallang file, defaults to `locallang.xlf`
+   * @param string $prefix The optional prefix, defaults to `LLL:EXT:`
+   * @param string $separator The optional separator, defaults to `:`
+   * @return string The locallang file
+   */
+  public static function getLocallang(string $extensionKey, string $fileName = 'locallang.xlf', string $prefix = 'LLL:EXT:', string $separator = ':'): string {
+    return self::locallang($extensionKey, $fileName, $prefix, $separator);
+  }
+
+  /**
+   * Alias for the `locallang` function.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional file name of the locallang file, defaults to `locallang.xlf`
@@ -66,7 +101,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets configuration folder from an extension key.
+   * Gets the configuration folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
@@ -77,7 +112,18 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets FlexForms folder from an extension key.
+   * Alias for the `configurationFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
+   * @return string The configuration folder
+   */
+  public static function getConfigurationFolder(string $extensionKey, string $prefix = 'FILE:EXT:'): string {
+    return self::configurationFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Gets the FlexForms folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
@@ -90,7 +136,18 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets resources folder from an extension key.
+   * Alias for the `flexFormsFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
+   * @return string The FlexForms folder
+   */
+  public static function getFlexFormsFolder(string $extensionKey, string $prefix = 'FILE:EXT:'): string {
+    return self::flexFormsFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Gets the resources folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -101,7 +158,18 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets private folder from an extension key.
+   * Alias for the `resourcesFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The resources folder
+   */
+  public static function getResourcesFolder(string $extensionKey, string $prefix = 'EXT:'): string {
+    return self::resourcesFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Gets the private folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -114,7 +182,18 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets language folder from an extension key.
+   * Alias for the `privateFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The private folder
+   */
+  public static function getPrivateFolder(string $extensionKey, string $prefix = 'EXT:'): string {
+    return self::privateFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Gets the language folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -127,9 +206,20 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets locallang folder from an extension key.
+   * Alias for the `languageFolder` function.
    *
-   * Alias for `languageFolder` with `LLL:EXT:` as prefix.
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The language folder
+   */
+  public static function getLanguageFolder(string $extensionKey, string $prefix = 'EXT:'): string {
+    return self::languageFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Gets the locallang folder from an extension key.
+   *
+   * Alias for the `languageFolder` function with `LLL:EXT:` as prefix.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `LLL:EXT:`
@@ -140,7 +230,18 @@ class ExtensionUtility {
   }
 
   /**
-   * Alias for `locallangFolder`.
+   * Alias for the `locallangFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `LLL:EXT:`
+   * @return string The locallang folder
+   */
+  public static function getLocallangFolder(string $extensionKey, string $prefix = 'LLL:EXT:'): string {
+    return self::locallangFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Alias for the `locallangFolder` function.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `LLL:EXT:`
@@ -151,7 +252,7 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets public folder from an extension key.
+   * Gets the public folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -164,7 +265,18 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets assets folder from an extension key.
+   * Alias for the `publicFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The public folder
+   */
+  public static function getPublicFolder(string $extensionKey, string $prefix = 'EXT:'): string {
+    return self::publicFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Gets the assets folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -177,7 +289,18 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets icons folder from an extension key.
+   * Alias for the `assetsFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The assets folder
+   */
+  public static function getAssetsFolder(string $extensionKey, string $prefix = 'EXT:'): string {
+    return self::assetsFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Gets the icons folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -190,7 +313,18 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets placeholders folder from an extension key.
+   * Alias for the `iconsFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The icons folder
+   */
+  public static function getIconsFolder(string $extensionKey, string $prefix = 'EXT:'): string {
+    return self::iconsFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Gets the placeholders folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -203,7 +337,18 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets samples folder from an extension key.
+   * Alias for the `placeholdersFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The placeholders folder
+   */
+  public static function getPlaceholdersFolder(string $extensionKey, string $prefix = 'EXT:'): string {
+    return self::placeholdersFolder($extensionKey, $prefix);
+  }
+
+  /**
+   * Gets the samples folder from an extension key.
    *
    * @param string $extensionKey The extension key
    * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -213,5 +358,16 @@ class ExtensionUtility {
     $publicFolder = self::publicFolder($extensionKey, $prefix);
 
     return "${publicFolder}/Samples";
+  }
+
+  /**
+   * Alias for the `samplesFolder` function.
+   *
+   * @param string $extensionKey The extension key
+   * @param string $prefix The optional prefix, defaults to `EXT:`
+   * @return string The samples folder
+   */
+  public static function getSamplesFolder(string $extensionKey, string $prefix = 'EXT:'): string {
+    return self::samplesFolder($extensionKey, $prefix);
   }
 }

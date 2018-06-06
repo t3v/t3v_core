@@ -3,6 +3,12 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Bugfixing
+* Updated AppVeyor configuration
+
 5.7.3
 -----
 
