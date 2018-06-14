@@ -55,13 +55,13 @@
   "extra": {
     "typo3/cms": {
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": ".build/Web"
+      "web-dir": ".build/web"
     }
   },
   "scripts": {
     "post-autoload-dump": [
-      "mkdir -p .build/Web/typo3conf/ext/",
-      "[ -L .build/Web/typo3conf/ext/t3v_core ] || ln -snvf ../../../../. .build/Web/typo3conf/ext/t3v_core"
+      "mkdir -p .build/web/typo3conf/ext/",
+      "[ -L .build/web/typo3conf/ext/t3v_core ] || ln -snvf ../../../../. .build/web/typo3conf/ext/t3v_core"
     ]
   }
 }
