@@ -3,9 +3,11 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+5.8.0
+-----
 
+* Improved `Utility` classes
+* Improved tests
 * Bugfixing
 * Updated AppVeyor configuration
 
