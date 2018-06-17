@@ -6,6 +6,8 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `Utility` classes
+* Improved tests
 * Bugfixing
 * Updated AppVeyor configuration
 

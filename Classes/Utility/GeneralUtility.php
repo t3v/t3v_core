@@ -10,16 +10,27 @@ use Cocur\Slugify\Slugify;
  */
 class GeneralUtility {
   /**
-   * Gets identifier from a name.
+   * Gets an identifier from a name.
+   *
+   * @param string $name The name
+   * @param string $separator The optional separator, defaults to `_`
+   * @return string The identifier
+   */
+  public static function identifier(string $name, string $separator = '_'): string {
+    $slugify    = new Slugify(['separator' => $separator]);
+    $identifier = $slugify->slugify($name);
+
+    return $identifier;
+  }
+
+  /**
+   * Alias for the `identifier` function.
    *
    * @param string $name The name
    * @param string $separator The optional separator, defaults to `_`
    * @return string The identifier
    */
   public static function getIdentifier(string $name, string $separator = '_'): string {
-    $slugify    = new Slugify(['separator' => $separator]);
-    $identifier = $slugify->slugify($name);
-
-    return $identifier;
+    return self::identifier($name, $separator);
   }
 }

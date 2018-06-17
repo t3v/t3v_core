@@ -12,7 +12,7 @@ use T3v\T3vCore\Utility\ExtensionUtility;
  */
 class ExtensionUtilityTest extends UnitTestCase {
   /**
-   * Test the extension identifier function.
+   * Tests the extension identifier function.
    *
    * @test
    */
@@ -24,7 +24,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the extension signature function.
+   * Tests the extension signature function.
    *
    * @test
    */
@@ -35,7 +35,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the locallang function.
+   * Tests the locallang function.
    *
    * @test
    */
@@ -92,7 +92,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the configuration folder function.
+   * Tests the configuration folder function.
    *
    * @test
    */
@@ -102,7 +102,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the FlexForms folder function.
+   * Tests the FlexForms folder function.
    *
    * @test
    */
@@ -112,7 +112,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the resources folder function.
+   * Tests the resources folder function.
    *
    * @test
    */
@@ -122,7 +122,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the private folder function.
+   * Tests the private folder function.
    *
    * @test
    */
@@ -132,7 +132,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the language folder function.
+   * Tests the language folder function.
    *
    * @test
    */
@@ -142,7 +142,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the locallang folder function.
+   * Tests the locallang folder function.
    *
    * @test
    */
@@ -155,7 +155,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the public folder function.
+   * Tests the public folder function.
    *
    * @test
    */
@@ -165,7 +165,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the assets folder function.
+   * Tests the assets folder function.
    *
    * @test
    */
@@ -175,7 +175,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the icons folder function.
+   * Tests the icons folder function.
    *
    * @test
    */
@@ -185,7 +185,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the placeholders folder function.
+   * Tests the placeholders folder function.
    *
    * @test
    */
@@ -195,7 +195,7 @@ class ExtensionUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the samples folder function.
+   * Tests the samples folder function.
    *
    * @test
    */

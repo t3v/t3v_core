@@ -8,7 +8,7 @@ namespace T3v\T3vCore\Utility;
  */
 class StringUtility {
   /**
-   * Camelizes input.
+   * Camelizes an input.
    *
    * @param string $input The input
    * @param string $separator The optional separator, defaults to `_`

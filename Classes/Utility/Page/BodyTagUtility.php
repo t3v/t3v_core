@@ -32,7 +32,7 @@ class BodyTagUtility extends AbstractUtility {
   }
 
   /**
-   * Builds body tag.
+   * Builds a body tag.
    *
    * @param string $bodyCssClass The CSS class of the body tag, defaults to `BodyTagUtility::DEFAULT_BODY_CSS_CLASS`
    * @return string The body tag

@@ -12,7 +12,7 @@ use T3v\T3vCore\Service\FileService;
  */
 class FileServiceTest extends UnitTestCase {
   /**
-   * Test if the file name gets cleaned.
+   * Tests if the file name gets cleaned.
    *
    * @test
    */
