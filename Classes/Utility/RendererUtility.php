@@ -21,7 +21,7 @@ class RendererUtility extends AbstractUtility {
   }
 
   /**
-   * Gets the Fluid renderer for a template.
+   * Gets a Fluid renderer for a template.
    *
    * @param string $template The template
    * @param string $format The optional format, `html` is used as default
