@@ -31,11 +31,11 @@ class QueryResultService extends AbstractService {
   /**
    * Filters a query result by language presets.
    *
-   * @param array $queryResult The query result
+   * @param object $queryResult The query result
    * @param array $presets The language presets
-   * @return array The filtered query result
+   * @return object The filtered query result
    */
-  public function filterByLanguagePresets(array $queryResult, array $presets): array {
+  public function filterByLanguagePresets($queryResult, array $presets) {
     $result = $queryResult;
 
     if (!empty($presets)) {
@@ -61,11 +61,11 @@ class QueryResultService extends AbstractService {
   /**
    * Filters a query result by system language.
    *
-   * @param array $queryResult The query result
+   * @param object $queryResult The query result
    * @param array|string $exceptions The optional UIDs which are ignored as array or as string, seperated by `,`
-   * @return array The filtered query result
+   * @return object The filtered query result
    */
-  public function filterBySysLanguage(array $queryResult, $exceptions = []): array {
+  public function filterBySysLanguage($queryResult, $exceptions = []) {
     $result = $queryResult;
 
     if (is_string($exceptions)) {
