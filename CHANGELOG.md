@@ -7,6 +7,7 @@ Unreleased
 ----------
 
 * Updated dependencies
+* Cleaned up
 
 7.1.1
 -----
