@@ -3,8 +3,8 @@ Changelog
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+5.9.0
+-----
 
 * Improved `PageService`
 * Updated AppVeyor configuration
