@@ -49,7 +49,7 @@ class MailService extends AbstractService {
       $mail->setFrom($systemFrom);
     }
 
-    // === To / Cc ===
+    // === To / Carbon Copy (CC) ===
 
     $toRecipients = [];
     $ccRecipients = [];
@@ -115,18 +115,26 @@ class MailService extends AbstractService {
 
     // === Reply To ===
 
-    // if (!empty($replyTo)) {
-    //   $name    = trim($replyTo['name']);
-    //   $address = trim($replyTo['address']);
-    //
-    //   if ($address && GeneralUtility::validEmail($address)) {
-    //     if (!empty($name)) {
-    //       $mail->setReplyTo($address, $name);
-    //     } else {
-    //       $mail->setReplyTo($address);
-    //     }
-    //   }
-    // }
+    $replyToRecipients = [];
+
+    if (!empty($replyTo)) {
+      foreach ($replyTo as $recipient) {
+        $name    = trim($recipient['name']);
+        $address = trim($recipient['address']);
+
+        if ($address && GeneralUtility::validEmail($address)) {
+          if (!empty($name)) {
+            $replyToRecipients[$address] = $name;
+          } else {
+            $replyToRecipients[] = $address;
+          }
+        }
+      }
+    }
+
+    if (!empty($replyToRecipients)) {
+      $mail->setReplyTo($replyToRecipients);
+    }
 
     // === Subject ===
 
