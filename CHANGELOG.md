@@ -1,7 +1,12 @@
-Changelog
+CHANGELOG
 =========
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
+
+Unreleased
+----------
+
+* Improved `MailService`
 
 5.9.0
 -----
