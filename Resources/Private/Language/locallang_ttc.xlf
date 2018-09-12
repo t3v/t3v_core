@@ -4,49 +4,67 @@
     <header />
 
     <body>
-      <!-- === Tabs === -->
+      <!-- === Palettes === -->
 
-      <trans-unit id="tabs.access">
-        <source>Access</source>
+      <trans-unit id="palettes.access.label">
+        <source>Publish Dates and Access Rights</source>
       </trans-unit>
 
-      <trans-unit id="tabs.accessibility">
-        <source>Accessibility</source>
-      </trans-unit>
-
-      <trans-unit id="tabs.appearance">
-        <source>Appearance</source>
-      </trans-unit>
-
-      <trans-unit id="tabs.behaviour">
-        <source>Behaviour</source>
-      </trans-unit>
-
-      <trans-unit id="tabs.categories">
-        <source>Categories</source>
-      </trans-unit>
-
-      <trans-unit id="tabs.extended">
-        <source>Extended</source>
-      </trans-unit>
-
-      <trans-unit id="tabs.general">
+      <trans-unit id="palettes.general.label">
         <source>General</source>
       </trans-unit>
 
-      <trans-unit id="tabs.images">
-        <source>Images</source>
-      </trans-unit>
-
-      <trans-unit id="tabs.language">
+      <trans-unit id="palettes.language.label">
         <source>Language</source>
       </trans-unit>
 
-      <trans-unit id="tabs.metadata">
+      <trans-unit id="palettes.visibility.label">
+        <source>Visibility</source>
+      </trans-unit>
+
+      <!-- === Tabs === -->
+
+      <trans-unit id="tabs.access.label">
+        <source>Access</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.accessibility.label">
+        <source>Accessibility</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.appearance.label">
+        <source>Appearance</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.behaviour.label">
+        <source>Behaviour</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.categories.label">
+        <source>Categories</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.extended.label">
+        <source>Extended</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.general.label">
+        <source>General</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.images.label">
+        <source>Images</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.language.label">
+        <source>Language</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.metadata.label">
         <source>Metadata</source>
       </trans-unit>
 
-      <trans-unit id="tabs.resources">
+      <trans-unit id="tabs.resources.label">
         <source>Resources</source>
       </trans-unit>
 
