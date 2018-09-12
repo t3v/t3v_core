@@ -12,7 +12,7 @@ use T3v\T3vCore\Utility\StringUtility;
  */
 class StringUtilityTest extends UnitTestCase {
   /**
-   * Test if the input gets camelized.
+   * Tests if the input gets camelized.
    *
    * @test
    */

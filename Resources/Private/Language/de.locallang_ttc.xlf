@@ -4,59 +4,81 @@
     <header />
 
     <body>
-      <!-- === Tabs === -->
+      <!-- === Palettes === -->
 
-      <trans-unit id="tabs.access">
-        <source>Access</source>
-        <target>Zugriff</target>
+      <trans-unit id="palettes.access.label">
+        <source>Publish Dates and Access Rights</source>
+        <target>Veröffentlichungsdaten und Zugriffsrechte</target>
       </trans-unit>
 
-      <trans-unit id="tabs.accessibility">
-        <source>Accessibility</source>
-        <target>Zugänglichkeit</target>
-      </trans-unit>
-
-      <trans-unit id="tabs.appearance">
-        <source>Appearance</source>
-        <target>Erscheinungsbild</target>
-      </trans-unit>
-
-      <trans-unit id="tabs.behaviour">
-        <source>Behaviour</source>
-        <target>Verhalten</target>
-      </trans-unit>
-
-      <trans-unit id="tabs.categories">
-        <source>Categories</source>
-        <target>Kategorien</target>
-      </trans-unit>
-
-      <trans-unit id="tabs.extended">
-        <source>Extended</source>
-        <target>Erweitert</target>
-      </trans-unit>
-
-      <trans-unit id="tabs.general">
+      <trans-unit id="palettes.general.label">
         <source>General</source>
         <target>Allgemein</target>
       </trans-unit>
 
-      <trans-unit id="tabs.images">
-        <source>Images</source>
-        <target>Bilder</target>
-      </trans-unit>
-
-      <trans-unit id="tabs.language">
+      <trans-unit id="palettes.language.label">
         <source>Language</source>
         <target>Sprache</target>
       </trans-unit>
 
-      <trans-unit id="tabs.metadata">
+      <trans-unit id="palettes.visibility.label">
+        <source>Visibility</source>
+        <target>Sichtbarkeit</target>
+      </trans-unit>
+
+      <!-- === Tabs === -->
+
+      <trans-unit id="tabs.access.label">
+        <source>Access</source>
+        <target>Zugriff</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.accessibility.label">
+        <source>Accessibility</source>
+        <target>Zugänglichkeit</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.appearance.label">
+        <source>Appearance</source>
+        <target>Erscheinungsbild</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.behaviour.label">
+        <source>Behaviour</source>
+        <target>Verhalten</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.categories.label">
+        <source>Categories</source>
+        <target>Kategorien</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.extended.label">
+        <source>Extended</source>
+        <target>Erweitert</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.general.label">
+        <source>General</source>
+        <target>Allgemein</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.images.label">
+        <source>Images</source>
+        <target>Bilder</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.language.label">
+        <source>Language</source>
+        <target>Sprache</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.metadata.label">
         <source>Metadata</source>
         <target>Metadaten</target>
       </trans-unit>
 
-      <trans-unit id="tabs.resources">
+      <trans-unit id="tabs.resources.label">
         <source>Resources</source>
         <target>Ressourcen</target>
       </trans-unit>

@@ -12,7 +12,7 @@ use T3v\T3vCore\Utility\IconUtility;
  */
 class IconUtilityTest extends UnitTestCase {
   /**
-   * Test the icon identifier function.
+   * Tests the icon identifier function.
    *
    * @test
    */
@@ -24,7 +24,7 @@ class IconUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test the icon signature function.
+   * Tests the icon signature function.
    *
    * @test
    */
