@@ -7,6 +7,8 @@ Unreleased
 ----------
 
 * Updated translations
+* Updated dependencies
+* Updated AppVeyor configuration
 * Cleaned up
 
 7.3.0
