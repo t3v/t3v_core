@@ -12,7 +12,7 @@ use T3v\T3vCore\Utility\UrlUtility;
  */
 class UrlUtilityTest extends UnitTestCase {
   /**
-   * Test if the URL gets encoded.
+   * Tests if the URL gets encoded.
    *
    * @test
    */
@@ -21,7 +21,7 @@ class UrlUtilityTest extends UnitTestCase {
   }
 
   /**
-   * Test if the URL gets decoded.
+   * Tests if the URL gets decoded.
    *
    * @test
    */
