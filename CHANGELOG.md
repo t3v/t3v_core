@@ -3,6 +3,12 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Added additional translations
+* Added `LanguageUidTrait`
+
 5.11.0
 ------
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+  <file product-name="t3v_core" source-language="en" datatype="plaintext" original="messages">
+    <header />
+
+    <body>
+      <!-- === Columns === -->
+
+      <trans-unit id="columns.sysLanguageUid.label">
+        <source>Language</source>
+      </trans-unit>
+
+      <trans-unit id="columns.l10nParent.label">
+        <source>Parent Of Translation</source>
+      </trans-unit>
+
+      <trans-unit id="columns.hidden.label">
+        <source>Hidden</source>
+      </trans-unit>
+
+      <trans-unit id="columns.starttime.label">
+        <source>Publish Date</source>
+      </trans-unit>
+
+      <trans-unit id="columns.endtime.label">
+        <source>Expiration Date</source>
+      </trans-unit>
+
+      <trans-unit id="columns.feGroup.label">
+        <source>Usergroup Access Rights</source>
+      </trans-unit>
+
+      <trans-unit id="columns.editlock.label">
+        <source>Restrict editing by non-Admins</source>
+      </trans-unit>
+
+      <!-- === Shared === -->
+
+      <trans-unit id="shared.default.label">
+        <source>Default</source>
+      </trans-unit>
+
+      <trans-unit id="shared.enabled.label">
+        <source>Enabled</source>
+      </trans-unit>
+
+      <trans-unit id="shared.disabled.label">
+        <source>Disabled</source>
+      </trans-unit>
+
+      <trans-unit id="shared.allLanguages.label">
+        <source>All languages</source>
+      </trans-unit>
+
+      <trans-unit id="shared.hideAtLogin.label">
+        <source>Hide at login</source>
+      </trans-unit>
+
+      <trans-unit id="shared.anyLogin.label">
+        <source>Show at any login</source>
+      </trans-unit>
+
+      <trans-unit id="shared.userGroups.label">
+        <source>__User Groups:__</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

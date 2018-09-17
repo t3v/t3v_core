@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+  <file product-name="t3v_core" source-language="en" target-language="de" datatype="plaintext" original="messages">
+    <header />
+
+    <body>
+      <!-- === Columns === -->
+
+      <trans-unit id="columns.sysLanguageUid.label">
+        <source>Language</source>
+        <target>Sprache</target>
+      </trans-unit>
+
+      <trans-unit id="columns.l10nParent.label">
+        <source>Parent Of Translation</source>
+        <target>Elternelement der Übersetzung</target>
+      </trans-unit>
+
+      <trans-unit id="columns.hidden.label">
+        <source>Hidden</source>
+        <target>Verborgen</target>
+      </trans-unit>
+
+      <trans-unit id="columns.starttime.label">
+        <source>Publish Date</source>
+        <target>Veröffentlichungsdatum</target>
+      </trans-unit>
+
+      <trans-unit id="columns.endtime.label">
+        <source>Expiration Date</source>
+        <target>Ablaufdatum</target>
+      </trans-unit>
+
+      <trans-unit id="columns.feGroup.label">
+        <source>Usergroup Access Rights</source>
+        <target>Zugriffsrechte für Benutzergruppen</target>
+      </trans-unit>
+
+      <trans-unit id="columns.editlock.label">
+        <source>Restrict editing by non-Admins</source>
+        <target>Bearbeitung erfordert Admin-Rechte</target>
+      </trans-unit>
+
+      <!-- === Shared === -->
+
+      <trans-unit id="shared.default.label">
+        <source>Default</source>
+        <target>Standard</target>
+      </trans-unit>
+
+      <trans-unit id="shared.enabled.label">
+        <source>Enabled</source>
+        <target>Aktiviert</target>
+      </trans-unit>
+
+      <trans-unit id="shared.disabled.label">
+        <source>Disabled</source>
+        <target>Deaktiviert</target>
+      </trans-unit>
+
+      <trans-unit id="shared.allLanguages.label">
+        <source>All languages</source>
+        <target>Alle Sprachen</target>
+      </trans-unit>
+
+      <trans-unit id="shared.hideAtLogin.label">
+        <source>Hide at login</source>
+        <target>Nach Anmeldung verbergen</target>
+      </trans-unit>
+
+      <trans-unit id="shared.anyLogin.label">
+        <source>Show at any login</source>
+        <target>Anzeigen, wenn angemeldet</target>
+      </trans-unit>
+
+      <trans-unit id="shared.userGroups.label">
+        <source>__User Groups:__</source>
+        <target>__Benutzergruppen:__</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
