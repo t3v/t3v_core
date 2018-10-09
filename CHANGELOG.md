@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added additional translations
 * Added `LanguageUidTrait`
 
 8.0.0
