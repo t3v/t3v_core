@@ -12,7 +12,7 @@
       </trans-unit>
 
       <trans-unit id="columns.l10nParent.label">
-        <source>Parent Of Translation</source>
+        <source>Parent of translation</source>
         <target>Elternelement der Übersetzung</target>
       </trans-unit>
 
