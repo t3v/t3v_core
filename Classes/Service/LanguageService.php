@@ -10,7 +10,7 @@ use T3v\T3vCore\Service\AbstractService;
  */
 class LanguageService extends AbstractService {
   /**
-   * Gets current language.
+   * Gets the current language.
    *
    * @param string $default The default language, defaults to `en`
    * @return string The current language if available, otherwise the default one
@@ -40,7 +40,7 @@ class LanguageService extends AbstractService {
   }
 
   /**
-   * Gets current language UID.
+   * Gets the current language UID.
    *
    * @param int $default The default language UID, defaults to `0`
    * @return int The current language UID if available, otherwise the default one

@@ -3,6 +3,13 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Improved `StringUtility`
+* Added `Danielstjules/Stringy` as dependency
+* Updated translations
+
 5.12.0
 ------
 
@@ -273,7 +280,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 
 * Set `LayoutRootPath` and `PartialRootPath` in `RendererUtility`
 * Colorized logging in `AbstractCommandController`
-* Added `kevinlebrun/colors.php` as Composer dependency
+* Added `Kevinlebrun/Colors` as Composer dependency
 * Added `AbstractCommandController`
 * Updated Composer dependencies
 
