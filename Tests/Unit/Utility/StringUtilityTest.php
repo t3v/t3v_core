@@ -12,6 +12,17 @@ use T3v\T3vCore\Utility\StringUtility;
  */
 class StringUtilityTest extends UnitTestCase {
   /**
+   * Tests if the input gets asciified.
+   *
+   * @test
+   */
+  public function inputGetsAsciified() {
+    $this->assertEquals('Foobar', StringUtility::asciify('Fòôbàř'));
+    $this->assertEquals('FooBar', StringUtility::asciify('FööBär'));
+    $this->assertEquals('FoeoeBaer', StringUtility::asciify('FööBär', 'de'));
+  }
+
+  /**
    * Tests if the input gets camelized.
    *
    * @test

@@ -1,12 +1,28 @@
 <?php
 namespace T3v\T3vCore\Utility;
 
+use Stringy\StaticStringy as S;
+
 /**
  * The string utility class.
  *
  * @package T3v\T3vCore\Utility
  */
 class StringUtility {
+  /**
+   * Returns an ASCII version of the input.
+   *
+   * @param string $input The input
+   * @param string $language The optional language, defaults to `en`
+   * @param bool $removeUnsupported Remove unsupported characters , defaults to `true`
+   * @return string The asciified input
+   */
+  public static function asciify(string $input, string $language = 'en', bool $removeUnsupported = true): string {
+    $output = S::toAscii($input, $language, $removeUnsupported);
+
+    return $output;
+  }
+
   /**
    * Camelizes an input.
    *

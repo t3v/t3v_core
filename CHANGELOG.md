@@ -6,6 +6,8 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Improved `StringUtility`
+* Added `Danielstjules/Stringy` as dependency
 * Updated translations
 
 8.1.0
@@ -282,7 +284,7 @@ Unreleased
 
 * Set `LayoutRootPath` and `PartialRootPath` in `RendererUtility`
 * Colorized logging in `AbstractCommandController`
-* Added `kevinlebrun/colors.php` as Composer dependency
+* Added `Kevinlebrun/Colors` as Composer dependency
 * Added `AbstractCommandController`
 * Updated Composer dependencies
 
