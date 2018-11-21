@@ -3,8 +3,8 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+5.13.0
+------
 
 * Improved `StringUtility`
 * Added `Danielstjules/Stringy` as dependency
