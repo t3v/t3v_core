@@ -14,7 +14,7 @@ abstract class AbstractCommandController extends CommandController {
   /**
    * Logs / echos a message.
    *
-   * @param string $message The message
+   * @param string $message The message to log / echo
    * @param string $color The optional color or status, defaults to `white`
    * @param bool $verbose The optional verbosity, defaults to `false`
    */

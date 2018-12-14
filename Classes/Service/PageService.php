@@ -94,9 +94,7 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Gets a page by UID.
-   *
-   * Alias for `getPage`.
+   * Gets a page by UID, alias for `getPage`.
    *
    * @param int $uid The UID of the page
    * @param int $languageUid The optional language UID, defaults to the UID of the current system language
@@ -134,9 +132,7 @@ class PageService extends AbstractService {
   }
 
   /**
-   * Gets pages by UIDs.
-   *
-   * Alias for `getPages`.
+   * Gets pages by UIDs, alias for `getPages`.
    *
    * @param array|string $uids The UIDs as array or as string, seperated by `,`
    * @param int $languageUid The optional language UID, defaults to the UID of the current system language

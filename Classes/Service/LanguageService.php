@@ -62,7 +62,7 @@ class LanguageService extends AbstractService {
   }
 
   /**
-   * Alias for `getLanguageUid`.
+   * Gets the current systen language UID, alias for `getLanguageUid`.
    *
    * @param int $default The default system language UID, defaults to `0`
    * @return int The current system language UID if available, otherwise the default
