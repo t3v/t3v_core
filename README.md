@@ -10,8 +10,8 @@ Dependencies
 
 * TYPO3 CMS 8.7 or greater
 * Kevinlebrun/Colors library
-* Cocur/Slugify library
 * Danielstjules/Stringy library
+* Cocur/Slugify library
 
 Installation
 ------------
