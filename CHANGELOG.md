@@ -3,8 +3,8 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+5.14.0
+------
 
 * Updated Travis CI and AppVeyor configuration
 * Updated dependencies
