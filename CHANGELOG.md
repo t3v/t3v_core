@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Updated Composer configuration
 * Updated Travis CI and AppVeyor configuration
 * Updated dependencies
 * Cleaned up
