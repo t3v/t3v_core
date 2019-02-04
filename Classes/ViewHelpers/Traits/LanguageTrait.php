@@ -32,7 +32,7 @@ trait LanguageTrait {
   }
 
   /**
-   * Alias for `getLanguageUid`.
+   * Gets system language UID, alias for `getLanguageUid`.
    *
    * @param int $default The default system language UID, defaults to `0`
    * @return int The system language UID if available, otherwise the default one

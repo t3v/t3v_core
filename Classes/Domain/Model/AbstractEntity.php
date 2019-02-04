@@ -54,12 +54,30 @@ abstract class AbstractEntity extends AbstractEntityExtbase {
   }
 
   /**
+   * Returns when the entity was created, alias for `getCrdate`.
+   *
+   * @return \DateTime The entitie's creation date
+   */
+  public function getCreatedAt() {
+    return $this->getCrdate();
+  }
+
+  /**
    * Returns the entitie's timestamp.
    *
    * @return \DateTime The entitie's timestamp
    */
   public function getTstamp() {
     return $this->tstamp;
+  }
+
+  /**
+   * Returns when the entity was upated, alias for `getTstamp`.
+   *
+   * @return \DateTime The entitie's creation date
+   */
+  public function getUpdatedAt() {
+    return $this->getTstamp();
   }
 
   /**

@@ -54,16 +54,16 @@ abstract class AbstractRepository extends Repository {
    */
   public function findByUid($uid, array $querySettings = ['respectSysLanguage' => false]) {
     if ($uid && $uid > 0) {
-      // Create query
+      // Create a new query.
       $query = $this->createquery();
 
-      // Apply query settings
+      // Apply the passed query settings.
       $query = $this->applyQuerySettings($query, $querySettings);
 
-      // Set constraints
+      // Set the query constraints.
       $query->matching($query->equals('uid', $uid));
 
-      // Execute query and get first object
+      // Execute the query and get the first object.
       $result = $query->execute()->getFirst();
 
       return $result;
@@ -85,16 +85,16 @@ abstract class AbstractRepository extends Repository {
     }
 
     if (!empty($uids)) {
-      // Create query
+      // Create a new query.
       $query = $this->createquery();
 
-      // Apply query settings
+      // Apply the passed query settings.
       $query = $this->applyQuerySettings($query, $querySettings);
 
-      // Set constraints
+      // Set the query constraints.
       $query->matching($query->in('uid', $uids));
 
-      // Execute query
+      // Execute the query.
       $result = $query->execute();
 
       return $result;
@@ -113,20 +113,20 @@ abstract class AbstractRepository extends Repository {
    */
   public function getRawObjectByUid(int $uid, int $languageUid = 0, array $querySettings = ['respectSysLanguage' => false]) {
     if ($uid && $uid > 0) {
-      // Create query
+      // Create a new query.
       $query = $this->createquery();
 
-      // Apply query settings
-      $query = $this->applyQuerySettings($query, $querySettings);
-
-      // Set language UID
+      // Set the passend language UID.
       $settings = $query->getQuerySettings();
       $settings->setLanguageUid($languageUid);
 
-      // Set constraints
+      // Apply the passed query settings.
+      $query = $this->applyQuerySettings($query, $querySettings);
+
+      // Set the query constraints.
       $query->matching($query->equals('uid', $uid));
 
-      // Execute query and get raw object
+      // Execute the query and get raw object.
       $result = $query->execute(true);
 
       return $result[0];
@@ -136,9 +136,7 @@ abstract class AbstractRepository extends Repository {
   }
 
   /**
-   * Gets a raw model by UID.
-   *
-   * Alias for `getRawObjectByUid`.
+   * Gets a raw model by UID, alias for `getRawObjectByUid`.
    *
    * @param int $uid The UID
    * @param int $languageUid The language UID, defaults to `0`
@@ -159,21 +157,21 @@ abstract class AbstractRepository extends Repository {
    */
   public function findByPid(int $pid, int $limit = 0, array $querySettings = ['respectSysLanguage' => true]) {
     if ($pid && $pid > 0) {
-      // Create query
+      // Create a new query.
       $query = $this->createquery();
 
-      // Apply query settings
+      // Apply the passed query settings.
       $query = $this->applyQuerySettings($query, $querySettings);
 
-      // Set constraints
+      // Set the query constraints.
       $query->matching($query->equals('pid', $pid));
 
-      // Set limit if available
+      // Set the query limit if available.
       if ($limit > 0) {
         $query->setLimit($limit);
       }
 
-      // Execute query
+      // Execute the query.
       $result = $query->execute();
 
       return $result;
@@ -199,18 +197,18 @@ abstract class AbstractRepository extends Repository {
       // Create query
       $query = $this->createquery();
 
-      // Apply query settings
+      // Apply the passed query settings.
       $query = $this->applyQuerySettings($query, $querySettings);
 
-      // Set constraints
+      // Set the query constraints.
       $query->matching($query->in('pid', $pids));
 
-      // Set limit if available
+      // Set the query limit if available.
       if ($limit > 0) {
         $query->setLimit($limit);
       }
 
-      // Execute query
+      // Execute the query.
       $result = $query->execute();
 
       return $result;
