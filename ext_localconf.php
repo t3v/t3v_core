@@ -1,7 +1,7 @@
 <?php
 defined('TYPO3_MODE') or die();
 
-// === Frontend Configuration ===
+// === Frontend ===
 
 // Add the `backend_layout` and `backend_layout_next_level` field to the root line.
 if (empty($GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'])) {
