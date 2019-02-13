@@ -3,10 +3,10 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+5.15.1
+------
 
-* Updated dependencies
+* Updated Travis CI configuration and dependencies
 * Cleaned up
 
 5.15.0
