@@ -14,13 +14,6 @@ use T3v\T3vCore\Utility\AbstractUtility;
  */
 class RendererUtility extends AbstractUtility {
   /**
-   * The constructor function.
-   */
-  public function __construct() {
-    parent::__construct();
-  }
-
-  /**
    * Gets a Fluid renderer for a template.
    *
    * @param string $template The template

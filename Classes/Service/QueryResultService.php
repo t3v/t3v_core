@@ -20,7 +20,7 @@ class QueryResultService extends AbstractService {
   protected $languageService;
 
   /**
-   * The constructor function.
+   * Constructs a new query result service.
    */
   public function __construct() {
     parent::__construct();

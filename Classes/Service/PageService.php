@@ -46,7 +46,7 @@ class PageService extends AbstractService {
   protected $pageRepository;
 
   /**
-   * The constructor function.
+   * Constructs a new page service.
    */
   public function __construct() {
     parent::__construct();

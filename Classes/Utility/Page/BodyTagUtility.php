@@ -23,7 +23,7 @@ class BodyTagUtility extends AbstractUtility {
   protected $pageService;
 
   /**
-   * The constructor function.
+   * Constructs a new body tag utility.
    */
   public function __construct() {
     parent::__construct();

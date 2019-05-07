@@ -19,7 +19,7 @@ abstract class AbstractService implements SingletonInterface {
   protected $objectManager;
 
   /**
-   * The constructor.
+   * Constructs a new abstract service.
    */
   public function __construct() {
     $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);

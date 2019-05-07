@@ -19,7 +19,7 @@ abstract class AbstractUtility implements SingletonInterface {
   protected $objectManager;
 
   /**
-   * The constructor function.
+   * Constructs a new abstract utility.
    */
   public function __construct() {
     $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);

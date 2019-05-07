@@ -7,6 +7,7 @@ Unreleased
 ----------
 
 * Updated Travis CI configuration
+* Cleaned up
 
 8.4.2
 -----
