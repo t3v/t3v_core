@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 8.4.3
 -----
 
+* Updated dependencies
 * Updated Travis CI configuration
 * Cleaned up
 
