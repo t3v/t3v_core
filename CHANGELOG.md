@@ -3,6 +3,12 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Updated Travis CI and AppVeyor configuration
+* Dropped support for TYPO3 8.x
+
 8.4.3
 -----
 
