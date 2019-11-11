@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added `AbstractComponentController` and `AbstractContentElementController`
 * Added `ContentElementUtility` from T3v Content
 * Updated `AbstractModel` and  model traits (breaking change)
 * Renamed `AbstractEntity` to `AbstractModel` (breaking change)
