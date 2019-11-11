@@ -46,14 +46,30 @@ class PageService extends AbstractService {
   protected $pageRepository;
 
   /**
-   * Constructs a new page service.
+   * Injects the query generator.
+   *
+   * @param \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator
    */
-  public function __construct() {
-    parent::__construct();
+  public function injectQueryGenerator(QueryGenerator $queryGenerator): void {
+    $this->queryGenerator = $queryGenerator;
+  }
 
-    $this->queryGenerator  = $this->objectManager->get(QueryGenerator::class);
-    $this->languageService = $this->objectManager->get(LanguageService::class);
-    $this->pageRepository  = $this->objectManager->get(PageRepository::class);
+  /**
+   * Injects the language service.
+   *
+   * @param \T3v\T3vCore\Service\LanguageService $languageService
+   */
+  public function injectLanguageService(LanguageService $languageService): void {
+    $this->languageService = $languageService;
+  }
+
+  /**
+   * Injects the page repository.
+   *
+   * @param \TYPO3\CMS\Frontend\Page\PageRepository $pageRepository
+   */
+  public function injectPageRepository(PageRepository $pageRepository): void {
+    $this->pageRepository = $pageRepository;
   }
 
   /**

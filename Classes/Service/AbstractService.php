@@ -22,7 +22,7 @@ abstract class AbstractService implements SingletonInterface {
    *
    * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
    */
-  public function injectObjectManager(ObjectManagerInterface $objectManager) {
+  public function injectObjectManager(ObjectManagerInterface $objectManager): void {
     $this->objectManager = $objectManager;
   }
 }

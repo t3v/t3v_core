@@ -23,10 +23,12 @@ class BodyTagUtility extends AbstractUtility {
   protected $pageService;
 
   /**
-   * Constructs a new body tag utility.
+   * Injects the page service.
+   *
+   * @param \T3v\T3vCore\Service\PageService $pageService
    */
-  public function __construct() {
-    $this->pageService = $this->objectManager->get(PageService::class);
+  public function injectPageService(PageService $pageService): void {
+    $this->pageService = $pageService;
   }
 
   /**

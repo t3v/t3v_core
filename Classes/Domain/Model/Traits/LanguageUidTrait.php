@@ -35,7 +35,7 @@ trait LanguageUidTrait {
    *
    * @param int $languageUid The model's language UID
    */
-  public function setLanguageUid(int $languageUid) {
+  public function setLanguageUid(int $languageUid): void {
     $this->_languageUid = $languageUid;
   }
 }

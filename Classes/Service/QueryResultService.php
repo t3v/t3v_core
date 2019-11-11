@@ -20,12 +20,12 @@ class QueryResultService extends AbstractService {
   protected $languageService;
 
   /**
-   * Constructs a new query result service.
+   * Injects the language service.
+   *
+   * @param \T3v\T3vCore\Service\LanguageService $languageService
    */
-  public function __construct() {
-    parent::__construct();
-
-    $this->languageService = $this->objectManager->get(LanguageService::class);
+  public function injectLanguageService(LanguageService $languageService): void {
+    $this->languageService = $languageService;
   }
 
   /**

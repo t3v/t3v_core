@@ -22,7 +22,7 @@ trait FileReferenceTrait {
    *
    * @param \TYPO3\CMS\Core\Resource\FileRepository $fileRepository The file repository
    */
-  public function injectFileRepository(FileRepository $fileRepository) {
+  public function injectFileRepository(FileRepository $fileRepository): void {
     $this->fileRepository = $fileRepository;
   }
 

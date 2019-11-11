@@ -22,7 +22,7 @@ trait LocalizationTrait {
    *
    * @param \TYPO3\CMS\Core\Localization\LocalizationFactory $localizationFactory The localization factory
    */
-  public function injectLocalizationFactory(LocalizationFactory $localizationFactory) {
+  public function injectLocalizationFactory(LocalizationFactory $localizationFactory): void {
     $this->localizationFactory = $localizationFactory;
   }
 

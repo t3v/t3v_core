@@ -12,7 +12,7 @@ abstract class AbstractActionController extends ActionControllerExtbase {
   /**
    * Assigns the arguments from the original request.
    */
-  protected function assignOriginalArguments() {
+  protected function assignOriginalArguments(): void {
     $originalRequest = $this->request->getOriginalRequest();
 
     if (!empty($originalRequest)) {
