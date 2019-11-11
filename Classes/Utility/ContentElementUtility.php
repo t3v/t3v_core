@@ -31,4 +31,17 @@ class ContentElementUtility {
 
     return $contentElementIdentifier;
   }
+
+  /**
+   * Gets a signature from an extension and content element identifier.
+   *
+   * @param string $extensionIdentifier The extension identifier
+   * @param string $contentElementIdentifier The content element identifier
+   * @return string The content element signature
+   */
+  public static function signature(string $extensionIdentifier, string $contentElementIdentifier): string {
+    $contentElementSignature = mb_strtolower($extensionIdentifier . '_' . $contentElementIdentifier);
+
+    return $contentElementSignature;
+  }
 }
