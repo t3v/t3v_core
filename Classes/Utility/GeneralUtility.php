@@ -22,15 +22,4 @@ class GeneralUtility {
 
     return $identifier;
   }
-
-  /**
-   * Alias for the `identifier` function.
-   *
-   * @param string $name The name
-   * @param string $separator The optional separator, defaults to `_`
-   * @return string The identifier
-   */
-  public static function getIdentifier(string $name, string $separator = '_'): string {
-    return self::identifier($name, $separator);
-  }
 }

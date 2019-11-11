@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Added `ContentElementUtility` from T3v Content
 * Updated `AbstractModel` and  model traits (breaking change)
 * Renamed `AbstractEntity` to `AbstractModel` (breaking change)
 * Dropped support for TYPO3 8.x
