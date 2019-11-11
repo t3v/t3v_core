@@ -10,7 +10,7 @@ use Stringy\StaticStringy as S;
  */
 class StringUtility {
   /**
-   * Returns an ASCII version of the input.
+   * Returns an ASCII version from the input.
    *
    * @param string $input The input
    * @param string $language The optional language, defaults to `en`

@@ -3,12 +3,15 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-9.0.0
------
+Unreleased
+----------
 
+* Updated `AbstractModel` and  model traits (breaking change)
+* Renamed `AbstractEntity` to `AbstractModel` (breaking change)
 * Dropped support for TYPO3 8.x
 * Updated Travis CI and AppVeyor configuration
 * Updated dependencies
+* Cleaned up
 
 8.4.3
 -----

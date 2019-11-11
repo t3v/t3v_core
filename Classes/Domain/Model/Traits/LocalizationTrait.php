@@ -1,6 +1,7 @@
 <?php
 namespace T3v\T3vCore\Domain\Model\Traits;
 
+use TYPO3\CMS\Core\Localization\LocalizationFactory;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /**
@@ -10,13 +11,29 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  */
 trait LocalizationTrait {
   /**
+   * The localization factory.
+   *
+   * @var \TYPO3\CMS\Core\Localization\LocalizationFactory
+   */
+  protected $localizationFactory;
+
+  /**
+   * Injects the localization factory.
+   *
+   * @param \TYPO3\CMS\Core\Localization\LocalizationFactory $localizationFactory The localization factory
+   */
+  public function injectLocalizationFactory(LocalizationFactory $localizationFactory) {
+    $this->localizationFactory = $localizationFactory;
+  }
+
+  /**
    * Gets localizations from the standard translation file (`~Resources/Private/Language/locallang.xlf`).
    *
    * @param string $languageKey The optional language key, defaults to `default`
    * @return array The localizations
    */
   protected function getLocalizations(string $languageKey = 'default'): array {
-    $loc‌​allang     = ExtensionManagementUtility::extPath(self::EXTENSION_KEY, 'Resources/Private/Language/locallang.xlf');
+    $loc‌​allang     = ExtensionManagementUtility::extPath(static::EXTENSION_KEY, 'Resources/Private/Language/locallang.xlf');
     $localizations = $this->localizationFactory->getParsedData($loc‌​allang, $languageKey);
     $localizations = $this->getLabelsByLanguageKey($localizations, $languageKey);
     $localizations = $this->getLabelsFromTarget($localizations);

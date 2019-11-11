@@ -1,20 +1,20 @@
 <?php
-namespace T3v\T3vCore\Command;
+namespace T3v\T3vCore\Controller;
 
-use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
+use TYPO3\CMS\Extbase\Mvc\Controller\CommandController as CommandControllerExtbase;
 
 use Colors\Color;
 
 /**
  * The abstract command controller class.
  *
- * @package T3v\T3vCore\Command
+ * @package T3v\T3vCore\Controller
  */
-abstract class AbstractCommandController extends CommandController {
+abstract class AbstractCommandController extends CommandControllerExtbase {
   /**
-   * Logs / echos a message.
+   * Logs respectively echos a message.
    *
-   * @param string $message The message to log / echo
+   * @param string $message The message to log
    * @param string $color The optional color or status, defaults to `white`
    * @param bool $verbose The optional verbosity, defaults to `false`
    */

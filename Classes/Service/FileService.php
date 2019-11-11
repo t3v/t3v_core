@@ -5,9 +5,9 @@ use TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException;
 use TYPO3\CMS\Core\Utility\File\BasicFileUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-use Cocur\Slugify\Slugify;
-
 use T3v\T3vCore\Service\AbstractService;
+
+use Cocur\Slugify\Slugify;
 
 /**
  * The file service class.
@@ -53,7 +53,7 @@ class FileService extends AbstractService {
    * @return string|null The file name of the saved file or null if the file could not be saved
    * @throws \TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException
    */
-  public static function saveFile($file, string $uploadsFolderPath) {
+  public function saveFile($file, string $uploadsFolderPath) {
     if (!empty($file) && is_array($file) && !empty($uploadsFolderPath)) {
       $fileName          = $file['name'];
       $temporaryFileName = $file['tmp_name'];
@@ -61,7 +61,7 @@ class FileService extends AbstractService {
       if (GeneralUtility::verifyFilenameAgainstDenyPattern($fileName)) {
         $uploadsFolderPath   = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
         $fileName            = self::cleanFileName($fileName);
-        $newFileName         = self::getUniqueFileName($fileName, $uploadsFolderPath);
+        $newFileName         = $this->getUniqueFileName($fileName, $uploadsFolderPath);
         $fileCouldBeUploaded = GeneralUtility::upload_copy_move($temporaryFileName, $newFileName);
 
         if ($fileCouldBeUploaded) {
@@ -81,8 +81,21 @@ class FileService extends AbstractService {
    * @param string $fileName The file name
    * @return true|false True on success or false on failure
    */
-  public static function deleteFile(string $fileName): bool {
+  public function deleteFile(string $fileName): bool {
     return unlink($fileName);
+  }
+
+  /**
+   * Gets an unique file name.
+   *
+   * @param string $fileName The file name
+   * @param string $directory The directory for which to return a unique file name for, MUST be a valid directory and should be absolute
+   * @return string The unique file name
+   */
+  public function getUniqueFileName(string $fileName, string $directory): string {
+    $basicFileUtility = $this->objectManager->get(BasicFileUtility::class);
+
+    return $basicFileUtility->getUniqueName($fileName, $directory);
   }
 
   /**
@@ -115,18 +128,5 @@ class FileService extends AbstractService {
    */
   public static function normalizeFileName(string $fileName, array $rulesets = self::FILE_NAME_RULESETS, string $separator = '-'): string {
     return self::cleanFileName($fileName, $rulesets, $separator);
-  }
-
-  /**
-   * Gets an unique file name.
-   *
-   * @param string $fileName The file name
-   * @param string $directory The directory for which to return a unique file name for, MUST be a valid directory and should be absolute
-   * @return string The unique file name
-   */
-  public static function getUniqueFileName(string $fileName, string $directory): string {
-    $basicFileUtility = GeneralUtility::makeInstance(BasicFileUtility::class);
-
-    return $basicFileUtility->getUniqueName($fileName, $directory);
   }
 }

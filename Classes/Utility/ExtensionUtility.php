@@ -10,16 +10,26 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ExtensionUtility {
   /**
-   * Gets an extension identifier from an extension key.
+   * Gets an identifier from an extension key.
+   *
+   * @param string $extensionKey The extension key
+   * @return string The extension identifier
+   */
+  public static function identifier(string $extensionKey): string {
+    $identifier = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
+    $identifier = mb_strtolower($identifier);
+
+    return $identifier;
+  }
+
+  /**
+   * Alias for the `identifier` function.
    *
    * @param string $extensionKey The extension key
    * @return string The extension identifier
    */
   public static function extensionIdentifier(string $extensionKey): string {
-    $extensionIdentifier = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
-    $extensionIdentifier = mb_strtolower($extensionIdentifier);
-
-    return $extensionIdentifier;
+    return self::identifier($extensionKey);
   }
 
   /**
@@ -33,7 +43,22 @@ class ExtensionUtility {
   }
 
   /**
-   * Gets an extension signature from a namespace and extension key.
+   * Gets a signature from a namespace and extension key.
+   *
+   * @param string $namespace The namespace
+   * @param string $extensionKey The extension key
+   * @param string $separator The optional separator, defaults to `.`
+   * @return string The extension signature
+   */
+  public static function signature(string $namespace, string $extensionKey, string $separator = '.'): string {
+    $namespace    = GeneralUtility::underscoredToUpperCamelCase($namespace);
+    $extensionKey = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
+
+    return "${namespace}${separator}${extensionKey}";
+  }
+
+  /**
+   * Alias for the `signature` function.
    *
    * @param string $namespace The namespace
    * @param string $extensionKey The extension key
@@ -41,10 +66,7 @@ class ExtensionUtility {
    * @return string The extension signature
    */
   public static function extensionSignature(string $namespace, string $extensionKey, string $separator = '.'): string {
-    $namespace    = GeneralUtility::underscoredToUpperCamelCase($namespace);
-    $extensionKey = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
-
-    return "${namespace}${separator}${extensionKey}";
+    return self::signature($namespace, $extensionKey, $separator);
   }
 
   /**

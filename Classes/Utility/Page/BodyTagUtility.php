@@ -26,8 +26,6 @@ class BodyTagUtility extends AbstractUtility {
    * Constructs a new body tag utility.
    */
   public function __construct() {
-    parent::__construct();
-
     $this->pageService = $this->objectManager->get(PageService::class);
   }
 

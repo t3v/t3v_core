@@ -8,22 +8,12 @@ use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-use T3v\T3vCore\Service\LanguageService;
-
 /**
  * The abstract repository class.
  *
  * @package T3v\T3vCore\Domain\Repository
  */
 abstract class AbstractRepository extends Repository {
-  /**
-   * The language service.
-   *
-   * @var \T3v\T3vCore\Service\LanguageService
-   * @inject
-   */
-  protected $languageService;
-
   /**
    * The default orderings.
    *

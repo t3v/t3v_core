@@ -12,26 +12,26 @@ use T3v\T3vCore\Utility\ExtensionUtility;
  */
 class ExtensionUtilityTest extends UnitTestCase {
   /**
-   * Tests the extension identifier function.
+   * Tests the identifier function.
    *
    * @test
    */
-  public function extensionIdentifier() {
-    $this->assertEquals('t3vcore',     ExtensionUtility::extensionIdentifier('t3v_core'));
-    $this->assertEquals('t3vdummyext', ExtensionUtility::extensionIdentifier('t3v_dummy_ext'));
-    $this->assertEquals('t3vcore',     ExtensionUtility::extensionIdentifier('T3vCore'));
-    $this->assertEquals('t3vcore',     ExtensionUtility::extensionIdentifier('T3v Core'));
+  public function identifier() {
+    $this->assertEquals('t3vcore',     ExtensionUtility::identifier('t3v_core'));
+    $this->assertEquals('t3vdummyext', ExtensionUtility::identifier('t3v_dummy_ext'));
+    $this->assertEquals('t3vcore',     ExtensionUtility::identifier('T3vCore'));
+    $this->assertEquals('t3vcore',     ExtensionUtility::identifier('T3v Core'));
   }
 
   /**
-   * Tests the extension signature function.
+   * Tests the signature function.
    *
    * @test
    */
-  public function extensionSignature() {
-    $this->assertEquals('T3v.T3vCore', ExtensionUtility::extensionSignature('t3v', 't3v_core'));
-    $this->assertEquals('T3v.T3vCore', ExtensionUtility::extensionSignature('T3v', 't3v_core'));
-    $this->assertEquals('T3v_T3vCore', ExtensionUtility::extensionSignature('T3v', 't3v_core', '_'));
+  public function signature() {
+    $this->assertEquals('T3v.T3vCore', ExtensionUtility::signature('t3v', 't3v_core'));
+    $this->assertEquals('T3v.T3vCore', ExtensionUtility::signature('T3v', 't3v_core'));
+    $this->assertEquals('T3v_T3vCore', ExtensionUtility::signature('T3v', 't3v_core', '_'));
   }
 
   /**

@@ -1,7 +1,8 @@
 <?php
 namespace T3v\T3vCore\Domain\Model\Traits;
 
-use \TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Core\Resource\FileRepository;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 
 /**
  * The file reference trait.
@@ -9,6 +10,22 @@ use \TYPO3\CMS\Extbase\Domain\Model\FileReference;
  * @package T3v\T3vCore\Domain\Model\Traits
  */
 trait FileReferenceTrait {
+  /**
+   * The file repository.
+   *
+   * @var \TYPO3\CMS\Core\Resource\FileRepository
+   */
+  protected $fileRepository;
+
+  /**
+   * Injects the file repository.
+   *
+   * @param \TYPO3\CMS\Core\Resource\FileRepository $fileRepository The file repository
+   */
+  public function injectFileRepository(FileRepository $fileRepository) {
+    $this->fileRepository = $fileRepository;
+  }
+
   /**
    * Gets a localized file reference.
    *

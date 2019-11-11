@@ -8,34 +8,34 @@ namespace T3v\T3vCore\Domain\Model\Traits;
  */
 trait LanguageUidTrait {
   /**
-   * The entitie's language UID.
+   * The model's language UID.
    *
    * @var int
    */
   protected $languageUid;
 
   /**
-   * The entitie's intern language UID.
+   * The model's intern language UID.
    *
    * @var int
    */
   protected $_languageUid;
 
   /**
-   * Returns the entitie's language UID.
+   * Returns the model's language UID.
    *
-   * @return int The entitie's language UID
+   * @return int The model's language UID
    */
-  public function getLanguageUid() {
+  public function getLanguageUid(): int {
     return $this->_languageUid;
   }
 
   /**
-   * Sets the entitie's language UID.
+   * Sets the model's language UID.
    *
-   * @param int $languageUid The entitie's language UID
+   * @param int $languageUid The model's language UID
    */
-  public function setLanguageUid($languageUid) {
+  public function setLanguageUid(int $languageUid) {
     $this->_languageUid = $languageUid;
   }
 }
