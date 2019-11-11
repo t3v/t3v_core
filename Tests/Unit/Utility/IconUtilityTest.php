@@ -12,31 +12,31 @@ use T3v\T3vCore\Utility\IconUtility;
  */
 class IconUtilityTest extends UnitTestCase {
   /**
-   * Tests the icon identifier function.
+   * Tests the identifier function.
    *
    * @test
    */
-  public function iconIdentifier() {
-    $this->assertEquals('spacer_content_element', IconUtility::iconIdentifier('Spacer Content Element'));
-    $this->assertEquals('spacer_content_element', IconUtility::iconIdentifier('spacer content element'));
-    $this->assertEquals('spacer_content_element', IconUtility::iconIdentifier('Spacer Content element'));
-    $this->assertEquals('spacer-content-element', IconUtility::iconIdentifier('Spacer Content Element', '-'));
+  public function identifier() {
+    $this->assertEquals('spacer_content_element', IconUtility::identifier('Spacer Content Element'));
+    $this->assertEquals('spacer_content_element', IconUtility::identifier('spacer content element'));
+    $this->assertEquals('spacer_content_element', IconUtility::identifier('Spacer Content element'));
+    $this->assertEquals('spacer-content-element', IconUtility::identifier('Spacer Content Element', '-'));
   }
 
   /**
-   * Tests the icon signature function.
+   * Tests the signature function.
    *
    * @test
    */
-  public function iconSignature() {
+  public function signature() {
     $this->assertEquals(
       't3v_core-spacer_content_element',
-      IconUtility::iconSignature('t3v_core', 'spacer_content_element')
+      IconUtility::signature('t3v_core', 'spacer_content_element')
     );
 
     $this->assertEquals(
       't3v_core_spacer_content_element',
-      IconUtility::iconSignature('t3v_core', 'spacer_content_element', '_')
+      IconUtility::signature('t3v_core', 'spacer_content_element', '_')
     );
   }
 }
