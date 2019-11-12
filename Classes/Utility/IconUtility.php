@@ -3,12 +3,14 @@ namespace T3v\T3vCore\Utility;
 
 use Cocur\Slugify\Slugify;
 
+use T3v\T3vCore\Utility\AbstractUtility;
+
 /**
  * The icon utility class.
  *
  * @package T3v\T3vCore\Utility
  */
-class IconUtility {
+class IconUtility extends AbstractUtility {
   /**
    * Gets an identifier from an icon key.
    *

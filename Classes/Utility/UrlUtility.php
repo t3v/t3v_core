@@ -1,12 +1,14 @@
 <?php
 namespace T3v\T3vCore\Utility;
 
+use T3v\T3vCore\Utility\AbstractUtility;
+
 /**
  * The URL utility class.
  *
  * @package T3v\T3vCore\Utility
  */
-class UrlUtility {
+class UrlUtility extends AbstractUtility {
   /**
    * Encodes an URL.
    *

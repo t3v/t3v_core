@@ -1,12 +1,14 @@
 <?php
 namespace T3v\T3vCore\Utility;
 
+use T3v\T3vCore\Utility\AbstractUtility;
+
 /**
  * The content element utility class.
  *
  * @package T3v\T3vCore\Utility
  */
-class ContentElementUtility {
+class ContentElementUtility extends AbstractUtility {
   /**
    * Gets an identifier from an content element key.
    *

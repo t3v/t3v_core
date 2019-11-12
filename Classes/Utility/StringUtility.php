@@ -3,12 +3,14 @@ namespace T3v\T3vCore\Utility;
 
 use Stringy\StaticStringy as S;
 
+use T3v\T3vCore\Utility\AbstractUtility;
+
 /**
  * The string utility class.
  *
  * @package T3v\T3vCore\Utility
  */
-class StringUtility {
+class StringUtility extends AbstractUtility {
   /**
    * Returns an ASCII version from the input.
    *

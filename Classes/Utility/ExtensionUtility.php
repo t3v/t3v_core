@@ -3,12 +3,14 @@ namespace T3v\T3vCore\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+use T3v\T3vCore\Utility\AbstractUtility;
+
 /**
  * The extension utility class.
  *
  * @package T3v\T3vCore\Utility
  */
-class ExtensionUtility {
+class ExtensionUtility extends AbstractUtility {
   /**
    * Gets an identifier from an extension key.
    *

@@ -3,12 +3,14 @@ namespace T3v\T3vCore\Utility;
 
 use Cocur\Slugify\Slugify;
 
+use T3v\T3vCore\Utility\AbstractUtility;
+
 /**
  * The general utility class.
  *
  * @package T3v\T3vCore\Utility
  */
-class GeneralUtility {
+class GeneralUtility extends AbstractUtility {
   /**
    * Gets an identifier from a name.
    *
