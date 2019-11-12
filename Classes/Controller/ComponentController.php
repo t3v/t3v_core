@@ -6,11 +6,11 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 /**
- * The abstract component controller class.
+ * The component controller class.
  *
  * @package T3v\T3vCore\Controller
  */
-abstract class AbstractComponentController extends ActionController {
+class ComponentController extends ActionController {
   /**
    * The configuration manager.
    *

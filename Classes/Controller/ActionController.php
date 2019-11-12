@@ -1,14 +1,14 @@
 <?php
 namespace T3v\T3vCore\Controller;
 
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController as ActionControllerExtbase;
 
 /**
- * The abstract action controller class.
+ * The action controller class.
  *
  * @package T3v\T3vCore\Controller
  */
-abstract class AbstractActionController extends ActionController {
+class ActionController extends ActionControllerExtbase {
   /**
    * Assigns the arguments from the original request.
    */

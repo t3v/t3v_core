@@ -1,107 +1,107 @@
 <?php
 namespace T3v\T3vCore\Domain\Model;
 
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity as AbstractEntity;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
- * The abstract model class.
+ * The entity class.
  *
  * @package T3v\T3vCore\Domain\Model
  */
-abstract class AbstractModel extends AbstractEntity {
+class Entity extends AbstractEntity {
   /**
-   * The model's system language UID.
+   * The entitie's system language UID.
    *
    * @var int
    */
   protected $sysLanguageUid;
 
   /**
-   * The model's L10n parent.
+   * The entitie's L10n parent.
    *
    * @var int
    */
   protected $l10nParent;
 
   /**
-   * The model's localized UID.
+   * The entitie's localized UID.
    *
    * @var int
    */
   protected $_localizedUid;
 
   /**
-   * The model's creation date.
+   * The entitie's creation date.
    *
    * @var \DateTime
    */
   protected $crdate;
 
   /**
-   * The model's timestamp.
+   * The entitie's timestamp.
    *
    * @var \DateTime
    */
   protected $tstamp;
 
   /**
-   * Returns the model's system language UID.
+   * Returns the entitie's system language UID.
    *
-   * @return int The model's system language UID
+   * @return int The entitie's system language UID
    */
   public function getSysLanguageUid(): int {
     return $this->sysLanguageUid;
   }
 
   /**
-   * Returns the model's L10n parent.
+   * Returns the entitie's L10n parent.
    *
-   * @return int The model's L10n parent
+   * @return int The entitie's L10n parent
    */
   public function getL10nParent(): int {
     return $this->l10nParent;
   }
 
   /**
-   * Returns the model's localized UID.
+   * Returns the entitie's localized UID.
    *
-   * @return int The model's localized UID
+   * @return int The entitie's localized UID
    */
   public function getLocalizedUid(): int {
     return $this->_localizedUid;
   }
 
   /**
-   * Returns the model's creation date.
+   * Returns the entitie's creation date.
    *
-   * @return \DateTime The model's creation date
+   * @return \DateTime The entitie's creation date
    */
   public function getCrdate(): \DateTime {
     return $this->crdate;
   }
 
   /**
-   * Returns when the entity was created, alias for `getCrdate`.
+   * Returns when the entity was created, alias for the `getCrdate` function.
    *
-   * @return \DateTime The model's creation date
+   * @return \DateTime The entitie's creation date
    */
   public function getCreatedAt(): \DateTime {
     return $this->getCrdate();
   }
 
   /**
-   * Returns the model's timestamp.
+   * Returns the entitie's timestamp.
    *
-   * @return \DateTime The model's timestamp
+   * @return \DateTime The entitie's timestamp
    */
   public function getTstamp(): \DateTime {
     return $this->tstamp;
   }
 
   /**
-   * Returns when the entity was upated, alias for `getTstamp`.
+   * Returns when the entity was upated, alias for the `getTstamp` function.
    *
-   * @return \DateTime The model's creation date
+   * @return \DateTime The entitie's creation date
    */
   public function getUpdatedAt(): \DateTime {
     return $this->getTstamp();
