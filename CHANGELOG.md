@@ -6,12 +6,11 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
-* Added `ComponentController` and `ContentElementController`
-* Added `ContentElementUtility` from T3v Content
+* Added `Settings` service
+* Added `ContentObject` and `ContentElement` controller
+* Moved `ContentElement` utility from T3v Content (breaking change)
 * Updated model traits (breaking change)
-* Renamed `AbstractEntity` to `Entity` (breaking change)
-* Renamed `AbstractRepository` to `Repository` (breaking change)
-* Dropped support for TYPO3 8.x
+* Dropped support for TYPO3 8.x (breaking change)
 * Updated Travis CI and AppVeyor configuration
 * Updated dependencies
 * Cleaned up

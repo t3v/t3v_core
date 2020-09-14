@@ -1,12 +1,14 @@
 <?php
-namespace T3v\T3vCore\Controller;
+declare(strict_types=1);
 
-use T3v\T3vCore\Controller\ComponentController;
+namespace T3v\T3vCore\Controller;
 
 /**
  * The content element controller class.
  *
  * @package T3v\T3vCore\Controller
  */
-class ContentElementController extends ComponentController {
+class ContentElementController extends AbstractActionController
+{
+
 }

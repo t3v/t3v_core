@@ -6,10 +6,23 @@
     {
       "name": "Maik Kempe",
       "email": "mkempe@bitaculous.com",
-      "homepage": "https://bitaculous.com"
+      "role": "Developer"
+    },
+    {
+      "name": "Jochen Greiner",
+      "email": "greiner@monobloc.de",
+      "role": "Developer"
     }
   ],
-  "keywords": ["CMS", "Core", "Extension", "T3v", "TYPO3", "TYPO3voila", "UH LÁLÁ"],
+  "keywords": [
+    "CMS",
+    "Core",
+    "Extension",
+    "T3v",
+    "TYPO3",
+    "TYPO3voila",
+    "UH LÁLÁ"
+  ],
   "homepage": "https://t3v.github.io/t3v_core/",
   "support": {
     "issues": "https://github.com/t3v/t3v_core/issues"
@@ -25,19 +38,22 @@
     "typo3-ter/t3v_core": "self.version"
   },
   "repositories": [
-    { "type": "composer", "url": "https://composer.typo3.org" }
+    {
+      "type": "composer",
+      "url": "https://composer.typo3.org"
+    }
   ],
   "require": {
     "php": ">= 7.2 < 7.4",
     "typo3/cms-core": "^9.5 || dev-master",
     "kevinlebrun/colors.php": "^1.0",
     "danielstjules/stringy": "^3.1",
-    "cocur/slugify": "^3.2"
+    "cocur/slugify": "^4.0"
   },
   "require-dev": {
     "mikey179/vfsstream": "^1.6",
     "namelesscoder/typo3-repository-client": "^2.0",
-    "nimut/testing-framework": "^4.1",
+    "nimut/testing-framework": "^5.1",
     "phpunit/phpunit": "^6.0"
   },
   "autoload": {
@@ -47,14 +63,13 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "T3v\\T3vCore\\Tests\\": "Tests",
-      "TYPO3\\CMS\\Core\\Tests\\": ".build/vendor/typo3/cms/typo3/sysext/core/Tests",
-      "TYPO3\\CMS\\Fluid\\Tests\\": ".build/vendor/typo3/cms/typo3/sysext/fluid/Tests"
+      "T3v\\T3vCore\\Tests\\": "Tests"
     }
   },
   "extra": {
     "typo3/cms": {
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "extension-key": "t3v_core",
       "web-dir": ".build/web"
     }
   },

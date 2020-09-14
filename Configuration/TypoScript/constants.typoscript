@@ -21,6 +21,9 @@ plugin {
       extbase {
         # cat=plugin/tx_t3vcore/settings/extbase; type=string; label=The controller extension name.
         controllerExtensionName = T3vCore
+
+        # cat=plugin/tx_t3vcore/settings; type=options[Strict=strict,Fallback=fallback]; label=The mode in which T3v Core runs.
+        mode = strict
       }
     }
 

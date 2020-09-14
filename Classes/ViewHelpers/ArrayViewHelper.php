@@ -1,30 +1,45 @@
 <?php
 namespace T3v\T3vCore\ViewHelpers;
 
-use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 /**
  * The array view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
  */
-class ArrayViewHelper extends AbstractViewHelper {
-  /**
-   * The view helper render function.
-   *
-   * @param array $array The array
-   * @param string $key The key
-   * @return object|null The value for the key or null if the key does not exist
-   */
-  public function render(array $array, string $key) {
-    $result = null;
+class ArrayViewHelper extends AbstractViewHelper
+{
+    /**
+     * Initializes the arguments.
+     */
+    public function initializeArguments(): void
+    {
+        parent::initializeArguments();
 
-    if (is_array($array) && $key) {
-      if (array_key_exists($key, $array)) {
-        $result = $array[$key];
-      }
+        $this->registerArgument('array', 'array', 'The array', true);
+        $this->registerArgument('key', 'string', 'The key', true);
     }
 
-    return $result;
-  }
+    /**
+     * The view helper render static function.
+     *
+     * @param array $arguments The arguments
+     * @param \Closure $renderChildrenClosure The render children closure
+     * @param RenderingContextInterface $renderingContext The rendering context
+     * @return object|null The value for the key or null if the key does not exist
+     * @noinspection PhpFullyQualifiedNameUsageInspection
+     */
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
+    {
+        $result = null;
+        $array = $arguments['array'];
+        $key = $arguments['key'];
+
+        if (is_array($array) && $key && array_key_exists($key, $array)) {
+            $result = $array[$key];
+        }
+
+        return $result;
+    }
 }

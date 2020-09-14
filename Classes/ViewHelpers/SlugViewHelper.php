@@ -1,93 +1,82 @@
 <?php
 namespace T3v\T3vCore\ViewHelpers;
 
-use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3\CMS\Fluid\Core\ViewHelper\Facets\CompilableInterface;
-
 use Cocur\Slugify\Slugify;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 /**
  * The slug view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
  */
-class SlugViewHelper extends AbstractViewHelper implements CompilableInterface {
-  /**
-   * The slug rulesets.
-   */
-  const SLUG_RULESETS = [
-    'default',
-    'azerbaijani',
-    'burmese',
-    'hindi',
-    'georgian',
-    'norwegian',
-    'vietnamese',
-    'ukrainian',
-    'latvian',
-    'finnish',
-    'greek',
-    'czech',
-    'arabic',
-    'turkish',
-    'polish',
-    'german',
-    'russian',
-    'romanian',
-    'chinese'
-  ];
+class SlugViewHelper extends AbstractViewHelper
+{
+    /**
+     * The slug rulesets.
+     */
+    public const SLUG_RULESETS = [
+        'default',
+        'azerbaijani',
+        'burmese',
+        'hindi',
+        'georgian',
+        'norwegian',
+        'vietnamese',
+        'ukrainian',
+        'latvian',
+        'finnish',
+        'greek',
+        'czech',
+        'arabic',
+        'turkish',
+        'polish',
+        'german',
+        'russian',
+        'romanian',
+        'chinese'
+    ];
 
-  /**
-   * The view helper render function.
-   *
-   * @param string $input The input to generate a slug from
-   * @param string $separator The optional separator, defaults to `-`
-   * @return string The slug
-   */
-  public function render(string $input, string $separator = '-'): string {
-    return static::renderStatic(
-      [
-        'input'     => $input,
-        'separator' => $separator
-      ],
-      $this->buildRenderChildrenClosure(),
-      $this->renderingContext
-    );
-  }
-
-  /**
-   * The view helper render static function.
-   *
-   * @param array $arguments The arguments
-   * @param callable $renderChildrenClosure The render children closure
-   * @param RenderingContextInterface $renderingContext The rendering context
-   * @return string The slug
-   */
-  public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string {
-    $input     = $arguments['input'];
-    $separator = $arguments['separator'];
-    $output    = '';
-
-    if ($input) {
-      $output = self::createSlug($input, $separator);
+    /**
+     * Initializes the arguments.
+     */
+    public function initializeArguments(): void
+    {
+        $this->registerArgument('input', 'string', 'The input to generate a slug from', true, 'none');
+        $this->registerArgument('separator', 'string', 'The optional separator, defaults to `-`', false, '-');
     }
 
-    return $output;
-  }
+    /**
+     * The view helper render static function.
+     *
+     * @param array $arguments The arguments
+     * @param \Closure $renderChildrenClosure The render children closure
+     * @param RenderingContextInterface $renderingContext The rendering context
+     * @return string The slug
+     * @noinspection PhpFullyQualifiedNameUsageInspection
+     */
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ): string {
+        $input = $arguments['input'] ?: '-';
+        $separator = $arguments['separator'] ?: '-';
 
-  /**
-   * Creates a slug from an input.
-   *
-   * @param string $input The input to create a slug from
-   * @param array $rulesets The optional rulesets, defaults to `SlugViewHelper::SLUG_RULESETS`
-   * @param string $separator The optional separator, defaults to `-`
-   * @return string The slug
-   */
-  protected static function createSlug(string $input, array $rulesets = self::SLUG_RULESETS, string $separator = '-'): string {
-    $slugify = new Slugify(['rulesets' => $rulesets, 'separator' => $separator]);
-    $slug    = $slugify->slugify($input);
+        return self::createSlug($input, $separator);
+    }
 
-    return $slug;
-  }
+    /**
+     * Creates a slug from an input.
+     *
+     * @param string $input The input to create a slug from
+     * @param string $separator The optional separator, defaults to `-`
+     * @param array $rulesets The optional rulesets, defaults to `SlugViewHelper::SLUG_RULESETS`
+     * @return string The slug
+     */
+    protected static function createSlug(string $input, string $separator = '-', array $rulesets = self::SLUG_RULESETS): string
+    {
+        $slugify = new Slugify(['separator' => $separator, 'rulesets' => $rulesets]);
+
+        return $slugify->slugify($input);
+    }
 }
