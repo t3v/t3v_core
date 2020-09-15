@@ -13,6 +13,7 @@ Unreleased
 * Dropped support for TYPO3 8.x (breaking change)
 * Updated Travis CI and AppVeyor configuration
 * Updated dependencies
+* PSR-12: Extended Coding Style
 * Cleaned up
 
 8.4.3
