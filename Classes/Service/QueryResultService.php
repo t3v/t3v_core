@@ -3,26 +3,26 @@ namespace T3v\T3vCore\Service;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-use T3v\T3vCore\Service\AbstractService;
-use T3v\T3vCore\Service\LanguageService;
-
 /**
  * The query result service class.
  *
  * @package T3v\T3vCore\Service
  */
-class QueryResultService extends AbstractService {
+class QueryResultService extends AbstractService
+{
   /**
    * The language service.
    *
    * @var \T3v\T3vCore\Service\LanguageService;
+   * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
    */
   protected $languageService;
 
   /**
    * The constructor function.
    */
-  public function __construct() {
+  public function __construct()
+  {
     parent::__construct();
 
     $this->languageService = $this->objectManager->get(LanguageService::class);
@@ -31,16 +31,17 @@ class QueryResultService extends AbstractService {
   /**
    * Filters a query result by language presets.
    *
-   * @param object $queryResult The query result
+   * @param array|object $queryResult The query result
    * @param array $presets The language presets
-   * @return object The filtered query result
+   * @return array|object The filtered query result
    */
-  public function filterByLanguagePresets($queryResult, array $presets) {
+  public function filterByLanguagePresets($queryResult, array $presets)
+  {
     $result = $queryResult;
 
     if (!empty($presets)) {
       $sysLanguageUid = $this->languageService->getSysLanguageUid();
-      $preset         = intval($presets[$sysLanguageUid]);
+      $preset = (int)$presets[$sysLanguageUid];
 
       if (isset($preset)) {
         $result = [];
@@ -48,7 +49,7 @@ class QueryResultService extends AbstractService {
         foreach ($queryResult as $object) {
           $uid = $object->getSysLanguageUid();
 
-          if (isset($uid) && $uid == $preset) {
+          if (isset($uid) && $uid === $preset) {
             $result[] = $object;
           }
         }
@@ -61,18 +62,18 @@ class QueryResultService extends AbstractService {
   /**
    * Filters a query result by system language.
    *
-   * @param object $queryResult The query result
-   * @param array|string $exceptions The optional UIDs which are ignored as array or as string, seperated by `,`
-   * @return object The filtered query result
+   * @param array|object $queryResult The query result
+   * @param array|string $exceptions The optional UIDs which are ignored as array or as string, separated by `,`
+   * @return array|object The filtered query result
    */
-  public function filterBySysLanguage($queryResult, $exceptions = []) {
+  public function filterBySysLanguage($queryResult, $exceptions = [])
+  {
     $result = $queryResult;
+    $sysLanguageUid = $this->languageService->getSysLanguageUid();
 
     if (is_string($exceptions)) {
       $exceptions = GeneralUtility::intExplode(',', $exceptions, true);
     }
-
-    $sysLanguageUid = $this->languageService->getSysLanguageUid();
 
     if (!in_array($sysLanguageUid, $exceptions, true)) {
       $result = [];
@@ -80,7 +81,7 @@ class QueryResultService extends AbstractService {
       foreach ($queryResult as $object) {
         $uid = $object->getSysLanguageUid();
 
-        if (isset($uid) && $uid == $sysLanguageUid) {
+        if (isset($uid) && $uid === $sysLanguageUid) {
           $result[] = $object;
         }
       }
