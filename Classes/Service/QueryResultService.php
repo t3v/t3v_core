@@ -8,8 +8,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @package T3v\T3vCore\Service
  */
-class QueryResultService extends AbstractService
-{
+class QueryResultService extends AbstractService {
   /**
    * The language service.
    *
@@ -21,8 +20,7 @@ class QueryResultService extends AbstractService
   /**
    * The constructor function.
    */
-  public function __construct()
-  {
+  public function __construct() {
     parent::__construct();
 
     $this->languageService = $this->objectManager->get(LanguageService::class);
@@ -35,8 +33,7 @@ class QueryResultService extends AbstractService
    * @param array $presets The language presets
    * @return array|object The filtered query result
    */
-  public function filterByLanguagePresets($queryResult, array $presets)
-  {
+  public function filterByLanguagePresets($queryResult, array $presets) {
     $result = $queryResult;
 
     if (!empty($presets)) {
@@ -66,8 +63,7 @@ class QueryResultService extends AbstractService
    * @param array|string $exceptions The optional UIDs which are ignored as array or as string, separated by `,`
    * @return array|object The filtered query result
    */
-  public function filterBySysLanguage($queryResult, $exceptions = [])
-  {
+  public function filterBySysLanguage($queryResult, $exceptions = []) {
     $result = $queryResult;
     $sysLanguageUid = $this->languageService->getSysLanguageUid();
 
