@@ -48,13 +48,13 @@ class FileService extends AbstractService {
   /**
    * Saves a file to an uploads folder.
    *
-   * @param array|object $file The file
+   * @param array $file The file
    * @param string $uploadsFolderPath The uploads folder path
    * @return string|null The file name of the saved file or null if the file could not be saved
    * @throws \TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException
    */
-  public static function saveFile($file, string $uploadsFolderPath) {
-    if (!empty($file) && is_array($file) && !empty($uploadsFolderPath)) {
+  public static function saveFile(array $file, string $uploadsFolderPath) {
+    if (!empty($file) && !empty($uploadsFolderPath)) {
       $fileName          = $file['name'];
       $temporaryFileName = $file['tmp_name'];
 
