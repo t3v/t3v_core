@@ -5,6 +5,7 @@ namespace T3v\T3vCore\Utility\Page;
 
 use T3v\T3vCore\Service\PageService;
 use T3v\T3vCore\Utility\AbstractUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The body tag utility class.
@@ -16,7 +17,7 @@ class BodyTagUtility extends AbstractUtility
     /**
      * The default body CSS class.
      */
-    public const DEFAULT_BODY_CSS_CLASS = 'document';
+    public const DEFAULT_BODY_CSS_CLASS = 'body';
 
     /**
      * Builds a body tag.
@@ -28,7 +29,7 @@ class BodyTagUtility extends AbstractUtility
      */
     public function build(string $bodyCssClass = self::DEFAULT_BODY_CSS_CLASS): string
     {
-        $pageService = self::getObjectManager()->get(PageService::class);
+        $pageService = GeneralUtility::makeInstance(PageService::class);
         $page = $pageService->getCurrentPage();
         $backendLayout = $pageService->getBackendLayoutForPage($page['uid']);
 

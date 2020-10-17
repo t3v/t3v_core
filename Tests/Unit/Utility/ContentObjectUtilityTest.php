@@ -5,11 +5,11 @@ use Nimut\TestingFramework\TestCase\UnitTestCase;
 use T3v\T3vCore\Utility\ContentObjectUtility;
 
 /**
- * The component utility test class.
+ * The content object utility test class.
  *
  * @package T3v\T3vCore\Tests\Unit\Utility
  */
-class ComponentUtilityTest extends UnitTestCase
+class ContentObjectUtilityTest extends UnitTestCase
 {
     /**
      * Tests the identifier function.

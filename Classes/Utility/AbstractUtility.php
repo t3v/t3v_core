@@ -19,7 +19,8 @@ abstract class AbstractUtility implements SingletonInterface
     /**
      * Gets the object manager.
      *
-     * @return ObjectManager The object manager
+     * @return \TYPO3\CMS\Extbase\Object\ObjectManager The object manager
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     protected static function getObjectManager(): ObjectManager
     {
@@ -29,20 +30,34 @@ abstract class AbstractUtility implements SingletonInterface
     /**
      * Gets the configuration manager.
      *
-     * @return ConfigurationManagerInterface The configuration manager
+     * @return \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     protected static function getConfigurationManager(): ConfigurationManagerInterface
     {
-        return self::getObjectManager()->get(ConfigurationManagerInterface::class);
+        return GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
     }
 
     /**
      * Gets the content object renderer.
      *
-     * @return ContentObjectRenderer The content object renderer
+     * @return \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer The content object renderer
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     */
+    protected static function getContentObjectRenderer(): ContentObjectRenderer
+    {
+        return GeneralUtility::makeInstance(ContentObjectRenderer::class);
+    }
+
+    /**
+     * Gets the content object.
+     *
+     * @return \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer The content object (renderer)
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @deprecated Use `getContentObjectRenderer` function instead
      */
     protected static function getContentObject(): ContentObjectRenderer
     {
-        return self::getObjectManager()->get(ContentObjectRenderer::class);
+        return self::getContentObjectRenderer();
     }
 }
