@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Tests\Unit\Utility;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
@@ -12,68 +14,92 @@ use T3v\T3vCore\Utility\ContentElementUtility;
 class ContentElementUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the identifier function.
+     * Tests the get identifier function.
      *
      * @test
      */
-    public function identifier(): void
+    public function getIdentifier(): void
     {
-        $this->assertEquals(
+        self::assertEquals(
+            'Announcements',
+            ContentElementUtility::getIdentifier('Announcements')
+        );
+
+        self::assertEquals(
+            'AnnouncementsLatestAnnouncements',
+            ContentElementUtility::getIdentifier('Announcements Latest Announcements')
+        );
+
+        self::assertEquals(
+            'AnnouncementsLatestAnnouncements',
+            ContentElementUtility::getIdentifier('announcements latest announcements')
+        );
+
+        self::assertEquals(
+            'AnnouncementsLatestAnnouncements',
+            ContentElementUtility::getIdentifier('announcements Latest Announcements')
+        );
+
+        self::assertEquals(
+            'AnnouncementsLatestAnnouncements',
+            ContentElementUtility::getIdentifier('announcements_latest_announcements')
+        );
+
+        self::assertEquals(
+            'AnnouncementsLatestAnnouncements',
+            ContentElementUtility::getIdentifier('announcements-latest-announcements')
+        );
+
+        self::assertEquals(
+            'AnnouncementsLatestAnnouncements',
+            ContentElementUtility::getIdentifier('AnnouncementsLatestAnnouncements')
+        );
+
+        self::assertEquals(
+            'AnnouncementsLatestAnnouncements',
+            ContentElementUtility::getIdentifier('announcementsLatestAnnouncements')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
             'Announcements',
             ContentElementUtility::identifier('Announcements')
         );
 
-        $this->assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::identifier('Announcements Latest Announcements')
-        );
-
-        $this->assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::identifier('announcements latest announcements')
-        );
-
-        $this->assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::identifier('announcements Latest Announcements')
-        );
-
-        $this->assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::identifier('announcements_latest_announcements')
-        );
-
-        $this->assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::identifier('announcements-latest-announcements')
-        );
-
-        $this->assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::identifier('AnnouncementsLatestAnnouncements')
-        );
-
-        $this->assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::identifier('announcementsLatestAnnouncements')
+        self::assertEquals(
+            'Announcements',
+            ContentElementUtility::contentElementIdentifier('Announcements')
         );
     }
 
     /**
-     * Tests the signature function.
+     * Tests the get signature function.
      *
      * @test
      */
-    public function signature(): void
+    public function getSignature(): void
     {
-        $this->assertEquals(
+        self::assertEquals(
+            't3vannouncements_announcements',
+            ContentElementUtility::getSignature('t3vannouncements', 'Announcements')
+        );
+
+        self::assertEquals(
+            't3vannouncements_announcementslatestannouncements',
+            ContentElementUtility::getSignature('t3vannouncements', 'AnnouncementsLatestAnnouncements')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
             't3vannouncements_announcements',
             ContentElementUtility::signature('t3vannouncements', 'Announcements')
         );
 
-        $this->assertEquals(
-            't3vannouncements_announcementslatestannouncements',
-            ContentElementUtility::signature('t3vannouncements', 'AnnouncementsLatestAnnouncements')
+        self::assertEquals(
+            't3vannouncements_announcements',
+            ContentElementUtility::contentElementSignature('t3vannouncements', 'Announcements')
         );
     }
 }

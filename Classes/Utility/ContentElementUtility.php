@@ -16,7 +16,7 @@ class ContentElementUtility extends AbstractUtility
      * @param string $contentElementKey The content element key
      * @return string The content element identifier
      */
-    public static function identifier(string $contentElementKey): string
+    public static function getIdentifier(string $contentElementKey): string
     {
         $contentElementIdentifier = $contentElementKey;
 
@@ -40,11 +40,23 @@ class ContentElementUtility extends AbstractUtility
      *
      * @param string $contentElementKey The content element key
      * @return string The content element identifier
-     * @deprecated Use `identifier` function instead
+     * @deprecated Use `getIdentifier` function instead
+     */
+    public static function identifier(string $contentElementKey): string
+    {
+        return self::getIdentifier($contentElementKey);
+    }
+
+    /**
+     * Gets an identifier from an content element key.
+     *
+     * @param string $contentElementKey The content element key
+     * @return string The content element identifier
+     * @deprecated Use `getIdentifier` function instead
      */
     public static function contentElementIdentifier(string $contentElementKey): string
     {
-        return self::identifier($contentElementKey);
+        return self::getIdentifier($contentElementKey);
     }
 
     /**
@@ -54,7 +66,7 @@ class ContentElementUtility extends AbstractUtility
      * @param string $contentElementIdentifier The content element identifier
      * @return string The content element signature
      */
-    public static function signature(string $extensionIdentifier, string $contentElementIdentifier): string
+    public static function getSignature(string $extensionIdentifier, string $contentElementIdentifier): string
     {
         return mb_strtolower($extensionIdentifier . '_' . $contentElementIdentifier);
     }
@@ -65,10 +77,23 @@ class ContentElementUtility extends AbstractUtility
      * @param string $extensionIdentifier The extension identifier
      * @param string $contentElementIdentifier The content element identifier
      * @return string The content element signature
-     * @deprecated Use `signature` function instead
+     * @deprecated Use `getSignature` function instead
+     */
+    public static function signature(string $extensionIdentifier, string $contentElementIdentifier): string
+    {
+        return self::getSignature($extensionIdentifier, $contentElementIdentifier);
+    }
+
+    /**
+     * Gets a signature from an extension and content element identifier.
+     *
+     * @param string $extensionIdentifier The extension identifier
+     * @param string $contentElementIdentifier The content element identifier
+     * @return string The content element signature
+     * @deprecated Use `getSignature` function instead
      */
     public static function contentElementSignature(string $extensionIdentifier, string $contentElementIdentifier): string
     {
-        return self::signature($extensionIdentifier, $contentElementIdentifier);
+        return self::getSignature($extensionIdentifier, $contentElementIdentifier);
     }
 }

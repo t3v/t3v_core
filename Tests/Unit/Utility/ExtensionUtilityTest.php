@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Tests\Unit\Utility;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
@@ -12,223 +14,308 @@ use T3v\T3vCore\Utility\ExtensionUtility;
 class ExtensionUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the identifier function.
+     * Tests the get identifier function.
      *
      * @test
      */
-    public function identifier(): void
+    public function getIdentifier(): void
     {
-        $this->assertEquals('t3vcore', ExtensionUtility::identifier('t3v_core'));
-        $this->assertEquals('t3vdummyext', ExtensionUtility::identifier('t3v_dummy_ext'));
-        $this->assertEquals('t3vcore', ExtensionUtility::identifier('T3vCore'));
-        $this->assertEquals('t3vcore', ExtensionUtility::identifier('T3v Core'));
+        self::assertEquals('t3vcore', ExtensionUtility::identifier('t3v_core'));
+        self::assertEquals('t3vdummyext', ExtensionUtility::identifier('t3v_dummy_ext'));
+        self::assertEquals('t3vcore', ExtensionUtility::identifier('T3vCore'));
+        self::assertEquals('t3vcore', ExtensionUtility::identifier('T3v Core'));
     }
 
     /**
-     * Tests the signature function.
+     * Tests the get signature function.
      *
      * @test
      */
-    public function signature(): void
+    public function getSignature(): void
     {
-        $this->assertEquals('T3v.T3vCore', ExtensionUtility::signature('t3v', 't3v_core'));
-        $this->assertEquals('T3v.T3vCore', ExtensionUtility::signature('T3v', 't3v_core'));
-        $this->assertEquals('T3v_T3vCore', ExtensionUtility::signature('T3v', 't3v_core', '_'));
+        self::assertEquals('T3v.T3vCore', ExtensionUtility::signature('t3v', 't3v_core'));
+        self::assertEquals('T3v.T3vCore', ExtensionUtility::signature('T3v', 't3v_core'));
+        self::assertEquals('T3v_T3vCore', ExtensionUtility::signature('T3v', 't3v_core', '_'));
     }
 
     /**
-     * Tests the locallang function.
+     * Tests the get locallang function.
      *
      * @test
      */
-    public function locallang(): void
+    public function getLocallang(): void
     {
-        $this->assertEquals(
+        self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang.xlf:',
             ExtensionUtility::locallang('t3v_core')
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:',
             ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf')
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:',
             ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf', 'EXT:')
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf|',
             ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf', 'EXT:', '|')
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf',
             ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf', 'LLL:EXT:', '')
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang.xlf:',
             ExtensionUtility::lll('t3v_core')
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:',
             ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf')
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:',
             ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf', 'EXT:')
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf|',
             ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf', 'EXT:', '|')
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf',
             ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf', 'LLL:EXT:', '')
         );
     }
 
     /**
-     * Tests the configuration folder function.
+     * Tests the get configuration folder function.
      *
      * @test
      */
-    public function configurationFolder(): void
+    public function getConfigurationFolder(): void
     {
-        $this->assertEquals('FILE:EXT:t3v_core/Configuration', ExtensionUtility::configurationFolder('t3v_core'));
-        $this->assertEquals('EXT:t3v_core/Configuration', ExtensionUtility::configurationFolder('t3v_core', 'EXT:'));
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration',
+            ExtensionUtility::configurationFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'EXT:t3v_core/Configuration',
+            ExtensionUtility::configurationFolder('t3v_core', 'EXT:')
+        );
     }
 
     /**
-     * Tests the FlexForms folder function.
+     * Tests the get FlexForms folder function.
      *
      * @test
      */
-    public function flexFormsFolder(): void
+    public function getFlexFormsFolder(): void
     {
-        $this->assertEquals('FILE:EXT:t3v_core/Configuration/FlexForms', ExtensionUtility::flexFormsFolder('t3v_core'));
-        $this->assertEquals('EXT:t3v_core/Configuration/FlexForms', ExtensionUtility::flexFormsFolder('t3v_core', 'EXT:'));
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration/FlexForms',
+            ExtensionUtility::flexFormsFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'EXT:t3v_core/Configuration/FlexForms',
+            ExtensionUtility::flexFormsFolder('t3v_core', 'EXT:')
+        );
     }
 
     /**
-     * Tests the TSconfig folder function.
+     * Tests the get TSconfig folder function.
      *
      * @test
      */
-    public function tsConfigFolder(): void
+    public function getTSConfigFolder(): void
     {
-        $this->assertEquals('FILE:EXT:t3v_core/Configuration/TSconfig', ExtensionUtility::tsConfigFolder('t3v_core'));
-        $this->assertEquals('EXT:t3v_core/Configuration/TSconfig', ExtensionUtility::tsConfigFolder('t3v_core', 'EXT:'));
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration/TSconfig',
+            ExtensionUtility::tsConfigFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'EXT:t3v_core/Configuration/TSconfig',
+            ExtensionUtility::tsConfigFolder('t3v_core', 'EXT:')
+        );
     }
 
     /**
-     * Tests the resources folder function.
+     * Tests the get resources folder function.
      *
      * @test
      */
-    public function resourcesFolder(): void
+    public function getResourcesFolder(): void
     {
-        $this->assertEquals('EXT:t3v_core/Resources', ExtensionUtility::resourcesFolder('t3v_core'));
-        $this->assertEquals('FILE:EXT:t3v_core/Resources', ExtensionUtility::resourcesFolder('t3v_core', 'FILE:EXT:'));
+        self::assertEquals(
+            'EXT:t3v_core/Resources',
+            ExtensionUtility::resourcesFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources',
+            ExtensionUtility::resourcesFolder('t3v_core', 'FILE:EXT:')
+        );
     }
 
     /**
-     * Tests the private folder function.
+     * Tests the get private folder function.
      *
      * @test
      */
-    public function privateFolder(): void
+    public function getPrivateFolder(): void
     {
-        $this->assertEquals('EXT:t3v_core/Resources/Private', ExtensionUtility::privateFolder('t3v_core'));
-        $this->assertEquals('FILE:EXT:t3v_core/Resources/Private', ExtensionUtility::privateFolder('t3v_core', 'FILE:EXT:'));
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private',
+            ExtensionUtility::privateFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Private',
+            ExtensionUtility::privateFolder('t3v_core', 'FILE:EXT:')
+        );
     }
 
     /**
-     * Tests the language folder function.
+     * Tests the get language folder function.
      *
      * @test
      */
-    public function languageFolder(): void
+    public function getLanguageFolder(): void
     {
-        $this->assertEquals('EXT:t3v_core/Resources/Private/Language', ExtensionUtility::languageFolder('t3v_core'));
-        $this->assertEquals('FILE:EXT:t3v_core/Resources/Private/Language', ExtensionUtility::languageFolder('t3v_core', 'FILE:EXT:'));
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private/Language',
+            ExtensionUtility::languageFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Private/Language',
+            ExtensionUtility::languageFolder('t3v_core', 'FILE:EXT:')
+        );
     }
 
     /**
-     * Tests the locallang folder function.
+     * Tests the get locallang folder function.
      *
      * @test
      */
-    public function locallangFolder(): void
+    public function getLocallangFolder(): void
     {
-        $this->assertEquals('LLL:EXT:t3v_core/Resources/Private/Language', ExtensionUtility::locallangFolder('t3v_core'));
-        $this->assertEquals('FILE:EXT:t3v_core/Resources/Private/Language', ExtensionUtility::locallangFolder('t3v_core', 'FILE:EXT:'));
+        self::assertEquals(
+            'LLL:EXT:t3v_core/Resources/Private/Language',
+            ExtensionUtility::locallangFolder('t3v_core')
+        );
 
-        $this->assertEquals('LLL:EXT:t3v_core/Resources/Private/Language', ExtensionUtility::lllFolder('t3v_core'));
-        $this->assertEquals('FILE:EXT:t3v_core/Resources/Private/Language', ExtensionUtility::lllFolder('t3v_core', 'FILE:EXT:'));
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Private/Language',
+            ExtensionUtility::locallangFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'LLL:EXT:t3v_core/Resources/Private/Language',
+            ExtensionUtility::lllFolder('t3v_core')
+        );
     }
 
     /**
-     * Tests the public folder function.
+     * Tests the get public folder function.
      *
      * @test
      */
-    public function publicFolder(): void
+    public function getPublicFolder(): void
     {
-        $this->assertEquals('EXT:t3v_core/Resources/Public', ExtensionUtility::publicFolder('t3v_core'));
-        $this->assertEquals('FILE:EXT:t3v_core/Resources/Public', ExtensionUtility::publicFolder('t3v_core', 'FILE:EXT:'));
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public',
+            ExtensionUtility::publicFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Public',
+            ExtensionUtility::publicFolder('t3v_core', 'FILE:EXT:')
+        );
     }
 
     /**
-     * Tests the assets folder function.
+     * Tests the get assets folder function.
      *
      * @test
      */
-    public function assetsFolder(): void
+    public function getAssetsFolder(): void
     {
-        $this->assertEquals('EXT:t3v_core/Resources/Public/Assets', ExtensionUtility::assetsFolder('t3v_core'));
-        $this->assertEquals('FILE:EXT:t3v_core/Resources/Public/Assets', ExtensionUtility::assetsFolder('t3v_core', 'FILE:EXT:'));
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public/Assets',
+            ExtensionUtility::assetsFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Public/Assets',
+            ExtensionUtility::assetsFolder('t3v_core', 'FILE:EXT:')
+        );
     }
 
     /**
-     * Tests the icons folder function.
+     * Tests the get icons folder function.
      *
      * @test
      */
-    public function iconsFolder(): void
+    public function getIconsFolder(): void
     {
-        $this->assertEquals('EXT:t3v_core/Resources/Public/Icons', ExtensionUtility::iconsFolder('t3v_core'));
-        $this->assertEquals('FILE:EXT:t3v_core/Resources/Public/Icons', ExtensionUtility::iconsFolder('t3v_core', 'FILE:EXT:'));
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public/Icons',
+            ExtensionUtility::iconsFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Public/Icons',
+            ExtensionUtility::iconsFolder('t3v_core', 'FILE:EXT:')
+        );
     }
 
     /**
-     * Tests the placeholders folder function.
+     * Tests the get placeholders folder function.
      *
      * @test
      */
-    public function placeholdersFolder(): void
+    public function getPlaceholdersFolder(): void
     {
-        $this->assertEquals('EXT:t3v_core/Resources/Public/Placeholders', ExtensionUtility::placeholdersFolder('t3v_core'));
-        $this->assertEquals(
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public/Placeholders',
+            ExtensionUtility::placeholdersFolder('t3v_core')
+        );
+
+        self::assertEquals(
             'FILE:EXT:t3v_core/Resources/Public/Placeholders',
             ExtensionUtility::placeholdersFolder('t3v_core', 'FILE:EXT:')
         );
     }
 
     /**
-     * Tests the samples folder function.
+     * Tests the get samples folder function.
      *
      * @test
      */
-    public function samplesFolder(): void
+    public function getSamplesFolder(): void
     {
-        $this->assertEquals('EXT:t3v_core/Resources/Public/Samples', ExtensionUtility::samplesFolder('t3v_core'));
-        $this->assertEquals('FILE:EXT:t3v_core/Resources/Public/Samples', ExtensionUtility::samplesFolder('t3v_core', 'FILE:EXT:'));
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public/Samples',
+            ExtensionUtility::samplesFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Public/Samples',
+            ExtensionUtility::samplesFolder('t3v_core', 'FILE:EXT:')
+        );
     }
 }
