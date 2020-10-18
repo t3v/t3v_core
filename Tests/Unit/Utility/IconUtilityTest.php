@@ -12,33 +12,72 @@ use T3v\T3vCore\Utility\IconUtility;
 class IconUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the identifier function.
+     * Tests the get identifier function.
      *
      * @test
      */
-    public function identifier(): void
+    public function getIdentifier(): void
     {
-        $this->assertEquals('spacer_content_element', IconUtility::identifier('Spacer Content Element'));
-        $this->assertEquals('spacer_content_element', IconUtility::identifier('spacer content element'));
-        $this->assertEquals('spacer_content_element', IconUtility::identifier('Spacer Content element'));
-        $this->assertEquals('spacer-content-element', IconUtility::identifier('Spacer Content Element', '-'));
+        self::assertEquals(
+            'spacer_content_element',
+            IconUtility::getIdentifier('Spacer Content Element')
+        );
+
+        self::assertEquals(
+            'spacer_content_element',
+            IconUtility::getIdentifier('spacer content element')
+        );
+
+        self::assertEquals(
+            'spacer_content_element',
+            IconUtility::getIdentifier('Spacer Content element')
+        );
+
+        self::assertEquals(
+            'spacer-content-element',
+            IconUtility::getIdentifier('Spacer Content Element', '-')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'spacer_content_element',
+            IconUtility::identifier('Spacer Content Element')
+        );
+
+        self::assertEquals(
+            'spacer_content_element',
+            IconUtility::iconIdentifier('Spacer Content Element')
+        );
     }
 
     /**
-     * Tests the signature function.
+     * Tests the get signature function.
      *
      * @test
      */
-    public function signature(): void
+    public function getSignature(): void
     {
-        $this->assertEquals(
+        self::assertEquals(
+            't3v_core-spacer_content_element',
+            IconUtility::getSignature('t3v_core', 'spacer_content_element')
+        );
+
+        self::assertEquals(
+            't3v_core_spacer_content_element',
+            IconUtility::getSignature('t3v_core', 'spacer_content_element', '_')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
             't3v_core-spacer_content_element',
             IconUtility::signature('t3v_core', 'spacer_content_element')
         );
 
-        $this->assertEquals(
-            't3v_core_spacer_content_element',
-            IconUtility::signature('t3v_core', 'spacer_content_element', '_')
+        self::assertEquals(
+            't3v_core-spacer_content_element',
+            IconUtility::iconSignature('t3v_core', 'spacer_content_element')
         );
     }
 }

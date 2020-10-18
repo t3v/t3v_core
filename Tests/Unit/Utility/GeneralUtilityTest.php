@@ -20,11 +20,31 @@ class GeneralUtilityTest extends UnitTestCase
      */
     public function getIdentifier(): void
     {
-        self::assertEquals('spacer_content_element', GeneralUtility::getIdentifier('Spacer Content Element'));
-        self::assertEquals('spacer_content_element', GeneralUtility::getIdentifier('spacer content element'));
-        self::assertEquals('spacer_content_element', GeneralUtility::getIdentifier('Spacer Content element'));
-        self::assertEquals('spacer-content-element', GeneralUtility::getIdentifier('Spacer Content Element', '-'));
+        self::assertEquals(
+            'spacer_content_element',
+            GeneralUtility::getIdentifier('Spacer Content Element')
+        );
 
-        self::assertEquals('spacer_content_element', GeneralUtility::identifier('Spacer Content Element'));
+        self::assertEquals(
+            'spacer_content_element',
+            GeneralUtility::getIdentifier('spacer content element')
+        );
+
+        self::assertEquals(
+            'spacer_content_element',
+            GeneralUtility::getIdentifier('Spacer Content element')
+        );
+
+        self::assertEquals(
+            'spacer-content-element',
+            GeneralUtility::getIdentifier('Spacer Content Element', '-')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'spacer_content_element',
+            GeneralUtility::identifier('Spacer Content Element')
+        );
     }
 }
