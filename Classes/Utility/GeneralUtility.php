@@ -19,10 +19,23 @@ class GeneralUtility extends AbstractUtility
      * @param string $separator The optional separator, defaults to `_`
      * @return string The identifier
      */
-    public static function identifier(string $name, string $separator = '_'): string
+    public static function getIdentifier(string $name, string $separator = '_'): string
     {
         $slugify = new Slugify(['separator' => $separator]);
 
         return $slugify->slugify($name);
+    }
+
+    /**
+     * Gets an identifier from a name.
+     *
+     * @param string $name The name
+     * @param string $separator The optional separator, defaults to `_`
+     * @return string The identifier
+     * @deprecated Use the `getIdentifier` function instead
+     */
+    public static function identifier(string $name, string $separator = '_'): string
+    {
+        return self::getIdentifier($name, $separator);
     }
 }

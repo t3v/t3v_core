@@ -20,10 +20,19 @@ class ExtensionUtilityTest extends UnitTestCase
      */
     public function getIdentifier(): void
     {
+        self::assertEquals('t3vcore', ExtensionUtility::getIdentifier('t3v_core'));
+
+        self::assertEquals('t3vdummyext', ExtensionUtility::getIdentifier('t3v_dummy_ext'));
+
+        self::assertEquals('t3vcore', ExtensionUtility::getIdentifier('T3vCore'));
+
+        self::assertEquals('t3vcore', ExtensionUtility::getIdentifier('T3v Core'));
+
+        // === Deprecated ===
+
         self::assertEquals('t3vcore', ExtensionUtility::identifier('t3v_core'));
-        self::assertEquals('t3vdummyext', ExtensionUtility::identifier('t3v_dummy_ext'));
-        self::assertEquals('t3vcore', ExtensionUtility::identifier('T3vCore'));
-        self::assertEquals('t3vcore', ExtensionUtility::identifier('T3v Core'));
+
+        self::assertEquals('t3vcore', ExtensionUtility::extensionIdentifier('t3v_core'));
     }
 
     /**
@@ -33,9 +42,17 @@ class ExtensionUtilityTest extends UnitTestCase
      */
     public function getSignature(): void
     {
+        self::assertEquals('T3v.T3vCore', ExtensionUtility::getSignature('t3v', 't3v_core'));
+
+        self::assertEquals('T3v.T3vCore', ExtensionUtility::getSignature('T3v', 't3v_core'));
+
+        self::assertEquals('T3v_T3vCore', ExtensionUtility::getSignature('T3v', 't3v_core', '_'));
+
+        // === Deprecated ===
+
         self::assertEquals('T3v.T3vCore', ExtensionUtility::signature('t3v', 't3v_core'));
-        self::assertEquals('T3v.T3vCore', ExtensionUtility::signature('T3v', 't3v_core'));
-        self::assertEquals('T3v_T3vCore', ExtensionUtility::signature('T3v', 't3v_core', '_'));
+
+        self::assertEquals('T3v.T3vCore', ExtensionUtility::extensionSignature('t3v', 't3v_core'));
     }
 
     /**
@@ -47,52 +64,39 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang.xlf:',
-            ExtensionUtility::locallang('t3v_core')
+            ExtensionUtility::getLocallang('t3v_core')
         );
 
         self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:',
-            ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf')
+            ExtensionUtility::getLocallang('t3v_core', 'locallang_tca.xlf')
         );
 
         self::assertEquals(
             'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:',
-            ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf', 'EXT:')
+            ExtensionUtility::getLocallang('t3v_core', 'locallang_tca.xlf', 'EXT:')
         );
 
         self::assertEquals(
             'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf|',
-            ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf', 'EXT:', '|')
+            ExtensionUtility::getLocallang('t3v_core', 'locallang_tca.xlf', 'EXT:', '|')
         );
 
         self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf',
-            ExtensionUtility::locallang('t3v_core', 'locallang_tca.xlf', 'LLL:EXT:', '')
+            ExtensionUtility::getLocallang('t3v_core', 'locallang_tca.xlf', 'LLL:EXT:', '')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'LLL:EXT:t3v_core/Resources/Private/Language/locallang.xlf:',
+            ExtensionUtility::locallang('t3v_core')
         );
 
         self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language/locallang.xlf:',
             ExtensionUtility::lll('t3v_core')
-        );
-
-        self::assertEquals(
-            'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:',
-            ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf')
-        );
-
-        self::assertEquals(
-            'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf:',
-            ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf', 'EXT:')
-        );
-
-        self::assertEquals(
-            'EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf|',
-            ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf', 'EXT:', '|')
-        );
-
-        self::assertEquals(
-            'LLL:EXT:t3v_core/Resources/Private/Language/locallang_tca.xlf',
-            ExtensionUtility::lll('t3v_core', 'locallang_tca.xlf', 'LLL:EXT:', '')
         );
     }
 
@@ -105,12 +109,19 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'FILE:EXT:t3v_core/Configuration',
-            ExtensionUtility::configurationFolder('t3v_core')
+            ExtensionUtility::getConfigurationFolder('t3v_core')
         );
 
         self::assertEquals(
             'EXT:t3v_core/Configuration',
-            ExtensionUtility::configurationFolder('t3v_core', 'EXT:')
+            ExtensionUtility::getConfigurationFolder('t3v_core', 'EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration',
+            ExtensionUtility::configurationFolder('t3v_core')
         );
     }
 
@@ -123,12 +134,44 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'FILE:EXT:t3v_core/Configuration/FlexForms',
-            ExtensionUtility::flexFormsFolder('t3v_core')
+            ExtensionUtility::getFlexFormsFolder('t3v_core')
         );
 
         self::assertEquals(
             'EXT:t3v_core/Configuration/FlexForms',
-            ExtensionUtility::flexFormsFolder('t3v_core', 'EXT:')
+            ExtensionUtility::getFlexFormsFolder('t3v_core', 'EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration/FlexForms',
+            ExtensionUtility::flexFormsFolder('t3v_core')
+        );
+    }
+
+    /**
+     * Tests the get TCA folder function.
+     *
+     * @test
+     */
+    public function getTCAFolder(): void
+    {
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration/TCA',
+            ExtensionUtility::getTCAFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'EXT:t3v_core/Configuration/TCA',
+            ExtensionUtility::getTCAFolder('t3v_core', 'EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration/TCA',
+            ExtensionUtility::tcaFolder('t3v_core')
         );
     }
 
@@ -141,12 +184,44 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'FILE:EXT:t3v_core/Configuration/TSconfig',
-            ExtensionUtility::tsConfigFolder('t3v_core')
+            ExtensionUtility::getTSConfigFolder('t3v_core')
         );
 
         self::assertEquals(
             'EXT:t3v_core/Configuration/TSconfig',
-            ExtensionUtility::tsConfigFolder('t3v_core', 'EXT:')
+            ExtensionUtility::getTSConfigFolder('t3v_core', 'EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration/TSconfig',
+            ExtensionUtility::tsConfigFolder('t3v_core')
+        );
+    }
+
+    /**
+     * Tests the get TypoScript folder function.
+     *
+     * @test
+     */
+    public function getTypoScriptFolder(): void
+    {
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration/TypoScript',
+            ExtensionUtility::getTypoScriptFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'EXT:t3v_core/Configuration/TypoScript',
+            ExtensionUtility::getTypoScriptFolder('t3v_core', 'EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Configuration/TypoScript',
+            ExtensionUtility::typoscriptFolder('t3v_core')
         );
     }
 
@@ -159,12 +234,19 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'EXT:t3v_core/Resources',
-            ExtensionUtility::resourcesFolder('t3v_core')
+            ExtensionUtility::getResourcesFolder('t3v_core')
         );
 
         self::assertEquals(
             'FILE:EXT:t3v_core/Resources',
-            ExtensionUtility::resourcesFolder('t3v_core', 'FILE:EXT:')
+            ExtensionUtility::getResourcesFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources',
+            ExtensionUtility::resourcesFolder('t3v_core')
         );
     }
 
@@ -177,12 +259,19 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'EXT:t3v_core/Resources/Private',
-            ExtensionUtility::privateFolder('t3v_core')
+            ExtensionUtility::getPrivateFolder('t3v_core')
         );
 
         self::assertEquals(
             'FILE:EXT:t3v_core/Resources/Private',
-            ExtensionUtility::privateFolder('t3v_core', 'FILE:EXT:')
+            ExtensionUtility::getPrivateFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private',
+            ExtensionUtility::privateFolder('t3v_core')
         );
     }
 
@@ -195,12 +284,19 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'EXT:t3v_core/Resources/Private/Language',
-            ExtensionUtility::languageFolder('t3v_core')
+            ExtensionUtility::getLanguageFolder('t3v_core')
         );
 
         self::assertEquals(
             'FILE:EXT:t3v_core/Resources/Private/Language',
-            ExtensionUtility::languageFolder('t3v_core', 'FILE:EXT:')
+            ExtensionUtility::getLanguageFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private/Language',
+            ExtensionUtility::languageFolder('t3v_core')
         );
     }
 
@@ -213,19 +309,99 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language',
-            ExtensionUtility::locallangFolder('t3v_core')
+            ExtensionUtility::getLocallangFolder('t3v_core')
         );
 
         self::assertEquals(
             'FILE:EXT:t3v_core/Resources/Private/Language',
-            ExtensionUtility::locallangFolder('t3v_core', 'FILE:EXT:')
+            ExtensionUtility::getLocallangFolder('t3v_core', 'FILE:EXT:')
         );
 
         // === Deprecated ===
 
         self::assertEquals(
             'LLL:EXT:t3v_core/Resources/Private/Language',
+            ExtensionUtility::locallangFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'LLL:EXT:t3v_core/Resources/Private/Language',
             ExtensionUtility::lllFolder('t3v_core')
+        );
+    }
+
+    /**
+     * Tests the get layouts folder function.
+     *
+     * @test
+     */
+    public function getLayoutsFolder(): void
+    {
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private/Layouts',
+            ExtensionUtility::getLayoutsFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Private/Layouts',
+            ExtensionUtility::getLayoutsFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private/Layouts',
+            ExtensionUtility::layoutsFolder('t3v_core')
+        );
+    }
+
+    /**
+     * Tests the get partials folder function.
+     *
+     * @test
+     */
+    public function getPartialsFolder(): void
+    {
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private/Partials',
+            ExtensionUtility::getPartialsFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Private/Partials',
+            ExtensionUtility::getPartialsFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private/Partials',
+            ExtensionUtility::partialsFolder('t3v_core')
+        );
+    }
+
+    /**
+     * Tests the get templates folder function.
+     *
+     * @test
+     */
+    public function getTemplatesFolder(): void
+    {
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private/Templates',
+            ExtensionUtility::getTemplatesFolder('t3v_core')
+        );
+
+        self::assertEquals(
+            'FILE:EXT:t3v_core/Resources/Private/Templates',
+            ExtensionUtility::getTemplatesFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Private/Templates',
+            ExtensionUtility::templatesFolder('t3v_core')
         );
     }
 
@@ -238,12 +414,19 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'EXT:t3v_core/Resources/Public',
-            ExtensionUtility::publicFolder('t3v_core')
+            ExtensionUtility::getPublicFolder('t3v_core')
         );
 
         self::assertEquals(
             'FILE:EXT:t3v_core/Resources/Public',
-            ExtensionUtility::publicFolder('t3v_core', 'FILE:EXT:')
+            ExtensionUtility::getPublicFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public',
+            ExtensionUtility::publicFolder('t3v_core')
         );
     }
 
@@ -256,12 +439,19 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'EXT:t3v_core/Resources/Public/Assets',
-            ExtensionUtility::assetsFolder('t3v_core')
+            ExtensionUtility::getAssetsFolder('t3v_core')
         );
 
         self::assertEquals(
             'FILE:EXT:t3v_core/Resources/Public/Assets',
-            ExtensionUtility::assetsFolder('t3v_core', 'FILE:EXT:')
+            ExtensionUtility::getAssetsFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public/Assets',
+            ExtensionUtility::assetsFolder('t3v_core')
         );
     }
 
@@ -274,12 +464,19 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'EXT:t3v_core/Resources/Public/Icons',
-            ExtensionUtility::iconsFolder('t3v_core')
+            ExtensionUtility::getIconsFolder('t3v_core')
         );
 
         self::assertEquals(
             'FILE:EXT:t3v_core/Resources/Public/Icons',
-            ExtensionUtility::iconsFolder('t3v_core', 'FILE:EXT:')
+            ExtensionUtility::getIconsFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public/Icons',
+            ExtensionUtility::iconsFolder('t3v_core')
         );
     }
 
@@ -292,12 +489,19 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'EXT:t3v_core/Resources/Public/Placeholders',
-            ExtensionUtility::placeholdersFolder('t3v_core')
+            ExtensionUtility::getPlaceholdersFolder('t3v_core')
         );
 
         self::assertEquals(
             'FILE:EXT:t3v_core/Resources/Public/Placeholders',
-            ExtensionUtility::placeholdersFolder('t3v_core', 'FILE:EXT:')
+            ExtensionUtility::getPlaceholdersFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public/Placeholders',
+            ExtensionUtility::placeholdersFolder('t3v_core')
         );
     }
 
@@ -310,12 +514,19 @@ class ExtensionUtilityTest extends UnitTestCase
     {
         self::assertEquals(
             'EXT:t3v_core/Resources/Public/Samples',
-            ExtensionUtility::samplesFolder('t3v_core')
+            ExtensionUtility::getSamplesFolder('t3v_core')
         );
 
         self::assertEquals(
             'FILE:EXT:t3v_core/Resources/Public/Samples',
-            ExtensionUtility::samplesFolder('t3v_core', 'FILE:EXT:')
+            ExtensionUtility::getSamplesFolder('t3v_core', 'FILE:EXT:')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'EXT:t3v_core/Resources/Public/Samples',
+            ExtensionUtility::samplesFolder('t3v_core')
         );
     }
 }

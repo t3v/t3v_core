@@ -40,7 +40,7 @@ class ContentObjectUtility extends AbstractUtility
      *
      * @param string $contentObjectKey The content object key
      * @return string The content object identifier
-     * @deprecated Use `getIdentifier` function instead
+     * @deprecated Use the `getIdentifier` function instead
      */
     public static function identifier(string $contentObjectKey): string
     {
@@ -52,7 +52,7 @@ class ContentObjectUtility extends AbstractUtility
      *
      * @param string $contentObjectKey The content object key
      * @return string The content object identifier
-     * @deprecated Use `getIdentifier` function instead
+     * @deprecated Use the `getIdentifier` function instead
      */
     public static function contentObjectIdentifier(string $contentObjectKey): string
     {
@@ -77,7 +77,7 @@ class ContentObjectUtility extends AbstractUtility
      * @param string $extensionIdentifier The extension identifier
      * @param string $contentObjectIdentifier The content object identifier
      * @return string The content object signature
-     * @deprecated Use `getSignature` function instead
+     * @deprecated Use the `getSignature` function instead
      */
     public static function signature(string $extensionIdentifier, string $contentObjectIdentifier): string
     {
@@ -90,7 +90,7 @@ class ContentObjectUtility extends AbstractUtility
      * @param string $extensionIdentifier The extension identifier
      * @param string $contentObjectIdentifier The content object identifier
      * @return string The content object signature
-     * @deprecated Use `getSignature` function instead
+     * @deprecated Use the `getSignature` function instead
      */
     public static function contentObjectSignature(string $extensionIdentifier, string $contentObjectIdentifier): string
     {

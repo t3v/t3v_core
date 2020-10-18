@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Tests\Unit\Utility;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
@@ -12,15 +14,17 @@ use T3v\T3vCore\Utility\GeneralUtility;
 class GeneralUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the identifier function.
+     * Tests the get identifier function.
      *
      * @test
      */
-    public function identifier(): void
+    public function getIdentifier(): void
     {
-        $this->assertEquals('spacer_content_element', GeneralUtility::identifier('Spacer Content Element'));
-        $this->assertEquals('spacer_content_element', GeneralUtility::identifier('spacer content element'));
-        $this->assertEquals('spacer_content_element', GeneralUtility::identifier('Spacer Content element'));
-        $this->assertEquals('spacer-content-element', GeneralUtility::identifier('Spacer Content Element', '-'));
+        self::assertEquals('spacer_content_element', GeneralUtility::getIdentifier('Spacer Content Element'));
+        self::assertEquals('spacer_content_element', GeneralUtility::getIdentifier('spacer content element'));
+        self::assertEquals('spacer_content_element', GeneralUtility::getIdentifier('Spacer Content element'));
+        self::assertEquals('spacer-content-element', GeneralUtility::getIdentifier('Spacer Content Element', '-'));
+
+        self::assertEquals('spacer_content_element', GeneralUtility::identifier('Spacer Content Element'));
     }
 }
