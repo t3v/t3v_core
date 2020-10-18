@@ -32,7 +32,7 @@ trait LocalizationTrait
     /**
      * Gets the language.
      *
-     * @param string $default The default language, defaults to `en`
+     * @param string|null $default The default language, defaults to `en`
      * @return string The language if available, otherwise the default one
      */
     protected function getLanguage(string $default = null): string
@@ -45,7 +45,7 @@ trait LocalizationTrait
     /**
      * Gets the language UID.
      *
-     * @param int $default The default language UID, defaults to `0`
+     * @param int|null $default The default language UID, defaults to `0`
      * @return int The language UID if available, otherwise the default one
      */
     protected function getLanguageUid(int $default = null): int
@@ -58,7 +58,7 @@ trait LocalizationTrait
     /**
      * Gets the system language UID, alias for `getLanguageUid`.
      *
-     * @param int $default The default system language UID, defaults to `0`
+     * @param int|null $default The default system language UID, defaults to `0`
      * @return int The system language UID if available, otherwise the default one
      */
     protected function getSysLanguageUid(int $default = null): int
