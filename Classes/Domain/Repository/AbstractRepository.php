@@ -25,7 +25,7 @@ abstract class AbstractRepository extends Repository
      *
      * @var array
      */
-    protected array $defaultOrderings = [
+    protected $defaultOrderings = [
         'crdate' => QueryInterface::ORDER_DESCENDING,
         'uid' => QueryInterface::ORDER_DESCENDING
     ];
