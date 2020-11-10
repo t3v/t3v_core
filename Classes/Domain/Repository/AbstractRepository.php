@@ -33,7 +33,7 @@ abstract class AbstractRepository extends Repository
     /**
      * Finds entities by UIDs.
      *
-     * @param array|string $uids The UIDs
+     * @param array|string $uids The UIDs, either as array or as string separated by `,`
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryInterface The result
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
