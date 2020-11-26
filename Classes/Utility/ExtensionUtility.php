@@ -110,7 +110,7 @@ class ExtensionUtility extends AbstractUtility
         string $prefix = 'LLL:EXT:',
         string $separator = ':'
     ): string {
-        $languageFolder = self::languageFolder($extensionKey, $prefix);
+        $languageFolder = self::getLanguageFolder($extensionKey, $prefix);
 
         return "${languageFolder}/${fileName}${separator}";
     }
