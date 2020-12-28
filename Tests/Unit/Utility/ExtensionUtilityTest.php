@@ -14,49 +14,82 @@ use T3v\T3vCore\Utility\ExtensionUtility;
 class ExtensionUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the get identifier function.
+     * Tests the `getIdentifier` function.
      *
      * @test
      */
     public function getIdentifier(): void
     {
-        self::assertEquals('t3vcore', ExtensionUtility::getIdentifier('t3v_core'));
+        self::assertEquals(
+            't3vcore',
+            ExtensionUtility::getIdentifier('t3v_core')
+        );
 
-        self::assertEquals('t3vdummyext', ExtensionUtility::getIdentifier('t3v_dummy_ext'));
+        self::assertEquals(
+            't3vdummyext',
+            ExtensionUtility::getIdentifier('t3v_dummy_ext')
+        );
 
-        self::assertEquals('t3vcore', ExtensionUtility::getIdentifier('T3vCore'));
+        self::assertEquals(
+            't3vcore',
+            ExtensionUtility::getIdentifier('T3vCore')
+        );
 
-        self::assertEquals('t3vcore', ExtensionUtility::getIdentifier('T3v Core'));
+        self::assertEquals(
+            't3vcore',
+            ExtensionUtility::getIdentifier('T3v Core')
+        );
 
         // === Deprecated ===
 
-        self::assertEquals('t3vcore', ExtensionUtility::identifier('t3v_core'));
+        self::assertEquals(
+            't3vcore',
+            ExtensionUtility::identifier('t3v_core')
+        );
 
-        self::assertEquals('t3vcore', ExtensionUtility::extensionIdentifier('t3v_core'));
+        self::assertEquals(
+            't3vcore',
+            ExtensionUtility::extensionIdentifier('t3v_core')
+        );
     }
 
     /**
-     * Tests the get signature function.
+     * Tests the `getSignature` function.
      *
      * @test
      */
     public function getSignature(): void
     {
-        self::assertEquals('T3v.T3vCore', ExtensionUtility::getSignature('t3v', 't3v_core'));
+        self::assertEquals(
+            'T3v.T3vCore',
+            ExtensionUtility::getSignature('t3v', 't3v_core')
+        );
 
-        self::assertEquals('T3v.T3vCore', ExtensionUtility::getSignature('T3v', 't3v_core'));
+        self::assertEquals(
+            'T3v.T3vCore',
+            ExtensionUtility::getSignature('T3v', 't3v_core')
+        );
 
-        self::assertEquals('T3v_T3vCore', ExtensionUtility::getSignature('T3v', 't3v_core', '_'));
+        self::assertEquals(
+            'T3v_T3vCore',
+            ExtensionUtility::getSignature('T3v', 't3v_core', '_')
+        );
 
         // === Deprecated ===
 
-        self::assertEquals('T3v.T3vCore', ExtensionUtility::signature('t3v', 't3v_core'));
+        self::assertEquals(
+            'T3v.T3vCore',
+            ExtensionUtility::signature('t3v', 't3v_core')
+        );
 
-        self::assertEquals('T3v.T3vCore', ExtensionUtility::extensionSignature('t3v', 't3v_core'));
+        self::assertEquals(
+            'T3v.T3vCore',
+            ExtensionUtility::extensionSignature('t3v', 't3v_core')
+        );
     }
 
     /**
-     * Tests the get locallang function.
+     * Tests the `getLocallang` function.
      *
      * @test
      */
@@ -101,7 +134,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get configuration folder function.
+     * Tests the `getConfigurationFolder` function.
      *
      * @test
      */
@@ -126,7 +159,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get FlexForms folder function.
+     * Tests the `getFlexFormsFolder` function.
      *
      * @test
      */
@@ -151,7 +184,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get TCA folder function.
+     * Tests the `getTCAFolder` function.
      *
      * @test
      */
@@ -176,7 +209,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get TSconfig folder function.
+     * Tests the `getTSConfigFolder` function.
      *
      * @test
      */
@@ -201,7 +234,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get TypoScript folder function.
+     * Tests the `getTypoScriptFolder` function.
      *
      * @test
      */
@@ -226,7 +259,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get resources folder function.
+     * Tests the `getResourcesFolder` function.
      *
      * @test
      */
@@ -251,7 +284,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get private folder function.
+     * Tests the `getPrivateFolder` function.
      *
      * @test
      */
@@ -276,7 +309,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get language folder function.
+     * Tests the `getLanguageFolder` function.
      *
      * @test
      */
@@ -301,7 +334,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get locallang folder function.
+     * Tests the `getLocallangFolder` function.
      *
      * @test
      */
@@ -331,7 +364,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get layouts folder function.
+     * Tests the `getLayoutsFolder` function.
      *
      * @test
      */
@@ -356,7 +389,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get partials folder function.
+     * Tests the `getPartialsFolder` function.
      *
      * @test
      */
@@ -381,7 +414,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get templates folder function.
+     * Tests the `getTemplatesFolder` function.
      *
      * @test
      */
@@ -406,7 +439,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get public folder function.
+     * Tests the `getPublicFolder` function.
      *
      * @test
      */
@@ -431,7 +464,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get assets folder function.
+     * Tests the `getAssetsFolder` function.
      *
      * @test
      */
@@ -456,7 +489,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get icons folder function.
+     * Tests the `getIconsFolder` function.
      *
      * @test
      */
@@ -481,7 +514,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get placeholders folder function.
+     * Tests the `getPlaceholdersFolder` function.
      *
      * @test
      */
@@ -506,7 +539,7 @@ class ExtensionUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get samples folder function.
+     * Tests the `getSamplesFolder` function.
      *
      * @test
      */

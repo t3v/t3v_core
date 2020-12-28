@@ -1,0 +1,9 @@
+# -----------------------------
+# | T3v Core Vendor Constants |
+# -----------------------------
+
+# === Imports ===
+
+@import './T3v/constants.typoscript'
+
+# === T3v Generator ===

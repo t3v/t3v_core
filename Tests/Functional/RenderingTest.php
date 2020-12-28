@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Tests\Functional;
 
 use Nimut\TestingFramework\Http\Response;
@@ -31,6 +33,7 @@ class RenderingTest extends FunctionalTestCase
      * Tests if the template is rendered.
      *
      * @test
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function templateIsRendered(): void
     {
@@ -42,11 +45,14 @@ class RenderingTest extends FunctionalTestCase
         $actualDom->preserveWhiteSpace = false;
         $actualDom->loadHTML($this->fetchFrontendResponse(['id' => '1'])->getContent());
 
-        $this->assertXmlStringEqualsXmlString($expectedDom->saveHTML(), $actualDom->saveHTML());
+        self::assertXmlStringEqualsXmlString($expectedDom->saveHTML(), $actualDom->saveHTML());
     }
 
     /**
      * Setup before running tests.
+     *
+     * @throws \Nimut\TestingFramework\Exception\Exception
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     protected function setUp(): void
     {
@@ -63,6 +69,7 @@ class RenderingTest extends FunctionalTestCase
      * @param array $requestArguments The request arguments
      * @param bool $failOnFailure Fail on failure, defaults to `true`
      * @return Response The Frontend response
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     protected function fetchFrontendResponse(array $requestArguments, bool $failOnFailure = true): Response
     {
@@ -97,11 +104,11 @@ class RenderingTest extends FunctionalTestCase
         $result = json_decode($response['stdout'], true);
 
         if ($result === null) {
-            $this->fail('Frontend Response is empty:' . LF . 'Error: ' . LF . $response['stderr']);
+            self::fail('Frontend Response is empty:' . LF . 'Error: ' . LF . $response['stderr']);
         }
 
         if ($result['status'] === Response::STATUS_Failure && $failOnFailure) {
-            $this->fail('Frontend Response has failure:' . LF . $result['error']);
+            self::fail('Frontend Response has failure:' . LF . $result['error']);
         }
 
         $response = new Response($result['status'], $result['content'], $result['error']);

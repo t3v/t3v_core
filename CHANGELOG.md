@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Moved `plugin.tx_t3vcore.settings.mode` to `plugin.tx_t3v.settings.mode`
 * Added `Settings` service
 * Added `ContentObject` and `ContentElement` controller
 * Moved `ContentElement` utility from T3v Content (breaking change)

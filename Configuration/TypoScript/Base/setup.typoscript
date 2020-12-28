@@ -28,8 +28,6 @@ plugin {
       extbase {
         controllerExtensionName = {$plugin.tx_t3vcore.settings.extbase.controllerExtensionName}
       }
-
-      mode = {$plugin.tx_t3vcore.settings.mode}
     }
 
     view {
@@ -60,6 +58,17 @@ plugin {
         0 = {$plugin.tx_t3vcore.view.partialRootPath}
       }
     }
+  }
+}
+
+# === Module Configuration ===
+
+module {
+  tx_t3vcore {
+    persistence < plugin.tx_t3vcore.persistence
+    resources < plugin.tx_t3vcore.resources
+    settings < plugin.tx_t3vcore.settings
+    view < plugin.tx_t3vcore.view
   }
 }
 

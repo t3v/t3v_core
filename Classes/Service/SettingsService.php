@@ -13,15 +13,15 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 class SettingsService extends AbstractService
 {
     /**
-     * The modes which T3v Core supports.
+     * The modes which TYPO3voilà supports.
      */
     public const STRICT_MODE = 'strict';
     public const FALLBACK_MODE = 'fallback';
 
     /**
-     * Checks if T3v Core is running in `strict` mode.
+     * Checks if TYPO3voilà is running in `strict` mode.
      *
-     * @return bool If T3v Core is running in `strict` mode
+     * @return bool If TYPO3voilà is running in `strict` mode
      */
     public function runningInStrictMode(): bool
     {
@@ -40,9 +40,9 @@ class SettingsService extends AbstractService
     }
 
     /**
-     * Checks if T3v Core is running in `fallback` mode.
+     * Checks if TYPO3voilà is running in `fallback` mode.
      *
-     * @return bool If T3v Core is running in `fallback` mode
+     * @return bool If TYPO3voilà is running in `fallback` mode
      */
     public function runningInFallbackMode(): bool
     {
@@ -61,15 +61,26 @@ class SettingsService extends AbstractService
     }
 
     /**
-     * Gets the settings from `plugin.tx_t3vcore.settings`.
+     * Gets the settings from `plugin.<IDENTIFIER>.settings`.
      *
-     * @return array The settings
+     * @param string $identifier The optional plugin identifier, defaults to `tx_t3v`
+     * @return array|null The settings
      */
-    protected function getSettings(): array
+    protected function getSettings(string $identifier = 'tx_t3v'): ?array
     {
         $configurationManager = self::getConfigurationManager();
         $configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
 
-        return $configuration['plugin.']['tx_t3vcore.']['settings.'];
+        if (is_array($configuration['plugin.']) && !empty($configuration['plugin.'])) {
+            if ($identifier[-1] !== '.') {
+                $identifier .= '.';
+            }
+
+            if (is_array($configuration['plugin.'][$identifier]) && !empty($configuration['plugin.'][$identifier])) {
+                return $configuration['plugin.'][$identifier]['settings.'];
+            }
+        }
+
+        return null;
     }
 }

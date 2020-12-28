@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Tests\Unit\Utility;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
@@ -12,7 +14,7 @@ use T3v\T3vCore\Utility\IconUtility;
 class IconUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the get identifier function.
+     * Tests the `getIdentifier` function.
      *
      * @test
      */
@@ -52,7 +54,7 @@ class IconUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get signature function.
+     * Tests the `getSignature` function.
      *
      * @test
      */

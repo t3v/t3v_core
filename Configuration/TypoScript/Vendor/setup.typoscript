@@ -1,0 +1,9 @@
+# -------------------------
+# | T3v Core Vendor Setup |
+# -------------------------
+
+# === Imports ===
+
+@import './T3v/setup.typoscript'
+
+# === T3v Generator ===

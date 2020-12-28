@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Tests\Unit\Utility;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
@@ -18,9 +20,9 @@ class StringUtilityTest extends UnitTestCase
      */
     public function inputGetsAsciified(): void
     {
-        $this->assertEquals('Foobar', StringUtility::asciify('Fòôbàř'));
-        $this->assertEquals('FooBar', StringUtility::asciify('FööBär'));
-        $this->assertEquals('FoeoeBaer', StringUtility::asciify('FööBär', 'de'));
+        self::assertEquals('Foobar', StringUtility::asciify('Fòôbàř'));
+        self::assertEquals('FooBar', StringUtility::asciify('FööBär'));
+        self::assertEquals('FoeoeBaer', StringUtility::asciify('FööBär', 'de'));
     }
 
     /**
@@ -30,15 +32,15 @@ class StringUtilityTest extends UnitTestCase
      */
     public function inputGetsCamelized(): void
     {
-        $this->assertEquals('foobar', StringUtility::camelize('foobar'));
-        $this->assertEquals('fooBar', StringUtility::camelize('fooBar'));
-        $this->assertEquals('foobar', StringUtility::camelize('FOOBAR'));
-        $this->assertEquals('fooBar', StringUtility::camelize('foo bar'));
-        $this->assertEquals('fooBar', StringUtility::camelize('foo Bar'));
-        $this->assertEquals('fooBar', StringUtility::camelize('Foo Bar'));
-        $this->assertEquals('fooBar', StringUtility::camelize('foo bar', ' '));
-        $this->assertEquals('FooBar', StringUtility::camelize('foo bar', ' ', true));
-        $this->assertEquals('fooBar', StringUtility::camelize('foo-bar', '-'));
-        $this->assertEquals('FooBar', StringUtility::camelize('foo-bar', '-', true));
+        self::assertEquals('foobar', StringUtility::camelize('foobar'));
+        self::assertEquals('fooBar', StringUtility::camelize('fooBar'));
+        self::assertEquals('foobar', StringUtility::camelize('FOOBAR'));
+        self::assertEquals('fooBar', StringUtility::camelize('foo bar'));
+        self::assertEquals('fooBar', StringUtility::camelize('foo Bar'));
+        self::assertEquals('fooBar', StringUtility::camelize('Foo Bar'));
+        self::assertEquals('fooBar', StringUtility::camelize('foo bar', ' '));
+        self::assertEquals('FooBar', StringUtility::camelize('foo bar', ' ', true));
+        self::assertEquals('fooBar', StringUtility::camelize('foo-bar', '-'));
+        self::assertEquals('FooBar', StringUtility::camelize('foo-bar', '-', true));
     }
 }

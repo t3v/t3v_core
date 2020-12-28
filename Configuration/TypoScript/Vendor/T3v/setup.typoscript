@@ -1,0 +1,21 @@
+# ----------------------
+# | T3v Core T3v Setup |
+# ----------------------
+
+# === Plugin Configuration ===
+
+plugin {
+  tx_t3v {
+    settings {
+      mode = {$plugin.tx_t3v.settings.mode}
+    }
+  }
+}
+
+# === Module Configuration ===
+
+module {
+  tx_t3v {
+    settings < plugin.tx_t3v.settings
+  }
+}

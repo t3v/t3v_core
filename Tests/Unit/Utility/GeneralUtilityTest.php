@@ -14,7 +14,7 @@ use T3v\T3vCore\Utility\GeneralUtility;
 class GeneralUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the get identifier function.
+     * Tests the `getIdentifier` function.
      *
      * @test
      */

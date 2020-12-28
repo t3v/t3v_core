@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Tests\Unit\Utility;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
@@ -18,7 +20,7 @@ class UrlUtilityTest extends UnitTestCase
      */
     public function urlGetsEncoded(): void
     {
-        $this->assertEquals('https%3A%2F%2Fwww.t3v.com', UrlUtility::encodeUrl('https://www.t3v.com'));
+        self::assertEquals('https%3A%2F%2Fwww.t3v.com', UrlUtility::encodeUrl('https://www.t3v.com'));
     }
 
     /**
@@ -28,6 +30,6 @@ class UrlUtilityTest extends UnitTestCase
      */
     public function urlGetsDecoded(): void
     {
-        $this->assertEquals('https://www.t3v.com', UrlUtility::decodeUrl('https%3A%2F%2Fwww.t3v.com'));
+        self::assertEquals('https://www.t3v.com', UrlUtility::decodeUrl('https%3A%2F%2Fwww.t3v.com'));
     }
 }

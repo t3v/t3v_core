@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Tests\Unit\Service;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
@@ -12,7 +14,7 @@ use T3v\T3vCore\Service\FileService;
 class FileServiceTest extends UnitTestCase
 {
     /**
-     * Tests if the file name gets cleaned.
+     * Tests the `cleanFileName` function.
      *
      * @test
      */

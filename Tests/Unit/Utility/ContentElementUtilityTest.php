@@ -14,7 +14,7 @@ use T3v\T3vCore\Utility\ContentElementUtility;
 class ContentElementUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the get identifier function.
+     * Tests the `getIdentifier` function.
      *
      * @test
      */
@@ -74,7 +74,7 @@ class ContentElementUtilityTest extends UnitTestCase
     }
 
     /**
-     * Tests the get signature function.
+     * Tests the `getSignature` function.
      *
      * @test
      */

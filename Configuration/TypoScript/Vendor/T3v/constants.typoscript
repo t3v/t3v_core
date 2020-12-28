@@ -1,0 +1,14 @@
+# --------------------------
+# | T3v Core T3v Constants |
+# --------------------------
+
+# === Plugin Constants ===
+
+plugin {
+  tx_t3v {
+    settings {
+      # cat=plugin/tx_t3v/settings; type=options[Strict=strict,Fallback=fallback]; label=The mode in which T3v runs at
+      mode = strict
+    }
+  }
+}
