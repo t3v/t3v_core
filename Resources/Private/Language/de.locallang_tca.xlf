@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+<xliff version="1.0">
   <file product-name="t3v_core" source-language="en" target-language="de" datatype="plaintext" original="messages">
     <header />
 
     <body>
-      <!-- === Columns === -->
+      <!-- === T3v Generator === -->
+
+      <!-- === Legacy === -->
+
+      <!-- Columns -->
 
       <trans-unit id="columns.sysLanguageUid.label">
         <source>Language</source>
@@ -41,7 +45,7 @@
         <target>Bearbeitung erfordert Admin-Rechte</target>
       </trans-unit>
 
-      <!-- === Shared === -->
+      <!-- Shared -->
 
       <trans-unit id="shared.default.label">
         <source>Default</source>

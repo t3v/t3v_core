@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+<xliff version="1.0">
   <file product-name="t3v_core" source-language="en" datatype="plaintext" original="messages">
     <header />
 
     <body>
-      <!-- === Palettes === -->
+      <!-- === T3v Generator === -->
+
+      <!-- === Legacy === -->
+
+      <!-- Palettes -->
 
       <trans-unit id="palettes.access.label">
         <source>Publish Dates and Access Rights</source>
@@ -22,7 +26,7 @@
         <source>Visibility</source>
       </trans-unit>
 
-      <!-- === Tabs === -->
+      <!-- Tabs -->
 
       <trans-unit id="tabs.access.label">
         <source>Access</source>
@@ -68,35 +72,7 @@
         <source>Resources</source>
       </trans-unit>
 
-      <!-- === TCEFORM === -->
-
-      <!-- +++ Layout +++ -->
-
-      <trans-unit id="tceform.ttContent.layout.altLabels.0.label">
-        <source>Default</source>
-      </trans-unit>
-
-      <trans-unit id="tceform.ttContent.layout.altLabels.1.label">
-        <source>Layout 1</source>
-      </trans-unit>
-
-      <trans-unit id="tceform.ttContent.layout.altLabels.2.label">
-        <source>Layout 2</source>
-      </trans-unit>
-
-      <trans-unit id="tceform.ttContent.layout.altLabels.3.label">
-        <source>Layout 3</source>
-      </trans-unit>
-
-      <trans-unit id="tceform.ttContent.layout.altLabels.4.label">
-        <source>Layout 4</source>
-      </trans-unit>
-
-      <trans-unit id="tceform.ttContent.layout.altLabels.5.label">
-        <source>Layout 5</source>
-      </trans-unit>
-
-      <!-- +++ Header +++ -->
+      <!-- TCE Form -->
 
       <trans-unit id="tceform.ttContent.header.layout.altLabels.0.label">
         <source>Default</source>
@@ -122,8 +98,40 @@
         <source>Layout 5 (H5)</source>
       </trans-unit>
 
+      <trans-unit id="tceform.ttContent.header.layout.altLabels.6.label">
+        <source>Layout 6 (H6)</source>
+      </trans-unit>
+
       <trans-unit id="tceform.ttContent.header.layout.altLabels.100.label">
         <source>Hidden</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.ttContent.layout.altLabels.0.label">
+        <source>Default</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.ttContent.layout.altLabels.1.label">
+        <source>Layout 1</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.ttContent.layout.altLabels.2.label">
+        <source>Layout 2</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.ttContent.layout.altLabels.3.label">
+        <source>Layout 3</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.ttContent.layout.altLabels.4.label">
+        <source>Layout 4</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.ttContent.layout.altLabels.5.label">
+        <source>Layout 5</source>
+      </trans-unit>
+
+      <trans-unit id="tceform.ttContent.layout.altLabels.6.label">
+        <source>Layout 6</source>
       </trans-unit>
     </body>
   </file>
