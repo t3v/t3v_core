@@ -23,3 +23,6 @@ export typo3DatabaseName="t3v_core";
 "$BIN_PATH/phpunit" --colors --configuration "$TESTING_FRAMEWORK_PATH/FunctionalTests.xml" "$ROOT_PATH/Tests/Functional"
 
 # find "Tests/Functional" -wholename "*Test.php" | parallel --gnu "$BIN_PATH/phpunit --colors --configuration $TESTING_FRAMEWORK_PATH/FunctionalTests.xml {}"
+
+# Try to keep environment pollution down, EPA loves us
+unset BASE_PATH ROOT_PATH
