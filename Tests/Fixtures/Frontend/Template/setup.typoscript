@@ -27,7 +27,7 @@ config {
   xmlprologue = none
 
   # Sets the page renderer template file:
-  pageRendererTemplateFile = EXT:t3v_core/Tests/Fixtures/Frontend/Page/Renderer.html
+  pageRendererTemplateFile = EXT:t3v_core/Tests/Fixtures/Templates/Page/Renderer.html
 
   # En-/disables the content object exception handler:
   contentObjectExceptionHandler = 0
@@ -130,7 +130,7 @@ page = PAGE
 page {
   10 = FLUIDTEMPLATE
   10 {
-    file = EXT:t3v_core/Tests/Fixtures/Frontend/Template.html
+    file = EXT:t3v_core/Tests/Fixtures/Templates/Standard.html
   }
 }
 
