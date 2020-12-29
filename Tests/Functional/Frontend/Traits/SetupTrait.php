@@ -7,28 +7,28 @@ use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * The frontend trait.
+ * The setup trait.
  *
  * @package T3v\T3vCore\Tests\Functional\Frontend\Traits
  */
-trait FrontendTrait
+trait SetupTrait
 {
     /**
      * Setup the frontend for testing.
      *
      * @param int $rootPageId The optional root page ID, defaults to `1`
-     * @param string $websiteTitle The optional website title, defaults to `TYPO3voilà`
+     * @param string $websiteTitle The optional website title, defaults to `Testing`
      *
      */
-    protected function setUpFrontend(int $rootPageId = 1, string $websiteTitle = 'TYPO3voilà'): void
+    protected function setUpFrontend(int $rootPageId = 1, string $websiteTitle = 'Testing'): void
     {
         $configuration = [
             'base' => '/',
-            'errorHandling' => [
-                'errorCode' => '404',
-                'errorHandler' => 'Page',
-                'errorContentSource' => 't3://page?uid=4'
-            ],
+            // 'errorHandling' => [
+            //     'errorCode' => '404',
+            //     'errorHandler' => 'Page',
+            //     'errorContentSource' => 't3://page?uid=5'
+            // ],
             'languages' => [
                 [
                     'title' => 'Global: English',
@@ -63,8 +63,10 @@ trait FrontendTrait
             'websiteTitle' => $websiteTitle
         ];
 
-        GeneralUtility::mkdir_deep($this->instancePath . '/config/sites/testing/');
-        $fileName = $this->instancePath . '/config/sites/testing/config.yaml';
+        $instancePath = $this->instancePath;
+
+        GeneralUtility::mkdir_deep("{$instancePath}/typo3conf/sites/testing/");
+        $fileName = "{$instancePath}/typo3conf/sites/testing/config.yaml";
         $content = Yaml::dump($configuration, 99, 2);
         GeneralUtility::writeFile($fileName, $content);
     }

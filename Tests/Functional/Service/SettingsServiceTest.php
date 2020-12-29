@@ -28,6 +28,14 @@ class SettingsServiceTest extends FunctionalTestCase
     protected $testExtensionsToLoad = ['typo3conf/ext/t3v_core'];
 
     /**
+     * The paths to link in the test instance.
+     *
+     * @var array
+     */
+    protected $pathsToLinkInTestInstance = [
+    ];
+
+    /**
      * The subject.
      *
      * @var \T3v\T3vCore\Service\SettingsService
@@ -66,7 +74,7 @@ class SettingsServiceTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->importDataSet(__DIR__ . '/../Fixtures/Database/Pages.xml');
+        $this->importDataSet('EXT:t3v_core/Tests/Functional/Fixtures/Database/Pages.xml');
 
         $this->setUpFrontendRootPage(
             1,

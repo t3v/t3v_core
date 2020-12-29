@@ -30,6 +30,15 @@
   <pages>
     <uid>4</uid>
     <pid>1</pid>
+    <title>Third page</title>
+    <doktype>1</doktype>
+    <deleted>0</deleted>
+    <perms_everybody>15</perms_everybody>
+  </pages>
+
+  <pages>
+    <uid>5</uid>
+    <pid>1</pid>
     <title>404</title>
     <doktype>1</doktype>
     <deleted>0</deleted>

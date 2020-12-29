@@ -9,6 +9,11 @@ config {
   sendCacheHeaders = 0
   xhtml_cleaning = 0
 
+  # --- L10n ---
+
+  sys_language_mode = ignore
+  sys_language_overlay = 1
+
   # --- URL / Link Handling ---
 
   # HTTP GET parameters which should be passed on with links in TYPO3:
@@ -16,22 +21,6 @@ config {
 
   # Prefixes all links with a `/`, resulting in absolute link paths:
   absRefPrefix = /
-
-  # --- L10n ---
-
-  sys_language_uid = 0
-
-  sys_language_isocode = en
-
-  sys_language_isocode_default = en
-
-  language = en
-
-  locale_all = en_US.UTF-8
-
-  sys_language_mode = ignore
-
-  sys_language_overlay = 1
 
   # --- Misc ---
 
@@ -54,6 +43,8 @@ config {
 
 page = PAGE
 page {
+  typeNum = 0
+
   10 = FLUIDTEMPLATE
   10 {
     file = EXT:t3v_core/Tests/Functional/Fixtures/Frontend/Template.html

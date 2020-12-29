@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Tests\Functional\Frontend;
 
-use T3v\T3vCore\Tests\Functional\Frontend\Traits\FrontendTrait;
+use T3v\T3vCore\Tests\Functional\Frontend\Traits\SetupTrait;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -15,9 +15,9 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 class RenderingTest extends FunctionalTestCase
 {
     /**
-     * Use the frontend trait.
+     * Use the setup trait.
      */
-    use FrontendTrait;
+    use SetupTrait;
 
     /**
      * The core extensions to load.
@@ -48,17 +48,19 @@ class RenderingTest extends FunctionalTestCase
      */
     public function templateIsRendered(): void
     {
+        $expectedDom = new \DomDocument();
+        $expectedDom->preserveWhiteSpace = false;
+        $expectedDom->loadHTML('<h1>T3v Core</h1>');
+
         $response = $this->executeFrontendRequest(
-            (new InternalRequest())->withQueryParameters(
-                [
-                    'id' => 1
-                ]
-            )
+            (new InternalRequest())->withPageId(1)
         );
 
-        $content = (string)$response->getBody();
+        $actualDom = new \DomDocument();
+        $actualDom->preserveWhiteSpace = false;
+        $actualDom->loadHTML((string)$response->getBody());
 
-        var_dump($content);
+        $this->assertXmlStringEqualsXmlString($expectedDom->saveHTML(), $actualDom->saveHTML());
     }
 
     /**
@@ -72,10 +74,16 @@ class RenderingTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $fixturesPath = __DIR__ . '/../Fixtures';
+        $this->importDataSet('EXT:t3v_core/Tests/Functional/Fixtures/Database/Pages.xml');
 
-        $this->importDataSet("{$fixturesPath}/Database/Pages.xml");
-        $this->setUpFrontendRootPage(1, ["{$fixturesPath}/Frontend/Basic.typoscript"]);
+        $this->setUpFrontendRootPage(
+            1,
+            [
+                'constants' => ['EXT:t3v_core/Tests/Functional/Fixtures/Frontend/Template/constants.typoscript'],
+                'setup' => ['EXT:t3v_core/Tests/Functional/Fixtures/Frontend/Template/setup.typoscript']
+            ]
+        );
+
         $this->setUpFrontend(1, 'T3v Core');
     }
 }
