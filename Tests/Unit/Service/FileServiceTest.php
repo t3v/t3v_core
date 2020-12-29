@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Tests\Unit\Service;
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
 use T3v\T3vCore\Service\FileService;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * The file service test class.
@@ -34,6 +34,6 @@ class FileServiceTest extends UnitTestCase
         self::assertEquals('francais.pdf', FileService::cleanFileName('Français.pdf'));
         self::assertEquals('cestina.pdf', FileService::cleanFileName('Čeština.pdf'));
         self::assertEquals('huodongriqi.pdf', FileService::cleanFileName('活动日起.pdf'));
-        self::assertRegExp('/upload-/i', FileService::cleanFileName('대한민국.pdf'));
+        self::assertMatchesRegularExpression('/upload-/i', FileService::cleanFileName('대한민국.pdf'));
     }
 }

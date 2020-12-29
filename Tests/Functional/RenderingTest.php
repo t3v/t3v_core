@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Tests\Functional;
 
-use Nimut\TestingFramework\Http\Response;
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
-use PHPUnit\Util\PHP\DefaultPhpProcess;
+use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
  * The rendering test class.
@@ -20,7 +20,7 @@ class RenderingTest extends FunctionalTestCase
      *
      * @var array
      */
-    protected $coreExtensionsToLoad = ['fluid'];
+    protected $coreExtensionsToLoad = ['core', 'frontend'];
 
     /**
      * The test extensions to load.
@@ -30,89 +30,98 @@ class RenderingTest extends FunctionalTestCase
     protected $testExtensionsToLoad = ['typo3conf/ext/t3v_core'];
 
     /**
+     * The paths to link in test instance.
+     *
+     * @var array
+     */
+    //protected $pathsToLinkInTestInstance = [
+    //    'typo3/sysext/core/Tests/Functional/Fixtures/Frontend/AdditionalConfiguration.php' => 'typo3conf/AdditionalConfiguration.php'
+    //];
+
+    /**
      * Tests if the template is rendered.
      *
      * @test
-     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function templateIsRendered(): void
     {
-        $expectedDom = new \DomDocument();
-        $expectedDom->preserveWhiteSpace = false;
-        $expectedDom->loadHTML('<h1>T3v Core</h1>');
+        //$expectedDom = new \DomDocument();
+        //$expectedDom->preserveWhiteSpace = false;
+        //$expectedDom->loadHTML('<h1>T3v Core</h1>');
+        //
+        //$actualDom = new \DomDocument();
+        //$actualDom->preserveWhiteSpace = false;
+        //$actualDom->loadHTML($this->executeFrontendRequest(->body());
+        //
+        //self::assertXmlStringEqualsXmlString($expectedDom->saveHTML(), $actualDom->saveHTML());
 
-        $actualDom = new \DomDocument();
-        $actualDom->preserveWhiteSpace = false;
-        $actualDom->loadHTML($this->fetchFrontendResponse(['id' => '1'])->getContent());
+        $response = $this->executeFrontendRequest(
+            (new InternalRequest())->withQueryParameters(
+                [
+                    'id' => 1
+                ]
+            )
+        );
 
-        self::assertXmlStringEqualsXmlString($expectedDom->saveHTML(), $actualDom->saveHTML());
+        $content = (string)$response->getBody();
+
+        var_dump($content);
     }
 
     /**
      * Setup before running tests.
      *
-     * @throws \Nimut\TestingFramework\Exception\Exception
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \TYPO3\TestingFramework\Core\Exception
      * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->importDataSet(__DIR__ . '/Fixtures/Database/Pages.xml');
+        $fixturesPath = __DIR__ . '/Fixtures';
 
-        $this->setUpFrontendRootPage(1, ['EXT:t3v_core/Tests/Functional/Fixtures/Frontend/Basic.typoscript']);
+        $this->importDataSet("{$fixturesPath}/Database/Pages.xml");
+        $this->setUpFrontendRootPage(1, ["{$fixturesPath}/Frontend/Basic.typoscript"]);
+        $this->setUpFrontend(1, 'T3v Core');
     }
 
     /**
-     * Fetches the Frontend response.
+     * Setup the frontend for testing.
      *
-     * @param array $requestArguments The request arguments
-     * @param bool $failOnFailure Fail on failure, defaults to `true`
-     * @return Response The Frontend response
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @param int $rootPageId The optional root page ID, defaults to `1`
+     * @param string $websiteTitle The optional website title, defaults to `TYPO3voilà`
+     *
      */
-    protected function fetchFrontendResponse(array $requestArguments, bool $failOnFailure = true): Response
+    protected function setUpFrontend(int $rootPageId = 1, string $websiteTitle = 'TYPO3voilà'): void
     {
-        if (!empty($requestArguments['url'])) {
-            $requestUrl = '/' . ltrim($requestArguments['url'], '/');
-        } else {
-            $requestUrl = '/?' . GeneralUtility::implodeArrayForUrl('', $requestArguments);
-        }
-
-        if (property_exists($this, 'instancePath')) {
-            $instancePath = $this->instancePath;
-        } else {
-            $instancePath = $this->getInstancePath();
-        }
-
-        $arguments = [
-            'documentRoot' => $instancePath,
-            'requestUrl' => 'http://localhost' . $requestUrl
+        $configuration = [
+            'rootPageId' => $rootPageId,
+            'base' => '/',
+            'websiteTitle' => $websiteTitle,
+            'languages' => [
+                [
+                    'title' => 'English',
+                    'enabled' => true,
+                    'languageId' => '0',
+                    'base' => '/',
+                    'typo3Language' => 'default',
+                    'locale' => 'en_US.UTF-8',
+                    'iso-639-1' => 'en',
+                    'websiteTitle' => '',
+                    'navigationTitle' => '',
+                    'hreflang' => '',
+                    'direction' => '',
+                    'flag' => 'us'
+                ]
+            ],
+            'errorHandling' => [],
+            'routes' => []
         ];
 
-        $template = new \Text_Template('ntf://Frontend/Request.tpl');
-        $template->setVar(
-            [
-                'arguments' => var_export($arguments, true),
-                'originalRoot' => ORIGINAL_ROOT,
-                'ntfRoot' => __DIR__ . '/../../.build/vendor/nimut/testing-framework/'
-            ]
-        );
-
-        $php = DefaultPhpProcess::factory();
-        $response = $php->runJob($template->render());
-        $result = json_decode($response['stdout'], true);
-
-        if ($result === null) {
-            self::fail('Frontend Response is empty:' . LF . 'Error: ' . LF . $response['stderr']);
-        }
-
-        if ($result['status'] === Response::STATUS_Failure && $failOnFailure) {
-            self::fail('Frontend Response has failure:' . LF . $result['error']);
-        }
-
-        $response = new Response($result['status'], $result['content'], $result['error']);
-
-        return $response;
+        GeneralUtility::mkdir_deep($this->instancePath . '/config/sites/testing/');
+        $yamlFileContents = Yaml::dump($configuration, 99, 2);
+        $fileName = $this->instancePath . '/config/sites/testing/config.yaml';
+        GeneralUtility::writeFile($fileName, $yamlFileContents);
     }
 }

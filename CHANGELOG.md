@@ -14,6 +14,7 @@ Unreleased
 * Dropped support for TYPO3 8.x (breaking change)
 * Updated Travis CI and AppVeyor configuration
 * Updated dependencies
+* Switched to `typo3/testing-framework`
 * PSR-12: Extended Coding Style
 * Cleaned up
 

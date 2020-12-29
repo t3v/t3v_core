@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Tests\Unit\Utility;
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
 use T3v\T3vCore\Utility\UrlUtility;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * The URL utility test class.

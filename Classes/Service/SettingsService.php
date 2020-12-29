@@ -72,7 +72,7 @@ class SettingsService extends AbstractService
         $configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
 
         if (is_array($configuration['plugin.']) && !empty($configuration['plugin.'])) {
-            if ($identifier[-1] !== '.') {
+            if ($identifier[-1] !== '.') { // Append `.` to identifier if it does not already exist
                 $identifier .= '.';
             }
 

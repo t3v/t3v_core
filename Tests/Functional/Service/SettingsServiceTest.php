@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Tests\Functional\Service;
 
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use T3v\T3vCore\Service\SettingsService;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
  * The settings service test class.
@@ -18,7 +18,7 @@ class SettingsServiceTest extends FunctionalTestCase
      *
      * @var array
      */
-    protected $coreExtensionsToLoad = ['fluid'];
+    protected $coreExtensionsToLoad = ['core'];
 
     /**
      * The test extensions to load.
@@ -58,7 +58,8 @@ class SettingsServiceTest extends FunctionalTestCase
     /**
      * Setup before running tests.
      *
-     * @throws \Nimut\TestingFramework\Exception\Exception
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \TYPO3\TestingFramework\Core\Exception
      * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     protected function setUp(): void
@@ -67,7 +68,13 @@ class SettingsServiceTest extends FunctionalTestCase
 
         $this->importDataSet(__DIR__ . '/../Fixtures/Database/Pages.xml');
 
-        $this->setUpFrontendRootPage(1, ['EXT:t3v_core/Configuration/TypoScript/Base/setup.typoscript']);
+        $this->setUpFrontendRootPage(
+            1,
+            [
+                'constants' => ['EXT:t3v_core/Configuration/TypoScript/constants.typoscript'],
+                'setup' => ['EXT:t3v_core/Configuration/TypoScript/setup.typoscript']
+            ]
+        );
 
         $this->subject = new SettingsService;
     }
