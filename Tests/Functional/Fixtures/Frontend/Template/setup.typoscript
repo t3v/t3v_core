@@ -1,3 +1,7 @@
+# ------------------------
+# | T3v Core Tests Setup |
+# ------------------------
+
 # === Configuration ===
 
 config {
@@ -9,10 +13,19 @@ config {
   sendCacheHeaders = 0
   xhtml_cleaning = 0
 
-  # --- L10n ---
+  # --- Localization ---
+
+  sys_language_uid = 0
+  sys_language_isocode_default = en
+  language = en
+  locale = en_US
+  locale_all = en_US.UTF-8
 
   sys_language_mode = ignore
-  sys_language_overlay = 1
+  sys_language_overlay = 0
+
+  # Sets the `class` and `lang` attributes of the `html` tag:
+  htmlTag_setParams = class="global en no-js" lang="en"
 
   # --- URL / Link Handling ---
 
@@ -43,8 +56,6 @@ config {
 
 page = PAGE
 page {
-  typeNum = 0
-
   10 = FLUIDTEMPLATE
   10 {
     file = EXT:t3v_core/Tests/Functional/Fixtures/Frontend/Template.html
@@ -53,8 +64,15 @@ page {
 
 # === Locales ===
 
+# --- Germany: Deutsch ---
+
 [globalVar = GP:L = 1]
   config {
     sys_language_uid = 1
+    sys_language_isocode = de
+    language = de
+    locale = de_DE
+    locale_all = de_DE.UTF-8
+    htmlTag_setParams = class="fr-fr fr no-js" lang="fr"
   }
-[end]
+[global]
