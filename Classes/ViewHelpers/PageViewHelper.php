@@ -13,7 +13,6 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
  */
 class PageViewHelper extends AbstractViewHelper
 {
-
     /**
      * Initializes the arguments.
      */
