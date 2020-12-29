@@ -48,19 +48,23 @@ class RenderingTest extends FunctionalTestCase
      */
     public function templateIsRendered(): void
     {
-        $expectedDom = new \DomDocument();
-        $expectedDom->preserveWhiteSpace = false;
-        $expectedDom->loadHTML('<h1>T3v Core</h1>');
-
         $response = $this->executeFrontendRequest(
             (new InternalRequest())->withPageId(1)
         );
 
-        $actualDom = new \DomDocument();
-        $actualDom->preserveWhiteSpace = false;
-        $actualDom->loadHTML((string)$response->getBody());
+        $body = (string)$response->getBody();
 
-        $this->assertXmlStringEqualsXmlString($expectedDom->saveHTML(), $actualDom->saveHTML());
+        if (!empty($body)) {
+            $expectedDom = new \DomDocument();
+            $expectedDom->preserveWhiteSpace = false;
+            $expectedDom->loadHTML('<h1>T3v Core</h1>');
+
+            $actualDom = new \DomDocument();
+            $actualDom->preserveWhiteSpace = false;
+            $actualDom->loadHTML($body);
+
+            $this->assertXmlStringEqualsXmlString($expectedDom->saveHTML(), $actualDom->saveHTML());
+        }
     }
 
     /**
@@ -74,13 +78,13 @@ class RenderingTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->importDataSet('EXT:t3v_core/Tests/Functional/Fixtures/Database/Pages.xml');
+        $this->importDataSet('EXT:t3v_core/Tests/Fixtures/Database/Pages.xml');
 
         $this->setUpFrontendRootPage(
             1,
             [
-                'constants' => ['EXT:t3v_core/Tests/Functional/Fixtures/Frontend/Template/constants.typoscript'],
-                'setup' => ['EXT:t3v_core/Tests/Functional/Fixtures/Frontend/Template/setup.typoscript']
+                'constants' => ['EXT:t3v_core/Tests/Fixtures/Frontend/Template/constants.typoscript'],
+                'setup' => ['EXT:t3v_core/Tests/Fixtures/Frontend/Template/setup.typoscript']
             ]
         );
 

@@ -74,7 +74,7 @@ class SettingsServiceTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->importDataSet('EXT:t3v_core/Tests/Functional/Fixtures/Database/Pages.xml');
+        $this->importDataSet('EXT:t3v_core/Tests/Fixtures/Database/Pages.xml');
 
         $this->setUpFrontendRootPage(
             1,
