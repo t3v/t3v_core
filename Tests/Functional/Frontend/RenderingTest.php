@@ -83,8 +83,8 @@ class RenderingTest extends FunctionalTestCase
         $this->setUpFrontendRootPage(
             1,
             [
-                'constants' => ['EXT:t3v_core/Tests/Fixtures/Frontend/Template/constants.typoscript'],
-                'setup' => ['EXT:t3v_core/Tests/Fixtures/Frontend/Template/setup.typoscript']
+                'constants' => ['EXT:t3v_core/Tests/Fixtures/TypoScript/Frontend/constants.typoscript'],
+                'setup' => ['EXT:t3v_core/Tests/Fixtures/TypoScript/Frontend/setup.typoscript']
             ]
         );
 
