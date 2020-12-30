@@ -52,7 +52,8 @@
   },
   "require-dev": {
     "ext-dom": "*",
-    "typo3/testing-framework": "^4.15.2 || ^6.6.0"
+    "typo3/testing-framework": "^4.15.2 || ^6.6.0",
+    "t3v/t3v_testing": "dev-develop"
   },
   "autoload": {
     "psr-4": {
@@ -61,7 +62,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "T3v\\T3vCore\\Tests\\": "Tests"
+      "T3v\\T3vCore\\Tests\\": "Tests",
+      "T3v\\T3vTesting\\Tests\\": "Tests"
     }
   },
   "extra": {

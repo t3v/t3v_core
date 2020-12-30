@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Tests\Functional\Frontend;
 
-use T3v\T3vCore\Tests\Functional\Frontend\Traits\SetupTrait;
+use T3v\T3vTesting\Tests\Functional\Frontend\Traits\SetupTrait;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -24,14 +24,20 @@ class RenderingTest extends FunctionalTestCase
      *
      * @var array
      */
-    protected $coreExtensionsToLoad = ['core', 'frontend'];
+    protected $coreExtensionsToLoad = [
+        'core',
+        'frontend'
+    ];
 
     /**
      * The test extensions to load.
      *
      * @var array
      */
-    protected $testExtensionsToLoad = ['typo3conf/ext/t3v_core'];
+    protected $testExtensionsToLoad = [
+        'typo3conf/ext/t3v_testing',
+        'typo3conf/ext/t3v_core'
+    ];
 
     /**
      * The paths to link in the test instance.
@@ -78,13 +84,17 @@ class RenderingTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->importDataSet('EXT:t3v_core/Tests/Fixtures/Database/Pages.xml');
+        $this->importDataSet('EXT:t3v_testing/Tests/Support/Database/Pages.xml');
 
         $this->setUpFrontendRootPage(
             1,
             [
-                'constants' => ['EXT:t3v_core/Tests/Fixtures/TypoScript/Frontend/constants.typoscript'],
-                'setup' => ['EXT:t3v_core/Tests/Fixtures/TypoScript/Frontend/setup.typoscript']
+                'constants' => [
+                    'EXT:t3v_testing/Tests/Support/TypoScript/Frontend/constants.typoscript'
+                ],
+                'setup' => [
+                    'EXT:t3v_testing/Tests/Support/TypoScript/Frontend/setup.typoscript'
+                ]
             ]
         );
 

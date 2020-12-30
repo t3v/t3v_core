@@ -18,14 +18,19 @@ class SettingsServiceTest extends FunctionalTestCase
      *
      * @var array
      */
-    protected $coreExtensionsToLoad = ['core'];
+    protected $coreExtensionsToLoad = [
+        'core'
+    ];
 
     /**
      * The test extensions to load.
      *
      * @var array
      */
-    protected $testExtensionsToLoad = ['typo3conf/ext/t3v_core'];
+    protected $testExtensionsToLoad = [
+        'typo3conf/ext/t3v_testing',
+        'typo3conf/ext/t3v_core'
+    ];
 
     /**
      * The paths to link in the test instance.
@@ -74,13 +79,17 @@ class SettingsServiceTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->importDataSet('EXT:t3v_core/Tests/Fixtures/Database/Pages.xml');
+        $this->importDataSet('EXT:t3v_testing/Tests/Support/Database/Pages.xml');
 
         $this->setUpFrontendRootPage(
             1,
             [
-                'constants' => ['EXT:t3v_core/Configuration/TypoScript/constants.typoscript'],
-                'setup' => ['EXT:t3v_core/Configuration/TypoScript/setup.typoscript']
+                'constants' => [
+                    'EXT:t3v_core/Configuration/TypoScript/constants.typoscript'
+                ],
+                'setup' => [
+                    'EXT:t3v_core/Configuration/TypoScript/setup.typoscript'
+                ]
             ]
         );
 
