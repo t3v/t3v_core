@@ -63,7 +63,7 @@ class RenderingTest extends FunctionalTestCase
         if (!empty($body)) {
             $expectedDom = new \DomDocument();
             $expectedDom->preserveWhiteSpace = false;
-            $expectedDom->loadHTML('<h1>T3v Core</h1>');
+            $expectedDom->loadHTML('<h1>T3v Testing</h1>');
 
             $actualDom = new \DomDocument();
             $actualDom->preserveWhiteSpace = false;

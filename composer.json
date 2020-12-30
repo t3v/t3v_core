@@ -62,8 +62,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "T3v\\T3vCore\\Tests\\": "Tests",
-      "T3v\\T3vTesting\\Tests\\": "Tests"
+      "T3v\\T3vTesting\\Tests\\": ".build/web/typo3conf/ext/t3v_testing/Tests/",
+      "T3v\\T3vCore\\Tests\\": "Tests"
     }
   },
   "extra": {
