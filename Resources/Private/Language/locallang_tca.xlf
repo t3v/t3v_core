@@ -67,6 +67,8 @@
       <trans-unit id="shared.userGroups.label">
         <source>__User Groups:__</source>
       </trans-unit>
+
+      <!-- === T3v Generator === -->
     </body>
   </file>
 </xliff>

@@ -81,6 +81,8 @@
         <source>__User Groups:__</source>
         <target>__Benutzergruppen:__</target>
       </trans-unit>
+
+      <!-- === T3v Generator === -->
     </body>
   </file>
 </xliff>
