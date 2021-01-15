@@ -51,6 +51,7 @@ class RenderingTest extends FunctionalTestCase
      * Tests if the template is rendered.
      *
      * @test
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function templateIsRendered(): void
     {
@@ -58,18 +59,15 @@ class RenderingTest extends FunctionalTestCase
             (new InternalRequest())->withPageId(1)
         );
 
-        $body = (string)$response->getBody();
+        if ($response->getStatusCode() === 200) {
+            $document = new \DomDocument();
+            $document->loadHTML((string)$response->getBody());
+            $xpath = new \DOMXPath($document);
+            $titleTag = $xpath->query('/html/head/title')->item(0);
+            $generatorMetaTag = $xpath->query('/html/head/meta[@name="generator"]')->item(0);
 
-        if (!empty($body)) {
-            $expectedDom = new \DomDocument();
-            $expectedDom->preserveWhiteSpace = false;
-            $expectedDom->loadHTML('<h1>T3v Testing</h1>');
-
-            $actualDom = new \DomDocument();
-            $actualDom->preserveWhiteSpace = false;
-            $actualDom->loadHTML($body);
-
-            $this->assertXmlStringEqualsXmlString($expectedDom->saveHTML(), $actualDom->saveHTML());
+            self::assertEquals('Home | T3v Core', $titleTag->nodeValue);
+            self::assertEquals('TYPO3 CMS', $generatorMetaTag->getAttribute('content'));
         }
     }
 
@@ -84,16 +82,19 @@ class RenderingTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->importDataSet('EXT:t3v_testing/Tests/Support/Database/Pages.xml');
+        $this->importDataSet('EXT:t3v_testing/Tests/Functional/Fixtures/Database/Pages.xml');
+        $this->importDataSet('EXT:t3v_testing/Tests/Functional/Fixtures/Database/Content.xml');
 
         $this->setUpFrontendRootPage(
             1,
             [
                 'constants' => [
-                    'EXT:t3v_testing/Tests/Support/TypoScript/Frontend/constants.typoscript'
+                    'EXT:t3v_testing/Configuration/TypoScript/constants.typoscript',
+                    'EXT:t3v_testing/Tests/Functional/Frontend/Fixtures/TypoScript/constants.typoscript'
                 ],
                 'setup' => [
-                    'EXT:t3v_testing/Tests/Support/TypoScript/Frontend/setup.typoscript'
+                    'EXT:t3v_testing/Configuration/TypoScript/setup.typoscript',
+                    'EXT:t3v_testing/Tests/Functional/Frontend/Fixtures/TypoScript/setup.typoscript'
                 ]
             ]
         );

@@ -25,20 +25,20 @@ Development
 
 ### Setup
 
-```sh
-$ ./Scripts/Setup.sh
+```shell
+git clone https://github.com/t3v/t3v_core.git
+cd t3v_core
+
+./Scripts/Setup.sh
 ```
 
-### Run Unit Tests
+### Testing
 
-```sh
-$ ./Scripts/Tests/Unit.sh
-```
-
-### Run Functional Tests
-
-```sh
-$ ./Scripts/Tests/Functional.sh
+```shell
+./Scripts/Tests.sh
+./Scripts/Tests/Unit.sh
+./Scripts/Tests/Functional.sh
+./Scripts/Tests/Maintenance.sh
 ```
 
 Bug Reports

@@ -79,20 +79,6 @@ class SettingsServiceTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->importDataSet('EXT:t3v_testing/Tests/Support/Database/Pages.xml');
-
-        $this->setUpFrontendRootPage(
-            1,
-            [
-                'constants' => [
-                    'EXT:t3v_core/Configuration/TypoScript/constants.typoscript'
-                ],
-                'setup' => [
-                    'EXT:t3v_core/Configuration/TypoScript/setup.typoscript'
-                ]
-            ]
-        );
-
         $this->subject = new SettingsService;
     }
 }
