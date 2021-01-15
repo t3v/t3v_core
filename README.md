@@ -25,19 +25,19 @@ Development
 
 ### Setup
 
-```
+```sh
 $ ./Scripts/Setup.sh
 ```
 
 ### Run Unit Tests
 
-```
+```sh
 $ ./Scripts/Tests/Unit.sh
 ```
 
 ### Run Functional Tests
 
-```
+```sh
 $ ./Scripts/Tests/Functional.sh
 ```
 
