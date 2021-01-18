@@ -26,8 +26,7 @@ Development
 ### Setup
 
 ```shell
-git clone https://github.com/t3v/t3v_core.git
-cd t3v_core
+git clone https://github.com/t3v/t3v_core.git && cd t3v_core
 
 ./Scripts/Setup.sh
 ```
