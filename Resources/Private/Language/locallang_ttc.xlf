@@ -4,8 +4,6 @@
     <header />
 
     <body>
-      <!-- === T3v Generator === -->
-
       <!-- === Legacy === -->
 
       <!-- Palettes -->
@@ -133,6 +131,8 @@
       <trans-unit id="tceform.ttContent.layout.altLabels.6.label">
         <source>Layout 6</source>
       </trans-unit>
+
+      <!-- === T3v Generator === -->
     </body>
   </file>
 </xliff>

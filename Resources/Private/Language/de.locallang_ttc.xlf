@@ -4,8 +4,6 @@
     <header />
 
     <body>
-      <!-- === T3v Generator === -->
-
       <!-- === Legacy === -->
 
       <!-- Palettes -->
@@ -163,6 +161,8 @@
         <source>Layout 6</source>
         <target>Layout 6</target>
       </trans-unit>
+
+      <!-- === T3v Generator === -->
     </body>
   </file>
 </xliff>
