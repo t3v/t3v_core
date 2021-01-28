@@ -4,9 +4,7 @@
     <header />
 
     <body>
-      <!-- === Legacy === -->
-
-      <!-- Columns -->
+      <!-- === Columns === -->
 
       <trans-unit id="columns.sysLanguageUid.label">
         <source>Language</source>
@@ -36,7 +34,31 @@
         <source>Restrict editing by non-Admins</source>
       </trans-unit>
 
-      <!-- Shared -->
+      <!-- === Ctrl === -->
+
+      <trans-unit id="ctrl.prependAtCopy.label">
+        <source>(Copy %s)</source>
+      </trans-unit>
+
+      <!-- === Palettes === -->
+
+      <trans-unit id="palettes.access.label">
+        <source>Publish Dates and Access Rights</source>
+      </trans-unit>
+
+      <trans-unit id="palettes.general.label">
+        <source>General</source>
+      </trans-unit>
+
+      <trans-unit id="palettes.language.label">
+        <source>Language</source>
+      </trans-unit>
+
+      <trans-unit id="palettes.visibility.label">
+        <source>Visibility</source>
+      </trans-unit>
+
+      <!-- === Shared === -->
 
       <trans-unit id="shared.default.label">
         <source>Default</source>
@@ -64,6 +86,52 @@
 
       <trans-unit id="shared.userGroups.label">
         <source>__User Groups:__</source>
+      </trans-unit>
+
+      <!-- === Tabs === -->
+
+      <trans-unit id="tabs.access.label">
+        <source>Access</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.accessibility.label">
+        <source>Accessibility</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.appearance.label">
+        <source>Appearance</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.behaviour.label">
+        <source>Behaviour</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.categories.label">
+        <source>Categories</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.extended.label">
+        <source>Extended</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.general.label">
+        <source>General</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.images.label">
+        <source>Images</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.language.label">
+        <source>Language</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.metadata.label">
+        <source>Metadata</source>
+      </trans-unit>
+
+      <trans-unit id="tabs.resources.label">
+        <source>Resources</source>
       </trans-unit>
 
       <!-- === T3v Generator === -->

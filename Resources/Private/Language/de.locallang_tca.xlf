@@ -4,9 +4,7 @@
     <header />
 
     <body>
-      <!-- === Legacy === -->
-
-      <!-- Columns -->
+      <!-- === Columns === -->
 
       <trans-unit id="columns.sysLanguageUid.label">
         <source>Language</source>
@@ -43,7 +41,36 @@
         <target>Bearbeitung erfordert Admin-Rechte</target>
       </trans-unit>
 
-      <!-- Shared -->
+      <!-- === Ctrl === -->
+
+      <trans-unit id="ctrl.prependAtCopy.label">
+        <source>(Copy %s)</source>
+        <target>(Kopie %s)</target>
+      </trans-unit>
+
+      <!-- === Palettes === -->
+
+      <trans-unit id="palettes.access.label">
+        <source>Publish Dates and Access Rights</source>
+        <target>Veröffentlichungsdaten und Zugriffsrechte</target>
+      </trans-unit>
+
+      <trans-unit id="palettes.general.label">
+        <source>General</source>
+        <target>Allgemein</target>
+      </trans-unit>
+
+      <trans-unit id="palettes.language.label">
+        <source>Language</source>
+        <target>Sprache</target>
+      </trans-unit>
+
+      <trans-unit id="palettes.visibility.label">
+        <source>Visibility</source>
+        <target>Sichtbarkeit</target>
+      </trans-unit>
+
+      <!-- === Shared === -->
 
       <trans-unit id="shared.default.label">
         <source>Default</source>
@@ -78,6 +105,63 @@
       <trans-unit id="shared.userGroups.label">
         <source>__User Groups:__</source>
         <target>__Benutzergruppen:__</target>
+      </trans-unit>
+
+      <!-- === Tabs === -->
+
+      <trans-unit id="tabs.access.label">
+        <source>Access</source>
+        <target>Zugriff</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.accessibility.label">
+        <source>Accessibility</source>
+        <target>Zugänglichkeit</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.appearance.label">
+        <source>Appearance</source>
+        <target>Erscheinungsbild</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.behaviour.label">
+        <source>Behaviour</source>
+        <target>Verhalten</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.categories.label">
+        <source>Categories</source>
+        <target>Kategorien</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.extended.label">
+        <source>Extended</source>
+        <target>Erweitert</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.general.label">
+        <source>General</source>
+        <target>Allgemein</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.images.label">
+        <source>Images</source>
+        <target>Bilder</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.language.label">
+        <source>Language</source>
+        <target>Sprache</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.metadata.label">
+        <source>Metadata</source>
+        <target>Metadaten</target>
+      </trans-unit>
+
+      <trans-unit id="tabs.resources.label">
+        <source>Resources</source>
+        <target>Ressourcen</target>
       </trans-unit>
 
       <!-- === T3v Generator === -->
