@@ -1,8 +1,6 @@
 [T3v Core]
 ==========
 
-[![Travis CI Status][Travis CI Status]][Travis CI]
-
 **The core extension of [TYPO3voilà].**
 
 Dependencies
@@ -25,7 +23,7 @@ Development
 
 ### Setup
 
-```shell
+```sh
 git clone https://github.com/t3v/t3v_core.git && cd t3v_core
 
 ./Scripts/Setup.sh
@@ -33,7 +31,7 @@ git clone https://github.com/t3v/t3v_core.git && cd t3v_core
 
 ### Testing
 
-```shell
+```sh
 ./Scripts/Tests.sh
 ./Scripts/Tests/Unit.sh
 ./Scripts/Tests/Functional.sh
@@ -67,7 +65,5 @@ T3v Core is released under the [MIT License (MIT)], see [LICENSE].
 [MIT License (MIT)]: http://opensource.org/licenses/MIT "The MIT License (MIT)"
 [Semantic Versioning 2.0.0]: http://semver.org "Semantic Versioning 2.0.0"
 [T3v Core]: https://t3v.github.io/t3v_core/ "The core extension of TYPO3voilà."
-[Travis CI]: https://travis-ci.org/t3v/t3v_core "T3v Core at Travis CI"
-[Travis CI Status]: https://img.shields.io/travis/t3v/t3v_core.svg?style=flat "Travis CI Status"
 [TYPO3voilà]: https://github.com/t3v "“UH LÁLÁ, TYPO3!”"
 [Unit Testing TYPO3]: https://wiki.typo3.org/Unit_Testing_TYPO3 "Unit testing TYPO3"
