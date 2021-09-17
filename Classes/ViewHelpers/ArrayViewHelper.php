@@ -30,7 +30,7 @@ class ArrayViewHelper extends AbstractViewHelper
      * @return object|null The value for the key or null if the key does not exist
      * @noinspection PhpFullyQualifiedNameUsageInspection
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): ?object
     {
         $result = null;
         $array = $arguments['array'];

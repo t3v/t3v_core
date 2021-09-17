@@ -13,16 +13,14 @@ trait LocalizationTrait
     /**
      * The localization service.
      *
-     * @var \T3v\T3vCore\Service\LocalizationService
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var LocalizationService
      */
     protected $localizationService;
 
     /**
      * Injects the localization service.
      *
-     * @param \T3v\T3vCore\Service\LocalizationService $localizationService The localization service
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @param LocalizationService $localizationService The localization service
      */
     public function injectLocalizationService(LocalizationService $localizationService): void
     {
