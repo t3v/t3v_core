@@ -7,7 +7,7 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 /**
  * The slug view helper class.
  *
- * @deprecated Use `HandleViewHelper` instead will be removed in the next major version
+ * @deprecated Use `HandleViewHelper` instead will be removed in the next major version.
  * @package T3v\T3vCore\ViewHelpers
  */
 class SlugViewHelper extends AbstractViewHelper
