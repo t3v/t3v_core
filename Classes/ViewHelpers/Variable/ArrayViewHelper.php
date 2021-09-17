@@ -1,12 +1,13 @@
 <?php
-namespace T3v\T3vCore\ViewHelpers;
+namespace T3v\T3vCore\ViewHelpers\Variable;
 
+use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 /**
  * The array view helper class.
  *
- * @package T3v\T3vCore\ViewHelpers
+ * @package T3v\T3vCore\ViewHelpers\Variable
  */
 class ArrayViewHelper extends AbstractViewHelper
 {

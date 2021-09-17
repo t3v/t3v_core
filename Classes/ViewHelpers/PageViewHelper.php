@@ -20,8 +20,8 @@ class PageViewHelper extends AbstractViewHelper
     {
         parent::initializeArguments();
 
-        $this->registerArgument('uid', 'int', 'The UID of the page', true, null);
-        $this->registerArgument('languageUid', 'int', 'The optional language UID', false, null);
+        $this->registerArgument('uid', 'int', 'The UID of the page', true);
+        $this->registerArgument('languageUid', 'int', 'The optional language UID', false);
     }
 
     /**
@@ -33,7 +33,7 @@ class PageViewHelper extends AbstractViewHelper
      * @return array The page object
      * @noinspection PhpFullyQualifiedNameUsageInspection
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): array
     {
         $uid = (int)$arguments['uid'];
         $languageUid = isset($arguments['languageUid']) ? (int)$arguments['languageUid'] : self::getLocalizationService()->getLanguageUid();
@@ -44,8 +44,7 @@ class PageViewHelper extends AbstractViewHelper
     /**
      * Gets the page service.
      *
-     * @return \T3v\T3vCore\Service\PageService The page service
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return PageService The page service
      */
     protected static function getPageService(): PageService
     {
@@ -55,8 +54,7 @@ class PageViewHelper extends AbstractViewHelper
     /**
      * Gets the localization service.
      *
-     * @return \T3v\T3vCore\Service\LocalizationService The localization service
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return LocalizationService The localization service
      */
     protected static function getLocalizationService(): LocalizationService
     {

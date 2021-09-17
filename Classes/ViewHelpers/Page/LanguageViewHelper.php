@@ -35,7 +35,7 @@ class LanguageViewHelper extends AbstractViewHelper
      */
     public function render(): string
     {
-        $language = $this->getLanguage(null);
+        $language = $this->getLanguage();
 
         return $language ?: $this->arguments['default'];
     }

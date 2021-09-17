@@ -35,7 +35,7 @@ class LanguageUidViewHelper extends AbstractViewHelper
      */
     public function render(): int
     {
-        $languageUid = $this->getLanguageUid(null);
+        $languageUid = $this->getLanguageUid();
 
         return $languageUid ?: $this->arguments['default'];
     }
