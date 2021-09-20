@@ -23,5 +23,5 @@ export typo3DatabaseName="t3v_core";
 
 # find "Tests/Functional" -wholename "*Test.php" | parallel --gnu "$BIN_PATH/phpunit --colors --configuration $TESTING_FRAMEWORK_BUILD_PATH/FunctionalTests.xml {}"
 
-# Try to keep environment pollution down, EPA loves us
+# Try to keep environment pollution down, EPA loves us:
 unset BASE_PATH ROOT_PATH
