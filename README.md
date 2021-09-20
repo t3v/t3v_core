@@ -35,7 +35,7 @@ git clone https://github.com/t3v/t3v_core.git && cd t3v_core
 ./Scripts/Tests.sh
 ./Scripts/Tests/Unit.sh
 ./Scripts/Tests/Functional.sh
-./Scripts/Tests/Maintenance.sh
+./Scripts/Tests/Migrate.sh
 ```
 
 Bug Reports
