@@ -1,10 +1,21 @@
-# ---------------------------
-# | T3v Core Base Constants |
-# ---------------------------
+/*
+  ---------------------------
+  | T3v Core Base Constants |
+  ---------------------------
+*/
 
-# === Plugin Constants ===
+/*
+  === Plugin Constants ===
+*/
 
 plugin {
+  tx_t3v {
+    settings {
+      # cat=plugin/tx_t3v/settings; type=options[Strict=strict,Fallback=fallback]; label=The mode in which TYPO3voilà runs at
+      mode = strict
+    }
+  }
+
   tx_t3vcore {
     persistence {
       # cat=plugin/tx_t3vcore/persistence; type=boolean; label=Enables the automatic cache clearing when changing data sets
@@ -52,4 +63,6 @@ plugin {
   }
 }
 
-# === T3v Generator ===
+/*
+  === T3v Generator ===
+*/

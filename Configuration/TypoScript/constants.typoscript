@@ -1,10 +1,15 @@
-# ----------------------
-# | T3v Core Constants |
-# ----------------------
+/*
+  ----------------------
+  | T3v Core Constants |
+  ----------------------
+*/
 
-# === Imports ===
+/*
+  === Imports ===
+*/
 
 @import './Base/constants.typoscript'
-@import './Vendor/constants.typoscript'
 
-# === T3v Generator ===
+/*
+  === T3v Generator ===
+*/
