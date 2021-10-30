@@ -8,6 +8,7 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
  * The default view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers\Variable
+ * @deprecated Use `T3v\T3vBase\ViewHelpers\Variable\DefaultViewHelper` instead will be removed in the next major version.
  */
 class DefaultViewHelper extends AbstractViewHelper
 {

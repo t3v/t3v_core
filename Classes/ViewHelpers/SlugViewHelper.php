@@ -8,14 +8,14 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
  * The slug view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
- * @deprecated Use `HandleViewHelper` instead will be removed in the next major version.
+ * @deprecated Use `T3v\T3vBase\ViewHelpers\HandleViewHelper` instead will be removed in the next major version.
  */
 class SlugViewHelper extends AbstractViewHelper
 {
     /**
-     * The slug rulesets.
+     * The rulesets.
      */
-    public const SLUG_RULESETS = [
+    public const RULESETS = [
         'default',
         'azerbaijani',
         'burmese',
@@ -71,10 +71,10 @@ class SlugViewHelper extends AbstractViewHelper
      *
      * @param string $input The input to create a slug from
      * @param string $separator The optional separator, defaults to `-`
-     * @param array $rulesets The optional rulesets, defaults to `SlugViewHelper::SLUG_RULESETS`
+     * @param array $rulesets The optional rulesets, defaults to `SlugViewHelper::RULESETS`
      * @return string The slug
      */
-    protected static function createSlug(string $input, string $separator = '-', array $rulesets = self::SLUG_RULESETS): string
+    protected static function createSlug(string $input, string $separator = '-', array $rulesets = self::RULESETS): string
     {
         $slugify = new Slugify(['separator' => $separator, 'rulesets' => $rulesets]);
 

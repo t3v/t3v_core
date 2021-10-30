@@ -18,16 +18,14 @@ abstract class AbstractValidator extends AbstractValidatorExtbase
     /**
      * The object manager.
      *
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var ObjectManagerInterface
      */
-    protected $objectManager;
+    protected ObjectManagerInterface $objectManager;
 
     /**
      * Injects the object manager.
      *
-     * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager The object manager
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @param ObjectManagerInterface $objectManager The object manager
      */
     public function injectObjectManager(ObjectManagerInterface $objectManager): void
     {

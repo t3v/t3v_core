@@ -8,6 +8,7 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
  * The array view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers\Variable
+ * @deprecated Use `T3v\T3vBase\ViewHelpers\Variable\ArrayViewHelper` instead will be removed in the next major version.
  */
 class ArrayViewHelper extends AbstractViewHelper
 {

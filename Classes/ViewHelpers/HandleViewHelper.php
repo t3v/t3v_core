@@ -8,13 +8,14 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
  * The handle view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
+ * @deprecated Use `T3v\T3vBase\ViewHelpers\HandleViewHelper` instead will be removed in the next major version.
  */
 class HandleViewHelper extends AbstractViewHelper
 {
     /**
-     * The slug rulesets.
+     * The rulesets.
      */
-    public const SLUG_RULESETS = [
+    public const RULESETS = [
         'default',
         'azerbaijani',
         'burmese',
@@ -70,10 +71,10 @@ class HandleViewHelper extends AbstractViewHelper
      *
      * @param string $input The input to create a handle from
      * @param string $separator The optional separator, defaults to `-`
-     * @param array $rulesets The optional rulesets, defaults to `SlugViewHelper::SLUG_RULESETS`
+     * @param array $rulesets The optional rulesets, defaults to `SlugViewHelper::RULESETS`
      * @return string The handle
      */
-    protected static function createHandle(string $input, string $separator = '-', array $rulesets = self::SLUG_RULESETS): string
+    protected static function createHandle(string $input, string $separator = '-', array $rulesets = self::RULESETS): string
     {
         $slugify = new Slugify(['separator' => $separator, 'rulesets' => $rulesets]);
 
