@@ -133,8 +133,6 @@
       <trans-unit id="tabs.resources.label">
         <source>Resources</source>
       </trans-unit>
-
-      <!-- === T3v Generator === -->
     </body>
   </file>
 </xliff>
