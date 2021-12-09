@@ -12,7 +12,7 @@ class NoValidator extends AbstractValidator
     /**
      * Checks if a value is valid, returns always true.
      *
-     * @param object $value The value to validate
+     * @param mixed $value The value to validate
      * @return bool If the value is valid, returns always true
      */
     public function isValid($value): bool
