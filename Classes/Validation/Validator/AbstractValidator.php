@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Validation\Validator;
 
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\Validation\Error;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator as AbstractValidatorExtbase;
@@ -16,23 +16,6 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator as AbstractValidato
 abstract class AbstractValidator extends AbstractValidatorExtbase
 {
     /**
-     * The object manager.
-     *
-     * @var ObjectManagerInterface
-     */
-    protected ObjectManagerInterface $objectManager;
-
-    /**
-     * Injects the object manager.
-     *
-     * @param ObjectManagerInterface $objectManager The object manager
-     */
-    public function injectObjectManager(ObjectManagerInterface $objectManager): void
-    {
-        $this->objectManager = $objectManager;
-    }
-
-    /**
      * Adds an error to a property.
      *
      * @param string $property The property
@@ -42,7 +25,7 @@ abstract class AbstractValidator extends AbstractValidatorExtbase
     protected function addErrorToProperty(string $property, string $key, string $extensionName): void
     {
         $errorMessage = LocalizationUtility::translate($key, $extensionName);
-        $error = $this->objectManager->get(Error::class, $errorMessage, time());
+        $error = GeneralUtility::makeInstance(Error::class, $errorMessage, time());
 
         $this->result->forProperty($property)->addError($error);
     }
