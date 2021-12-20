@@ -9,7 +9,15 @@
       "homepage": "https://bitaculous.com"
     }
   ],
-  "keywords": ["CMS", "Core", "Extension", "T3v", "TYPO3", "TYPO3voila", "UH LÁLÁ"],
+  "keywords": [
+    "CMS",
+    "Core",
+    "Extension",
+    "T3v",
+    "TYPO3",
+    "TYPO3voila",
+    "UH LÁLÁ"
+  ],
   "homepage": "https://t3v.github.io/t3v_core/",
   "support": {
     "issues": "https://github.com/t3v/t3v_core/issues"
