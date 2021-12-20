@@ -1,7 +1,7 @@
 {
   "name": "t3v/t3v_core",
   "type": "typo3-cms-extension",
-  "description": "The core extension of TYPO3Voila.",
+  "description": "The core extension of TYPO3voilà.",
   "authors": [
     {
       "name": "Maik Kempe",
@@ -28,7 +28,7 @@
     { "type": "composer", "url": "https://composer.typo3.org" }
   ],
   "require": {
-    "php": ">= 7.0 < 7.4",
+    "php": ">= 7.2",
     "typo3/cms-core": "^8.7",
     "kevinlebrun/colors.php": "^1.0",
     "danielstjules/stringy": "^3.1",
@@ -54,7 +54,9 @@
   },
   "extra": {
     "typo3/cms": {
+      "app-dir": ".build",
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "extension-key": "t3v_core",
       "web-dir": ".build/web"
     }
   },
