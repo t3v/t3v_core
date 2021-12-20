@@ -53,7 +53,7 @@ class PageService extends AbstractService
      */
     public function __construct()
     {
-        parent::__construct();
+        // parent::__construct();
 
         $this->pageRepository = GeneralUtility::makeInstance(PageRepository::class);
         $this->queryGenerator = GeneralUtility::makeInstance(QueryGenerator::class);
