@@ -5,6 +5,7 @@ namespace T3v\T3vCore\Service;
 
 use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\RootlineUtility;
 use TYPO3\CMS\Frontend\Page\PageRepository;
 
 /**
@@ -217,7 +218,14 @@ class PageService extends AbstractService
      */
     public function getBackendLayoutForPage(int $uid): ?string
     {
-        $rootLine = $this->pageRepository->getRootLine($uid);
+        /**
+         * deprecated
+         */
+        // $rootLine = $this->pageRepository->getRootLine($uid);
+        $rootLine = GeneralUtility::makeInstance(
+            RootlineUtility::class,
+            $uid, ''
+        )->get();
 
         if ($rootLine) {
             $index = -1;
