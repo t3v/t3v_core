@@ -15,7 +15,7 @@ class QueryResultService extends AbstractService
     /**
      * Filters a query result by language presets.
      *
-     * @param object $queryResult The query result
+     * @param array $queryResult The query result
      * @param array $presets The language presets
      * @return object The filtered query result
      */
