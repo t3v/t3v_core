@@ -76,4 +76,105 @@ abstract class AbstractRepository extends Repository
 
         return $result;
     }
+
+    /**
+     * Finds objects by multiple PIDs.
+     *
+     * @param array|string $pids The PIDs as array or as string, seperated by `,`
+     * @param int $limit The optional limit, defaults to `0`
+     * @param array $querySettings The optional query settings
+     * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
+     */
+    public function findByPids(
+        $pids,
+        int $limit = 0,
+        array $querySettings = ['respectSysLanguage' => true]
+    ): ?\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
+    {
+        if (is_string($pids)) {
+            $pids = GeneralUtility::intExplode(',', $pids, true);
+        }
+
+        if (!empty($pids)) {
+            // Create query
+            $query = $this->createquery();
+
+            // Apply the passed query settings.
+            $query = $this->applyQuerySettings($query, $querySettings);
+
+            // Set the query constraints.
+            $query->matching($query->in('pid', $pids));
+
+            // Set the query limit if available.
+            if ($limit > 0) {
+                $query->setLimit($limit);
+            }
+
+            // Set the orderings and maintain the list order.
+            // TODO: das funktioniert nicht mehr
+            // $orderings = $this->getOrderingsByField('pid', $pids);
+            // $query->setOrderings($orderings);
+
+            // Execute the query.
+            return $query->execute();
+        }
+
+        return null;
+    }
+
+    /**
+     * Applies settings on a query.
+     *
+     * @param QueryInterface $query The query
+     * @param array $settings The settings to apply
+     * @return object The query with the applied settings
+     */
+    protected function applyQuerySettings(QueryInterface $query, array $settings): object
+    {
+        if (!empty($settings)) {
+            $respectStoragePage = $settings['respectStoragePage'];
+
+            if (is_bool($respectStoragePage)) {
+                $query->getQuerySettings()->setRespectStoragePage($respectStoragePage);
+            }
+
+            $respectSysLanguage = $settings['respectSysLanguage'];
+
+            if (is_bool($respectSysLanguage)) {
+                $query->getQuerySettings()->setRespectSysLanguage($respectSysLanguage);
+            }
+
+            $returnRawQueryResult = $settings['returnRawQueryResult'];
+
+            if (is_bool($returnRawQueryResult)) {
+                /**
+                 * TODO: QuerySettingsInterface::setReturnRawQueryResult() is removed without replacement
+                 */
+                // $query->getQuerySettings()->setReturnRawQueryResult($returnRawQueryResult);
+            }
+        }
+
+        return $query;
+    }
+
+    /**
+     * Gets the orderings by a field.
+     *
+     * @param string $field The field
+     * @param array $values The values
+     * @param string $order The optional order, defaults to `QueryInterface::ORDER_DESCENDING`
+     * @return array The orderings
+     */
+    protected function getOrderingsByField(string $field, array $values, string $order = QueryInterface::ORDER_DESCENDING): array
+    {
+        $orderings = [];
+
+        if (!empty($values)) {
+            foreach ($values as $value) {
+                $orderings["$field={$value}"] = $order;
+            }
+        }
+
+        return $orderings;
+    }
 }
