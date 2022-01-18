@@ -54,8 +54,6 @@ class PageService extends AbstractService
      */
     public function __construct()
     {
-        // parent::__construct();
-
         $this->pageRepository = GeneralUtility::makeInstance(PageRepository::class);
         $this->queryGenerator = GeneralUtility::makeInstance(QueryGenerator::class);
         $this->localizationService = GeneralUtility::makeInstance(LocalizationService::class);
@@ -64,7 +62,7 @@ class PageService extends AbstractService
     /**
      * Gets the current page.
      *
-     * @param int $languageUid The optional language UID, defaults to the UID of the current system language
+     * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array|null The row for the page or null if no page was found
      */
     public function getCurrentPage(int $languageUid = null): ?array
@@ -78,7 +76,7 @@ class PageService extends AbstractService
      * Gets a page.
      *
      * @param int $uid The UID of the page
-     * @param int $languageUid The optional language UID, defaults to the UID of the current system language
+     * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array|null The row for the page or null if no page was found
      */
     public function getPage(int $uid, int $languageUid = null): ?array
@@ -104,7 +102,7 @@ class PageService extends AbstractService
      * Gets a page by UID, alias for `getPage`.
      *
      * @param int $uid The UID of the page
-     * @param int $languageUid The optional language UID, defaults to the UID of the current system language
+     * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array|null The row for the page or null if no page was found
      */
     public function getPageByUid(int $uid, int $languageUid = null): ?array
@@ -116,7 +114,7 @@ class PageService extends AbstractService
      * Gets pages.
      *
      * @param array|string $uids The UIDs as array or as string, separated by `,`
-     * @param int $languageUid The optional language UID, defaults to the UID of the current system language
+     * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array The pages or empty if no pages were found
      */
     public function getPages($uids, int $languageUid = null): array
@@ -144,7 +142,7 @@ class PageService extends AbstractService
      * Gets pages by UIDs, alias for `getPages`.
      *
      * @param array|string $uids The UIDs as array or as string, separated by `,`
-     * @param int $languageUid The optional language UID, defaults to the UID of the current system language
+     * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array The pages or empty if no pages were found
      */
     public function getPagesByUids($uids, int $languageUid = null): array
@@ -158,7 +156,7 @@ class PageService extends AbstractService
      * @param int $pid The PID of the entry page to search from
      * @param int $recursion The recursion, defaults to `1`
      * @param bool $exclude If set, the entry page should be excluded, defaults to `true`
-     * @param int $languageUid The optional language UID, defaults to the UID of the current system language
+     * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array The subpages or empty if no subpages were found
      */
     public function getSubpages(int $pid, int $recursion = 1, bool $exclude = true, int $languageUid = null): array

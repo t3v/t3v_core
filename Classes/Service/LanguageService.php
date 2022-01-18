@@ -1,14 +1,13 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Service;
 
-
 /**
- * Class LanguageService
+ * The language service class.
+ *
  * @package T3v\T3vCore\Service
- * @author Jochen Greiner
- * @deprecated use LocalizationService directly
- * Date: 20.12.21
- * Time: 16:59
+ * @deprecated Use `LocalizationService` directly, will be removed in a next major version
  */
 class LanguageService extends LocalizationService {
 

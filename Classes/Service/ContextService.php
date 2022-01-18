@@ -5,6 +5,12 @@ use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+/**
+ * The context service class.
+ *
+ * @package T3v\T3vCore\Service
+ */
+
 class ContextService extends AbstractService
 {
     public const SECTION_DATE = 'date';
