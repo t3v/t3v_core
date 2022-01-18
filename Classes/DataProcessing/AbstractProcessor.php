@@ -17,8 +17,7 @@ abstract class AbstractProcessor implements DataProcessorInterface
     /**
      * Gets the object manager.
      *
-     * @return \TYPO3\CMS\Extbase\Object\ObjectManager The object manager
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return ObjectManager The object manager
      */
     protected static function getObjectManager(): ObjectManager
     {

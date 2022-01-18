@@ -37,8 +37,7 @@ abstract class AbstractActionController extends ActionController
     /**
      * Initialises a new view.
      *
-     * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view The view
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @param ViewInterface $view The view
      */
     protected function initializeView(ViewInterface $view): void
     {
