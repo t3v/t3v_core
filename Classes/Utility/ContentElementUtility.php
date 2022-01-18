@@ -36,7 +36,7 @@ class ContentElementUtility extends AbstractUtility
     }
 
     /**
-     * Gets an identifier from an content element key.
+     * Gets an identifier from a content element key.
      *
      * @param string $contentElementKey The content element key
      * @return string The content element identifier
@@ -48,7 +48,7 @@ class ContentElementUtility extends AbstractUtility
     }
 
     /**
-     * Gets an identifier from an content element key.
+     * Gets an identifier from a content element key.
      *
      * @param string $contentElementKey The content element key
      * @return string The content element identifier

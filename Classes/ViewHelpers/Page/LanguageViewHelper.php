@@ -10,7 +10,7 @@ use T3v\T3vCore\ViewHelpers\Traits\LocalizationTrait;
  * The language view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers\Page
- * @deprecated Use `T3v\T3vBase\ViewHelpers\Page\LanguageViewHelper` instead will be removed in the next major version.
+ * @deprecated Use `T3v\T3vBase\ViewHelpers\Page\LanguageViewHelper` instead, will be removed in a next major version.
  */
 class LanguageViewHelper extends AbstractViewHelper
 {

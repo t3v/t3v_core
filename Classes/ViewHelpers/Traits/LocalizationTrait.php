@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\ViewHelpers\Traits;
 
 use T3v\T3vCore\Service\LocalizationService;

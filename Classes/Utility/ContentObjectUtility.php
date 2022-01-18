@@ -11,7 +11,7 @@ namespace T3v\T3vCore\Utility;
 class ContentObjectUtility extends AbstractUtility
 {
     /**
-     * Gets an identifier from an content object key.
+     * Gets an identifier from a content object key.
      *
      * @param string $contentObjectKey The content object key
      * @return string The content object identifier
@@ -36,7 +36,7 @@ class ContentObjectUtility extends AbstractUtility
     }
 
     /**
-     * Gets an identifier from an content object key.
+     * Gets an identifier from a content object key.
      *
      * @param string $contentObjectKey The content object key
      * @return string The content object identifier
@@ -48,7 +48,7 @@ class ContentObjectUtility extends AbstractUtility
     }
 
     /**
-     * Gets an identifier from an content element key.
+     * Gets an identifier from a content element key.
      *
      * @param string $contentObjectKey The content object key
      * @return string The content object identifier

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\ViewHelpers;
 
 use Cocur\Slugify\Slugify;
@@ -8,7 +10,7 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
  * The handle view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
- * @deprecated Use `T3v\T3vBase\ViewHelpers\HandleViewHelper` instead will be removed in the next major version.
+ * @deprecated Use `T3v\T3vBase\ViewHelpers\HandleViewHelper` instead, will be removed in a next major version.
  */
 class HandleViewHelper extends AbstractViewHelper
 {
@@ -76,8 +78,6 @@ class HandleViewHelper extends AbstractViewHelper
      */
     protected static function createHandle(string $input, string $separator = '-', array $rulesets = self::RULESETS): string
     {
-        $slugify = new Slugify(['separator' => $separator, 'rulesets' => $rulesets]);
-
-        return $slugify->slugify($input);
+        return (new Slugify(['separator' => $separator, 'rulesets' => $rulesets]))->slugify($input);
     }
 }

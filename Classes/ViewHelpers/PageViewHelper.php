@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\ViewHelpers;
 
 use T3v\T3vCore\Service\LocalizationService;
@@ -10,7 +12,7 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
  * The page view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
-  * @deprecated Use `T3v\T3vBase\ViewHelpers\PageViewHelper` instead will be removed in the next major version.
+  * @deprecated Use `T3v\T3vBase\ViewHelpers\PageViewHelper` instead, will be removed in a next major version.
 */
 class PageViewHelper extends AbstractViewHelper
 {
