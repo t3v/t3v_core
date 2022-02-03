@@ -21,9 +21,7 @@ class IconUtility extends AbstractUtility
      */
     public static function getIdentifier(string $iconKey, string $separator = '_'): string
     {
-        $slugify = new Slugify(['separator' => $separator]);
-
-        return $slugify->slugify($iconKey);
+        return (new Slugify(['separator' => $separator]))->slugify($iconKey);
     }
 
     /**
@@ -62,7 +60,7 @@ class IconUtility extends AbstractUtility
      */
     public static function getSignature(string $extensionKey, string $iconIdentifier, string $separator = '-'): string
     {
-        return mb_strtolower("${extensionKey}${separator}${iconIdentifier}");
+        return mb_strtolower($extensionKey . $separator . $iconIdentifier);
     }
 
     /**

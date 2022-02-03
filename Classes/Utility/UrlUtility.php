@@ -11,7 +11,7 @@ namespace T3v\T3vCore\Utility;
 class UrlUtility extends AbstractUtility
 {
     /**
-     * Encodes an URL.
+     * Encodes a URL.
      *
      * @param string $url The URL
      * @return string The encoded URL
@@ -22,7 +22,7 @@ class UrlUtility extends AbstractUtility
     }
 
     /**
-     * Decodes an URL.
+     * Decodes a URL.
      *
      * @param string $url The URL
      * @return string The decoded URL

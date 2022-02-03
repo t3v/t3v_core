@@ -21,9 +21,7 @@ class GeneralUtility extends AbstractUtility
      */
     public static function getIdentifier(string $name, string $separator = '_'): string
     {
-        $slugify = new Slugify(['separator' => $separator]);
-
-        return $slugify->slugify($name);
+        return (new Slugify(['separator' => $separator]))->slugify($name);
     }
 
     /**

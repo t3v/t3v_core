@@ -19,8 +19,7 @@ class RendererUtility extends AbstractUtility
      *
      * @param string $template The template
      * @param string $format The optional format, `html` is used as default
-     * @return \TYPO3\CMS\Fluid\View\StandaloneView The renderer for the template
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return StandaloneView The renderer for the template
      */
     public function getFluidRendererForTemplate(string $template, string $format = 'html'): StandaloneView
     {

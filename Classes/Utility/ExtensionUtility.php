@@ -22,9 +22,8 @@ class ExtensionUtility extends AbstractUtility
     public static function getIdentifier(string $extensionKey): string
     {
         $identifier = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
-        $identifier = mb_strtolower($identifier);
 
-        return $identifier;
+        return mb_strtolower($identifier);
     }
 
     /**
