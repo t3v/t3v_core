@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace T3v\T3vCore\ViewHelpers\Traits;
 
 use T3v\T3vCore\Service\LocalizationService;
+use TYPO3\CMS\Extbase\Object\Exception;
 
 /**
  * The localization trait.
@@ -47,6 +48,7 @@ trait LocalizationTrait
      *
      * @param int|null $default The default language UID, defaults to `0`
      * @return int The language UID if available, otherwise the default one
+     * @throws Exception
      */
     protected function getLanguageUid(int $default = null): int
     {
@@ -60,6 +62,7 @@ trait LocalizationTrait
      *
      * @param int|null $default The default system language UID, defaults to `0`
      * @return int The system language UID if available, otherwise the default one
+     * @throws Exception
      */
     protected function getSysLanguageUid(int $default = null): int
     {

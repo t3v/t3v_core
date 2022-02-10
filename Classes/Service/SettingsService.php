@@ -17,6 +17,7 @@ class SettingsService extends AbstractService
      */
     public const STRICT_MODE = 'strict';
     public const FALLBACK_MODE = 'fallback';
+    public const FREE_MODE = 'free';
 
     /**
      * Checks if TYPO3voilà is running in `strict` mode.
@@ -58,6 +59,27 @@ class SettingsService extends AbstractService
         }
 
         return $fallbackMode;
+    }
+
+    /**
+     * Checks if TYPO3voilà is running in `free` mode.
+     *
+     * @return bool If TYPO3voilà is running in `free` mode
+     */
+    public function runningInFreeMode(): bool
+    {
+        $freeMode = false;
+        $settings = $this->getSettings();
+
+        if (is_array($settings) && !empty($settings)) {
+            $mode = $settings['mode'];
+
+            if ($mode === self::FREE_MODE) {
+                $freeMode = true;
+            }
+        }
+
+        return $freeMode;
     }
 
     /**
