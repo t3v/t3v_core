@@ -6,8 +6,8 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
-* Namespaced `DefaultViewHelper` and `ArrayViewHelper` under `Variable` (breaking change)
-* Deprecated `SlugViewHelper`
+* Deprecated and moved view helpers to `T3vBase`
+* Namespaced `Default` and `Array` view helper under `Variable` (breaking change)
 * Moved `plugin.tx_t3vcore.settings.mode` to `plugin.tx_t3v.settings.mode`
 * Added `Settings` service
 * Added `ContentObject` and `ContentElement` controller

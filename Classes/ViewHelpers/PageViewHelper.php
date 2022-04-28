@@ -5,15 +5,16 @@ namespace T3v\T3vCore\ViewHelpers;
 
 use T3v\T3vCore\Service\LocalizationService;
 use T3v\T3vCore\Service\PageService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\Exception;
 
 /**
  * The page view helper class.
  *
  * @package T3v\T3vCore\ViewHelpers
-  * @deprecated Use `T3v\T3vBase\ViewHelpers\PageViewHelper` instead, will be removed in a next major version.
-*/
+ * @deprecated Use `T3v\T3vBase\ViewHelpers\PageViewHelper` instead, will be removed in a next major version.
+ */
 class PageViewHelper extends AbstractViewHelper
 {
     /**
@@ -24,7 +25,7 @@ class PageViewHelper extends AbstractViewHelper
         parent::initializeArguments();
 
         $this->registerArgument('uid', 'int', 'The UID of the page', true);
-        $this->registerArgument('languageUid', 'int', 'The optional language UID', false);
+        $this->registerArgument('languageUid', 'int', 'The optional language UID');
     }
 
     /**
@@ -34,24 +35,18 @@ class PageViewHelper extends AbstractViewHelper
      * @param \Closure $renderChildrenClosure The render children closure
      * @param RenderingContextInterface $renderingContext The rendering context
      * @return array The page object
+     * @throws Exception
      * @noinspection PhpFullyQualifiedNameUsageInspection
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): array
-    {
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ): array {
         $uid = (int)$arguments['uid'];
         $languageUid = isset($arguments['languageUid']) ? (int)$arguments['languageUid'] : self::getLocalizationService()->getLanguageUid();
 
         return self::getPageService()->getPageByUid($uid, $languageUid);
-    }
-
-    /**
-     * Gets the page service.
-     *
-     * @return PageService The page service
-     */
-    protected static function getPageService(): PageService
-    {
-        return GeneralUtility::makeInstance(PageService::class);
     }
 
     /**
@@ -62,5 +57,15 @@ class PageViewHelper extends AbstractViewHelper
     protected static function getLocalizationService(): LocalizationService
     {
         return GeneralUtility::makeInstance(LocalizationService::class);
+    }
+
+    /**
+     * Gets the page service.
+     *
+     * @return PageService The page service
+     */
+    protected static function getPageService(): PageService
+    {
+        return GeneralUtility::makeInstance(PageService::class);
     }
 }

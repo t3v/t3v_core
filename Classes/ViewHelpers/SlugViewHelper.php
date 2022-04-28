@@ -44,6 +44,8 @@ class SlugViewHelper extends AbstractViewHelper
      */
     public function initializeArguments(): void
     {
+        parent::initializeArguments();
+
         $this->registerArgument('input', 'string', 'The input to generate a slug from', true, 'none');
         $this->registerArgument('separator', 'string', 'The optional separator, defaults to `-`', false, '-');
     }
