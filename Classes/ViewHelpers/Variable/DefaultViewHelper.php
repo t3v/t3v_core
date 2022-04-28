@@ -20,7 +20,7 @@ class DefaultViewHelper extends AbstractViewHelper
     public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('value', 'string', 'The value', false);
+        $this->registerArgument('value', 'string', 'The value');
         $this->registerArgument('default', 'string', 'The default value, defaults to `-`', false, '-');
     }
 
