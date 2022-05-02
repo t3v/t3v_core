@@ -46,17 +46,16 @@ class FileService extends AbstractService
     ];
 
     /**
-     * Saves a file to an uploads folder.
+     * Saves a file to an uploads' folder.
      *
      * @param object $file The file object
-     * @param string $uploadsFolderPath The uploads folder path
+     * @param string $uploadsFolderPath The uploads' folder path
      * @return string|null The file name of the saved file or null if the file could not be saved
-     * @throws \TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @throws InvalidFileNameException
      */
-    public function saveFile($file, string $uploadsFolderPath): ?string
+    public function saveFile(object $file, string $uploadsFolderPath): ?string
     {
-        if (!empty($file) && is_array($file) && !empty($uploadsFolderPath)) {
+        if (!empty($file) && !empty($uploadsFolderPath)) {
             $fileName = $file['name'];
             $temporaryFileName = $file['tmp_name'];
 
@@ -89,7 +88,7 @@ class FileService extends AbstractService
     }
 
     /**
-     * Gets an unique file name.
+     * Gets a unique file name.
      *
      * @param string $fileName The file name
      * @param string $directory The directory for which to return a unique file name for, MUST be a valid directory and should be absolute
@@ -97,9 +96,7 @@ class FileService extends AbstractService
      */
     public function getUniqueFileName(string $fileName, string $directory): string
     {
-        $basicFileUtility = GeneralUtility::makeInstance(BasicFileUtility::class);
-
-        return $basicFileUtility->getUniqueName($fileName, $directory);
+        return GeneralUtility::makeInstance(BasicFileUtility::class)->getUniqueName($fileName, $directory);
     }
 
     /**

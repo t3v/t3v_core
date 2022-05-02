@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Service;
 
 use TYPO3\CMS\Core\Context\Context;
@@ -10,7 +12,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @package T3v\T3vCore\Service
  */
-
 class ContextService extends AbstractService
 {
     public const SECTION_DATE = 'date';
@@ -53,13 +54,12 @@ class ContextService extends AbstractService
     /**
      * The context.
      *
-     * @var \TYPO3\CMS\Core\Context\Context
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var Context
      */
     protected $context;
 
     /**
-     * Constructs a context service.
+     * Constructs a new context service.
      */
     public function __construct()
     {
@@ -69,8 +69,7 @@ class ContextService extends AbstractService
     /**
      * Gets the context.
      *
-     * @return \TYPO3\CMS\Core\Context\Context The context
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return Context The context
      */
     public function getContext(): Context
     {
@@ -87,8 +86,6 @@ class ContextService extends AbstractService
      */
     public function getPropertyFromAspect(string $name, string $property, $default = null)
     {
-        $result = null;
-
         try {
             $result = $this->context->getPropertyFromAspect($name, $property, $default);
         } catch (AspectNotFoundException $exception) {

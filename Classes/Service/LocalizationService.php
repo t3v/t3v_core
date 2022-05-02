@@ -1,7 +1,11 @@
 <?php
+declare(strict_types=1);
+
 namespace T3v\T3vCore\Service;
 
-use TYPO3\CMS\Extbase\Object\Exception;
+use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The localization service class.
@@ -15,19 +19,29 @@ class LocalizationService extends AbstractService
      *
      * @param string|null $default The default language, defaults to `en`
      * @return string The current language if available, otherwise the default one
+     * @throws AspectNotFoundException
      */
     public function getLanguage(string $default = null): string
     {
         $language = $default ?: 'en';
 
         if (TYPO3_MODE === 'FE') {
-            if (isset($GLOBALS['TSFE']->lang)) {
-                $language = $GLOBALS['TSFE']->lang;
+            if (class_exists(Context::class)) {
+                $context = GeneralUtility::makeInstance(Context::class);
+                $site = $GLOBALS['TYPO3_REQUEST']->getAttribute('site');
+                $id = $context->getPropertyFromAspect('language', 'id');
+                $language = $site->getLanguageById($id);
+
+                return $language->getTwoLetterIsoCode();
             }
-        } elseif (is_object($GLOBALS['LANG'])) {
-            if (isset($GLOBALS['LANG']->lang)) {
-                $language = $GLOBALS['LANG']->lang;
+
+            if (is_object($GLOBALS['TSFE']) && isset($GLOBALS['TSFE']->lang)) {
+                return $GLOBALS['TSFE']->lang;
             }
+        }
+
+        if (is_object($GLOBALS['LANG']) && isset($GLOBALS['LANG']->lang)) {
+            return $GLOBALS['LANG']->lang;
         }
 
         return $language;
@@ -38,21 +52,24 @@ class LocalizationService extends AbstractService
      *
      * @param int|null $default The default language UID, defaults to `0`
      * @return int The current language UID if available, otherwise the default one
-     * @throws Exception
+     * @throws AspectNotFoundException
      */
     public function getLanguageUid(int $default = null): int
     {
         $languageUid = $default ?: 0;
 
         if (TYPO3_MODE === 'FE') {
-            return self::getObjectManager()->get(ContextService::class)->getPropertyFromAspect(
-                ContextService::SECTION_LANGUAGE,
-                ContextService::PROP_LANGUAGE_ID
-            );
+            if (class_exists(Context::class)) {
+                return GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('language', 'id');
+            }
+
+            if (is_object($GLOBALS['TSFE']) && isset($GLOBALS['TSFE']->sys_language_uid)) {
+                return $GLOBALS['TSFE']->sys_language_uid;
+            }
         }
 
         if (is_object($GLOBALS['LANG']) && isset($GLOBALS['LANG']->sys_language_uid)) {
-            $languageUid = $GLOBALS['LANG']->sys_language_uid;
+            return $GLOBALS['LANG']->sys_language_uid;
         }
 
         return $languageUid;
@@ -63,7 +80,7 @@ class LocalizationService extends AbstractService
      *
      * @param int|null $default The default system language UID, defaults to `0`
      * @return int The current system language UID if available, otherwise the default
-     * @throws Exception
+     * @throws AspectNotFoundException
      */
     public function getSysLanguageUid(int $default = null): int
     {
