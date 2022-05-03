@@ -5,6 +5,8 @@ namespace T3v\T3vCore\Domain\Repository;
 
 use T3v\T3vCore\Domain\Repository\Traits\LocalizationTrait;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
+use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -34,13 +36,12 @@ abstract class AbstractRepository extends Repository
      * Finds entities by UIDs.
      *
      * @param array|string $uids The UIDs, either as array or as string separated by `,`
+     * @param array $querySettings The optional query settings
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryInterface The result
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
-     * @noinspection PhpFullyQualifiedNameUsageInspection
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return array The result
+     * @throws InvalidQueryException
      */
-    public function findByUids($uids, bool $raw = false)
+    public function findByUids($uids, array $querySettings = [], bool $raw = false): array
     {
         if (!is_array($uids)) {
             $uids = GeneralUtility::intExplode(',', $uids, true);
@@ -50,8 +51,13 @@ abstract class AbstractRepository extends Repository
             return [];
         }
 
+        // Create the query:
         $query = $this->createQuery();
 
+        // Apply the passed query settings:
+        $query = $this->applyQuerySettings($query, $querySettings);
+
+        // Set the query constraints:
         $query->matching(
             $query->logicalAnd(
                 [
@@ -62,8 +68,10 @@ abstract class AbstractRepository extends Repository
             )
         );
 
+        // Execute the query:
         $result = $query->execute($raw)->toArray();
 
+        // Sort the result:
         usort(
             $result,
             static function (object $entityA, object $entityB) use ($uids) {
@@ -83,29 +91,28 @@ abstract class AbstractRepository extends Repository
      * @param array|string $pids The PIDs as array or as string, seperated by `,`
      * @param int $limit The optional limit, defaults to `0`
      * @param array $querySettings The optional query settings
-     * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|null The found objects or null if no objects were found
+     * @return QueryResult|null The found objects or null if no objects were found
      */
     public function findByPids(
         $pids,
         int $limit = 0,
         array $querySettings = ['respectSysLanguage' => true]
-    ): ?\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
-    {
+    ): ?QueryResult {
         if (is_string($pids)) {
             $pids = GeneralUtility::intExplode(',', $pids, true);
         }
 
         if (!empty($pids)) {
-            // Create query
+            // Create the query:
             $query = $this->createquery();
 
-            // Apply the passed query settings.
+            // Apply the passed query settings:
             $query = $this->applyQuerySettings($query, $querySettings);
 
-            // Set the query constraints.
+            // Set the query constraints:
             $query->matching($query->in('pid', $pids));
 
-            // Set the query limit if available.
+            // Set the query limit if available:
             if ($limit > 0) {
                 $query->setLimit($limit);
             }
@@ -115,7 +122,7 @@ abstract class AbstractRepository extends Repository
             // $orderings = $this->getOrderingsByField('pid', $pids);
             // $query->setOrderings($orderings);
 
-            // Execute the query.
+            // Execute the query:
             return $query->execute();
         }
 
@@ -132,6 +139,12 @@ abstract class AbstractRepository extends Repository
     protected function applyQuerySettings(QueryInterface $query, array $settings): object
     {
         if (!empty($settings)) {
+            $languageOverlayMode = $settings['languageOverlayMode'];
+
+            if (!empty($languageOverlayMode)) {
+                $query->getQuerySettings()->setLanguageOverlayMode($languageOverlayMode);
+            }
+
             $respectStoragePage = $settings['respectStoragePage'];
 
             if (is_bool($respectStoragePage)) {
@@ -142,15 +155,6 @@ abstract class AbstractRepository extends Repository
 
             if (is_bool($respectSysLanguage)) {
                 $query->getQuerySettings()->setRespectSysLanguage($respectSysLanguage);
-            }
-
-            $returnRawQueryResult = $settings['returnRawQueryResult'];
-
-            if (is_bool($returnRawQueryResult)) {
-                /**
-                 * TODO: QuerySettingsInterface::setReturnRawQueryResult() is removed without replacement
-                 */
-                // $query->getQuerySettings()->setReturnRawQueryResult($returnRawQueryResult);
             }
         }
 
@@ -171,7 +175,7 @@ abstract class AbstractRepository extends Repository
 
         if (!empty($values)) {
             foreach ($values as $value) {
-                $orderings["$field={$value}"] = $order;
+                $orderings["$field=$value"] = $order;
             }
         }
 

@@ -16,29 +16,15 @@ trait LocalizationTrait
     /**
      * The localization service.
      *
-     * @var \T3v\T3vCore\Service\LocalizationService
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var LocalizationService
      */
     protected $localizationService;
-
-    /**
-     * Injects the localization service.
-     *
-     * @param \T3v\T3vCore\Service\LocalizationService $localizationService The localization service
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
-     */
-    public function injectLocalizationService(LocalizationService $localizationService): void
-    {
-        $this->localizationService = $localizationService;
-    }
 
     /**
      * Initializes the object.
      */
     public function initializeObject(): void
     {
-        /** @var Typo3QuerySettings $querySettings */
-        /** @noinspection PhpUndefinedMethodInspection */
         $querySettings = $this->objectManager->get(Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(false);
 
@@ -62,5 +48,15 @@ trait LocalizationTrait
         // }
 
         $this->setDefaultQuerySettings($querySettings);
+    }
+
+    /**
+     * Injects the localization service.
+     *
+     * @param LocalizationService $localizationService The localization service
+     */
+    public function injectLocalizationService(LocalizationService $localizationService): void
+    {
+        $this->localizationService = $localizationService;
     }
 }
