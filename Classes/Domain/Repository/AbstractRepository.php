@@ -29,7 +29,7 @@ abstract class AbstractRepository extends Repository
      * Finds entities by UIDs.
      *
      * @param array|string $uids The UIDs, either as array or as string separated by `,`
-     * @param array $querySettings The optional query settings
+     * @param array $querySettings The optional query settings to apply
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
      * @return array The found entities
      * @throws InvalidQueryException
@@ -44,13 +44,13 @@ abstract class AbstractRepository extends Repository
             return [];
         }
 
-        // Create the query:
+        // Creates a new query:
         $query = $this->createQuery();
 
-        // Apply the passed query settings:
+        // Applies the passed query settings:
         $query = $this->applyQuerySettings($query, $querySettings);
 
-        // Set the query constraints:
+        // Sets the query constraints:
         $query->matching(
             $query->logicalAnd(
                 [
@@ -61,10 +61,10 @@ abstract class AbstractRepository extends Repository
             )
         );
 
-        // Execute the query:
+        // Executes the query:
         $result = $query->execute($raw)->toArray();
 
-        // Sort the result:
+        // Sorts the result:
         usort(
             $result,
             static function (object $entityA, object $entityB) use ($uids) {
@@ -83,7 +83,7 @@ abstract class AbstractRepository extends Repository
      *
      * @param array|string $pids The PIDs as array or as string, seperated by `,`
      * @param int $limit The optional limit, defaults to `0`
-     * @param array $querySettings The optional query settings
+     * @param array $querySettings The optional query settings to apply
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
      * @return array The found entities
      * @throws InvalidQueryException
@@ -98,13 +98,13 @@ abstract class AbstractRepository extends Repository
             return [];
         }
 
-        // Create the query:
+        // Creates a new query:
         $query = $this->createquery();
 
-        // Apply the passed query settings:
+        // Applies the passed query settings:
         $query = $this->applyQuerySettings($query, $querySettings);
 
-        // Set the query constraints:
+        // Sets the query constraints:
         $query->matching(
             $query->logicalAnd(
                 [
@@ -115,15 +115,15 @@ abstract class AbstractRepository extends Repository
             )
         );
 
-        // Set the query limit if available:
+        // Sets the query limit if available:
         if ($limit > 0) {
             $query->setLimit($limit);
         }
 
-        // Execute the query:
+        // Executes the query:
         $result = $query->execute($raw)->toArray();
 
-        // Sort the result:
+        // Sorts the result:
         usort(
             $result,
             static function (object $entityA, object $entityB) use ($pids) {
@@ -135,6 +135,54 @@ abstract class AbstractRepository extends Repository
         );
 
         return $result;
+    }
+
+    /**
+     * Gets a raw object by UID.
+     *
+     * @param int $uid The UID
+     * @param int $languageUid The language UID, defaults to `0`
+     * @param array $querySettings The optional query settings to apply
+     * @return object|null The raw object or null if no object was found
+     */
+    public function getRawObjectByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?object
+    {
+        if ($uid && $uid > 0) {
+            // Creates a new query:
+            $query = $this->createquery();
+
+            // Applies the passed query settings:
+            $query = $this->applyQuerySettings($query, $querySettings);
+
+            // Sets the passed language UID:
+            $settings = $query->getQuerySettings();
+            $settings->setLanguageUid($languageUid);
+
+            // Sets the query constraints:
+            $query->matching($query->equals('uid', $uid));
+
+            // Executes the query and gets a raw object:
+            $result = $query->execute(true);
+
+            return $result[0];
+        }
+
+        return null;
+    }
+
+    /**
+     * Gets a raw model by UID.
+     *
+     * Alias for `getRawObjectByUid`.
+     *
+     * @param int $uid The UID
+     * @param int $languageUid The language UID, defaults to `0`
+     * @param array $querySettings The optional query settings to apply
+     * @return object|null The raw model or null if no model was found
+     */
+    public function getRawModelByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?object
+    {
+        return $this->getRawObjectByUid($uid, $languageUid, $querySettings);
     }
 
     /**
