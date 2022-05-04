@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Domain\Repository;
 
-use T3v\T3vCore\Domain\Repository\Traits\LocalizationTrait;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -15,11 +15,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 abstract class AbstractRepository extends Repository
 {
-    /**
-     * Use the localization trait.
-     */
-    use LocalizationTrait;
-
     /**
      * The default orderings.
      *
@@ -36,7 +31,8 @@ abstract class AbstractRepository extends Repository
      * @param array|string $uids The UIDs, either as array or as string separated by `,`
      * @param array $querySettings The optional query settings
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
-     * @return array The result
+     * @return array The found entities
+     * @throws InvalidQueryException
      */
     public function findByUids($uids, array $querySettings = [], bool $raw = false): array
     {
@@ -83,13 +79,14 @@ abstract class AbstractRepository extends Repository
     }
 
     /**
-     * Finds objects by multiple PIDs.
+     * Finds entities by multiple PIDs.
      *
      * @param array|string $pids The PIDs as array or as string, seperated by `,`
      * @param int $limit The optional limit, defaults to `0`
      * @param array $querySettings The optional query settings
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
-     * @return array The found objects or null if no objects were found
+     * @return array The found entities
+     * @throws InvalidQueryException
      */
     public function findByPids($pids, int $limit = 0, array $querySettings = [], bool $raw = false): array
     {
@@ -145,9 +142,9 @@ abstract class AbstractRepository extends Repository
      *
      * @param QueryInterface $query The query
      * @param array $settings The settings to apply
-     * @return object The query with the applied settings
+     * @return QueryInterface The query with the applied settings
      */
-    protected function applyQuerySettings(QueryInterface $query, array $settings): object
+    protected function applyQuerySettings(QueryInterface $query, array $settings): QueryInterface
     {
         if (!empty($settings)) {
             $languageOverlayMode = $settings['languageOverlayMode'];

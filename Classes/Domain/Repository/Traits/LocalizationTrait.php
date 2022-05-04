@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Domain\Repository\Traits;
 
-use T3v\T3vCore\Service\LocalizationService;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 
 /**
@@ -14,49 +13,28 @@ use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 trait LocalizationTrait
 {
     /**
-     * The localization service.
+     * The TYPO3 query settings.
      *
-     * @var LocalizationService
+     * @var Typo3QuerySettings
      */
-    protected $localizationService;
+    protected $querySettings;
 
     /**
      * Initializes the object.
      */
     public function initializeObject(): void
     {
-        $querySettings = $this->objectManager->get(Typo3QuerySettings::class);
-        $querySettings->setRespectStoragePage(false);
-
-        // Switch by system language UID (Language Fallback Mapping)
-        //
-        // $sysLanguageUid = $this->localizationService->getSysLanguageUid();
-        //
-        // switch ($sysLanguageUid) {
-        //   case 0:
-        //     $querySettings->setLanguageUid(0);
-        //
-        //     break;
-        //
-        //   case 1:
-        //     $querySettings->setLanguageUid(1);
-        //
-        //     break;
-        //
-        //   default:
-        //     $querySettings->setLanguageUid(0);
-        // }
-
-        $this->setDefaultQuerySettings($querySettings);
+        $this->querySettings->setRespectStoragePage(false);
+        $this->setDefaultQuerySettings($this->querySettings);
     }
 
     /**
-     * Injects the localization service.
+     * Injects the query settings.
      *
-     * @param LocalizationService $localizationService The localization service
+     * @param Typo3QuerySettings $querySettings The query settings
      */
-    public function injectLocalizationService(LocalizationService $localizationService): void
+    public function injectQuerySettings(Typo3QuerySettings $querySettings): void
     {
-        $this->localizationService = $localizationService;
+        $this->querySettings = $querySettings;
     }
 }
