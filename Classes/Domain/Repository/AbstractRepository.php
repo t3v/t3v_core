@@ -5,8 +5,6 @@ namespace T3v\T3vCore\Domain\Repository;
 
 use T3v\T3vCore\Domain\Repository\Traits\LocalizationTrait;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
-use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -39,7 +37,6 @@ abstract class AbstractRepository extends Repository
      * @param array $querySettings The optional query settings
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
      * @return array The result
-     * @throws InvalidQueryException
      */
     public function findByUids($uids, array $querySettings = [], bool $raw = false): array
     {
@@ -91,42 +88,56 @@ abstract class AbstractRepository extends Repository
      * @param array|string $pids The PIDs as array or as string, seperated by `,`
      * @param int $limit The optional limit, defaults to `0`
      * @param array $querySettings The optional query settings
-     * @return QueryResult|null The found objects or null if no objects were found
+     * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
+     * @return array The found objects or null if no objects were found
      */
-    public function findByPids(
-        $pids,
-        int $limit = 0,
-        array $querySettings = ['respectSysLanguage' => true]
-    ): ?QueryResult {
+    public function findByPids($pids, int $limit = 0, array $querySettings = [], bool $raw = false): array
+    {
         if (is_string($pids)) {
             $pids = GeneralUtility::intExplode(',', $pids, true);
         }
 
-        if (!empty($pids)) {
-            // Create the query:
-            $query = $this->createquery();
-
-            // Apply the passed query settings:
-            $query = $this->applyQuerySettings($query, $querySettings);
-
-            // Set the query constraints:
-            $query->matching($query->in('pid', $pids));
-
-            // Set the query limit if available:
-            if ($limit > 0) {
-                $query->setLimit($limit);
-            }
-
-            // Set the orderings and maintain the list order.
-            // TODO: das funktioniert nicht mehr
-            // $orderings = $this->getOrderingsByField('pid', $pids);
-            // $query->setOrderings($orderings);
-
-            // Execute the query:
-            return $query->execute();
+        if (empty($pids)) {
+            return [];
         }
 
-        return null;
+        // Create the query:
+        $query = $this->createquery();
+
+        // Apply the passed query settings:
+        $query = $this->applyQuerySettings($query, $querySettings);
+
+        // Set the query constraints:
+        $query->matching(
+            $query->logicalAnd(
+                [
+                    $query->in('pid', $pids),
+                    $query->equals('hidden', 0),
+                    $query->equals('deleted', 0)
+                ]
+            )
+        );
+
+        // Set the query limit if available:
+        if ($limit > 0) {
+            $query->setLimit($limit);
+        }
+
+        // Execute the query:
+        $result = $query->execute($raw)->toArray();
+
+        // Sort the result:
+        usort(
+            $result,
+            static function (object $entityA, object $entityB) use ($pids) {
+                $indexA = array_search($entityA->getPid(), $pids, true);
+                $indexB = array_search($entityB->getPid(), $pids, true);
+
+                return ($indexA < $indexB) ? -1 : 1;
+            }
+        );
+
+        return $result;
     }
 
     /**
@@ -141,7 +152,7 @@ abstract class AbstractRepository extends Repository
         if (!empty($settings)) {
             $languageOverlayMode = $settings['languageOverlayMode'];
 
-            if (!empty($languageOverlayMode)) {
+            if (is_bool($languageOverlayMode) || is_string($languageOverlayMode)) {
                 $query->getQuerySettings()->setLanguageOverlayMode($languageOverlayMode);
             }
 
@@ -158,27 +169,8 @@ abstract class AbstractRepository extends Repository
             }
         }
 
+        $query->getQuerySettings()->setLanguageOverlayMode(false);
+
         return $query;
-    }
-
-    /**
-     * Gets the orderings by a field.
-     *
-     * @param string $field The field
-     * @param array $values The values
-     * @param string $order The optional order, defaults to `QueryInterface::ORDER_DESCENDING`
-     * @return array The orderings
-     */
-    protected function getOrderingsByField(string $field, array $values, string $order = QueryInterface::ORDER_DESCENDING): array
-    {
-        $orderings = [];
-
-        if (!empty($values)) {
-            foreach ($values as $value) {
-                $orderings["$field=$value"] = $order;
-            }
-        }
-
-        return $orderings;
     }
 }
