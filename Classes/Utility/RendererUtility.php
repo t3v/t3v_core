@@ -5,6 +5,7 @@ namespace T3v\T3vCore\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Object\Exception;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
@@ -20,11 +21,13 @@ class RendererUtility extends AbstractUtility
      * @param string $template The template
      * @param string $format The optional format, `html` is used as default
      * @return StandaloneView The renderer for the template
+     * @throws Exception
      */
     public function getFluidRendererForTemplate(string $template, string $format = 'html'): StandaloneView
     {
-        $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
+        $configurationManager = self::getConfigurationManager();
         $configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+
         $layoutRootPath = $configuration['view']['layoutRootPath'];
 
         if (empty($layoutRootPath)) {

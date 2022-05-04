@@ -21,30 +21,12 @@ trait LocalizationTrait
     protected $languageUid;
 
     /**
-     * The entity's intern language UID.
-     *
-     * @var int
-     */
-    protected $_languageUid;
-
-    /**
      * The localization factory.
      *
      * @var \TYPO3\CMS\Core\Localization\LocalizationFactory
      * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     protected $localizationFactory;
-
-    /**
-     * Injects the localization factory.
-     *
-     * @param \TYPO3\CMS\Core\Localization\LocalizationFactory $localizationFactory The localization factory
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
-     */
-    public function injectLocalizationFactory(LocalizationFactory $localizationFactory): void
-    {
-        $this->localizationFactory = $localizationFactory;
-    }
 
     /**
      * Returns the entity's language UID.
@@ -67,6 +49,16 @@ trait LocalizationTrait
     }
 
     /**
+     * Injects the localization factory.
+     *
+     * @param LocalizationFactory $localizationFactory The localization factory
+     */
+    public function injectLocalizationFactory(LocalizationFactory $localizationFactory): void
+    {
+        $this->localizationFactory = $localizationFactory;
+    }
+
+    /**
      * Gets localizations from the standard translation file (`~Resources/Private/Language/locallang.xlf`).
      *
      * @param string $languageKey The optional language key, defaults to `default`
@@ -77,9 +69,8 @@ trait LocalizationTrait
         $localLang = ExtensionManagementUtility::extPath(static::EXTENSION_KEY, 'Resources/Private/Language/locallang.xlf');
         $localizations = $this->localizationFactory->getParsedData($localLang, $languageKey);
         $localizations = $this->getLabelsByLanguageKey($localizations, $languageKey);
-        $localizations = $this->getLabelsFromTarget($localizations);
 
-        return $localizations;
+        return $this->getLabelsFromTarget($localizations);
     }
 
     /**

@@ -48,12 +48,12 @@ class FileService extends AbstractService
     /**
      * Saves a file to an uploads' folder.
      *
-     * @param object $file The file object
+     * @param array $file The file
      * @param string $uploadsFolderPath The uploads' folder path
      * @return string|null The file name of the saved file or null if the file could not be saved
      * @throws InvalidFileNameException
      */
-    public function saveFile(object $file, string $uploadsFolderPath): ?string
+    public function saveFile(array $file, string $uploadsFolderPath): ?string
     {
         if (!empty($file) && !empty($uploadsFolderPath)) {
             $fileName = $file['name'];

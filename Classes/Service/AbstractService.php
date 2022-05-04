@@ -6,6 +6,7 @@ namespace T3v\T3vCore\Service;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Object\Exception;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
@@ -19,8 +20,7 @@ abstract class AbstractService implements SingletonInterface
     /**
      * Gets the object manager.
      *
-     * @return \TYPO3\CMS\Extbase\Object\ObjectManager The object manager
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return ObjectManager The object manager
      */
     protected static function getObjectManager(): ObjectManager
     {
@@ -30,8 +30,8 @@ abstract class AbstractService implements SingletonInterface
     /**
      * Gets the configuration manager.
      *
-     * @return \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface The configuration manager
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return ConfigurationManagerInterface The configuration manager
+     * @throws Exception
      */
     protected static function getConfigurationManager(): ConfigurationManagerInterface
     {
@@ -41,11 +41,23 @@ abstract class AbstractService implements SingletonInterface
     /**
      * Gets the content object renderer.
      *
-     * @return \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer The content object renderer
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return ContentObjectRenderer The content object renderer
+     * @throws Exception
+     */
+    protected static function getContentObjectRenderer(): ContentObjectRenderer
+    {
+        return self::getObjectManager()->get(ContentObjectRenderer::class);
+    }
+
+    /**
+     * Gets the content object.
+     *
+     * @return ContentObjectRenderer The content object, respectively renderer
+     * @throws Exception
+     * @deprecated Use `getContentObjectRenderer` function instead
      */
     protected static function getContentObject(): ContentObjectRenderer
     {
-        return self::getObjectManager()->get(ContentObjectRenderer::class);
+        return self::getContentObjectRenderer();
     }
 }

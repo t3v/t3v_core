@@ -79,14 +79,14 @@ class MailService extends AbstractService
                 $address = trim($recipient['address']);
 
                 if ($i === 0) { // The first recipient
-                    // Add the first recipient to `To`
+                    // Adds the first recipient to `To`:
                     if (!empty($name)) {
                         $toRecipients[$address] = $name;
                     } else {
                         $toRecipients[] = $address;
                     }
                 } else { // The other recipients
-                    // Add the other recipients to `Cc`
+                    // Adds the other recipients to `Cc`:
                     if (!empty($name)) {
                         $ccRecipients[$address] = $name;
                     } else {
@@ -155,7 +155,17 @@ class MailService extends AbstractService
         // === Message ===
 
         if (!empty($message)) {
-            $mail->setBody($message, $format);
+            switch ($format) {
+                case 'text/html':
+                    $mail->setBody()->html($message);
+
+                    break;
+
+                case 'text/plain':
+                    $mail->setBody()->text($message);
+
+                    break;
+            }
         } else {
             return false;
         }
