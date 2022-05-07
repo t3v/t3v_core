@@ -6,6 +6,7 @@ namespace T3v\T3vCore\Domain\Repository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -31,7 +32,7 @@ abstract class AbstractRepository extends Repository
      * @param array|string $uids The UIDs, either as array or as string separated by `,`
      * @param array $querySettings The optional query settings to apply
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
-     * @return array The found entities
+     * @return array The found entities, sorted by the passed UIDs
      * @throws InvalidQueryException
      */
     public function findByUids($uids, array $querySettings = [], bool $raw = false): array
@@ -79,13 +80,50 @@ abstract class AbstractRepository extends Repository
     }
 
     /**
+     * Finds entities by PID.
+     *
+     * @param int $pid The PID
+     * @param array $querySettings The optional query settings to apply
+     * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
+     * @param int $limit The optional limit, defaults to `0`
+     * @return QueryResultInterface The found entities
+     */
+    public function findByPid(int $pid, array $querySettings = [], bool $raw = false, int $limit = 0): QueryResultInterface
+    {
+        // Creates a new query:
+        $query = $this->createquery();
+
+        // Applies the passed query settings:
+        $query = $this->applyQuerySettings($query, $querySettings);
+
+        // Sets the query constraints:
+        $query->matching(
+            $query->logicalAnd(
+                [
+                    $query->equals('pid', $pid),
+                    $query->equals('hidden', 0),
+                    $query->equals('deleted', 0)
+                ]
+            )
+        );
+
+        // Sets the query limit if available:
+        if ($limit > 0) {
+            $query->setLimit($limit);
+        }
+
+        // Executes the query and returns the result:
+        return $query->execute($raw);
+    }
+
+    /**
      * Finds entities by multiple PIDs.
      *
      * @param array|string $pids The PIDs as array or as string, seperated by `,`
      * @param int $limit The optional limit, defaults to `0`
      * @param array $querySettings The optional query settings to apply
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
-     * @return array The found entities
+     * @return array The found entities, sorted by the passed PIDs
      * @throws InvalidQueryException
      */
     public function findByPids($pids, int $limit = 0, array $querySettings = [], bool $raw = false): array
@@ -155,13 +193,15 @@ abstract class AbstractRepository extends Repository
             $query = $this->applyQuerySettings($query, $querySettings);
 
             // Sets the passed language UID:
-            $settings = $query->getQuerySettings();
-            $settings->setLanguageUid($languageUid);
+            if ($languageUid > 0) {
+                $settings = $query->getQuerySettings();
+                $settings->setLanguageUid($languageUid);
+            }
 
             // Sets the query constraints:
             $query->matching($query->equals('uid', $uid));
 
-            // Executes the query and gets a raw object:
+            // Executes the query and gets the raw object:
             $result = $query->execute(true);
 
             return $result[0];
@@ -178,9 +218,9 @@ abstract class AbstractRepository extends Repository
      * @param int $uid The UID
      * @param int $languageUid The language UID, defaults to `0`
      * @param array $querySettings The optional query settings to apply
-     * @return object|null The raw model or null if no model was found
+     * @return array|null The raw object or null if no object was found
      */
-    public function getRawModelByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?object
+    public function getRawModelByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?array
     {
         return $this->getRawObjectByUid($uid, $languageUid, $querySettings);
     }
@@ -213,8 +253,6 @@ abstract class AbstractRepository extends Repository
                 $query->getQuerySettings()->setRespectSysLanguage($respectSysLanguage);
             }
         }
-
-        $query->getQuerySettings()->setLanguageOverlayMode(false);
 
         return $query;
     }
