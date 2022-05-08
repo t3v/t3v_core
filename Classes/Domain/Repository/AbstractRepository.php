@@ -27,12 +27,32 @@ abstract class AbstractRepository extends Repository
     ];
 
     /**
+     * Finds an entity by UID with query settings.
+     *
+     * @param int $uid The UID
+     * @param array $querySettings The query settings to apply
+     * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
+     * @return object|null The found entity or null if no entity was found
+     */
+    public function findByUidWithQuerySettings(int $uid, array $querySettings, bool $raw = false): ?object
+    {
+        // Creates a new query:
+        $query = $this->createQuery();
+
+        // Applies the passed query settings:
+        $query = $this->applyQuerySettings($query, $querySettings);
+
+        // Executes the query and returns the result:
+        return $query->matching($query->equals('uid', $uid))->execute($raw)->getFirst();
+    }
+
+    /**
      * Finds entities by UIDs.
      *
      * @param array|string $uids The UIDs, either as array or as string separated by `,`
      * @param array $querySettings The optional query settings to apply
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
-     * @return array The found entities, sorted by the passed UIDs
+     * @return array The found entities sorted by the passed UIDs
      * @throws InvalidQueryException
      */
     public function findByUids($uids, array $querySettings = [], bool $raw = false): array
@@ -48,8 +68,10 @@ abstract class AbstractRepository extends Repository
         // Creates a new query:
         $query = $this->createQuery();
 
-        // Applies the passed query settings:
-        $query = $this->applyQuerySettings($query, $querySettings);
+        // Applies the optional query settings:
+        if (!empty($querySettings)) {
+            $query = $this->applyQuerySettings($query, $querySettings);
+        }
 
         // Sets the query constraints:
         $query->matching(
@@ -93,8 +115,10 @@ abstract class AbstractRepository extends Repository
         // Creates a new query:
         $query = $this->createquery();
 
-        // Applies the passed query settings:
-        $query = $this->applyQuerySettings($query, $querySettings);
+        // Applies the optional query settings:
+        if (!empty($querySettings)) {
+            $query = $this->applyQuerySettings($query, $querySettings);
+        }
 
         // Sets the query constraints:
         $query->matching(
@@ -123,7 +147,7 @@ abstract class AbstractRepository extends Repository
      * @param int $limit The optional limit, defaults to `0`
      * @param array $querySettings The optional query settings to apply
      * @param bool $raw Whether to get the raw result without performing overlays, defaults to `false`
-     * @return array The found entities, sorted by the passed PIDs
+     * @return array The found entities sorted by the passed PIDs
      * @throws InvalidQueryException
      */
     public function findByPids($pids, int $limit = 0, array $querySettings = [], bool $raw = false): array
@@ -139,8 +163,10 @@ abstract class AbstractRepository extends Repository
         // Creates a new query:
         $query = $this->createquery();
 
-        // Applies the passed query settings:
-        $query = $this->applyQuerySettings($query, $querySettings);
+        // Applies the optional query settings:
+        if (!empty($querySettings)) {
+            $query = $this->applyQuerySettings($query, $querySettings);
+        }
 
         // Sets the query constraints:
         $query->matching(
@@ -189,12 +215,14 @@ abstract class AbstractRepository extends Repository
             // Creates a new query:
             $query = $this->createquery();
 
-            // Applies the passed query settings:
-            $query = $this->applyQuerySettings($query, $querySettings);
-
             // Sets the passed language UID:
             if ($languageUid > 0) {
                 $query->getQuerySettings()->setLanguageUid($languageUid);
+            }
+
+            // Applies the optional query settings:
+            if (!empty($querySettings)) {
+                $query = $this->applyQuerySettings($query, $querySettings);
             }
 
             // Sets the query constraints:
