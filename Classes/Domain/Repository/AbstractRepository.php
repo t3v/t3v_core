@@ -229,7 +229,7 @@ abstract class AbstractRepository extends Repository
             $query->matching($query->equals('uid', $uid));
 
             // Executes the query and gets the raw object:
-            return $query->execute(true)->getFirst();
+            return $query->execute(true)[0];
         }
 
         return null;
