@@ -14,17 +14,9 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 trait LocalizationTrait
 {
     /**
-     * The entity's language UID.
-     *
-     * @var int
-     */
-    protected $languageUid;
-
-    /**
      * The localization factory.
      *
-     * @var \TYPO3\CMS\Core\Localization\LocalizationFactory
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var LocalizationFactory
      */
     protected $localizationFactory;
 

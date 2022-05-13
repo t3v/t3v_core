@@ -114,6 +114,16 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
     }
 
     /**
+     * Sets the entity's system language UID.
+     *
+     * @param int $sysLanguageUid The entity's system language UID
+     */
+    public function setSysLanguageUid(int $sysLanguageUid): void
+    {
+        $this->sysLanguageUid = $sysLanguageUid;
+    }
+
+    /**
      * Returns the entity's L10n parent.
      *
      * @return int|null The entity's L10n parent
