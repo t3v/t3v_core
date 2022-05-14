@@ -207,9 +207,9 @@ abstract class AbstractRepository extends Repository
      * @param int $uid The UID
      * @param int $languageUid The language UID, defaults to `0`
      * @param array $querySettings The optional query settings to apply
-     * @return object|null The raw object or null if no object was found
+     * @return array|null The raw object or null if no object was found
      */
-    public function getRawObjectByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?object
+    public function getRawObjectByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?array
     {
         if ($uid && $uid > 0) {
             // Creates a new query:
@@ -243,9 +243,9 @@ abstract class AbstractRepository extends Repository
      * @param int $uid The UID
      * @param int $languageUid The language UID, defaults to `0`
      * @param array $querySettings The optional query settings to apply
-     * @return object|null The raw object or null if no object was found
+     * @return array|null The raw object or null if no object was found
      */
-    public function getRawModelByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?object
+    public function getRawModelByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?array
     {
         return $this->getRawObjectByUid($uid, $languageUid, $querySettings);
     }
