@@ -196,7 +196,6 @@ class PageService extends AbstractService
      * @param int $recursion The optional recursion level, defaults to `1`
      * @param bool $exclude If set, the entry page should be excluded, defaults to `true`
      * @return array The subpages UIDs or empty if no subpages UIDs were found
-     * @throws AspectNotFoundException
      */
     public function getSubpagesUids(int $pid, int $recursion = 1, bool $exclude = true): array
     {
@@ -204,11 +203,9 @@ class PageService extends AbstractService
         $treeList = $this->getTreeList($pid, $recursion);
         $recordUids = GeneralUtility::intExplode(',', $treeList, true);
 
-        if ($recordUids) {
+        if (!empty($recordUids)) {
             foreach ($recordUids as $recordUid) {
-                if ($this->getPage($recordUid)) {
-                    $subpagesUids[] = $recordUid;
-                }
+                $subpagesUids[] = $recordUid;
             }
         }
 
