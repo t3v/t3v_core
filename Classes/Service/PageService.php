@@ -3,10 +3,15 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Service;
 
+use Exception;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryHelper;
+use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Database\QueryGenerator;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\RootlineUtility;
-use TYPO3\CMS\Frontend\Page\PageRepository;
 
 /**
  * The page service class.
@@ -28,24 +33,21 @@ class PageService extends AbstractService
     /**
      * The page repository.
      *
-     * @var \TYPO3\CMS\Frontend\Page\PageRepository
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var PageRepository
      */
     protected $pageRepository;
 
     /**
      * The query generator.
      *
-     * @var \TYPO3\CMS\Core\Database\QueryGenerator
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var QueryGenerator
      */
     protected $queryGenerator;
 
     /**
      * The localization service.
      *
-     * @var \T3v\T3vCore\Service\LocalizationService
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var LocalizationService
      */
     protected $localizationService;
 
@@ -60,28 +62,16 @@ class PageService extends AbstractService
     }
 
     /**
-     * Gets the current page.
-     *
-     * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
-     * @return array|null The row for the page or null if no page was found
-     */
-    public function getCurrentPage(int $languageUid = null): ?array
-    {
-        $uid = (int)$GLOBALS['TSFE']->id;
-
-        return $this->getPage($uid, $languageUid);
-    }
-
-    /**
      * Gets a page.
      *
      * @param int $uid The UID of the page
      * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array|null The row for the page or null if no page was found
+     * @throws AspectNotFoundException
      */
     public function getPage(int $uid, int $languageUid = null): ?array
     {
-        $page = null;
+        $page = [];
         $record = $this->pageRepository->getPage($uid);
 
         if (is_array($record) && !empty($record)) {
@@ -104,9 +94,24 @@ class PageService extends AbstractService
      * @param int $uid The UID of the page
      * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array|null The row for the page or null if no page was found
+     * @throws AspectNotFoundException
      */
     public function getPageByUid(int $uid, int $languageUid = null): ?array
     {
+        return $this->getPage($uid, $languageUid);
+    }
+
+    /**
+     * Gets the current page.
+     *
+     * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
+     * @return array|null The row for the page or null if no page was found
+     * @throws AspectNotFoundException
+     */
+    public function getCurrentPage(int $languageUid = null): ?array
+    {
+        $uid = (int)$GLOBALS['TSFE']->id;
+
         return $this->getPage($uid, $languageUid);
     }
 
@@ -116,6 +121,7 @@ class PageService extends AbstractService
      * @param array|string $uids The UIDs as array or as string, separated by `,`
      * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array The pages or empty if no pages were found
+     * @throws AspectNotFoundException
      */
     public function getPages($uids, int $languageUid = null): array
     {
@@ -144,6 +150,7 @@ class PageService extends AbstractService
      * @param array|string $uids The UIDs as array or as string, separated by `,`
      * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array The pages or empty if no pages were found
+     * @throws AspectNotFoundException
      */
     public function getPagesByUids($uids, int $languageUid = null): array
     {
@@ -158,6 +165,7 @@ class PageService extends AbstractService
      * @param bool $exclude If set, the entry page should be excluded, defaults to `true`
      * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array The subpages or empty if no subpages were found
+     * @throws AspectNotFoundException
      */
     public function getSubpages(int $pid, int $recursion = 1, bool $exclude = true, int $languageUid = null): array
     {
@@ -184,11 +192,12 @@ class PageService extends AbstractService
      * @param int $recursion The recursion level, defaults to `1`
      * @param bool $exclude If set, the entry page should be excluded, defaults to `true`
      * @return array The subpages UIDs or empty if no subpages UIDs were found
+     * @throws AspectNotFoundException
      */
     public function getSubpagesUids(int $pid, int $recursion = 1, bool $exclude = true): array
     {
         $subpagesUids = [];
-        $treeList = $this->queryGenerator->getTreeList($pid, $recursion, 0, 1);
+        $treeList = $this->getTreeList($pid, $recursion);
         $recordUids = GeneralUtility::intExplode(',', $treeList, true);
 
         if ($recordUids) {
@@ -207,23 +216,70 @@ class PageService extends AbstractService
     }
 
     /**
+     * Recursively fetches all descendants of a given page.
+     *
+     * @param int $uid The UID of the page
+     * @param int $depth The depth
+     * @param int $begin Where to search from
+     * @param string $permClause The perm clause
+     * @return string Comma separated list of descendant pages
+     */
+    public function getTreeList(int $uid, int $depth, int $begin = 0, string $permClause = ''): string
+    {
+        if ($begin === 0) {
+            $treeList = $uid;
+        } else {
+            $treeList = '';
+        }
+
+        if ($uid && $depth > 0) {
+            $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
+            $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+            $queryBuilder
+                ->select('uid')
+                ->from('pages')
+                ->where(
+                    $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)),
+                    $queryBuilder->expr()->eq('sys_language_uid', 0)
+                )
+                ->orderBy('uid');
+
+            if (!empty($permClause)) {
+                $queryBuilder->andWhere(QueryHelper::stripLogicalOperatorPrefix($permClause));
+            }
+
+            $statement = $queryBuilder->execute();
+
+            while ($row = $statement->fetch()) {
+                if ($begin <= 0) {
+                    $treeList .= ',' . $row['uid'];
+                }
+
+                if ($depth > 1) {
+                    $subTreeList = $this->getTreeList($row['uid'], $depth - 1, $begin - 1, $permClause);
+
+                    if (!empty($treeList) && !empty($subTreeList) && ($subTreeList[0] !== ',')) {
+                        $treeList .= ',';
+                    }
+
+                    $treeList .= $subTreeList;
+                }
+            }
+        }
+
+        return $treeList;
+    }
+
+    /**
      * Gets the backend layout for a page.
      *
      * @param int $uid The UID of the page
      * @return string|null The backend layout or null if no backend layout was found
-     * @throws \Exception
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @throws Exception
      */
     public function getBackendLayoutForPage(int $uid): ?string
     {
-        /**
-         * deprecated
-         */
-        // $rootLine = $this->pageRepository->getRootLine($uid);
-        $rootLine = GeneralUtility::makeInstance(
-            RootlineUtility::class,
-            $uid, ''
-        )->get();
+        $rootLine = GeneralUtility::makeInstance(RootlineUtility::class, $uid)->get();
 
         if ($rootLine) {
             $index = -1;
