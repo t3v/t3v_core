@@ -8,6 +8,7 @@ use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryHelper;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
+use TYPO3\CMS\Core\Database\Query\Restriction\WorkspaceRestriction;
 use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -217,11 +218,11 @@ class PageService extends AbstractService
     }
 
     /**
-     * Recursively fetches all descendants of a given page.
+     * Recursively fetches all descendant pages of a given page.
      *
      * @param int $uid The UID of the page
      * @param int $depth The depth
-     * @param int $begin The optional beginning, defaults to `0`
+     * @param int $begin The optional begin, defaults to `0`
      * @param string $permissionClause The optional permission clause, default to ``
      * @return string A comma separated list of descendant pages
      */
@@ -234,11 +235,13 @@ class PageService extends AbstractService
         }
 
         if ($uid && $depth > 0) {
-            $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
+            $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
+            $queryBuilder = $connectionPool->getQueryBuilderForTable('pages');
+
             $queryBuilder
                 ->getRestrictions()
                 ->removeAll()
-                ->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+                ->add(GeneralUtility::makeInstance(WorkspaceRestriction::class, 0));
 
             $queryBuilder
                 ->select('uid')
@@ -290,7 +293,6 @@ class PageService extends AbstractService
      *
      * @param int $uid The UID of the page
      * @return string|null The backend layout or null if no backend layout was found
-     * @throws Exception
      */
     public function getBackendLayoutForPage(int $uid): ?string
     {
