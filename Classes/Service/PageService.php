@@ -89,7 +89,9 @@ class PageService extends AbstractService
     }
 
     /**
-     * Gets a page by UID, alias for `getPage`.
+     * Gets a page by UID.
+     *
+     * Alias for the `getPage` function.
      *
      * @param int $uid The UID of the page
      * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
@@ -145,7 +147,9 @@ class PageService extends AbstractService
     }
 
     /**
-     * Gets pages by UIDs, alias for `getPages`.
+     * Gets pages by UIDs.
+     *
+     * Alias for the `getPages` function.
      *
      * @param array|string $uids The UIDs as array or as string, separated by `,`
      * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
@@ -161,7 +165,7 @@ class PageService extends AbstractService
      * Gets the subpages of a page.
      *
      * @param int $pid The PID of the entry page to search from
-     * @param int $recursion The recursion, defaults to `1`
+     * @param int $recursion The optional recursion, defaults to `1`
      * @param bool $exclude If set, the entry page should be excluded, defaults to `true`
      * @param int|null $languageUid The optional language UID, defaults to the UID of the current system language
      * @return array The subpages or empty if no subpages were found
@@ -189,7 +193,7 @@ class PageService extends AbstractService
      * Gets the UIDs of the subpages of a page.
      *
      * @param int $pid The PID of the entry page to search from
-     * @param int $recursion The recursion level, defaults to `1`
+     * @param int $recursion The optional recursion level, defaults to `1`
      * @param bool $exclude If set, the entry page should be excluded, defaults to `true`
      * @return array The subpages UIDs or empty if no subpages UIDs were found
      * @throws AspectNotFoundException
@@ -220,43 +224,57 @@ class PageService extends AbstractService
      *
      * @param int $uid The UID of the page
      * @param int $depth The depth
-     * @param int $begin Where to search from
-     * @param string $permClause The perm clause
-     * @return string Comma separated list of descendant pages
+     * @param int $begin The optional beginning, defaults to `0`
+     * @param string $permissionClause The optional permission clause, default to ``
+     * @return string A comma separated list of descendant pages
      */
-    public function getTreeList(int $uid, int $depth, int $begin = 0, string $permClause = ''): string
+    public function getTreeList(int $uid, int $depth, int $begin = 0, string $permissionClause = ''): string
     {
         if ($begin === 0) {
-            $treeList = $uid;
+            $treeList = (string)$uid;
         } else {
             $treeList = '';
         }
 
         if ($uid && $depth > 0) {
             $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
-            $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+            $queryBuilder
+                ->getRestrictions()
+                ->removeAll()
+                ->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+
             $queryBuilder
                 ->select('uid')
                 ->from('pages')
                 ->where(
-                    $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)),
-                    $queryBuilder->expr()->eq('sys_language_uid', 0)
+                    $queryBuilder->expr()->eq(
+                        'pid',
+                        $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)
+                    ),
+                    $queryBuilder->expr()->in(
+                        'doktype',
+                        $queryBuilder->createNamedParameter(self::PAGE_DOKTYPES, \PDO::PARAM_INT)
+                    ),
+                    $queryBuilder->expr()->eq(
+                        'sys_language_uid',
+                        0
+                    )
                 )
                 ->orderBy('uid');
 
-            if (!empty($permClause)) {
-                $queryBuilder->andWhere(QueryHelper::stripLogicalOperatorPrefix($permClause));
+            if (!empty($permissionClause)) {
+                $queryBuilder->andWhere(QueryHelper::stripLogicalOperatorPrefix($permissionClause));
             }
 
-            $statement = $queryBuilder->execute();
+            $result = $queryBuilder->execute();
 
-            while ($row = $statement->fetch()) {
+            while ($row = $result->fetch()) {
                 if ($begin <= 0) {
                     $treeList .= ',' . $row['uid'];
                 }
 
                 if ($depth > 1) {
-                    $subTreeList = $this->getTreeList($row['uid'], $depth - 1, $begin - 1, $permClause);
+                    $subTreeList = $this->getTreeList($row['uid'], $depth - 1, $begin - 1, $permissionClause);
 
                     if (!empty($treeList) && !empty($subTreeList) && ($subTreeList[0] !== ',')) {
                         $treeList .= ',';
