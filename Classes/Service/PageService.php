@@ -3,11 +3,10 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Service;
 
-use Exception;
+use PDO;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryHelper;
-use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Database\Query\Restriction\WorkspaceRestriction;
 use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
@@ -29,7 +28,10 @@ class PageService extends AbstractService
     /**
      * The page doktypes.
      */
-    public const PAGE_DOKTYPES = [1, 2];
+    public const PAGE_DOKTYPES = [
+        PageRepository::DOKTYPE_DEFAULT,
+        PageRepository::DOKTYPE_SYSFOLDER
+    ];
 
     /**
      * The page repository.
@@ -75,14 +77,12 @@ class PageService extends AbstractService
         $page = [];
         $record = $this->pageRepository->getPage($uid);
 
-        if (is_array($record) && !empty($record)) {
-            if (in_array($record['doktype'], self::PAGE_DOKTYPES, true)) {
-                $page = $record;
-                $languageUid = $languageUid ?? $this->localizationService->getLanguageUid();
+        if (is_array($record) && !empty($record) && in_array($record['doktype'], self::PAGE_DOKTYPES, true)) {
+            $page = $record;
+            $languageUid = $languageUid ?? $this->localizationService->getLanguageUid();
 
-                if ($languageUid > 0) {
-                    $page = $this->pageRepository->getPageOverlay($page, $languageUid);
-                }
+            if ($languageUid > 0) {
+                $page = $this->pageRepository->getPageOverlay($page, $languageUid);
             }
         }
 
@@ -249,11 +249,11 @@ class PageService extends AbstractService
                 ->where(
                     $queryBuilder->expr()->eq(
                         'pid',
-                        $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)
+                        $queryBuilder->createNamedParameter($uid, PDO::PARAM_INT)
                     ),
                     $queryBuilder->expr()->in(
                         'doktype',
-                        $queryBuilder->createNamedParameter(self::PAGE_DOKTYPES, \PDO::PARAM_INT)
+                        self::PAGE_DOKTYPES
                     ),
                     $queryBuilder->expr()->eq(
                         'sys_language_uid',
