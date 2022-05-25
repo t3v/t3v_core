@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Service;
 
+use DateTimeImmutable;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -77,7 +78,7 @@ class ContextService extends AbstractService
     }
 
     /**
-     * Returns a property from an aspect but only if the property is found.
+     * Gets the property from an aspect but only if the property is found.
      *
      * @param string $name The name
      * @param string $property The property
@@ -96,7 +97,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return int
+     * Gets the date time stamp.
+     *
+     * @return int The date time stamp
      */
     public function getDateTimestamp(): int
     {
@@ -107,7 +110,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return string
+     * Gets the date time zone.
+     *
+     * @return string The date time zone
      */
     public function getDateTimezone(): string
     {
@@ -118,7 +123,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return string
+     * Gets the date iso.
+     *
+     * @return string The date iso
      */
     public function getDateIso(): string
     {
@@ -129,10 +136,11 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return \DateTimeImmutable
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * Gets the date time immutable.
+     *
+     * @return DateTimeImmutable The date time immutable
      */
-    public function getDateFull(): \DateTimeImmutable
+    public function getDateFull(): DateTimeImmutable
     {
         return $this->getPropertyFromAspect(
             self::SECTION_DATE,
@@ -141,7 +149,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return int
+     * Gets the language uid.
+     *
+     * @return int The language uid
      */
     public function getLanguageId(): int
     {
@@ -152,7 +162,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return int
+     * Gets the language content uid.
+     *
+     * @return int The language content uid
      */
     public function getLanguageContentId(): int
     {
@@ -163,7 +175,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return string
+     * Gets the language fallback chain.
+     *
+     * @return string The language fallback chain
      */
     public function getLanguageFallbackChain(): string
     {
@@ -174,7 +188,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return string
+     * Gets the language overlay type.
+     *
+     * @return string The language overlay type
      */
     public function getLanguageOverlayType(): string
     {
@@ -185,7 +201,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return string
+     * Gets the language legacy language mode.
+     *
+     * @return string The language legacy language mode
      */
     public function getLanguageLegacyLanguageMode(): string
     {
@@ -196,7 +214,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return string
+     * Gets the language legacy overlay type.
+     *
+     * @return string The language legacy overlay type
      */
     public function getLanguageLegacyOverlayType(): string
     {
@@ -207,7 +227,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return int
+     * Gets the backend user ID.
+     *
+     * @return int The backend user ID
      */
     public function getUserBackendId(): int
     {
@@ -218,7 +240,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return string
+     * Gets the backend username.
+     *
+     * @return string The backend username
      */
     public function getUserBackendUsername(): string
     {
@@ -229,7 +253,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return bool
+     * Gets if the backend user is an admin.
+     *
+     * @return bool If the backend user is an admin
      */
     public function isUserBackendIsAdmin(): bool
     {
@@ -240,7 +266,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return array
+     * Gets the group IDs from the backend user.
+     *
+     * @return array The group IDs from the backend user
      */
     public function getUserBackendGroupIds(): array
     {
@@ -251,7 +279,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return bool
+     * Gets if frontend user is logged in.
+     *
+     * @return bool If frontend user is logged in
      */
     public function isUserFrontendIsLoggedIn(): bool
     {
@@ -262,18 +292,22 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return array
+     * Gets if the frontend user is an admin.
+     *
+     * @return bool If the frontend user is an admin
      */
-    public function getUserFrontendGroupNames(): array
+    public function isUserFrontendIsAdmin(): bool
     {
-        return $this->getPropertyFromAspect(
+        return (bool)$this->getPropertyFromAspect(
             self::SECTION_USER_FRONTEND,
-            self::PROP_USER_FRONTEND_GROUP_NAMES
+            self::PROP_USER_FRONTEND_IS_ADMIN
         );
     }
 
     /**
-     * @return array
+     * Gets the group IDs from the frontend user.
+     *
+     * @return array The group IDs from the frontend user
      */
     public function getUserFrontendGroupIds(): array
     {
@@ -284,7 +318,22 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return bool
+     * Gets the group names from the frontend user.
+     *
+     * @return array The group names from the frontend user
+     */
+    public function getUserFrontendGroupNames(): array
+    {
+        return $this->getPropertyFromAspect(
+            self::SECTION_USER_FRONTEND,
+            self::PROP_USER_FRONTEND_GROUP_NAMES
+        );
+    }
+
+    /**
+     * Gets if the visibility includes hidden pages.
+     *
+     * @return bool If the visibility includes hidden pages
      */
     public function isVisibilityIncludeHiddenPages(): bool
     {
@@ -295,7 +344,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return bool
+     * Gets if the visibility includes hidden context.
+     *
+     * @return bool If the visibility includes hidden context
      */
     public function isVisibilityIncludeHiddenContext(): bool
     {
@@ -306,7 +357,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return bool
+     * Gets if the visibility includes delete records.
+     *
+     * @return bool If the visibility includes delete records
      */
     public function isVisibilityIncludeDeletedrecords(): bool
     {
@@ -317,7 +370,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return int
+     * Gets the workspace ID.
+     *
+     * @return int The workspace ID
      */
     public function getWorkspaceId(): int
     {
@@ -328,7 +383,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return bool
+     * Gets if the workspace is live.
+     *
+     * @return bool If the workspace is live
      */
     public function isWorkspaceIsLive(): bool
     {
@@ -339,7 +396,9 @@ class ContextService extends AbstractService
     }
 
     /**
-     * @return bool
+     * Gets if the workspace is offline.
+     *
+     * @return bool If the workspace is offline
      */
     public function isWorkspaceIsOffline(): bool
     {

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Domain\Model;
 
+use DateTime;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity as ExtbaseAbstractEntity;
 
 /**
@@ -50,16 +51,14 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
     /**
      * The entity's creation date.
      *
-     * @var \DateTime
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @var DateTime
      */
     protected $crdate;
 
     /**
      * The entity's timestamp.
      *
-     * @var \DateTime
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @var DateTime
      */
     protected $tstamp;
 
@@ -146,10 +145,9 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
     /**
      * Returns the entity's creation date.
      *
-     * @return \DateTime|null The entity's creation date
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @return DateTime|null The entity's creation date
      */
-    public function getCrdate(): ?\DateTime
+    public function getCrdate(): ?DateTime
     {
         return $this->crdate;
     }
@@ -157,10 +155,9 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
     /**
      * Returns when the entity was created, alias for the `getCrdate` function.
      *
-     * @return \DateTime|null The entity's creation date
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @return DateTime|null The entity's creation date
      */
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): ?DateTime
     {
         return $this->getCrdate();
     }
@@ -168,10 +165,9 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
     /**
      * Returns the entity's timestamp.
      *
-     * @return \DateTime|null The entity's timestamp
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @return DateTime|null The entity's timestamp
      */
-    public function getTstamp(): ?\DateTime
+    public function getTstamp(): ?DateTime
     {
         return $this->tstamp;
     }
@@ -179,10 +175,9 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
     /**
      * Returns when the entity was updated, alias for the `getTstamp` function.
      *
-     * @return \DateTime|null The entity's creation date
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @return DateTime|null The entity's creation date
      */
-    public function getUpdatedAt(): ?\DateTime
+    public function getUpdatedAt(): ?DateTime
     {
         return $this->getTstamp();
     }
