@@ -260,7 +260,7 @@ class PageService extends AbstractService
                         0
                     )
                 )
-                ->orderBy('uid');
+                ->orderBy('sorting');
 
             if (!empty($permissionClause)) {
                 $queryBuilder->andWhere(QueryHelper::stripLogicalOperatorPrefix($permissionClause));
