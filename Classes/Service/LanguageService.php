@@ -9,6 +9,6 @@ namespace T3v\T3vCore\Service;
  * @package T3v\T3vCore\Service
  * @deprecated Renamed to `LocalizationService`, will be removed in a next major version.
  */
-class LanguageService extends LocalizationService {
-
+class LanguageService extends LocalizationService
+{
 }
