@@ -5,7 +5,7 @@ namespace T3v\T3vCore\ViewHelpers\Page;
 
 use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
 use T3v\T3vCore\ViewHelpers\Traits\LocalizationTrait;
-use TYPO3\CMS\Extbase\Object\Exception;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 
 /**
  * The language UID view helper class.
@@ -34,7 +34,7 @@ class LanguageUidViewHelper extends AbstractViewHelper
      * The view helper render function.
      *
      * @return int The language UID of the current page if available, otherwise the default one
-     * @throws Exception
+     * @throws AspectNotFoundException
      */
     public function render(): int
     {

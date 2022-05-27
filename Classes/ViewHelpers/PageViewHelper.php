@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\ViewHelpers;
 
+use Closure;
 use T3v\T3vCore\Service\LocalizationService;
 use T3v\T3vCore\Service\PageService;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
@@ -32,15 +33,14 @@ class PageViewHelper extends AbstractViewHelper
      * The view helper render static function.
      *
      * @param array $arguments The arguments
-     * @param \Closure $renderChildrenClosure The render children closure
+     * @param Closure $renderChildrenClosure The render children closure
      * @param RenderingContextInterface $renderingContext The rendering context
      * @return array The page object
      * @throws AspectNotFoundException
-     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public static function renderStatic(
         array $arguments,
-        \Closure $renderChildrenClosure,
+        Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ): array {
         $uid = (int)$arguments['uid'];

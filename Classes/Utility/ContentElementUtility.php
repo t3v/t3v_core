@@ -38,6 +38,8 @@ class ContentElementUtility extends AbstractUtility
     /**
      * Gets an identifier from a content element key.
      *
+     * Alias for the `getIdentifier` function.
+     *
      * @param string $contentElementKey The content element key
      * @return string The content element identifier
      * @deprecated Use the `getIdentifier` function instead
@@ -48,7 +50,9 @@ class ContentElementUtility extends AbstractUtility
     }
 
     /**
-     * Gets an identifier from a content element key.
+     * Gets a content element identifier from a content element key.
+     *
+     * Alias for the `getIdentifier` function.
      *
      * @param string $contentElementKey The content element key
      * @return string The content element identifier
@@ -74,6 +78,8 @@ class ContentElementUtility extends AbstractUtility
     /**
      * Gets a signature from an extension and content element identifier.
      *
+     * Alias for the `getSignature` function.
+     *
      * @param string $extensionIdentifier The extension identifier
      * @param string $contentElementIdentifier The content element identifier
      * @return string The content element signature
@@ -85,7 +91,9 @@ class ContentElementUtility extends AbstractUtility
     }
 
     /**
-     * Gets a signature from an extension and content element identifier.
+     * Gets a content element signature from an extension and content element identifier.
+     *
+     * Alias for the `getSignature` function.
      *
      * @param string $extensionIdentifier The extension identifier
      * @param string $contentElementIdentifier The content element identifier

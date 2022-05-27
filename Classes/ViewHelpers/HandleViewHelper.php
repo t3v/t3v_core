@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\ViewHelpers;
 
+use Closure;
 use Cocur\Slugify\Slugify;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
@@ -52,14 +53,13 @@ class HandleViewHelper extends AbstractViewHelper
      * The view helper render static function.
      *
      * @param array $arguments The arguments
-     * @param \Closure $renderChildrenClosure The render children closure
+     * @param Closure $renderChildrenClosure The render children closure
      * @param RenderingContextInterface $renderingContext The rendering context
      * @return string The handle
-     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public static function renderStatic(
         array $arguments,
-        \Closure $renderChildrenClosure,
+        Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ): string {
         $input = $arguments['input'] ?: '-';

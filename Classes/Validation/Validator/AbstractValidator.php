@@ -6,14 +6,14 @@ namespace T3v\T3vCore\Validation\Validator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\Validation\Error;
-use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator as AbstractValidatorExtbase;
+use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator as ExtbaseAbstractValidator;
 
 /**
  * The abstract validator class.
  *
  * @package T3v\T3vCore\Validation\Validator
  */
-abstract class AbstractValidator extends AbstractValidatorExtbase
+abstract class AbstractValidator extends ExtbaseAbstractValidator
 {
     /**
      * Adds an error to a property.

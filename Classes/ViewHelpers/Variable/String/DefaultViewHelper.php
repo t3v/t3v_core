@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\ViewHelpers\Variable\String;
 
+use Closure;
 use T3v\T3vCore\ViewHelpers\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
@@ -29,14 +30,13 @@ class DefaultViewHelper extends AbstractViewHelper
      * The view helper render static function.
      *
      * @param array $arguments The arguments
-     * @param \Closure $renderChildrenClosure The render children closure
+     * @param Closure $renderChildrenClosure The render children closure
      * @param RenderingContextInterface $renderingContext The rendering context
      * @return string The value if available, otherwise the default one
-     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public static function renderStatic(
         array $arguments,
-        \Closure $renderChildrenClosure,
+        Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ): string {
         return $arguments['value'] ?: $arguments['default'];
