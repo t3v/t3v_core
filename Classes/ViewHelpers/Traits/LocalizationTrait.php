@@ -58,7 +58,9 @@ trait LocalizationTrait
     }
 
     /**
-     * Gets the system language UID, alias for `getLanguageUid`.
+     * Gets the system language UID.
+     *
+     * Alias for `getLanguageUid` function.
      *
      * @param int|null $default The default system language UID, defaults to `0`
      * @return int The system language UID if available, otherwise the default one

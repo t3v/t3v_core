@@ -5,6 +5,7 @@ namespace T3v\T3vCore\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Object\Exception;
 
 /**
  * The extension utility class.
@@ -29,6 +30,8 @@ class ExtensionUtility extends AbstractUtility
     /**
      * Gets an identifier from an extension key.
      *
+     * Alias for the `getIdentifier` function.
+     *
      * @param string $extensionKey The extension key
      * @return string The extension identifier
      * @deprecated Use the `getIdentifier` function instead
@@ -39,7 +42,9 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets an identifier from an extension key.
+     * Gets an extension identifier from an extension key.
+     *
+     * Alias for the `getIdentifier` function.
      *
      * @param string $extensionKey The extension key
      * @return string The extension identifier
@@ -63,11 +68,13 @@ class ExtensionUtility extends AbstractUtility
         $namespace = GeneralUtility::underscoredToUpperCamelCase($namespace);
         $extensionKey = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
 
-        return "${namespace}${separator}${extensionKey}";
+        return $namespace . $separator . $extensionKey;
     }
 
     /**
      * Gets a signature from a namespace and extension key.
+     *
+     * Alias for the `getSignature` function.
      *
      * @param string $namespace The namespace
      * @param string $extensionKey The extension key
@@ -81,7 +88,9 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets a signature from a namespace and extension key.
+     * Gets an extension signature from a namespace and extension key.
+     *
+     * Alias for the `getSignature` function.
      *
      * @param string $namespace The namespace
      * @param string $extensionKey The extension key
@@ -111,11 +120,13 @@ class ExtensionUtility extends AbstractUtility
     ): string {
         $languageFolder = self::getLanguageFolder($extensionKey, $prefix);
 
-        return "${languageFolder}/${fileName}${separator}";
+        return $languageFolder . '/' . $fileName . $separator;
     }
 
     /**
      * Gets a locallang file from an extension key.
+     *
+     * Alias for the `getLocallang` function.
      *
      * @param string $extensionKey The extension key
      * @param string $fileName The optional file name of the locallang file, defaults to `locallang.xlf`
@@ -135,6 +146,8 @@ class ExtensionUtility extends AbstractUtility
 
     /**
      * Gets a locallang file from an extension key.
+     *
+     * Alias for the `getLocallang` function.
      *
      * @param string $extensionKey The extension key
      * @param string $fileName The optional file name of the locallang file, defaults to `locallang.xlf`
@@ -161,11 +174,13 @@ class ExtensionUtility extends AbstractUtility
      */
     public static function getConfigurationFolder(string $extensionKey, string $prefix = 'FILE:EXT:'): string
     {
-        return "${prefix}${extensionKey}/Configuration";
+        return $prefix . $extensionKey . '/Configuration';
     }
 
     /**
      * Gets the configuration folder from an extension key.
+     *
+     * Alias for the `getConfigurationFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
@@ -188,11 +203,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $configurationFolder = self::getConfigurationFolder($extensionKey, $prefix);
 
-        return "${configurationFolder}/FlexForms";
+        return $configurationFolder . '/FlexForms';
     }
 
     /**
      * Gets the FlexForms folder from an extension key.
+     *
+     * Alias for the `getFlexFormsFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
@@ -215,11 +232,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $configurationFolder = self::getConfigurationFolder($extensionKey, $prefix);
 
-        return "${configurationFolder}/TCA";
+        return $configurationFolder . '/TCA';
     }
 
     /**
      * Gets the TCA folder from an extension key.
+     *
+     * Alias for the `getTCAFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
@@ -242,11 +261,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $configurationFolder = self::getConfigurationFolder($extensionKey, $prefix);
 
-        return "${configurationFolder}/TSconfig";
+        return $configurationFolder . '/TSconfig';
     }
 
     /**
      * Gets the TSconfig folder from an extension key.
+     *
+     * Alias for the `getTSConfigFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
@@ -269,11 +290,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $configurationFolder = self::getConfigurationFolder($extensionKey, $prefix);
 
-        return "${configurationFolder}/TypoScript";
+        return $configurationFolder . '/TypoScript';
     }
 
     /**
      * Gets the TypoScript folder from an extension key.
+     *
+     * Alias for the `getTypoScriptFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `FILE:EXT:`
@@ -286,7 +309,7 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets the resources folder from an extension key.
+     * Gets the resources' folder from an extension key.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -294,11 +317,13 @@ class ExtensionUtility extends AbstractUtility
      */
     public static function getResourcesFolder(string $extensionKey, string $prefix = 'EXT:'): string
     {
-        return "${prefix}${extensionKey}/Resources";
+        return $prefix . $extensionKey . '/Resources';
     }
 
     /**
-     * Gets the resources folder from an extension key.
+     * Gets the resources' folder from an extension key.
+     *
+     * Alias for the `getResourcesFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -321,11 +346,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $resourcesFolder = self::getResourcesFolder($extensionKey, $prefix);
 
-        return "${resourcesFolder}/Private";
+        return $resourcesFolder . '/Private';
     }
 
     /**
      * Gets the private folder from an extension key.
+     *
+     * Alias for the `getPrivateFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -348,11 +375,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $privateFolder = self::getPrivateFolder($extensionKey, $prefix);
 
-        return "${privateFolder}/Language";
+        return $privateFolder . '/Language';
     }
 
     /**
      * Gets the language folder from an extension key.
+     *
+     * Alias for the `getLanguageFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -379,6 +408,8 @@ class ExtensionUtility extends AbstractUtility
     /**
      * Gets the locallang folder from an extension key.
      *
+     * Alias for the `getLocallangFolder` function.
+     *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `LLL:EXT:`
      * @return string The extension locallang folder
@@ -392,6 +423,8 @@ class ExtensionUtility extends AbstractUtility
     /**
      * Gets the locallang folder from an extension key.
      *
+     * Alias for the `getLocallangFolder` function.
+     *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `LLL:EXT:`
      * @return string The extension locallang folder
@@ -403,7 +436,7 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets the layouts folder from an extension key.
+     * Gets the layouts' folder from an extension key.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -413,11 +446,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $privateFolder = self::getPrivateFolder($extensionKey, $prefix);
 
-        return "${privateFolder}/Layouts";
+        return $privateFolder . '/Layouts';
     }
 
     /**
-     * Gets the layouts folder from an extension key.
+     * Gets the layouts' folder from an extension key.
+     *
+     * Alias for the `getLayoutsFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -430,7 +465,7 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets the partials folder from an extension key.
+     * Gets the partials' folder from an extension key.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -440,11 +475,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $privateFolder = self::getPrivateFolder($extensionKey, $prefix);
 
-        return "${privateFolder}/Partials";
+        return $privateFolder . '/Partials';
     }
 
     /**
-     * Gets the partials folder from an extension key.
+     * Gets the partials' folder from an extension key.
+     *
+     * Alias for the `getPartialsFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -457,7 +494,7 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets the templates folder from an extension key.
+     * Gets the templates' folder from an extension key.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -467,11 +504,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $privateFolder = self::getPrivateFolder($extensionKey, $prefix);
 
-        return "${privateFolder}/Templates";
+        return $privateFolder . '/Templates';
     }
 
     /**
-     * Gets the templates folder from an extension key.
+     * Gets the templates' folder from an extension key.
+     *
+     * Alias for the `getTemplatesFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -494,11 +533,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $resourcesFolder = self::getResourcesFolder($extensionKey, $prefix);
 
-        return "${resourcesFolder}/Public";
+        return $resourcesFolder . '/Public';
     }
 
     /**
      * Gets the public folder from an extension key.
+     *
+     * Alias for the `getPublicFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -511,7 +552,7 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets the assets folder from an extension key.
+     * Gets the assets' folder from an extension key.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -521,11 +562,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $publicFolder = self::getPublicFolder($extensionKey, $prefix);
 
-        return "${publicFolder}/Assets";
+        return $publicFolder . '/Assets';
     }
 
     /**
-     * Gets the assets folder from an extension key.
+     * Gets the assets' folder from an extension key.
+     *
+     * Alias for the `getTypoScriptFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -538,7 +581,7 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets the icons folder from an extension key.
+     * Gets the icons' folder from an extension key.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -548,11 +591,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $publicFolder = self::getPublicFolder($extensionKey, $prefix);
 
-        return "${publicFolder}/Icons";
+        return $publicFolder . '/Icons';
     }
 
     /**
-     * Gets the icons folder from an extension key.
+     * Gets the icons' folder from an extension key.
+     *
+     * Alias for the `getIconsFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -565,7 +610,7 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets the placeholders folder from an extension key.
+     * Gets the placeholders' folder from an extension key.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -575,11 +620,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $publicFolder = self::getPublicFolder($extensionKey, $prefix);
 
-        return "${publicFolder}/Placeholders";
+        return $publicFolder . '/Placeholders';
     }
 
     /**
-     * Gets the placeholders folder from an extension key.
+     * Gets the placeholders' folder from an extension key.
+     *
+     * Alias for the `getPlaceholdersFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -592,7 +639,7 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets the samples folder from an extension key.
+     * Gets the samples' folder from an extension key.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -602,11 +649,13 @@ class ExtensionUtility extends AbstractUtility
     {
         $publicFolder = self::getPublicFolder($extensionKey, $prefix);
 
-        return "${publicFolder}/Samples";
+        return $publicFolder . '/Samples';
     }
 
     /**
-     * Gets the samples folder from an extension key.
+     * Gets the samples' folder from an extension key.
+     *
+     * Alias for the `getTypoScriptFolder` function.
      *
      * @param string $extensionKey The extension key
      * @param string $prefix The optional prefix, defaults to `EXT:`
@@ -623,8 +672,9 @@ class ExtensionUtility extends AbstractUtility
      *
      * @param string $extensionName The extension name
      * @return array|null The settings
+     * @throws Exception
      */
-    public static function getSettingsByExtensionName($extensionName): array
+    public static function getSettingsByExtensionName(string $extensionName): array
     {
         $identifier = GeneralUtility::underscoredToUpperCamelCase($extensionName);
         $identifier = mb_strtolower($identifier);
@@ -636,11 +686,11 @@ class ExtensionUtility extends AbstractUtility
      * Gets TypoScript by a path.
      *
      * @param string $path The path
-     * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface|null $configurationManager The configuration manager
+     * @param ConfigurationManagerInterface|null $configurationManager The configuration manager
      * @return array|mixed|null The TypoScript
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @throws Exception
      */
-    public static function getTypoScriptByPath(string $path, $configurationManager = null)
+    public static function getTypoScriptByPath(string $path, ConfigurationManagerInterface $configurationManager = null)
     {
         static $cache = [];
 
@@ -672,8 +722,6 @@ class ExtensionUtility extends AbstractUtility
         if (is_array($value)) {
             $result = GeneralUtility::removeDotsFromTS($value);
         }
-
-        $cache[$path] = $result;
 
         return $result;
     }

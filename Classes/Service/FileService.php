@@ -121,7 +121,9 @@ class FileService extends AbstractService
     }
 
     /**
-     * Normalizes a file name, alias for `cleanFileName`.
+     * Normalizes a file name.
+     *
+     * Alias for `cleanFileName` function.
      *
      * @param string $fileName The file name
      * @param array $rulesets The optional rulesets, defaults to `FileService::FILE_NAME_RULESETS`

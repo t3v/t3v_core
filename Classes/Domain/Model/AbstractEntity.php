@@ -153,7 +153,9 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
     }
 
     /**
-     * Returns when the entity was created, alias for the `getCrdate` function.
+     * Returns when the entity was created.
+     *
+     * Alias for the `getCrdate` function.
      *
      * @return DateTime|null The entity's creation date
      */
@@ -173,7 +175,9 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
     }
 
     /**
-     * Returns when the entity was updated, alias for the `getTstamp` function.
+     * Returns when the entity was updated.
+     *
+     * Alias for the `getTstamp` function.
      *
      * @return DateTime|null The entity's creation date
      */
