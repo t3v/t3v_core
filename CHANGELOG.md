@@ -6,9 +6,10 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
-* Deprecated and moved view helpers to `T3vBase`
+* Added `AbstractCommand` without `log` function (breaking change)
+* Deprecated and moved view helpers to `T3vBase` (breaking change)
 * Namespaced `Default` and `Array` view helper under `Variable` (breaking change)
-* Moved `plugin.tx_t3vcore.settings.mode` to `plugin.tx_t3v.settings.mode`
+* Moved `plugin.tx_t3vcore.settings.mode` to `plugin.tx_t3v.settings.mode` (breaking change)
 * Added `Settings` service
 * Added `ContentObject` and `ContentElement` controller
 * Moved `ContentElement` utility from T3v Content (breaking change)
