@@ -205,17 +205,20 @@ abstract class AbstractRepository extends Repository
      * Gets a raw object by UID.
      *
      * @param int $uid The UID
-     * @param int $languageUid The language UID, defaults to `0`
+     * @param int $languageUid The optional language UID, defaults to `0`
      * @param array $querySettings The optional query settings to apply
      * @return array|null The raw object or null if no object was found
      */
-    public function getRawObjectByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?array
-    {
+    public function getRawObjectByUid(
+        int $uid,
+        int $languageUid = 0,
+        array $querySettings = ['languageOverlayMode' => false, 'respectStoragePage' => false, 'respectSysLanguage' => false]
+    ): ?array {
         if ($uid && $uid > 0) {
             // Creates a new query:
             $query = $this->createquery();
 
-            // Sets the passed language UID:
+            // Sets the optional language UID:
             if ($languageUid > 0) {
                 $query->getQuerySettings()->setLanguageUid($languageUid);
             }
@@ -241,12 +244,15 @@ abstract class AbstractRepository extends Repository
      * Alias for `getRawObjectByUid` function.
      *
      * @param int $uid The UID
-     * @param int $languageUid The language UID, defaults to `0`
+     * @param int $languageUid The optional language UID, defaults to `0`
      * @param array $querySettings The optional query settings to apply
      * @return array|null The raw object or null if no object was found
      */
-    public function getRawModelByUid(int $uid, int $languageUid = 0, array $querySettings = []): ?array
-    {
+    public function getRawModelByUid(
+        int $uid,
+        int $languageUid = 0,
+        array $querySettings = ['languageOverlayMode' => false, 'respectStoragePage' => false, 'respectSysLanguage' => false]
+    ): ?array {
         return $this->getRawObjectByUid($uid, $languageUid, $querySettings);
     }
 
