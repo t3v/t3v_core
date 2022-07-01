@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Service;
 
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\Exception;
 
 /**
  * The query result service class.
@@ -15,28 +17,27 @@ class QueryResultService extends AbstractService
     /**
      * Filters a query result by language presets.
      *
-     * @param array $queryResult The query result
+     * @param mixed $queryResult The query result
      * @param array $presets The language presets
-     * @return object The filtered query result
+     * @return mixed The filtered query result
+     * @throws AspectNotFoundException
+     * @throws Exception
      */
     public function filterByLanguagePresets($queryResult, array $presets)
     {
         $result = $queryResult;
 
         if (!empty($presets)) {
-            $localizationService = self::getObjectManager()->get(LocalizationService::class);
+            $result = [];
+            $localizationService = GeneralUtility::makeInstance(LocalizationService::class);
             $sysLanguageUid = $localizationService->getSysLanguageUid();
             $preset = (int)$presets[$sysLanguageUid];
 
-            if (isset($preset)) {
-                $result = [];
+            foreach ($queryResult as $object) {
+                $uid = $object->getSysLanguageUid();
 
-                foreach ($queryResult as $object) {
-                    $uid = $object->getSysLanguageUid();
-
-                    if (isset($uid) && $uid === $preset) {
-                        $result[] = $object;
-                    }
+                if (isset($uid) && $uid === $preset) {
+                    $result[] = $object;
                 }
             }
         }
@@ -47,9 +48,10 @@ class QueryResultService extends AbstractService
     /**
      * Filters a query result by system language.
      *
-     * @param object $queryResult The query result
+     * @param mixed $queryResult The query result
      * @param array|string $exceptions The optional UIDs which are ignored as array or as string, seperated by `,`
-     * @return object The filtered query result
+     * @return mixed The filtered query result
+     * @throws AspectNotFoundException|Exception
      */
     public function filterBySysLanguage($queryResult, $exceptions = [])
     {
@@ -59,7 +61,7 @@ class QueryResultService extends AbstractService
             $exceptions = GeneralUtility::intExplode(',', $exceptions, true);
         }
 
-        $localizationService = self::getObjectManager()->get(LocalizationService::class);
+        $localizationService = GeneralUtility::makeInstance(LocalizationService::class);
         $sysLanguageUid = $localizationService->getSysLanguageUid();
 
         if (!in_array($sysLanguageUid, $exceptions, true)) {

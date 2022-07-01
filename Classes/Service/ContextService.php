@@ -6,7 +6,6 @@ namespace T3v\T3vCore\Service;
 use DateTimeImmutable;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The context service class.
@@ -58,14 +57,6 @@ class ContextService extends AbstractService
      * @var Context
      */
     protected $context;
-
-    /**
-     * Constructs a new context service.
-     */
-    public function __construct()
-    {
-        $this->context = GeneralUtility::makeInstance(Context::class);
-    }
 
     /**
      * Gets the context.
@@ -406,5 +397,15 @@ class ContextService extends AbstractService
             self::SECTION_WORKSPACE,
             self::PROP_WORKSPACE_IS_OFFLINE
         );
+    }
+
+    /**
+     * Injects the context.
+     *
+     * @var Context The context
+     */
+    public function injectContext(Context $context): void
+    {
+        $this->context = $context;
     }
 }

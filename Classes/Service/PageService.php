@@ -34,6 +34,13 @@ class PageService extends AbstractService
     ];
 
     /**
+     * The localization service.
+     *
+     * @var LocalizationService
+     */
+    protected $localizationService;
+
+    /**
      * The page repository.
      *
      * @var PageRepository
@@ -46,23 +53,6 @@ class PageService extends AbstractService
      * @var QueryGenerator
      */
     protected $queryGenerator;
-
-    /**
-     * The localization service.
-     *
-     * @var LocalizationService
-     */
-    protected $localizationService;
-
-    /**
-     * Constructs a new page service.
-     */
-    public function __construct()
-    {
-        $this->pageRepository = GeneralUtility::makeInstance(PageRepository::class);
-        $this->queryGenerator = GeneralUtility::makeInstance(QueryGenerator::class);
-        $this->localizationService = GeneralUtility::makeInstance(LocalizationService::class);
-    }
 
     /**
      * Gets a page.
@@ -336,5 +326,35 @@ class PageService extends AbstractService
         }
 
         return null;
+    }
+
+    /**
+     * Injects the localization service.
+     *
+     * @var LocalizationService The localization service
+     */
+    public function injectLocalizationService(LocalizationService $localizationService): void
+    {
+        $this->localizationService = $localizationService;
+    }
+
+    /**
+     * Injects the page repository.
+     *
+     * @var PageRepository The page repository
+     */
+    public function injectPageRepository(PageRepository $pageRepository): void
+    {
+        $this->pageRepository = $pageRepository;
+    }
+
+    /**
+     * Injects the query generator.
+     *
+     * @var QueryGenerator The query generator
+     */
+    public function injectQueryGenerator(QueryGenerator $queryGenerator): void
+    {
+        $this->queryGenerator = $queryGenerator;
     }
 }

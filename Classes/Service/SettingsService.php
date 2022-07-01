@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace T3v\T3vCore\Service;
 
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Object\Exception;
 
 /**
  * The settings service class.
@@ -23,6 +24,7 @@ class SettingsService extends AbstractService
      * Checks if TYPO3voilà is running in `strict` mode.
      *
      * @return bool If TYPO3voilà is running in `strict` mode
+     * @throws Exception
      */
     public function runningInStrictMode(): bool
     {
@@ -44,6 +46,7 @@ class SettingsService extends AbstractService
      * Checks if TYPO3voilà is running in `fallback` mode.
      *
      * @return bool If TYPO3voilà is running in `fallback` mode
+     * @throws Exception
      */
     public function runningInFallbackMode(): bool
     {
@@ -65,6 +68,7 @@ class SettingsService extends AbstractService
      * Checks if TYPO3voilà is running in `free` mode.
      *
      * @return bool If TYPO3voilà is running in `free` mode
+     * @throws Exception
      */
     public function runningInFreeMode(): bool
     {
@@ -87,6 +91,7 @@ class SettingsService extends AbstractService
      *
      * @param string $identifier The optional plugin identifier, defaults to `tx_t3v`
      * @return array|null The settings
+     * @throws Exception
      */
     protected function getSettings(string $identifier = 'tx_t3v'): ?array
     {

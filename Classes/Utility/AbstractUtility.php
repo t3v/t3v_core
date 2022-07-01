@@ -54,7 +54,7 @@ abstract class AbstractUtility implements SingletonInterface
      *
      * @return ContentObjectRenderer The content object, respectively renderer
      * @throws Exception
-     * @deprecated Use `getContentObjectRenderer` function instead
+     * @deprecated Use `getContentObjectRenderer` function instead, will be removed in a next major version.
      */
     protected static function getContentObject(): ContentObjectRenderer
     {
