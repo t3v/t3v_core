@@ -15,7 +15,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 * Moved `ContentElement` utility from T3v Content (breaking change)
 * Updated model traits (breaking change)
 * Integrated `t3v/t3v_testing` which is based on `typo3/testing-framework`
-* Support for TYPO3 CMS 9.5 or greater
+* Added support for TYPO3 CMS 9.5 or greater
 * Dropped support for TYPO3 8.x (breaking change)
 * Dropped support for PHP < 7.2 (breaking change)
 * PSR-12: Extended Coding Style
