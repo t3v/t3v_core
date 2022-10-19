@@ -8,14 +8,14 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'mkempe@bitaculous.com',
     'author_company' => 'Bitaculous - It\'s all about the bits, baby!',
     'category' => 'be',
-    'state' => 'stable',
-    'version' => '9.0.0',
+    'state' => 'beta',
+    'version' => '10.0.0',
     'createDirs' => '',
     'uploadfolder' => false,
     'clearCacheOnLoad' => false,
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.0-11.5.99'
+            'typo3' => '10.4.0-11.5.99'
         ],
         'conflicts' => [],
         'suggests' => []
