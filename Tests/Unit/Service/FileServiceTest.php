@@ -34,6 +34,6 @@ class FileServiceTest extends UnitTestCase
         self::assertEquals('francais.pdf', FileService::cleanFileName('Français.pdf'));
         self::assertEquals('cestina.pdf', FileService::cleanFileName('Čeština.pdf'));
         self::assertEquals('huodongriqi.pdf', FileService::cleanFileName('活动日起.pdf'));
-        self::assertRegExp('/upload-/i', FileService::cleanFileName('대한민국.pdf'));
+        self::assertMatchesRegularExpression('/upload-/i', FileService::cleanFileName('대한민국.pdf'));
     }
 }
