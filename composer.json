@@ -50,7 +50,7 @@
   "require": {
     "php": ">= 7.2",
     "ext-pdo": "*",
-    "typo3/cms-core": "^9.5.31 || ^10.4.31 || ^11.5.13",
+    "typo3/cms-core": "^9.5.31",
     "danielstjules/stringy": "^3.1",
     "cocur/slugify": "^4.1"
   },
