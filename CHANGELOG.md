@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Updated Travis CI configuration
 * Dropped support for TYPO3 9.5 (breaking change)
 * Dropped support for PHP < 7.4 (breaking change)
 * Dropped support for AppVeyor
