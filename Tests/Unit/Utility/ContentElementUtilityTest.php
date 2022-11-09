@@ -14,66 +14,6 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class ContentElementUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the `getIdentifier` function.
-     *
-     * @test
-     */
-    public function getIdentifier(): void
-    {
-        self::assertEquals(
-            'Announcements',
-            ContentElementUtility::getIdentifier('Announcements')
-        );
-
-        self::assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::getIdentifier('Announcements Latest Announcements')
-        );
-
-        self::assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::getIdentifier('announcements latest announcements')
-        );
-
-        self::assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::getIdentifier('announcements Latest Announcements')
-        );
-
-        self::assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::getIdentifier('announcements_latest_announcements')
-        );
-
-        self::assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::getIdentifier('announcements-latest-announcements')
-        );
-
-        self::assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::getIdentifier('AnnouncementsLatestAnnouncements')
-        );
-
-        self::assertEquals(
-            'AnnouncementsLatestAnnouncements',
-            ContentElementUtility::getIdentifier('announcementsLatestAnnouncements')
-        );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            'Announcements',
-            ContentElementUtility::identifier('Announcements')
-        );
-
-        self::assertEquals(
-            'Announcements',
-            ContentElementUtility::contentElementIdentifier('Announcements')
-        );
-    }
-
-    /**
      * Tests the `getSignature` function.
      *
      * @test
@@ -81,25 +21,80 @@ class ContentElementUtilityTest extends UnitTestCase
     public function getSignature(): void
     {
         self::assertEquals(
-            't3vannouncements_announcements',
-            ContentElementUtility::getSignature('t3vannouncements', 'Announcements')
+            'ContentElement',
+            ContentElementUtility::getSignature('Content element')
         );
 
         self::assertEquals(
-            't3vannouncements_announcementslatestannouncements',
-            ContentElementUtility::getSignature('t3vannouncements', 'AnnouncementsLatestAnnouncements')
+            'ContentElement',
+            ContentElementUtility::getSignature('Content Element')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            ContentElementUtility::getSignature('content element')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            ContentElementUtility::getSignature('content_element')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            ContentElementUtility::getSignature('content-element')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            ContentElementUtility::getSignature('ContentElement')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            ContentElementUtility::getSignature('contentElement')
         );
 
         // === Deprecated ===
 
         self::assertEquals(
-            't3vannouncements_announcements',
-            ContentElementUtility::signature('t3vannouncements', 'Announcements')
+            'ContentElement',
+            ContentElementUtility::signature('Content element')
         );
 
         self::assertEquals(
-            't3vannouncements_announcements',
-            ContentElementUtility::contentElementSignature('t3vannouncements', 'Announcements')
+            'ContentElement',
+            ContentElementUtility::contentElementSignature('Content element')
+        );
+    }
+
+    /**
+     * Tests the `getIdentifier` function.
+     *
+     * @test
+     */
+    public function getIdentifier(): void
+    {
+        self::assertEquals(
+            't3vcore_contentelement',
+            ContentElementUtility::getIdentifier('t3vcore', 'contentelement')
+        );
+
+        self::assertEquals(
+            't3vcore_contentelement',
+            ContentElementUtility::getIdentifier('T3v Core', 'Content Element')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            't3vcore_contentelement',
+            ContentElementUtility::identifier('t3vcore', 'contentelement')
+        );
+
+        self::assertEquals(
+            't3vcore_contentelement',
+            ContentElementUtility::contentElementIdentifier('t3vcore', 'contentelement')
         );
     }
 }

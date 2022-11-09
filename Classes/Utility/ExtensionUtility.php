@@ -15,55 +15,55 @@ use TYPO3\CMS\Extbase\Object\Exception;
 class ExtensionUtility extends AbstractUtility
 {
     /**
-     * Gets an identifier from an extension key.
+     * Gets a signature from an extension name.
      *
-     * @param string $extensionKey The extension key
-     * @return string The extension identifier
+     * @param string $extensionName The extension name
+     * @return string The extension signature
      */
-    public static function getIdentifier(string $extensionKey): string
+    public static function getSignature(string $extensionName): string
     {
-        $identifier = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
+        $signature = GeneralUtility::underscoredToUpperCamelCase($extensionName);
 
-        return mb_strtolower($identifier);
+        return mb_strtolower($signature);
     }
 
     /**
-     * Gets an identifier from an extension key.
+     * Gets a signature from an extension name.
      *
-     * Alias for the `getIdentifier` function.
+     * Alias for the `getSignature` function.
      *
-     * @param string $extensionKey The extension key
-     * @return string The extension identifier
-     * @deprecated Use the `getIdentifier` function instead
+     * @param string $extensionName The extension name
+     * @return string The extension signature
+     * @deprecated Use the `getSignature` function instead
      */
-    public static function identifier(string $extensionKey): string
+    public static function signature(string $extensionName): string
     {
-        return self::getIdentifier($extensionKey);
+        return self::getSignature($extensionName);
     }
 
     /**
-     * Gets an extension identifier from an extension key.
+     * Gets an extension signature from an extension key.
      *
-     * Alias for the `getIdentifier` function.
+     * Alias for the `signature` function.
      *
-     * @param string $extensionKey The extension key
-     * @return string The extension identifier
-     * @deprecated Use the `getIdentifier` function instead
+     * @param string $extensionName The extension name
+     * @return string The extension signature
+     * @deprecated Use the `getSignature` function instead
      */
-    public static function extensionIdentifier(string $extensionKey): string
+    public static function extensionSignature(string $extensionName): string
     {
-        return self::getIdentifier($extensionKey);
+        return self::getSignature($extensionName);
     }
 
     /**
-     * Gets a signature from a namespace and extension key.
+     * Gets an identifier from a namespace and extension key.
      *
      * @param string $namespace The namespace
      * @param string $extensionKey The extension key
      * @param string $separator The optional separator, defaults to `.`
-     * @return string The extension signature
+     * @return string The extension identifier
      */
-    public static function getSignature(string $namespace, string $extensionKey, string $separator = '.'): string
+    public static function getIdentifier(string $namespace, string $extensionKey, string $separator = '.'): string
     {
         $namespace = GeneralUtility::underscoredToUpperCamelCase($namespace);
         $extensionKey = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
@@ -72,35 +72,35 @@ class ExtensionUtility extends AbstractUtility
     }
 
     /**
-     * Gets a signature from a namespace and extension key.
+     * Gets an identifier from a namespace and extension key.
      *
-     * Alias for the `getSignature` function.
+     * Alias for the `getIdentifier` function.
      *
      * @param string $namespace The namespace
      * @param string $extensionKey The extension key
      * @param string $separator The optional separator, defaults to `.`
-     * @return string The extension signature
-     * @deprecated Use the `getSignature` function instead
+     * @return string The extension identifier
+     * @deprecated Use the `getIdentifier` function instead
      */
-    public static function signature(string $namespace, string $extensionKey, string $separator = '.'): string
+    public static function identifier(string $namespace, string $extensionKey, string $separator = '.'): string
     {
-        return self::getSignature($namespace, $extensionKey, $separator);
+        return self::getIdentifier($namespace, $extensionKey, $separator);
     }
 
     /**
-     * Gets an extension signature from a namespace and extension key.
+     * Gets an extension identifier from a namespace and extension key.
      *
-     * Alias for the `getSignature` function.
+     * Alias for the `getIdentifier` function.
      *
      * @param string $namespace The namespace
      * @param string $extensionKey The extension key
      * @param string $separator The optional separator, defaults to `.`
-     * @return string The extension signature
-     * @deprecated Use the `getSignature` function instead
+     * @return string The extension identifier
+     * @deprecated Use the `getIdentifier` function instead
      */
-    public static function extensionSignature(string $namespace, string $extensionKey, string $separator = '.'): string
+    public static function extensionIdentifier(string $namespace, string $extensionKey, string $separator = '.'): string
     {
-        return self::getSignature($namespace, $extensionKey, $separator);
+        return self::getIdentifier($namespace, $extensionKey, $separator);
     }
 
     /**

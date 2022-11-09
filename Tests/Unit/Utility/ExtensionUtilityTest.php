@@ -14,46 +14,6 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class ExtensionUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the `getIdentifier` function.
-     *
-     * @test
-     */
-    public function getIdentifier(): void
-    {
-        self::assertEquals(
-            't3vcore',
-            ExtensionUtility::getIdentifier('t3v_core')
-        );
-
-        self::assertEquals(
-            't3vdummyext',
-            ExtensionUtility::getIdentifier('t3v_dummy_ext')
-        );
-
-        self::assertEquals(
-            't3vcore',
-            ExtensionUtility::getIdentifier('T3vCore')
-        );
-
-        self::assertEquals(
-            't3vcore',
-            ExtensionUtility::getIdentifier('T3v Core')
-        );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            't3vcore',
-            ExtensionUtility::identifier('t3v_core')
-        );
-
-        self::assertEquals(
-            't3vcore',
-            ExtensionUtility::extensionIdentifier('t3v_core')
-        );
-    }
-
-    /**
      * Tests the `getSignature` function.
      *
      * @test
@@ -61,30 +21,70 @@ class ExtensionUtilityTest extends UnitTestCase
     public function getSignature(): void
     {
         self::assertEquals(
+            't3vcore',
+            ExtensionUtility::getSignature('t3v_core')
+        );
+
+        self::assertEquals(
+            't3vdummyext',
+            ExtensionUtility::getSignature('t3v_dummy_ext')
+        );
+
+        self::assertEquals(
+            't3vcore',
+            ExtensionUtility::getSignature('T3vCore')
+        );
+
+        self::assertEquals(
+            't3vcore',
+            ExtensionUtility::getSignature('T3v Core')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            't3vcore',
+            ExtensionUtility::signature('t3v_core')
+        );
+
+        self::assertEquals(
+            't3vcore',
+            ExtensionUtility::extensionSignature('t3v_core')
+        );
+    }
+
+    /**
+     * Tests the `getIdentifier` function.
+     *
+     * @test
+     */
+    public function getIdentifier(): void
+    {
+        self::assertEquals(
             'T3v.T3vCore',
-            ExtensionUtility::getSignature('t3v', 't3v_core')
+            ExtensionUtility::getIdentifier('t3v', 't3v_core')
         );
 
         self::assertEquals(
             'T3v.T3vCore',
-            ExtensionUtility::getSignature('T3v', 't3v_core')
+            ExtensionUtility::getIdentifier('T3v', 't3v_core')
         );
 
         self::assertEquals(
             'T3v_T3vCore',
-            ExtensionUtility::getSignature('T3v', 't3v_core', '_')
+            ExtensionUtility::getIdentifier('T3v', 't3v_core', '_')
         );
 
         // === Deprecated ===
 
         self::assertEquals(
             'T3v.T3vCore',
-            ExtensionUtility::signature('t3v', 't3v_core')
+            ExtensionUtility::identifier('t3v', 't3v_core')
         );
 
         self::assertEquals(
             'T3v.T3vCore',
-            ExtensionUtility::extensionSignature('t3v', 't3v_core')
+            ExtensionUtility::extensionIdentifier('t3v', 't3v_core')
         );
     }
 

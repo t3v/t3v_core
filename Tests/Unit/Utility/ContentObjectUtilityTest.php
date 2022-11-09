@@ -14,31 +14,6 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class ContentObjectUtilityTest extends UnitTestCase
 {
     /**
-     * Tests the `getIdentifier` function.
-     *
-     * @test
-     */
-    public function getIdentifier(): void
-    {
-        self::assertEquals(
-            'Button',
-            ContentObjectUtility::getIdentifier('Button')
-        );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            'Button',
-            ContentObjectUtility::identifier('Button')
-        );
-
-        self::assertEquals(
-            'Button',
-            ContentObjectUtility::contentObjectIdentifier('Button')
-        );
-    }
-
-    /**
      * Tests the `getSignature` function.
      *
      * @test
@@ -46,20 +21,80 @@ class ContentObjectUtilityTest extends UnitTestCase
     public function getSignature(): void
     {
         self::assertEquals(
-            't3vbase_button',
-            ContentObjectUtility::getSignature('t3vbase', 'button')
+            'ContentObject',
+            ContentObjectUtility::getSignature('Content object')
+        );
+
+        self::assertEquals(
+            'ContentObject',
+            ContentObjectUtility::getSignature('Content Object')
+        );
+
+        self::assertEquals(
+            'ContentObject',
+            ContentObjectUtility::getSignature('content object')
+        );
+
+        self::assertEquals(
+            'ContentObject',
+            ContentObjectUtility::getSignature('content_object')
+        );
+
+        self::assertEquals(
+            'ContentObject',
+            ContentObjectUtility::getSignature('content-object')
+        );
+
+        self::assertEquals(
+            'ContentObject',
+            ContentObjectUtility::getSignature('ContentObject')
+        );
+
+        self::assertEquals(
+            'ContentObject',
+            ContentObjectUtility::getSignature('contentObject')
         );
 
         // === Deprecated ===
 
         self::assertEquals(
-            't3vbase_button',
-            ContentObjectUtility::signature('t3vbase', 'button')
+            'ContentObject',
+            ContentObjectUtility::signature('Content object')
         );
 
         self::assertEquals(
-            't3vbase_button',
-            ContentObjectUtility::contentObjectSignature('t3vbase', 'button')
+            'ContentObject',
+            ContentObjectUtility::contentObjectSignature('Content object')
+        );
+    }
+
+    /**
+     * Tests the `getIdentifier` function.
+     *
+     * @test
+     */
+    public function getIdentifier(): void
+    {
+        self::assertEquals(
+            't3vcore_contentobject',
+            ContentObjectUtility::getIdentifier('t3vcore', 'contentobject')
+        );
+
+        self::assertEquals(
+            't3vcore_contentobject',
+            ContentObjectUtility::getIdentifier('T3v Core', 'Content Object')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            't3vcore_contentobject',
+            ContentObjectUtility::identifier('t3vcore', 'contentobject')
+        );
+
+        self::assertEquals(
+            't3vcore_contentobject',
+            ContentObjectUtility::contentObjectIdentifier('t3vcore', 'contentobject')
         );
     }
 }

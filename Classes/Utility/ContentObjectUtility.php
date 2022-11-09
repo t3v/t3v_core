@@ -11,97 +11,86 @@ namespace T3v\T3vCore\Utility;
 class ContentObjectUtility extends AbstractUtility
 {
     /**
-     * Gets an identifier from a content object key.
+     * Gets a signature from a content object name.
      *
-     * @param string $contentObjectKey The content object key
-     * @return string The content object identifier
-     */
-    public static function getIdentifier(string $contentObjectKey): string
-    {
-        $contentObjectIdentifier = $contentObjectKey;
-
-        if (strpos($contentObjectIdentifier, '_') ||
-            strpos($contentObjectIdentifier, '-') ||
-            strpos($contentObjectIdentifier, ' ')) {
-            $contentObjectIdentifier = mb_strtolower($contentObjectKey);
-            $contentObjectIdentifier = str_replace(array('_', '-'), ' ', $contentObjectIdentifier);
-            $contentObjectIdentifier = str_replace(' ', '', ucwords($contentObjectIdentifier));
-        }
-
-        if ($contentObjectIdentifier[0]) {
-            $contentObjectIdentifier[0] = mb_strtoUpper($contentObjectIdentifier[0]);
-        }
-
-        return $contentObjectIdentifier;
-    }
-
-    /**
-     * Gets an identifier from a content object key.
-     *
-     * Alias for the `getIdentifier` function.
-     *
-     * @param string $contentObjectKey The content object key
-     * @return string The content object identifier
-     * @deprecated Use the `getIdentifier` function instead
-     */
-    public static function identifier(string $contentObjectKey): string
-    {
-        return self::getIdentifier($contentObjectKey);
-    }
-
-    /**
-     * Gets a content object identifier from a content element key.
-     *
-     * Alias for the `getIdentifier` function.
-     *
-     * @param string $contentObjectKey The content object key
-     * @return string The content object identifier
-     * @deprecated Use the `getIdentifier` function instead
-     */
-    public static function contentObjectIdentifier(string $contentObjectKey): string
-    {
-        return self::getIdentifier($contentObjectKey);
-    }
-
-    /**
-     * Gets a signature from an extension and content object identifier.
-     *
-     * @param string $extensionIdentifier The extension identifier
-     * @param string $contentObjectIdentifier The content object identifier
+     * @param string $contentObjectName The content object name
      * @return string The content object signature
      */
-    public static function getSignature(string $extensionIdentifier, string $contentObjectIdentifier): string
+    public static function getSignature(string $contentObjectName): string
     {
-        return mb_strtolower($extensionIdentifier . '_' . $contentObjectIdentifier);
+        return GeneralUtility::getSignature($contentObjectName);
     }
 
     /**
-     * Gets a signature from an extension and content object identifier.
+     * Gets a signature from a content object name.
      *
      * Alias for the `getSignature` function.
      *
-     * @param string $extensionIdentifier The extension identifier
-     * @param string $contentObjectIdentifier The content object identifier
+     * @param string $contentObjectName The content object name
      * @return string The content object signature
      * @deprecated Use the `getSignature` function instead
      */
-    public static function signature(string $extensionIdentifier, string $contentObjectIdentifier): string
+    public static function signature(string $contentObjectName): string
     {
-        return self::getSignature($extensionIdentifier, $contentObjectIdentifier);
+        return self::getSignature($contentObjectName);
     }
 
     /**
-     * Gets a content object signature from an extension and content object identifier.
+     * Gets a content object signature from a content object name.
      *
      * Alias for the `getSignature` function.
      *
-     * @param string $extensionIdentifier The extension identifier
-     * @param string $contentObjectIdentifier The content object identifier
+     * @param string $contentObjectName The content object name
      * @return string The content object signature
      * @deprecated Use the `getSignature` function instead
      */
-    public static function contentObjectSignature(string $extensionIdentifier, string $contentObjectIdentifier): string
+    public static function contentObjectSignature(string $contentObjectName): string
     {
-        return self::getSignature($extensionIdentifier, $contentObjectIdentifier);
+        return self::getSignature($contentObjectName);
+    }
+
+    /**
+     * Gets an identifier from an extension and content object name.
+     *
+     * @param string $extensionName The extension name
+     * @param string $contentObjectName The content object name
+     * @return string The content object identifier
+     */
+    public static function getIdentifier(string $extensionName, string $contentObjectName): string
+    {
+        $extensionSignature = GeneralUtility::getSignature($extensionName);
+        $contentElementSignature = GeneralUtility::getSignature($contentObjectName);
+
+        return mb_strtolower($extensionSignature . '_' . $contentElementSignature);
+    }
+
+    /**
+     * Gets an identifier from an extension and content object name.
+     *
+     * Alias for the `getIdentifier` function.
+     *
+     * @param string $extensionName The extension name
+     * @param string $contentObjectName The content object name
+     * @return string The content object identifier
+     * @deprecated Use the `getIdentifier` function instead
+     */
+    public static function identifier(string $extensionName, string $contentObjectName): string
+    {
+        return self::getIdentifier($extensionName, $contentObjectName);
+    }
+
+    /**
+     * Gets a content object identifier from an extension and content object name.
+     *
+     * Alias for the `getIdentifier` function.
+     *
+     * @param string $extensionName The extension name
+     * @param string $contentObjectName The content object name
+     * @return string The content object identifier
+     * @deprecated Use the `getIdentifier` function instead
+     */
+    public static function contentObjectIdentifier(string $extensionName, string $contentObjectName): string
+    {
+        return self::getIdentifier($extensionName, $contentObjectName);
     }
 }

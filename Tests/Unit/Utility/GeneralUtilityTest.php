@@ -14,6 +14,56 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class GeneralUtilityTest extends UnitTestCase
 {
     /**
+     * Tests the `getSignature` function.
+     *
+     * @test
+     */
+    public function getSignature(): void
+    {
+        self::assertEquals(
+            'ContentElement',
+            GeneralUtility::getSignature('Content element')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            GeneralUtility::getSignature('Content Element')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            GeneralUtility::getSignature('content element')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            GeneralUtility::getSignature('content_element')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            GeneralUtility::getSignature('content-element')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            GeneralUtility::getSignature('ContentElement')
+        );
+
+        self::assertEquals(
+            'ContentElement',
+            GeneralUtility::getSignature('contentElement')
+        );
+
+        // === Deprecated ===
+
+        self::assertEquals(
+            'ContentElement',
+            GeneralUtility::signature('Content element')
+        );
+    }
+
+    /**
      * Tests the `getIdentifier` function.
      *
      * @test
@@ -21,30 +71,30 @@ class GeneralUtilityTest extends UnitTestCase
     public function getIdentifier(): void
     {
         self::assertEquals(
-            'spacer_content_element',
-            GeneralUtility::getIdentifier('Spacer Content Element')
+            'content_element',
+            GeneralUtility::getIdentifier('Content Element')
         );
 
         self::assertEquals(
-            'spacer_content_element',
-            GeneralUtility::getIdentifier('spacer content element')
+            'content_element',
+            GeneralUtility::getIdentifier('content element')
         );
 
         self::assertEquals(
-            'spacer_content_element',
-            GeneralUtility::getIdentifier('Spacer Content element')
+            'content_element',
+            GeneralUtility::getIdentifier('Content element')
         );
 
         self::assertEquals(
-            'spacer-content-element',
-            GeneralUtility::getIdentifier('Spacer Content Element', '-')
+            'content-element',
+            GeneralUtility::getIdentifier('Content Element', '-')
         );
 
         // === Deprecated ===
 
         self::assertEquals(
-            'spacer_content_element',
-            GeneralUtility::identifier('Spacer Content Element')
+            'content_element',
+            GeneralUtility::identifier('Content Element')
         );
     }
 }
