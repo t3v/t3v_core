@@ -15,30 +15,30 @@ use TYPO3\CMS\Extbase\Object\Exception;
 class ExtensionUtility extends AbstractUtility
 {
     /**
-     * Gets a signature from an extension name.
+     * Gets a signature from an extension key.
      *
-     * @param string $extensionName The extension name
+     * @param string $extensionKey The extension key
      * @return string The extension signature
      */
-    public static function getSignature(string $extensionName): string
+    public static function getSignature(string $extensionKey): string
     {
-        $signature = GeneralUtility::underscoredToUpperCamelCase($extensionName);
+        $signature = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
 
         return mb_strtolower($signature);
     }
 
     /**
-     * Gets a signature from an extension name.
+     * Gets a signature from an extension key.
      *
      * Alias for the `getSignature` function.
      *
-     * @param string $extensionName The extension name
+     * @param string $extensionKey The extension key
      * @return string The extension signature
      * @deprecated Use the `getSignature` function instead
      */
-    public static function signature(string $extensionName): string
+    public static function signature(string $extensionKey): string
     {
-        return self::getSignature($extensionName);
+        return self::getSignature($extensionKey);
     }
 
     /**
@@ -46,13 +46,13 @@ class ExtensionUtility extends AbstractUtility
      *
      * Alias for the `signature` function.
      *
-     * @param string $extensionName The extension name
+     * @param string $extensionKey The extension key
      * @return string The extension signature
      * @deprecated Use the `getSignature` function instead
      */
-    public static function extensionSignature(string $extensionName): string
+    public static function extensionSignature(string $extensionKey): string
     {
-        return self::getSignature($extensionName);
+        return self::getSignature($extensionKey);
     }
 
     /**
