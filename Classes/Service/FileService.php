@@ -5,6 +5,7 @@ namespace T3v\T3vCore\Service;
 
 use Cocur\Slugify\Slugify;
 use TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException;
+use TYPO3\CMS\Core\Resource\Security\FileNameValidator;
 use TYPO3\CMS\Core\Utility\File\BasicFileUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -58,8 +59,9 @@ class FileService extends AbstractService
         if (!empty($file) && !empty($uploadsFolderPath)) {
             $fileName = $file['name'];
             $temporaryFileName = $file['tmp_name'];
+            $fileNameValidator = GeneralUtility::makeInstance(FileNameValidator::class);
 
-            if (GeneralUtility::verifyFilenameAgainstDenyPattern($fileName)) {
+            if ($fileNameValidator->isValid($fileName)) {
                 $uploadsFolderPath = GeneralUtility::getFileAbsFileName($uploadsFolderPath);
                 $fileName = self::cleanFileName($fileName);
                 $newFileName = $this->getUniqueFileName($fileName, $uploadsFolderPath);
