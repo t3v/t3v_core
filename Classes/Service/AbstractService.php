@@ -52,9 +52,10 @@ abstract class AbstractService implements SingletonInterface
     /**
      * Gets the content object.
      *
-     * @return ContentObjectRenderer The content object, respectively renderer
+     * Alias for the `getContentObjectRenderer` function.
+     *
+     * @return ContentObjectRenderer The content object, respectively the renderer
      * @throws Exception
-     * @deprecated Use `getContentObjectRenderer` function instead
      */
     protected static function getContentObject(): ContentObjectRenderer
     {

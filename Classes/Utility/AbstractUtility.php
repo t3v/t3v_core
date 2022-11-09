@@ -48,4 +48,17 @@ abstract class AbstractUtility implements SingletonInterface
     {
         return self::getObjectManager()->get(ContentObjectRenderer::class);
     }
+
+    /**
+     * Gets the content object.
+     *
+     * Alias for the `getContentObjectRenderer` function.
+     *
+     * @return ContentObjectRenderer The content object, respectively the renderer
+     * @throws Exception
+     */
+    protected static function getContentObject(): ContentObjectRenderer
+    {
+        return self::getContentObjectRenderer();
+    }
 }
