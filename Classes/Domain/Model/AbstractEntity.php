@@ -18,28 +18,28 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
      *
      * @var string
      */
-    protected string $type;
+    protected $type;
 
     /**
      * The entity's handle.
      *
      * @var string
      */
-    protected string $handle;
+    protected $handle;
 
     /**
      * The entity's system language UID.
      *
      * @var int
      */
-    protected int $sysLanguageUid;
+    protected $sysLanguageUid;
 
     /**
      * The entity's L10n parent.
      *
      * @var int
      */
-    protected int $l10nParent;
+    protected $l10nParent;
 
     /**
      * The entity's localized UID.
@@ -53,14 +53,14 @@ abstract class AbstractEntity extends ExtbaseAbstractEntity
      *
      * @var DateTime
      */
-    protected DateTime $crdate;
+    protected $crdate;
 
     /**
      * The entity's timestamp.
      *
      * @var DateTime
      */
-    protected DateTime $tstamp;
+    protected $tstamp;
 
     /**
      * Returns the entity's type.

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace T3v\T3vCore\Domain\Model\Traits;
 
 use T3v\T3vCore\Service\LocalizationService;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 
@@ -17,24 +18,21 @@ trait FileReferenceTrait
     /**
      * The file repository.
      *
-     * @var \TYPO3\CMS\Core\Resource\FileRepository
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var FileRepository
      */
     protected $fileRepository;
 
     /**
      * The localization service.
      *
-     * @var \T3v\T3vCore\Service\LocalizationService
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var LocalizationService
      */
     protected $localizationService;
 
     /**
      * Injects the file repository.
      *
-     * @param \TYPO3\CMS\Core\Resource\FileRepository $fileRepository The file repository
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @param FileRepository $fileRepository The file repository
      */
     public function injectFileRepository(FileRepository $fileRepository): void
     {
@@ -44,8 +42,7 @@ trait FileReferenceTrait
     /**
      * Injects the localization service.
      *
-     * @param \T3v\T3vCore\Service\LocalizationService $localizationService The localization service
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @param LocalizationService $localizationService The localization service
      */
     public function injectLocalizationService(LocalizationService $localizationService): void
     {
@@ -57,10 +54,10 @@ trait FileReferenceTrait
      *
      * @param string $table The table
      * @param string $field The field
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @return FileReference|null
+     * @throws AspectNotFoundException
      */
-    protected function getLocalizedFileReference(string $table, string $field): FileReference
+    protected function getLocalizedFileReference(string $table, string $field): ?FileReference
     {
         if ($this->localizationService->getSysLanguageUid() > 0) {
             $localizedFileReferences = $this->getLocalizedFileReferences($table, $field);
@@ -93,6 +90,7 @@ trait FileReferenceTrait
      * @param string $table The table
      * @param string $field The field
      * @return array|null The localized file references or null if no localized file references were found
+     * @throws AspectNotFoundException
      */
     protected function getLocalizedFileReferences(string $table, string $field): ?array
     {
