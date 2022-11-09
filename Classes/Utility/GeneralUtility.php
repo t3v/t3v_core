@@ -36,20 +36,6 @@ class GeneralUtility extends AbstractUtility
     }
 
     /**
-     * Gets a signature from a name.
-     *
-     * Alias for the `getSignature` function.
-     *
-     * @param string $name The name
-     * @return string The signature
-     * @deprecated Use the `getSignature` function instead
-     */
-    public static function signature(string $name): string
-    {
-        return self::getSignature($name);
-    }
-
-    /**
      * Gets an identifier from a name.
      *
      * @param string $name The name
@@ -59,20 +45,5 @@ class GeneralUtility extends AbstractUtility
     public static function getIdentifier(string $name, string $separator = '_'): string
     {
         return (new Slugify(['separator' => $separator]))->slugify($name);
-    }
-
-    /**
-     * Gets an identifier from a name.
-     *
-     * Alias for the `getIdentifier` function.
-     *
-     * @param string $name The name
-     * @param string $separator The optional separator, defaults to `_`
-     * @return string The identifier
-     * @deprecated Use the `getIdentifier` function instead
-     */
-    public static function identifier(string $name, string $separator = '_'): string
-    {
-        return self::getIdentifier($name, $separator);
     }
 }

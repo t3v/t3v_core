@@ -22,34 +22,6 @@ class ContentElementUtility extends AbstractUtility
     }
 
     /**
-     * Gets a signature from a content element name.
-     *
-     * Alias for the `getSignature` function.
-     *
-     * @param string $contentElementName The content element name
-     * @return string The content element signature
-     * @deprecated Use the `getSignature` function instead
-     */
-    public static function signature(string $contentElementName): string
-    {
-        return self::getSignature($contentElementName);
-    }
-
-    /**
-     * Gets a content element signature from a content element name.
-     *
-     * Alias for the `getSignature` function.
-     *
-     * @param string $contentElementName The content element name
-     * @return string The content element signature
-     * @deprecated Use the `getSignature` function instead
-     */
-    public static function contentElementSignature(string $contentElementName): string
-    {
-        return self::getSignature($contentElementName);
-    }
-
-    /**
      * Gets an identifier from an extension and content element name.
      *
      * @param string $extensionName The extension name
@@ -62,35 +34,5 @@ class ContentElementUtility extends AbstractUtility
         $contentElementSignature = GeneralUtility::getSignature($contentElementName);
 
         return mb_strtolower($extensionSignature . '_' . $contentElementSignature);
-    }
-
-    /**
-     * Gets an identifier from an extension and content element name.
-     *
-     * Alias for the `getIdentifier` function.
-     *
-     * @param string $extensionName The extension name
-     * @param string $contentElementName The content element name
-     * @return string The content element identifier
-     * @deprecated Use the `getIdentifier` function instead
-     */
-    public static function identifier(string $extensionName, string $contentElementName): string
-    {
-        return self::getIdentifier($extensionName, $contentElementName);
-    }
-
-    /**
-     * Gets a content element identifier from an extension and content element name.
-     *
-     * Alias for the `getIdentifier` function.
-     *
-     * @param string $extensionName The extension name
-     * @param string $contentElementName The content element name
-     * @return string The content element identifier
-     * @deprecated Use the `getIdentifier` function instead
-     */
-    public static function contentElementIdentifier(string $extensionName, string $contentElementName): string
-    {
-        return self::getIdentifier($extensionName, $contentElementName);
     }
 }
