@@ -3,8 +3,8 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+10.0.0
+------
 
 * Switched `getSignature` and `getIdentifier` function to align with TYPO3 naming (breaking change)
 * Removed deprecated functions
@@ -12,6 +12,8 @@ Unreleased
 * Dropped support for TYPO3 9.5 (breaking change)
 * Dropped support for PHP < 7.4 (breaking change)
 * Dropped support for AppVeyor
+* Updated dependencies
+* Minor changes and clean up
 
 9.0.0
 -----
