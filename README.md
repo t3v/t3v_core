@@ -66,5 +66,5 @@ T3v Core is released under the [MIT License (MIT)], see [LICENSE].
 [MIT License (MIT)]: http://opensource.org/licenses/MIT "The MIT License (MIT)"
 [Semantic Versioning 2.0.0]: http://semver.org "Semantic Versioning 2.0.0"
 [T3v Core]: https://t3v.github.io/t3v_core/ "The core extension of TYPO3voilà."
-[TYPO3voila]: https://github.com/t3v "“UH LÁLÁ, TYPO3!”"
+[TYPO3voilà]: https://github.com/t3v "“UH LÁLÁ, TYPO3!”"
 [Unit Testing TYPO3]: https://wiki.typo3.org/Unit_Testing_TYPO3 "Unit testing TYPO3"
