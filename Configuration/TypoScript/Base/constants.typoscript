@@ -11,7 +11,7 @@
 plugin {
   tx_t3v {
     settings {
-      # cat=plugin/tx_t3v/settings; type=options[Strict=strict,Fallback=fallback]; label=The mode in which TYPO3voilà runs at
+      # cat=plugin/tx_t3v/settings; type=options[Strict=strict,Fallback=fallback,Free=free]; label=The mode in which TYPO3voilà runs at
       mode = strict
     }
   }

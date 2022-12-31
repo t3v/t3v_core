@@ -6,6 +6,7 @@ namespace T3v\T3vCore\Tests\Functional\Service;
 use Doctrine\DBAL\DBALException;
 use T3v\T3vCore\Service\SettingsService;
 use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
+use TYPO3\TestingFramework\Core\Exception;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -78,10 +79,25 @@ class SettingsServiceTest extends FunctionalTestCase
      * Setup before running tests.
      *
      * @throws DBALException
+     * @throws Exception
      */
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->importDataSet('EXT:t3v_testing/Tests/Functional/Fixtures/Database/Pages.xml');
+
+        $this->setUpFrontendRootPage(
+            1,
+            [
+                'constants' => [
+                    'EXT:t3v_core/Configuration/TypoScript/constants.typoscript'
+                ],
+                'setup' => [
+                    'EXT:t3v_core/Configuration/TypoScript/setup.typoscript'
+                ]
+            ]
+        );
 
         $this->subject = new SettingsService();
     }
