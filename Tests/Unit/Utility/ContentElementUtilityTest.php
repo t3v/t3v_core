@@ -54,18 +54,6 @@ class ContentElementUtilityTest extends UnitTestCase
             'ContentElement',
             ContentElementUtility::getSignature('contentElement')
         );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            'ContentElement',
-            ContentElementUtility::signature('Content element')
-        );
-
-        self::assertEquals(
-            'ContentElement',
-            ContentElementUtility::contentElementSignature('Content element')
-        );
     }
 
     /**
@@ -83,18 +71,6 @@ class ContentElementUtilityTest extends UnitTestCase
         self::assertEquals(
             't3vcore_contentelement',
             ContentElementUtility::getIdentifier('T3v Core', 'Content Element')
-        );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            't3vcore_contentelement',
-            ContentElementUtility::identifier('t3vcore', 'contentelement')
-        );
-
-        self::assertEquals(
-            't3vcore_contentelement',
-            ContentElementUtility::contentElementIdentifier('t3vcore', 'contentelement')
         );
     }
 }

@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Tests\Functional\Service;
 
+use Doctrine\DBAL\DBALException;
 use T3v\T3vCore\Service\SettingsService;
+use TYPO3\CMS\Extbase\Object\Exception;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -33,25 +35,17 @@ class SettingsServiceTest extends FunctionalTestCase
     ];
 
     /**
-     * The paths to link in the test instance.
-     *
-     * @var array
-     */
-    protected $pathsToLinkInTestInstance = [
-    ];
-
-    /**
      * The subject.
      *
-     * @var \T3v\T3vCore\Service\SettingsService
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var SettingsService
      */
-    protected $subject;
+    protected SettingsService $subject;
 
     /**
      * Tests the `runningInStrictMode` function.
      *
      * @test
+     * @throws Exception
      */
     public function runningInStrictMode(): void
     {
@@ -62,6 +56,7 @@ class SettingsServiceTest extends FunctionalTestCase
      * Tests the `runningInFallbackMode` function.
      *
      * @test
+     * @throws Exception
      */
     public function runningInFallbackMode(): void
     {
@@ -71,14 +66,12 @@ class SettingsServiceTest extends FunctionalTestCase
     /**
      * Setup before running tests.
      *
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \TYPO3\TestingFramework\Core\Exception
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @throws DBALException
      */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->subject = new SettingsService;
+        $this->subject = new SettingsService();
     }
 }

@@ -39,18 +39,6 @@ class IconUtilityTest extends UnitTestCase
             'spacer-content-element',
             IconUtility::getSignature('Spacer Content Element', '-')
         );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            'spacer_content_element',
-            IconUtility::signature('Spacer Content Element')
-        );
-
-        self::assertEquals(
-            'spacer_content_element',
-            IconUtility::iconSignature('Spacer Content Element')
-        );
     }
 
     /**
@@ -68,18 +56,6 @@ class IconUtilityTest extends UnitTestCase
         self::assertEquals(
             't3v_core_spacer_content_element',
             IconUtility::getIdentifier('t3v_core', 'spacer_content_element', '_')
-        );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            't3v_core-spacer_content_element',
-            IconUtility::identifier('t3v_core', 'spacer_content_element')
-        );
-
-        self::assertEquals(
-            't3v_core-spacer_content_element',
-            IconUtility::iconIdentifier('t3v_core', 'spacer_content_element')
         );
     }
 }

@@ -54,18 +54,6 @@ class ContentObjectUtilityTest extends UnitTestCase
             'ContentObject',
             ContentObjectUtility::getSignature('contentObject')
         );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            'ContentObject',
-            ContentObjectUtility::signature('Content object')
-        );
-
-        self::assertEquals(
-            'ContentObject',
-            ContentObjectUtility::contentObjectSignature('Content object')
-        );
     }
 
     /**
@@ -83,18 +71,6 @@ class ContentObjectUtilityTest extends UnitTestCase
         self::assertEquals(
             't3vcore_contentobject',
             ContentObjectUtility::getIdentifier('T3v Core', 'Content Object')
-        );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            't3vcore_contentobject',
-            ContentObjectUtility::identifier('t3vcore', 'contentobject')
-        );
-
-        self::assertEquals(
-            't3vcore_contentobject',
-            ContentObjectUtility::contentObjectIdentifier('t3vcore', 'contentobject')
         );
     }
 }

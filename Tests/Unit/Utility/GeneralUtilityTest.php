@@ -54,13 +54,6 @@ class GeneralUtilityTest extends UnitTestCase
             'ContentElement',
             GeneralUtility::getSignature('contentElement')
         );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            'ContentElement',
-            GeneralUtility::signature('Content element')
-        );
     }
 
     /**
@@ -88,13 +81,6 @@ class GeneralUtilityTest extends UnitTestCase
         self::assertEquals(
             'content-element',
             GeneralUtility::getIdentifier('Content Element', '-')
-        );
-
-        // === Deprecated ===
-
-        self::assertEquals(
-            'content_element',
-            GeneralUtility::identifier('Content Element')
         );
     }
 }
