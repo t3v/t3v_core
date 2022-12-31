@@ -3,12 +3,13 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
+10.1.0
+------
 
-* Refactored `AbstractService`
+* Refactored `AbstractService` for TYPO3 10.4 and up
+* Bugfixing and fixed tests
 * Minor changes and clean up
-* Fixed tests
+* Updated dependencies
 
 10.0.0
 ------
