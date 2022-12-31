@@ -7,6 +7,9 @@ use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\Exception;
 
+use function in_array;
+use function is_string;
+
 /**
  * The query result service class.
  *

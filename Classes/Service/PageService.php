@@ -13,6 +13,10 @@ use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\RootlineUtility;
 
+use function in_array;
+use function is_array;
+use function is_string;
+
 /**
  * The page service class.
  *
@@ -38,21 +42,21 @@ class PageService extends AbstractService
      *
      * @var LocalizationService
      */
-    protected $localizationService;
+    protected LocalizationService $localizationService;
 
     /**
      * The page repository.
      *
      * @var PageRepository
      */
-    protected $pageRepository;
+    protected PageRepository $pageRepository;
 
     /**
      * The query generator.
      *
      * @var QueryGenerator
      */
-    protected $queryGenerator;
+    protected QueryGenerator $queryGenerator;
 
     /**
      * Gets a page.

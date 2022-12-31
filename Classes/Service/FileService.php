@@ -111,7 +111,7 @@ class FileService extends AbstractService
      */
     public static function cleanFileName(string $fileName, array $rulesets = self::FILE_NAME_RULESETS, string $separator = '-'): string
     {
-        $slugify = new Slugify(['rulesets' => $rulesets, 'separator' => $separator]);
+        $slugify = new Slugify(compact('rulesets', 'separator'));
         $name = $slugify->slugify(pathinfo($fileName, PATHINFO_FILENAME));
         $extension = pathinfo($fileName, PATHINFO_EXTENSION);
 

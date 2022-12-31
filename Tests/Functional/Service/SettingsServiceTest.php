@@ -5,7 +5,7 @@ namespace T3v\T3vCore\Tests\Functional\Service;
 
 use Doctrine\DBAL\DBALException;
 use T3v\T3vCore\Service\SettingsService;
-use TYPO3\CMS\Extbase\Object\Exception;
+use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -45,7 +45,7 @@ class SettingsServiceTest extends FunctionalTestCase
      * Tests the `runningInStrictMode` function.
      *
      * @test
-     * @throws Exception
+     * @throws InvalidConfigurationTypeException
      */
     public function runningInStrictMode(): void
     {
@@ -56,11 +56,22 @@ class SettingsServiceTest extends FunctionalTestCase
      * Tests the `runningInFallbackMode` function.
      *
      * @test
-     * @throws Exception
+     * @throws InvalidConfigurationTypeException
      */
     public function runningInFallbackMode(): void
     {
         self::assertEquals(false, $this->subject->runningInFallbackMode());
+    }
+
+    /**
+     * Tests the `runningInFreeMode` function.
+     *
+     * @test
+     * @throws InvalidConfigurationTypeException
+     */
+    public function runningInFreeMode(): void
+    {
+        self::assertEquals(false, $this->subject->runningInFreeMode());
     }
 
     /**

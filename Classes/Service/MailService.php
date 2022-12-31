@@ -78,20 +78,16 @@ class MailService extends AbstractService
                 $name = trim($recipient['name']);
                 $address = trim($recipient['address']);
 
-                if ($i === 0) { // The first recipient
-                    // Adds the first recipient to `To`:
+                if ($i === 0) { // Adds the first recipient to `To`:
                     if (!empty($name)) {
                         $toRecipients[$address] = $name;
                     } else {
                         $toRecipients[] = $address;
                     }
-                } else { // The other recipients
-                    // Adds the other recipients to `Cc`:
-                    if (!empty($name)) {
-                        $ccRecipients[$address] = $name;
-                    } else {
-                        $ccRecipients[] = $address;
-                    }
+                } elseif (!empty($name)) { // Adds the other recipients to `Cc`:
+                    $ccRecipients[$address] = $name;
+                } else {
+                    $ccRecipients[] = $address;
                 }
             }
         }

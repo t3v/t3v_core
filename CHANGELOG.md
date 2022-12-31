@@ -6,6 +6,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
+* Refactored `AbstractService`
 * Minor changes and clean up
 * Fixed tests
 

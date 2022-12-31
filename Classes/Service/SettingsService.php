@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace T3v\T3vCore\Service;
 
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Object\Exception;
+use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
+
+use function is_array;
 
 /**
  * The settings service class.
@@ -24,7 +26,7 @@ class SettingsService extends AbstractService
      * Checks if TYPO3voilà is running in `strict` mode.
      *
      * @return bool If TYPO3voilà is running in `strict` mode
-     * @throws Exception
+     * @throws InvalidConfigurationTypeException
      */
     public function runningInStrictMode(): bool
     {
@@ -46,7 +48,7 @@ class SettingsService extends AbstractService
      * Checks if TYPO3voilà is running in `fallback` mode.
      *
      * @return bool If TYPO3voilà is running in `fallback` mode
-     * @throws Exception
+     * @throws InvalidConfigurationTypeException
      */
     public function runningInFallbackMode(): bool
     {
@@ -68,7 +70,7 @@ class SettingsService extends AbstractService
      * Checks if TYPO3voilà is running in `free` mode.
      *
      * @return bool If TYPO3voilà is running in `free` mode
-     * @throws Exception
+     * @throws InvalidConfigurationTypeException
      */
     public function runningInFreeMode(): bool
     {
@@ -91,7 +93,7 @@ class SettingsService extends AbstractService
      *
      * @param string $identifier The optional plugin identifier, defaults to `tx_t3v`
      * @return array|null The settings
-     * @throws Exception
+     * @throws InvalidConfigurationTypeException
      */
     protected function getSettings(string $identifier = 'tx_t3v'): ?array
     {
@@ -99,7 +101,7 @@ class SettingsService extends AbstractService
         $configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
 
         if (is_array($configuration['plugin.']) && !empty($configuration['plugin.'])) {
-            if ($identifier[-1] !== '.') { // Append `.` to identifier if it does not already exist
+            if ($identifier[-1] !== '.') { // Append `.` to the identifier if it does not already exist
                 $identifier .= '.';
             }
 
