@@ -9,6 +9,7 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 * Refactored `AbstractService` for TYPO3 10.4 and up
 * Bugfixing and fixed tests
 * Minor changes and clean up
+* Updated Travis CI configuration
 * Updated dependencies
 
 10.0.0
