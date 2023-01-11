@@ -56,7 +56,7 @@
   },
   "require-dev": {
     "ext-dom": "*",
-    "t3v/t3v_testing": "^1.2"
+    "t3v/t3v_testing": "dev-9-x"
   },
   "autoload": {
     "psr-4": {

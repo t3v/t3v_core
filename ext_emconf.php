@@ -1,6 +1,5 @@
 <?php
 /** @var string $_EXTKEY */
-
 $EM_CONF[$_EXTKEY] = [
     'title' => 'T3v Core',
     'description' => 'The core extension of TYPO3voilà.',
