@@ -45,13 +45,17 @@
     {
       "type": "composer",
       "url": "https://composer.typo3.org"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/t3v/Stringy"
     }
   ],
   "require": {
     "php": ">= 8.0",
     "ext-pdo": "*",
     "typo3/cms-core": "^11.5.22 || ^12.1.3",
-    "danielstjules/stringy": "^3.1",
+    "danielstjules/stringy": "dev-master",
     "cocur/slugify": "^4.3"
   },
   "require-dev": {
