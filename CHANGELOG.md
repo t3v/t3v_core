@@ -6,9 +6,6 @@ Notable changes will be documented in this file. The project adheres to [Semanti
 Unreleased
 ----------
 
-* Intial support for TYPO3 12.x
-* Dropped support for TYPO3 10.4 (breaking change)
-* Dropped support for PHP < 8.0 (breaking change)
 * Updated dependencies
 
 10.1.0

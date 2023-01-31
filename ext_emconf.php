@@ -1,6 +1,4 @@
 <?php
-declare(strict_types=1);
-
 /** @var string $_EXTKEY */
 $EM_CONF[$_EXTKEY] = [
     'title' => 'T3v Core',
@@ -16,7 +14,7 @@ $EM_CONF[$_EXTKEY] = [
     'clearCacheOnLoad' => false,
     'constraints' => [
         'depends' => [
-            'typo3' => '11.5.0-12.4.99'
+            'typo3' => '10.4.0-11.5.99'
         ],
         'conflicts' => [],
         'suggests' => []
