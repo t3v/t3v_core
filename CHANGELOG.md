@@ -3,12 +3,6 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
-Unreleased
-----------
-
-* Updated Composer configuration
-* Updated dependencies
-
 10.1.0
 ------
 
@@ -16,6 +10,7 @@ Unreleased
 * Bugfixing and fixed tests
 * Minor changes and clean up
 * Updated Travis CI configuration
+* Updated Composer configuration
 * Updated dependencies
 
 10.0.0
