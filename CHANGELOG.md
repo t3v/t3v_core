@@ -20,7 +20,7 @@ Unreleased
 10.0.0
 ------
 
-* Switched `getSignature` and `getIdentifier` function to align with TYPO3 naming (breaking change)
+* Switched `getSignature` and `getIdentifier` function to align with TYPO3 conventions (breaking change)
 * Dropped support for TYPO3 9.5 (breaking change)
 * Dropped support for PHP < 7.4 (breaking change)
 * Removed deprecated functions
