@@ -3,6 +3,12 @@ CHANGELOG
 
 Notable changes will be documented in this file. The project adheres to [Semantic Versioning].
 
+Unreleased
+----------
+
+* Minor changes and clean up
+* Updated dependencies
+
 10.1.0
 ------
 

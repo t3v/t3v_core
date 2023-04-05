@@ -17,5 +17,3 @@ $extensionTitle = 'T3v Core';
 // === TypoScript ===
 
 ExtensionManagementUtility::addStaticFile($extensionKey, 'Configuration/TypoScript', $extensionTitle);
-
-// === T3v Generator ===

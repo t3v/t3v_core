@@ -1,11 +1,11 @@
 /*
-  ---------------------------
-  | T3v Core Base Constants |
-  ---------------------------
+---------------------------
+| T3v Core Base Constants |
+---------------------------
 */
 
 /*
-  === Plugin Constants ===
+=== Plugin constants ===
 */
 
 plugin {
@@ -62,7 +62,3 @@ plugin {
     }
   }
 }
-
-/*
-  === T3v Generator ===
-*/

@@ -18,7 +18,7 @@ abstract class AbstractActionController extends ActionController
      *
      * @var array
      */
-    protected $data;
+    protected array $data;
 
     /**
      * Initializes an action.
@@ -27,6 +27,8 @@ abstract class AbstractActionController extends ActionController
      */
     protected function initializeAction(): void
     {
+        parent::initializeAction();
+
         $contentObject = $this->configurationManager->getContentObject();
 
         if ($contentObject !== null) {

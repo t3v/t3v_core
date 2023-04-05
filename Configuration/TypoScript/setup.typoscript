@@ -1,15 +1,11 @@
 /*
-  ------------------
-  | T3v Core Setup |
-  ------------------
+------------------
+| T3v Core Setup |
+------------------
 */
 
 /*
-  === Imports ===
+=== Imports ===
 */
 
 @import './Base/setup.typoscript'
-
-/*
-  === T3v Generator ===
-*/
