@@ -43,6 +43,8 @@ abstract class AbstractActionController extends ActionController
      */
     protected function initializeView(ViewInterface $view): void
     {
+        parent::initializeView($view);
+
         $this->view->assign('data', $this->data);
     }
 
