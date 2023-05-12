@@ -22,7 +22,7 @@ class StringUtility extends AbstractUtility
      */
     public static function asciify(string $input, string $language = 'en', bool $removeUnsupported = true): string
     {
-        return S::toAscii($input, $language, $removeUnsupported);
+        return S::create($input)->toAscii($language, $removeUnsupported)->toString();
     }
 
     /**
