@@ -5,7 +5,7 @@
 */
 
 /*
-=== Plugin configuration ===
+=== Plugin ===
 */
 
 plugin {
@@ -60,7 +60,7 @@ plugin {
 }
 
 /*
-=== Module configuration ===
+=== Module ===
 */
 
 module {
