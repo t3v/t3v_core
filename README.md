@@ -6,10 +6,12 @@
 Dependencies
 ------------
 
+### Base
+
 * PHP 7.4 or greater
 * TYPO3 CMS 10.4 or greater
-* Danielstjules Stringy library
-* Cocur Slugify library
+* Stringy library
+* Slugify library
 
 Installation
 ------------

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vCore\Utility;
 
-use Stringy\StaticStringy as S;
+use Stringy\Stringy as S;
 
 /**
  * The string utility class.
