@@ -16,5 +16,5 @@ trim_trailing_whitespace = false
 [*.php]
 indent_size = 4
 
-[*.xlf]
+[*.{xlf,xml}]
 max_line_length = 240
